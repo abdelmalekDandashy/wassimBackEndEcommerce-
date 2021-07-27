@@ -20,7 +20,8 @@ namespace BLC
         {
             BR_9999,  // Invalid Credentials
             BR_0000,  // Uniqueness Violation                      
-            BR_0001   // Password should be at least 4 characters 
+            BR_0001,  // Password should be at least 4 characters 
+            BR_0002, // invalid password
         }
         public enum Enum_EditMode
         {

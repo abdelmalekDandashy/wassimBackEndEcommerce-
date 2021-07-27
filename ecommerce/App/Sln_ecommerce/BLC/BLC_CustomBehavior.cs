@@ -5,6 +5,8 @@ using System.Reflection;
 
 namespace BLC
 {
+
+    
     #region Enumeration
     public enum Enum_EntityNameFormat
     {
@@ -16,10 +18,67 @@ namespace BLC
         LMF
     }
     #endregion
+
     public partial class BLC
     {
+        
+        #region authenticate
+        public User Authenticate(Params_Authenticate i_Params_Authenticate)
+        {
+            #region declaration
+
+            User oUser = new User();
+
+            #endregion
+            
+            List<dynamic> oList = _AppContext.UP_GET_USER_BY_CREDENTIALS( i_Params_Authenticate.OWNER_ID, i_Params_Authenticate.USERNAME, i_Params_Authenticate.PASSWORD);
+            if ((oList != null) && (oList.Count > 0))
+            {
+                if (i_Params_Authenticate.PASSWORD == oList[0].PASSWORD)
+                {
+                    oUser.USER_ID = oList[0].USER_ID;
+                    oUser.OWNER_ID = oList[0].OWNER_ID;
+                    oUser.USERNAME = oList[0].USERNAME;
+                    oUser.EMAIL = oList[0].EMAIL;
+                    //oUser.USER_TYPE_CODE = oList[0].USER_TYPE_CODE;
+                    //oUser.IS_ACTIVE = oList[0].IS_ACTIVE;
+
+                    
+
+
+                    //oUser.My_User_type_code = oList[0].My_User_type_code;
+
+                    //var MinutesEplapsedSinceMidnight = (long?)(DateTime.Now - DateTime.Today).TotalMinutes;
+                    //var TicketText = string.Format
+                    //    (
+                    //    "USER_ID:{0}[~!@]OWNER_ID:{1}[~!@]START_DATE:{2}[~!@]START_MINUTE:{3}[~!@]SESSION_PERIOD:{4}",
+                    //    oUser.USER_ID,
+                    //    oUser.OWNER_ID,
+                    //    oTools.GetDateString(DateTime.Today),
+                    //    MinutesEplapsedSinceMidnight.ToString(),
+                    //    60
+                    //    );
+                    //oUser.myTicket = TicketText;
+                }
+                else
+                {
+                    throw new BLCException("password is not correct");
+                }
+
+            }
+            else
+            {
+                throw new BLCException("couldn't find enmail in our database");
+            }
+
+            return oUser;
+
+        }
+
+
+        #endregion auhtenticate
         #region Members
-        #endregion        
+        #endregion
         #region Setup
         #region EditSetup
         #region EditSetup
@@ -219,6 +278,20 @@ namespace BLC
         public string My_Image_Url { get; set; }
     }
     #endregion
+    #region params authenticate
+    public class Params_Authenticate
+    {
+        #region Properties
+
+        public int OWNER_ID{ get; set; }
+        public string USERNAME { get; set; }
+        public string EMAIL { get; set; }
+
+        public string PASSWORD { get; set; }
+
+        #endregion
+    }
+    #endregion
     #region Product
     public partial class Category
     {
@@ -226,6 +299,11 @@ namespace BLC
         //public string My_Image_Url { get; set; }
     }
     #endregion
+    public partial class User
+    {
+        public string myTicket { get; set; }
+
+    }
     #endregion
 }
 

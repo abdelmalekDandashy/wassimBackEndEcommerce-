@@ -48,6 +48,51 @@ return Is_Valid;
 #endregion
 }
 #endregion
+#region Authenticate
+[HttpPost]
+[Route("Authenticate")]
+public Result_Authenticate Authenticate(Params_Authenticate i_Params_Authenticate)
+{
+#region Declaration And Initialization Section.
+User oReturnValue = new User();
+string i_Ticket = string.Empty;
+Result_Authenticate oResult_Authenticate = new Result_Authenticate();
+#endregion
+#region Body Section.
+try
+{
+
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Authenticate(i_Params_Authenticate);
+oResult_Authenticate.My_Result = oReturnValue;
+oResult_Authenticate.My_Params_Authenticate = i_Params_Authenticate;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Authenticate.ExceptionMsg = string.Format("Authenticate : {0}", ex.Message);
+}
+else
+{
+oResult_Authenticate.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Authenticate;
+#endregion
+}
+#endregion
 #region Delete_Category
 [HttpPost]
 [Route("Delete_Category")]
@@ -745,6 +790,15 @@ public Action_Result()
 this.ExceptionMsg = string.Empty;
 #endregion
 }
+#endregion
+}
+#endregion
+#region Result_Authenticate
+public partial class Result_Authenticate : Action_Result
+{
+#region Properties.
+public User My_Result { get; set; }
+public Params_Authenticate My_Params_Authenticate { get; set; }
 #endregion
 }
 #endregion

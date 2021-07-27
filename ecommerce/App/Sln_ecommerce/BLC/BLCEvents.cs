@@ -22,8 +22,8 @@ Get_Category_By_OWNER_ID,
 Get_Category_By_Where,
 Edit_Category,
 Delete_Category,
-            Authenticate
-        }
+Authenticate
+}
 #endregion
 
 #region Prepare_BLCInitializer

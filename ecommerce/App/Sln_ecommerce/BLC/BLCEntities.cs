@@ -1231,6 +1231,7 @@ public partial class Params_Get_User_By_Criteria
 {
 
 public Int32? OWNER_ID {get;set;}
+public string EMAIL {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
 public string USER_TYPE_CODE {get;set;}
@@ -1242,6 +1243,7 @@ public partial class Params_Get_User_By_Where
 {
 
 public Int32? OWNER_ID {get;set;}
+public string EMAIL {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
 public string USER_TYPE_CODE {get;set;}
@@ -2424,6 +2426,7 @@ public partial class User
 {
 public long? USER_ID {get;set;}
 public Int32? OWNER_ID {get;set;}
+public string EMAIL {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
 public string USER_TYPE_CODE {get;set;}

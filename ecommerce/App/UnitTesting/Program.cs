@@ -25,6 +25,16 @@ namespace UnitTesting
             string str_Bucket_Name = string.Empty;
             string str_Main_Folder_Path = string.Empty;
             Tools.Tools oTools = new Tools.Tools();
+
+
+
+
+
+
+
+
+
+
             #endregion
             //User oUser = new User();
             //oTools.SetPropertiesDefaultValue(oUser);

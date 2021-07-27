@@ -53,6 +53,7 @@ namespace CodeGenerator
             oCodeBooster.Is_Apply_Minification = false;
             oCodeBooster.Is_Show_Notifications_In_Console = true;
             oCodeBooster.Is_Create_DB_Demo = false;
+
             oCodeBoosterClient.Is_Handle_Custom_Procedures = true;
             oCodeBoosterClient.Authenticate_User();
 
@@ -231,6 +232,7 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Get_Category_By_Where");
             oCodeBooster.APIMethodsSelection.Add("Edit_Category");
             oCodeBooster.APIMethodsSelection.Add("Delete_Category");
+            oCodeBooster.APIMethodsSelection.Add("Authenticate");
 
             //oCodeBooster.APIMethodsSelection.Add("Authenticate");
             //----------------------------
@@ -264,6 +266,10 @@ namespace CodeGenerator
             oCodeBooster.Is_Embed_USE_DB = true;
             oCodeBooster.UI_Root_Folder = @"C:\inetpub\wwwroot\ClinicPlusWeb\Content";
             oCodeBooster.Is_By_Criteria_Shadowed = true;
+            oCodeBoosterClient.Is_Handle_Custom_Procedures = true;
+            oCodeBoosterClient.Authenticate_User();
+
+
             #region Inheritance
             #endregion
             switch (str_Option)
