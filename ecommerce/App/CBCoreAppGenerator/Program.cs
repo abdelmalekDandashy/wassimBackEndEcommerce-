@@ -122,6 +122,38 @@ namespace CodeGenerator
                     }
 
                 );
+            oCodeBooster.Uploaded_Files_BackEnd_Events.Add
+                (
+                    new Uploaded_File_BackEnd_Event()
+                    {   
+                        TBL_NAME = "[TBL_USER]",
+                        UI_METHOD_NAME = "Get_User_By_Where",
+                        Mode = 1
+                    }
+
+                );
+            
+            oCodeBooster.Uploaded_Files_BackEnd_Events.Add
+                (
+                    new Uploaded_File_BackEnd_Event()
+                    {   
+                        TBL_NAME = "[TBL_USER_ACCOUNT]",
+                        UI_METHOD_NAME = "Get_User_account_By_Where",
+                        Mode = 1
+                    }
+
+                );
+            
+            //oCodeBooster.Uploaded_Files_BackEnd_Events.Add
+            //    (
+            //        new Uploaded_File_BackEnd_Event()
+            //        {   
+            //            TBL_NAME = "[TBL_USER_ACCOUNT]",
+            //            UI_METHOD_NAME = "Get_User_account_By_Where",
+            //            Mode = 1
+            //        }
+
+            //    );
 
 
             //oCodeBooster.Uploaded_Files_BackEnd_Events.Add
@@ -232,6 +264,26 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Get_Category_By_Where");
             oCodeBooster.APIMethodsSelection.Add("Edit_Category");
             oCodeBooster.APIMethodsSelection.Add("Delete_Category");
+
+
+            oCodeBooster.APIMethodsSelection.Add("Get_User_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Get_User_By_Where");
+            oCodeBooster.APIMethodsSelection.Add("Edit_User");
+            oCodeBooster.APIMethodsSelection.Add("Delete_User");
+            
+            oCodeBooster.APIMethodsSelection.Add("EditSetup");
+            oCodeBooster.APIMethodsSelection.Add("Get_SetupEntries_Per_Table");
+
+            oCodeBooster.APIMethodsSelection.Add("Get_User_account_By_OWNER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Get_User_account_By_Where");
+            oCodeBooster.APIMethodsSelection.Add("Edit_User_account");
+            oCodeBooster.APIMethodsSelection.Add("Delete_User_account");
+
+
+
+
+
+
             oCodeBooster.APIMethodsSelection.Add("Authenticate");
 
             //oCodeBooster.APIMethodsSelection.Add("Authenticate");
@@ -266,9 +318,11 @@ namespace CodeGenerator
             oCodeBooster.Is_Embed_USE_DB = true;
             oCodeBooster.UI_Root_Folder = @"C:\inetpub\wwwroot\ClinicPlusWeb\Content";
             oCodeBooster.Is_By_Criteria_Shadowed = true;
+            oCodeBooster.Is_Setup_Disabled = false;
+
+
             oCodeBoosterClient.Is_Handle_Custom_Procedures = true;
             oCodeBoosterClient.Authenticate_User();
-
 
             #region Inheritance
             #endregion
@@ -392,16 +446,40 @@ namespace CodeGenerator
                     //#endregion
                     //#endregion
 
-                    #region PRODCUT
+                    //#region PRODCUT
+                    //#region Search Screen
+                    //oUIFields_Criteria = new UIFields();
+                    //oUIFields_Criteria.MainTableName = "[TBL_PRODUCT]";
+                    //oUIFields_Criteria.Based_On_Type = "BLC.Params_Get_Product_By_Where";
+
+                    //oUIFields_Result = new UIFields();
+                    //oUIFields_Result.MainTableName = "[TBL_PRODUCT]";
+                    //oUIFields_Result.Based_On_Type = "BLC.Product";
+                    //oUIFields_Result.GetMethodName = "Get_Product_By_Where";
+                    //oUIFields_Result.GridFields = new List<GridField>();
+
+                    //oUIFields_Result.Has_Related_Data = true;
+                    //oUIFields_Result.Has_Related_Files = true;
+
+
+
+                    //oSearch_AdvancedProp = new Search_AdvancedProp();
+                    //oSearch_AdvancedProp.ContainerMargins = "0,5,0,5";
+                    //oCodeBooster.Entity_FriendlyName = "Product";
+                    //oCodeBoosterClient.Generate_ListUI(Enum_SearchMethod.With_Criteria_Section, oUIFields_Criteria, oUIFields_Result, oSearch_AdvancedProp);
+                    //#endregion
+                    //#endregion
+
+                    #region user account
                     #region Search Screen
                     oUIFields_Criteria = new UIFields();
-                    oUIFields_Criteria.MainTableName = "[TBL_PRODUCT]";
-                    oUIFields_Criteria.Based_On_Type = "BLC.Params_Get_Product_By_Where";
+                    oUIFields_Criteria.MainTableName = "[TBL_USER_ACCOUNT]";
+                    oUIFields_Criteria.Based_On_Type = "BLC.Params_Get_User_account_By_OWNER_ID";
 
                     oUIFields_Result = new UIFields();
-                    oUIFields_Result.MainTableName = "[TBL_PRODUCT]";
-                    oUIFields_Result.Based_On_Type = "BLC.Product";
-                    oUIFields_Result.GetMethodName = "Get_Product_By_Where";
+                    oUIFields_Result.MainTableName = "[TBL_USER_ACCOUNT]";
+                    oUIFields_Result.Based_On_Type = "BLC.User_account";
+                    oUIFields_Result.GetMethodName = "Get_User_account_By_Where";
                     oUIFields_Result.GridFields = new List<GridField>();
 
                     oUIFields_Result.Has_Related_Data = true;
@@ -411,10 +489,34 @@ namespace CodeGenerator
 
                     oSearch_AdvancedProp = new Search_AdvancedProp();
                     oSearch_AdvancedProp.ContainerMargins = "0,5,0,5";
-                    oCodeBooster.Entity_FriendlyName = "Product";
+                    oCodeBooster.Entity_FriendlyName = "User_account";
                     oCodeBoosterClient.Generate_ListUI(Enum_SearchMethod.With_Criteria_Section, oUIFields_Criteria, oUIFields_Result, oSearch_AdvancedProp);
                     #endregion
                     #endregion
+
+                    //#region user
+                    //#region Search Screen
+                    //oUIFields_Criteria = new UIFields();
+                    //oUIFields_Criteria.MainTableName = "[TBL_USER]";
+                    //oUIFields_Criteria.Based_On_Type = "BLC.Params_Get_User_By_OWNER_ID";
+
+                    //oUIFields_Result = new UIFields();
+                    //oUIFields_Result.MainTableName = "[TBL_USER]";
+                    //oUIFields_Result.Based_On_Type = "BLC.User";
+                    //oUIFields_Result.GetMethodName = "Get_User_By_OWNER_ID";
+                    //oUIFields_Result.GridFields = new List<GridField>();
+
+                    //oUIFields_Result.Has_Related_Data = true;
+                    //oUIFields_Result.Has_Related_Files = true;
+
+
+
+                    //oSearch_AdvancedProp = new Search_AdvancedProp();
+                    //oSearch_AdvancedProp.ContainerMargins = "0,5,0,5";
+                    //oCodeBooster.Entity_FriendlyName = "User";
+                    //oCodeBoosterClient.Generate_ListUI(Enum_SearchMethod.With_Criteria_Section, oUIFields_Criteria, oUIFields_Result, oSearch_AdvancedProp);
+                    //#endregion
+                    //#endregion
 
 
 

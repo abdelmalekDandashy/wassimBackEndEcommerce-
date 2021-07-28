@@ -181,4 +181,12 @@ public partial class User
 #endregion
 }
 #endregion
+#region User_account
+public partial class User_account
+{
+#region Advanced Properties
+public User My_User {get;set;}
+#endregion
+}
+#endregion
 }

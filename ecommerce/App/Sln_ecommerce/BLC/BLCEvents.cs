@@ -22,6 +22,12 @@ Get_Category_By_OWNER_ID,
 Get_Category_By_Where,
 Edit_Category,
 Delete_Category,
+Get_User_By_OWNER_ID,
+Get_User_By_Where,
+Edit_User,
+Delete_User,
+EditSetup,
+Get_SetupEntries_Per_Table,
 Authenticate
 }
 #endregion
@@ -66,10 +72,6 @@ public delegate BLCInitializer PostEvent_Handler_BLC_Init(string i_Ticket, Enum_
 public event PreEvent_Handler_BLC_Init OnPreEvent_BLC_Init;
 public event PostEvent_Handler_BLC_Init OnPostEvent_BLC_Init;
 #endregion
-public  delegate void PreEvent_Handler_Delete_Uploaded_file(Params_Delete_Uploaded_file i_Params_Delete_Uploaded_file);
-public  delegate void  PostEvent_Handler_Delete_Uploaded_file(Params_Delete_Uploaded_file i_Params_Delete_Uploaded_file);
-public event PreEvent_Handler_Delete_Uploaded_file OnPreEvent_Delete_Uploaded_file;
-public event PostEvent_Handler_Delete_Uploaded_file OnPostEvent_Delete_Uploaded_file;
 public  delegate void PreEvent_Handler_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD(Params_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD i_Params_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD);
 public  delegate void  PostEvent_Handler_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD(Params_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD i_Params_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD);
 public event PreEvent_Handler_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD OnPreEvent_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD;
@@ -78,6 +80,10 @@ public  delegate void PreEvent_Handler_Edit_Uploaded_file(Uploaded_file i_Upload
 public  delegate void  PostEvent_Handler_Edit_Uploaded_file(Uploaded_file i_Uploaded_file,Enum_EditMode i_Enum_EditMode);
 public event PreEvent_Handler_Edit_Uploaded_file OnPreEvent_Edit_Uploaded_file;
 public event PostEvent_Handler_Edit_Uploaded_file OnPostEvent_Edit_Uploaded_file;
+public  delegate void PreEvent_Handler_Delete_Uploaded_file(Params_Delete_Uploaded_file i_Params_Delete_Uploaded_file);
+public  delegate void  PostEvent_Handler_Delete_Uploaded_file(Params_Delete_Uploaded_file i_Params_Delete_Uploaded_file);
+public event PreEvent_Handler_Delete_Uploaded_file OnPreEvent_Delete_Uploaded_file;
+public event PostEvent_Handler_Delete_Uploaded_file OnPostEvent_Delete_Uploaded_file;
 public  delegate void PreEvent_Handler_Get_Category_By_Where(Params_Get_Category_By_Where i_Params_Get_Category_By_Where);
 public  delegate void  PostEvent_Handler_Get_Category_By_Where(ref List<Category>  i_Result, Params_Get_Category_By_Where i_Params_Get_Category_By_Where);
 public event PreEvent_Handler_Get_Category_By_Where OnPreEvent_Get_Category_By_Where;
@@ -86,6 +92,10 @@ public  delegate void PreEvent_Handler_Get_Product_By_Where(Params_Get_Product_B
 public  delegate void  PostEvent_Handler_Get_Product_By_Where(ref List<Product>  i_Result, Params_Get_Product_By_Where i_Params_Get_Product_By_Where);
 public event PreEvent_Handler_Get_Product_By_Where OnPreEvent_Get_Product_By_Where;
 public event PostEvent_Handler_Get_Product_By_Where OnPostEvent_Get_Product_By_Where;
+public  delegate void PreEvent_Handler_Get_User_By_Where(Params_Get_User_By_Where i_Params_Get_User_By_Where);
+public  delegate void  PostEvent_Handler_Get_User_By_Where(ref List<User>  i_Result, Params_Get_User_By_Where i_Params_Get_User_By_Where);
+public event PreEvent_Handler_Get_User_By_Where OnPreEvent_Get_User_By_Where;
+public event PostEvent_Handler_Get_User_By_Where OnPostEvent_Get_User_By_Where;
 #region Uploaded Files Events Handlers
 #region Register_Uploaded_Events_Handlers
 public void Register_Uploaded_Events_Handlers()
@@ -98,6 +108,7 @@ this.OnPreEvent_Delete_Uploaded_file += BLC_OnPreEvent_Delete_Uploaded_file;
 this.OnPreEvent_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD += BLC_OnPreEvent_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD;
 this.OnPostEvent_Get_Product_By_Where += BLC_OnPostEvent_Get_Product_By_Where_Uploaded_Files;
 this.OnPostEvent_Get_Category_By_Where += BLC_OnPostEvent_Get_Category_By_Where_Uploaded_Files;
+this.OnPostEvent_Get_User_By_Where += BLC_OnPostEvent_Get_User_By_Where_Uploaded_Files;
 #endregion
 }
 #endregion
@@ -147,6 +158,30 @@ foreach (var oRow_Uploaded_file in oRow_Category.My_Uploaded_files)
 {
 oRow_Uploaded_file.My_URL = string.Format("{0}/Files/Uploaded/{1}.{2}", str_WEB_PATH, oRow_Uploaded_file.UPLOADED_FILE_ID.ToString(), oRow_Uploaded_file.EXTENSION);
 }
+}
+#endregion
+}
+}
+}
+#endregion
+#region BLC_OnPostEvent_Get_User_By_Where_Uploaded_Files
+private void BLC_OnPostEvent_Get_User_By_Where_Uploaded_Files(ref List<User> i_Result, Params_Get_User_By_Where i_Params_Get_User_By_Where)
+{
+#region Declaration And Initialization Section.
+Uploaded_file oUploaded_file = new Uploaded_file();
+List<Uploaded_file> oList_Uploaded_files = new List<Uploaded_file>();
+string str_WEB_PATH = ConfigurationManager.AppSettings["WEB_PATH"].ToString();
+#endregion
+if (i_Result != null)
+{
+foreach (var oRow_User in i_Result)
+{
+#region Images
+oList_Uploaded_files = Get_Uploaded_Files("[TBL_USER]", "USER_IMAGE", oRow_User.USER_ID);
+if ((oList_Uploaded_files != null) && (oList_Uploaded_files.Count() > 0))
+{
+oUploaded_file = oList_Uploaded_files.Last();
+oRow_User.My_Image_Url = string.Format("{0}/Files/Uploaded/{1}.{2}", str_WEB_PATH, oUploaded_file.UPLOADED_FILE_ID.ToString(), oUploaded_file.EXTENSION);
 }
 #endregion
 }

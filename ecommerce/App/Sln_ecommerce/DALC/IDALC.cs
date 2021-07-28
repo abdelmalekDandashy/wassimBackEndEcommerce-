@@ -252,6 +252,16 @@ public string USER_TYPE_CODE {get;set;}
 public bool? IS_ACTIVE {get;set;}
 public string ENTRY_DATE {get;set;}
 }
+public partial class User_account
+{
+public long? USER_ACCOUNT_ID {get;set;}
+public long? USER_ID {get;set;}
+public long? ENTRY_USER_ID {get;set;}
+public string ENTRY_DATE {get;set;}
+public Int32? OWNER_ID {get;set;}
+public string DESCRIPTION {get;set;}
+public User My_User {get;set;}
+}
 #endregion 
 public partial interface IDALC
 {
@@ -275,6 +285,7 @@ Product_size Get_Product_size_By_PRODUCT_SIZE_ID ( long? PRODUCT_SIZE_ID);
 Size Get_Size_By_SIZE_ID ( Int32? SIZE_ID);
 Uploaded_file Get_Uploaded_file_By_UPLOADED_FILE_ID ( long? UPLOADED_FILE_ID);
 User Get_User_By_USER_ID ( long? USER_ID);
+User_account Get_User_account_By_USER_ACCOUNT_ID ( long? USER_ACCOUNT_ID);
 Address Get_Address_By_ADDRESS_ID_Adv ( long? ADDRESS_ID);
 Adress Get_Adress_By_ADRESS_ID_Adv ( Int32? ADRESS_ID);
 Category Get_Category_By_CATEGORY_ID_Adv ( Int32? CATEGORY_ID);
@@ -293,6 +304,7 @@ Product_color Get_Product_color_By_PRODUCT_COLOR_ID_Adv ( long? PRODUCT_COLOR_ID
 Product_size Get_Product_size_By_PRODUCT_SIZE_ID_Adv ( long? PRODUCT_SIZE_ID);
 Size Get_Size_By_SIZE_ID_Adv ( Int32? SIZE_ID);
 User Get_User_By_USER_ID_Adv ( long? USER_ID);
+User_account Get_User_account_By_USER_ACCOUNT_ID_Adv ( long? USER_ACCOUNT_ID);
 List<Address> Get_Address_By_ADDRESS_ID_List ( List<long?> ADDRESS_ID_LIST);
 List<Adress> Get_Adress_By_ADRESS_ID_List ( List<Int32?> ADRESS_ID_LIST);
 List<Category> Get_Category_By_CATEGORY_ID_List ( List<Int32?> CATEGORY_ID_LIST);
@@ -313,6 +325,7 @@ List<Product_size> Get_Product_size_By_PRODUCT_SIZE_ID_List ( List<long?> PRODUC
 List<Size> Get_Size_By_SIZE_ID_List ( List<Int32?> SIZE_ID_LIST);
 List<Uploaded_file> Get_Uploaded_file_By_UPLOADED_FILE_ID_List ( List<long?> UPLOADED_FILE_ID_LIST);
 List<User> Get_User_By_USER_ID_List ( List<long?> USER_ID_LIST);
+List<User_account> Get_User_account_By_USER_ACCOUNT_ID_List ( List<long?> USER_ACCOUNT_ID_LIST);
 List<Address> Get_Address_By_ADDRESS_ID_List_Adv ( List<long?> ADDRESS_ID_LIST);
 List<Adress> Get_Adress_By_ADRESS_ID_List_Adv ( List<Int32?> ADRESS_ID_LIST);
 List<Category> Get_Category_By_CATEGORY_ID_List_Adv ( List<Int32?> CATEGORY_ID_LIST);
@@ -331,6 +344,7 @@ List<Product_color> Get_Product_color_By_PRODUCT_COLOR_ID_List_Adv ( List<long?>
 List<Product_size> Get_Product_size_By_PRODUCT_SIZE_ID_List_Adv ( List<long?> PRODUCT_SIZE_ID_LIST);
 List<Size> Get_Size_By_SIZE_ID_List_Adv ( List<Int32?> SIZE_ID_LIST);
 List<User> Get_User_By_USER_ID_List_Adv ( List<long?> USER_ID_LIST);
+List<User_account> Get_User_account_By_USER_ACCOUNT_ID_List_Adv ( List<long?> USER_ACCOUNT_ID_LIST);
 List<Address> Get_Address_By_PERSON_ID ( long? PERSON_ID);
 List<Address> Get_Address_By_LOC_L1_ID ( long? LOC_L1_ID);
 List<Address> Get_Address_By_LOC_L2_ID ( long? LOC_L2_ID);
@@ -382,6 +396,8 @@ List<Uploaded_file> Get_Uploaded_file_By_REL_ENTITY_REL_KEY ( string REL_ENTITY,
 List<Uploaded_file> Get_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD ( string REL_ENTITY, long? REL_KEY, string REL_FIELD);
 List<User> Get_User_By_OWNER_ID ( Int32? OWNER_ID);
 List<User> Get_User_By_USERNAME ( string USERNAME);
+List<User_account> Get_User_account_By_OWNER_ID ( Int32? OWNER_ID);
+List<User_account> Get_User_account_By_USER_ID ( long? USER_ID);
 List<Address> Get_Address_By_PERSON_ID_Adv ( long? PERSON_ID);
 List<Address> Get_Address_By_LOC_L1_ID_Adv ( long? LOC_L1_ID);
 List<Address> Get_Address_By_LOC_L2_ID_Adv ( long? LOC_L2_ID);
@@ -429,6 +445,8 @@ List<Product_size> Get_Product_size_By_SIZE_ID_Adv ( Int32? SIZE_ID);
 List<Size> Get_Size_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<User> Get_User_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<User> Get_User_By_USERNAME_Adv ( string USERNAME);
+List<User_account> Get_User_account_By_OWNER_ID_Adv ( Int32? OWNER_ID);
+List<User_account> Get_User_account_By_USER_ID_Adv ( long? USER_ID);
 List<Address> Get_Address_By_PERSON_ID_List ( List<long?> PERSON_ID_LIST);
 List<Address> Get_Address_By_LOC_L1_ID_List ( List<long?> LOC_L1_ID_LIST);
 List<Address> Get_Address_By_LOC_L2_ID_List ( List<long?> LOC_L2_ID_LIST);
@@ -449,6 +467,7 @@ List<Product_color> Get_Product_color_By_PRODUCT_ID_List ( List<Int32?> PRODUCT_
 List<Product_color> Get_Product_color_By_COLOR_ID_List ( List<Int32?> COLOR_ID_LIST);
 List<Product_size> Get_Product_size_By_PRODUCT_ID_List ( List<Int32?> PRODUCT_ID_LIST);
 List<Product_size> Get_Product_size_By_SIZE_ID_List ( List<Int32?> SIZE_ID_LIST);
+List<User_account> Get_User_account_By_USER_ID_List ( List<long?> USER_ID_LIST);
 List<Address> Get_Address_By_PERSON_ID_List_Adv ( List<long?> PERSON_ID_LIST);
 List<Address> Get_Address_By_LOC_L1_ID_List_Adv ( List<long?> LOC_L1_ID_LIST);
 List<Address> Get_Address_By_LOC_L2_ID_List_Adv ( List<long?> LOC_L2_ID_LIST);
@@ -469,6 +488,7 @@ List<Product_color> Get_Product_color_By_PRODUCT_ID_List_Adv ( List<Int32?> PROD
 List<Product_color> Get_Product_color_By_COLOR_ID_List_Adv ( List<Int32?> COLOR_ID_LIST);
 List<Product_size> Get_Product_size_By_PRODUCT_ID_List_Adv ( List<Int32?> PRODUCT_ID_LIST);
 List<Product_size> Get_Product_size_By_SIZE_ID_List_Adv ( List<Int32?> SIZE_ID_LIST);
+List<User_account> Get_User_account_By_USER_ID_List_Adv ( List<long?> USER_ID_LIST);
 List<Address> Get_Address_By_Criteria ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Where ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_V2 ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
@@ -515,6 +535,8 @@ List<Uploaded_file> Get_Uploaded_file_By_Criteria ( string REL_ENTITY, string RE
 List<Uploaded_file> Get_Uploaded_file_By_Where ( string REL_ENTITY, string REL_FIELD, string EXTENSION, string STAMP, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User> Get_User_By_Criteria ( string EMAIL, string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User> Get_User_By_Where ( string EMAIL, string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User_account> Get_User_account_By_Criteria ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User_account> Get_User_account_By_Where ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_Adv ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Where_Adv ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_Adv_V2 ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
@@ -555,6 +577,8 @@ List<Size> Get_Size_By_Criteria_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64
 List<Size> Get_Size_By_Where_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User> Get_User_By_Criteria_Adv ( string EMAIL, string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User> Get_User_By_Where_Adv ( string EMAIL, string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User_account> Get_User_account_By_Criteria_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User_account> Get_User_account_By_Where_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_InList ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Where_InList ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_InList_V2 ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
@@ -579,6 +603,8 @@ List<Product_color> Get_Product_color_By_Criteria_InList ( string DESCRIPTION, L
 List<Product_color> Get_Product_color_By_Where_InList ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> COLOR_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Product_size> Get_Product_size_By_Criteria_InList ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Product_size> Get_Product_size_By_Where_InList ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User_account> Get_User_account_By_Criteria_InList ( string DESCRIPTION, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User_account> Get_User_account_By_Where_InList ( string DESCRIPTION, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_InList_Adv ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Where_InList_Adv ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_InList_Adv_V2 ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
@@ -603,6 +629,8 @@ List<Product_color> Get_Product_color_By_Criteria_InList_Adv ( string DESCRIPTIO
 List<Product_color> Get_Product_color_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> COLOR_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Product_size> Get_Product_size_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Product_size> Get_Product_size_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User_account> Get_User_account_By_Criteria_InList_Adv ( string DESCRIPTION, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User_account> Get_User_account_By_Where_InList_Adv ( string DESCRIPTION, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 void Delete_Address ( long? ADDRESS_ID);
 void Delete_Adress ( Int32? ADRESS_ID);
 void Delete_Category ( Int32? CATEGORY_ID);
@@ -623,6 +651,7 @@ void Delete_Product_size ( long? PRODUCT_SIZE_ID);
 void Delete_Size ( Int32? SIZE_ID);
 void Delete_Uploaded_file ( long? UPLOADED_FILE_ID);
 void Delete_User ( long? USER_ID);
+void Delete_User_account ( long? USER_ACCOUNT_ID);
 void Delete_Address_By_PERSON_ID ( long? PERSON_ID);
 void Delete_Address_By_LOC_L1_ID ( long? LOC_L1_ID);
 void Delete_Address_By_LOC_L2_ID ( long? LOC_L2_ID);
@@ -674,6 +703,8 @@ void Delete_Uploaded_file_By_REL_ENTITY_REL_KEY ( string REL_ENTITY, long? REL_K
 void Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD ( string REL_ENTITY, long? REL_KEY, string REL_FIELD);
 void Delete_User_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_User_By_USERNAME ( string USERNAME);
+void Delete_User_account_By_OWNER_ID ( Int32? OWNER_ID);
+void Delete_User_account_By_USER_ID ( long? USER_ID);
 long? Edit_Address ( long? ADDRESS_ID, long? PERSON_ID, string ADDRESS_TYPE_CODE, long? LOC_L1_ID, long? LOC_L2_ID, long? LOC_L3_ID, long? LOC_L4_ID, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, string NOTES, string ENTRY_DATE, long? ENTRY_USER_ID, Int32? OWNER_ID);
 Int32? Edit_Adress ( Int32? ADRESS_ID, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 Int32? Edit_Category ( Int32? CATEGORY_ID, string NAME, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
@@ -694,6 +725,7 @@ long? Edit_Product_size ( long? PRODUCT_SIZE_ID, Int32? PRODUCT_ID, Int32? SIZE_
 Int32? Edit_Size ( Int32? SIZE_ID, string DESCRIPTION, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 long? Edit_Uploaded_file ( long? UPLOADED_FILE_ID, string REL_ENTITY, long? REL_KEY, string REL_FIELD, Int32? SIZE, string EXTENSION, string STAMP, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 long? Edit_User ( long? USER_ID, Int32? OWNER_ID, string EMAIL, string USERNAME, string PASSWORD, string USER_TYPE_CODE, bool? IS_ACTIVE, string ENTRY_DATE);
+long? Edit_User_account ( long? USER_ACCOUNT_ID, long? USER_ID, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION);
 List<dynamic> GET_DISTINCT_SETUP_TBL ( Int32? OWNER_ID);
 List<dynamic> GET_NEXT_VALUE ( string STARTER_CODE);
 List<dynamic> GET_TBL_SETUP ();
@@ -718,6 +750,7 @@ List<dynamic> UP_BULK_UPSERT_PRODUCT_SIZE ( string JSON_CONTENT);
 List<dynamic> UP_BULK_UPSERT_SIZE ( string JSON_CONTENT);
 List<dynamic> UP_BULK_UPSERT_UPLOADED_FILE ( string JSON_CONTENT);
 List<dynamic> UP_BULK_UPSERT_USER ( string JSON_CONTENT);
+List<dynamic> UP_BULK_UPSERT_USER_ACCOUNT ( string JSON_CONTENT);
 List<dynamic> UP_CHECK_USER_EXISTENCE ( Int32? OWNER_ID, string USERNAME,ref  bool? EXISTS);
 List<dynamic> UP_EDIT_SETUP ( Int32? OWNER_ID, string TBL_NAME, string CODE_NAME, bool? ISSYSTEM, bool? ISDELETEABLE, bool? ISUPDATEABLE, bool? ISVISIBLE, bool? ISDELETED, Int32? DISPLAY_ORDER, string CODE_VALUE_EN, string CODE_VALUE_FR, string CODE_VALUE_AR, string ENTRY_DATE, long? ENTRY_USER_ID, string NOTES);
 List<dynamic> UP_EXTRACT_ROUTINE_PARAMETERS ( string ROUTINE_NAME);

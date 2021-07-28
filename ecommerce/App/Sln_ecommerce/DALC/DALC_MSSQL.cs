@@ -248,6 +248,18 @@ oTools.CopyPropValues_FromDataRecord(R, o);
 }
 return o;
 }
+public User_account Get_User_account_By_USER_ACCOUNT_ID ( long? USER_ACCOUNT_ID)
+{
+User_account o = new User_account();
+dynamic p = new ExpandoObject();
+p.USER_ACCOUNT_ID = USER_ACCOUNT_ID;
+IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ACCOUNT_ID", p);
+var R = Q.FirstOrDefault();
+if (R != null){
+oTools.CopyPropValues_FromDataRecord(R, o);
+}
+return o;
+}
 public Address Get_Address_By_ADDRESS_ID_Adv ( long? ADDRESS_ID)
 {
 Address o = new Address();
@@ -501,6 +513,20 @@ IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID_ADV", p
 var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
+}
+return o;
+}
+public User_account Get_User_account_By_USER_ACCOUNT_ID_Adv ( long? USER_ACCOUNT_ID)
+{
+User_account o = new User_account();
+dynamic p = new ExpandoObject();
+p.USER_ACCOUNT_ID = USER_ACCOUNT_ID;
+IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ACCOUNT_ID_ADV", p);
+var R = Q.FirstOrDefault();
+if (R != null){
+oTools.CopyPropValues_FromDataRecord(R, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(R["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(R["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
 }
 return o;
 }
@@ -778,6 +804,20 @@ p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray());
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID_LIST", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ACCOUNT_ID_List ( List<long?> USER_ACCOUNT_ID_LIST)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.USER_ACCOUNT_ID_LIST = string.Join(",", USER_ACCOUNT_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ACCOUNT_ID_LIST", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -1071,6 +1111,22 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID_LIST_AD
 if (R != null) {foreach (var X in R) {
 User o = new User();
 oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ACCOUNT_ID_List_Adv ( List<long?> USER_ACCOUNT_ID_LIST)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.USER_ACCOUNT_ID_LIST = string.Join(",", USER_ACCOUNT_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ACCOUNT_ID_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -1784,6 +1840,34 @@ p.USERNAME = USERNAME;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USERNAME", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_OWNER_ID ( Int32? OWNER_ID)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.OWNER_ID = OWNER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_OWNER_ID", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ID ( long? USER_ID)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.USER_ID = USER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ID", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -2610,6 +2694,38 @@ oList.Add(o);
 }
 return oList;
 }
+public List<User_account> Get_User_account_By_OWNER_ID_Adv ( Int32? OWNER_ID)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.OWNER_ID = OWNER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_OWNER_ID_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ID_Adv ( long? USER_ID)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.USER_ID = USER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ID_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+return oList;
+}
 public List<Address> Get_Address_By_PERSON_ID_List ( List<long?> PERSON_ID_LIST)
 {
 List<Address> oList = new List<Address>();
@@ -2884,6 +3000,20 @@ p.SIZE_ID_LIST = string.Join(",", SIZE_ID_LIST.ToArray());
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_SIZE_ID_LIST", p);
 if (R != null) {foreach (var X in R) {
 Product_size o = new Product_size();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ID_List ( List<long?> USER_ID_LIST)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ID_LIST", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -3265,6 +3395,22 @@ o.My_Product = new Product();
 o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 o.My_Size = new Size();
 o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ID_List_Adv ( List<long?> USER_ID_LIST)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ID_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -3960,6 +4106,36 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
+public List<User_account> Get_User_account_By_Criteria ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_CRITERIA", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_account> Get_User_account_By_Where ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_WHERE", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
 public List<Address> Get_Address_By_Criteria_Adv ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Address> oList = new List<Address>();
@@ -4640,6 +4816,40 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
+public List<User_account> Get_User_account_By_Criteria_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_CRITERIA_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_account> Get_User_account_By_Where_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_WHERE_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
 public List<Address> Get_Address_By_Criteria_InList ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Address> oList = new List<Address>();
@@ -4993,6 +5203,36 @@ p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIS
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_WHERE_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
 Product_size o = new Product_size();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_account> Get_User_account_By_Criteria_InList ( string DESCRIPTION, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_CRITERIA_IN_LIST", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_account> Get_User_account_By_Where_InList ( string DESCRIPTION, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_WHERE_IN_LIST", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -5440,6 +5680,40 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
+public List<User_account> Get_User_account_By_Criteria_InList_Adv ( string DESCRIPTION, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_CRITERIA_IN_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_account> Get_User_account_By_Where_InList_Adv ( string DESCRIPTION, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_WHERE_IN_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
 public void Delete_Address ( long? ADDRESS_ID)
 {
 var p = new { ADDRESS_ID = ADDRESS_ID };
@@ -5539,6 +5813,11 @@ public void Delete_User ( long? USER_ID)
 {
 var p = new { USER_ID = USER_ID };
 ExecuteDelete("UPG_DELETE_USER", p);
+}
+public void Delete_User_account ( long? USER_ACCOUNT_ID)
+{
+var p = new { USER_ACCOUNT_ID = USER_ACCOUNT_ID };
+ExecuteDelete("UPG_DELETE_USER_ACCOUNT", p);
 }
 public void Delete_Address_By_PERSON_ID ( long? PERSON_ID)
 {
@@ -5795,6 +6074,16 @@ public void Delete_User_By_USERNAME ( string USERNAME)
 var p = new { USERNAME = USERNAME };
 ExecuteDelete("UPG_DELETE_USER_BY_USERNAME", p);
 }
+public void Delete_User_account_By_OWNER_ID ( Int32? OWNER_ID)
+{
+var p = new { OWNER_ID = OWNER_ID };
+ExecuteDelete("UPG_DELETE_USER_ACCOUNT_BY_OWNER_ID", p);
+}
+public void Delete_User_account_By_USER_ID ( long? USER_ID)
+{
+var p = new { USER_ID = USER_ID };
+ExecuteDelete("UPG_DELETE_USER_ACCOUNT_BY_USER_ID", p);
+}
 public long? Edit_Address ( long? ADDRESS_ID, long? PERSON_ID, string ADDRESS_TYPE_CODE, long? LOC_L1_ID, long? LOC_L2_ID, long? LOC_L3_ID, long? LOC_L4_ID, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, string NOTES, string ENTRY_DATE, long? ENTRY_USER_ID, Int32? OWNER_ID)
 {
 Address oAddress = new Address();
@@ -5934,6 +6223,13 @@ User oUser = new User();
 oUser.USER_ID = USER_ID;oUser.OWNER_ID = OWNER_ID;oUser.EMAIL = EMAIL;oUser.USERNAME = USERNAME;oUser.PASSWORD = PASSWORD;oUser.USER_TYPE_CODE = USER_TYPE_CODE;oUser.IS_ACTIVE = IS_ACTIVE;oUser.ENTRY_DATE = ENTRY_DATE;
 ExecuteEdit("UPG_EDIT_USER", oUser, "USER_ID");
 return oUser.USER_ID;
+}
+public long? Edit_User_account ( long? USER_ACCOUNT_ID, long? USER_ID, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION)
+{
+User_account oUser_account = new User_account();
+oUser_account.USER_ACCOUNT_ID = USER_ACCOUNT_ID;oUser_account.USER_ID = USER_ID;oUser_account.ENTRY_USER_ID = ENTRY_USER_ID;oUser_account.ENTRY_DATE = ENTRY_DATE;oUser_account.OWNER_ID = OWNER_ID;oUser_account.DESCRIPTION = DESCRIPTION;
+ExecuteEdit("UPG_EDIT_USER_ACCOUNT", oUser_account, "USER_ACCOUNT_ID");
+return oUser_account.USER_ACCOUNT_ID;
 }
 public List<dynamic> GET_DISTINCT_SETUP_TBL ( Int32? OWNER_ID)
 {
@@ -6264,6 +6560,20 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
 o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.EMAIL = GV<String>(X["EMAIL"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.USER_TYPE_CODE = GV<String>(X["USER_TYPE_CODE"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<dynamic> UP_BULK_UPSERT_USER_ACCOUNT ( string JSON_CONTENT)
+{
+List<dynamic> oList = new List<dynamic>();
+dynamic p = new ExpandoObject();
+p.JSON_CONTENT = JSON_CONTENT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER_ACCOUNT", p);
+if (R != null) {foreach (var X in R) {
+dynamic o = new ExpandoObject();
+o.USER_ACCOUNT_ID = GV<Int64>(X["USER_ACCOUNT_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.DESCRIPTION = GV<String>(X["DESCRIPTION"]);
 oList.Add(o);
 }
 }

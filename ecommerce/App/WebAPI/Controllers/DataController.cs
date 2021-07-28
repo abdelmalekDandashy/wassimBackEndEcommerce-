@@ -341,6 +341,130 @@ return oResult_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD;
 #endregion
 }
 #endregion
+#region Delete_User
+[HttpPost]
+[Route("Delete_User")]
+public Result_Delete_User Delete_User(Params_Delete_User i_Params_Delete_User)
+{
+#region Declaration And Initialization Section.
+string i_Ticket = string.Empty;
+Result_Delete_User oResult_Delete_User = new Result_Delete_User();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Delete_User);
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oBLC.Delete_User(i_Params_Delete_User);
+oResult_Delete_User.My_Params_Delete_User = i_Params_Delete_User;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Delete_User.ExceptionMsg = string.Format("Delete_User : {0}", ex.Message);
+}
+else
+{
+oResult_Delete_User.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Delete_User;
+#endregion
+}
+#endregion
+#region Delete_User_account
+[HttpPost]
+[Route("Delete_User_account")]
+public Result_Delete_User_account Delete_User_account(Params_Delete_User_account i_Params_Delete_User_account)
+{
+#region Declaration And Initialization Section.
+string i_Ticket = string.Empty;
+Result_Delete_User_account oResult_Delete_User_account = new Result_Delete_User_account();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oBLC.Delete_User_account(i_Params_Delete_User_account);
+oResult_Delete_User_account.My_Params_Delete_User_account = i_Params_Delete_User_account;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Delete_User_account.ExceptionMsg = string.Format("Delete_User_account : {0}", ex.Message);
+}
+else
+{
+oResult_Delete_User_account.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Delete_User_account;
+#endregion
+}
+#endregion
 #region Edit_Category
 [HttpPost]
 [Route("Edit_Category")]
@@ -522,6 +646,190 @@ oResult_Edit_Uploaded_file.ExceptionMsg = ex.Message;
 #endregion
 #region Return Section
 return oResult_Edit_Uploaded_file;
+#endregion
+}
+#endregion
+#region Edit_User
+[HttpPost]
+[Route("Edit_User")]
+public Result_Edit_User Edit_User(User i_User)
+{
+#region Declaration And Initialization Section.
+string i_Ticket = string.Empty;
+Result_Edit_User oResult_Edit_User = new Result_Edit_User();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Edit_User);
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oBLC.Edit_User(i_User);
+oResult_Edit_User.My_User = i_User;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Edit_User.ExceptionMsg = string.Format("Edit_User : {0}", ex.Message);
+}
+else
+{
+oResult_Edit_User.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Edit_User;
+#endregion
+}
+#endregion
+#region Edit_User_account
+[HttpPost]
+[Route("Edit_User_account")]
+public Result_Edit_User_account Edit_User_account(User_account i_User_account)
+{
+#region Declaration And Initialization Section.
+string i_Ticket = string.Empty;
+Result_Edit_User_account oResult_Edit_User_account = new Result_Edit_User_account();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oBLC.Edit_User_account(i_User_account);
+oResult_Edit_User_account.My_User_account = i_User_account;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Edit_User_account.ExceptionMsg = string.Format("Edit_User_account : {0}", ex.Message);
+}
+else
+{
+oResult_Edit_User_account.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Edit_User_account;
+#endregion
+}
+#endregion
+#region EditSetup
+[HttpPost]
+[Route("EditSetup")]
+public Result_EditSetup EditSetup(SetupEntry i_SetupEntry)
+{
+#region Declaration And Initialization Section.
+string i_Ticket = string.Empty;
+Result_EditSetup oResult_EditSetup = new Result_EditSetup();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.EditSetup);
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oBLC.EditSetup(i_SetupEntry);
+oResult_EditSetup.My_SetupEntry = i_SetupEntry;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_EditSetup.ExceptionMsg = string.Format("EditSetup : {0}", ex.Message);
+}
+else
+{
+oResult_EditSetup.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_EditSetup;
 #endregion
 }
 #endregion
@@ -773,6 +1081,324 @@ return oResult_Get_Product_By_Where;
 #endregion
 }
 #endregion
+#region Get_SetupEntries_Per_Table
+[HttpPost]
+[Route("Get_SetupEntries_Per_Table")]
+public Result_Get_SetupEntries_Per_Table Get_SetupEntries_Per_Table(Params_Get_SetupEntries_Per_Table i_Params_Get_SetupEntries_Per_Table)
+{
+#region Declaration And Initialization Section.
+List<User_Type>  oReturnValue = new List<User_Type> ();
+string i_Ticket = string.Empty;
+Result_Get_SetupEntries_Per_Table oResult_Get_SetupEntries_Per_Table = new Result_Get_SetupEntries_Per_Table();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Get_SetupEntries_Per_Table);
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_SetupEntries_Per_Table(i_Params_Get_SetupEntries_Per_Table);
+oResult_Get_SetupEntries_Per_Table.My_Result = oReturnValue;
+oResult_Get_SetupEntries_Per_Table.My_Params_Get_SetupEntries_Per_Table = i_Params_Get_SetupEntries_Per_Table;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_SetupEntries_Per_Table.ExceptionMsg = string.Format("Get_SetupEntries_Per_Table : {0}", ex.Message);
+}
+else
+{
+oResult_Get_SetupEntries_Per_Table.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_SetupEntries_Per_Table;
+#endregion
+}
+#endregion
+#region Get_User_account_By_OWNER_ID
+[HttpPost]
+[Route("Get_User_account_By_OWNER_ID")]
+public Result_Get_User_account_By_OWNER_ID Get_User_account_By_OWNER_ID(Params_Get_User_account_By_OWNER_ID i_Params_Get_User_account_By_OWNER_ID)
+{
+#region Declaration And Initialization Section.
+List<User_account>  oReturnValue = new List<User_account> ();
+string i_Ticket = string.Empty;
+Result_Get_User_account_By_OWNER_ID oResult_Get_User_account_By_OWNER_ID = new Result_Get_User_account_By_OWNER_ID();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_User_account_By_OWNER_ID(i_Params_Get_User_account_By_OWNER_ID);
+oResult_Get_User_account_By_OWNER_ID.My_Result = oReturnValue;
+oResult_Get_User_account_By_OWNER_ID.My_Params_Get_User_account_By_OWNER_ID = i_Params_Get_User_account_By_OWNER_ID;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_User_account_By_OWNER_ID.ExceptionMsg = string.Format("Get_User_account_By_OWNER_ID : {0}", ex.Message);
+}
+else
+{
+oResult_Get_User_account_By_OWNER_ID.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_User_account_By_OWNER_ID;
+#endregion
+}
+#endregion
+#region Get_User_account_By_Where
+[HttpPost]
+[Route("Get_User_account_By_Where")]
+public Result_Get_User_account_By_Where Get_User_account_By_Where(Params_Get_User_account_By_Where i_Params_Get_User_account_By_Where)
+{
+#region Declaration And Initialization Section.
+List<User_account>  oReturnValue = new List<User_account> ();
+string i_Ticket = string.Empty;
+Result_Get_User_account_By_Where oResult_Get_User_account_By_Where = new Result_Get_User_account_By_Where();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_User_account_By_Where(i_Params_Get_User_account_By_Where);
+oResult_Get_User_account_By_Where.My_Result = oReturnValue;
+oResult_Get_User_account_By_Where.My_Params_Get_User_account_By_Where = i_Params_Get_User_account_By_Where;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_User_account_By_Where.ExceptionMsg = string.Format("Get_User_account_By_Where : {0}", ex.Message);
+}
+else
+{
+oResult_Get_User_account_By_Where.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_User_account_By_Where;
+#endregion
+}
+#endregion
+#region Get_User_By_OWNER_ID
+[HttpPost]
+[Route("Get_User_By_OWNER_ID")]
+public Result_Get_User_By_OWNER_ID Get_User_By_OWNER_ID(Params_Get_User_By_OWNER_ID i_Params_Get_User_By_OWNER_ID)
+{
+#region Declaration And Initialization Section.
+List<User>  oReturnValue = new List<User> ();
+string i_Ticket = string.Empty;
+Result_Get_User_By_OWNER_ID oResult_Get_User_By_OWNER_ID = new Result_Get_User_By_OWNER_ID();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Get_User_By_OWNER_ID);
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_User_By_OWNER_ID(i_Params_Get_User_By_OWNER_ID);
+oResult_Get_User_By_OWNER_ID.My_Result = oReturnValue;
+oResult_Get_User_By_OWNER_ID.My_Params_Get_User_By_OWNER_ID = i_Params_Get_User_By_OWNER_ID;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_User_By_OWNER_ID.ExceptionMsg = string.Format("Get_User_By_OWNER_ID : {0}", ex.Message);
+}
+else
+{
+oResult_Get_User_By_OWNER_ID.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_User_By_OWNER_ID;
+#endregion
+}
+#endregion
+#region Get_User_By_Where
+[HttpPost]
+[Route("Get_User_By_Where")]
+public Result_Get_User_By_Where Get_User_By_Where(Params_Get_User_By_Where i_Params_Get_User_By_Where)
+{
+#region Declaration And Initialization Section.
+List<User>  oReturnValue = new List<User> ();
+string i_Ticket = string.Empty;
+Result_Get_User_By_Where oResult_Get_User_By_Where = new Result_Get_User_By_Where();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Get_User_By_Where);
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_User_By_Where(i_Params_Get_User_By_Where);
+oResult_Get_User_By_Where.My_Result = oReturnValue;
+oResult_Get_User_By_Where.My_Params_Get_User_By_Where = i_Params_Get_User_By_Where;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_User_By_Where.ExceptionMsg = string.Format("Get_User_By_Where : {0}", ex.Message);
+}
+else
+{
+oResult_Get_User_By_Where.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_User_By_Where;
+#endregion
+}
+#endregion
 }
 
 #region Action_Result
@@ -834,6 +1460,22 @@ public Params_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD My_Params_Del
 #endregion
 }
 #endregion
+#region Result_Delete_User
+public partial class Result_Delete_User : Action_Result
+{
+#region Properties.
+public Params_Delete_User My_Params_Delete_User { get; set; }
+#endregion
+}
+#endregion
+#region Result_Delete_User_account
+public partial class Result_Delete_User_account : Action_Result
+{
+#region Properties.
+public Params_Delete_User_account My_Params_Delete_User_account { get; set; }
+#endregion
+}
+#endregion
 #region Result_Edit_Category
 public partial class Result_Edit_Category : Action_Result
 {
@@ -855,6 +1497,30 @@ public partial class Result_Edit_Uploaded_file : Action_Result
 {
 #region Properties.
 public Uploaded_file My_Uploaded_file { get; set; }
+#endregion
+}
+#endregion
+#region Result_Edit_User
+public partial class Result_Edit_User : Action_Result
+{
+#region Properties.
+public User My_User { get; set; }
+#endregion
+}
+#endregion
+#region Result_Edit_User_account
+public partial class Result_Edit_User_account : Action_Result
+{
+#region Properties.
+public User_account My_User_account { get; set; }
+#endregion
+}
+#endregion
+#region Result_EditSetup
+public partial class Result_EditSetup : Action_Result
+{
+#region Properties.
+public SetupEntry My_SetupEntry { get; set; }
 #endregion
 }
 #endregion
@@ -891,6 +1557,51 @@ public partial class Result_Get_Product_By_Where : Action_Result
 #region Properties.
 public List<Product>  My_Result { get; set; }
 public Params_Get_Product_By_Where My_Params_Get_Product_By_Where { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_SetupEntries_Per_Table
+public partial class Result_Get_SetupEntries_Per_Table : Action_Result
+{
+#region Properties.
+public List<User_Type>  My_Result { get; set; }
+public Params_Get_SetupEntries_Per_Table My_Params_Get_SetupEntries_Per_Table { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_User_account_By_OWNER_ID
+public partial class Result_Get_User_account_By_OWNER_ID : Action_Result
+{
+#region Properties.
+public List<User_account>  My_Result { get; set; }
+public Params_Get_User_account_By_OWNER_ID My_Params_Get_User_account_By_OWNER_ID { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_User_account_By_Where
+public partial class Result_Get_User_account_By_Where : Action_Result
+{
+#region Properties.
+public List<User_account>  My_Result { get; set; }
+public Params_Get_User_account_By_Where My_Params_Get_User_account_By_Where { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_User_By_OWNER_ID
+public partial class Result_Get_User_By_OWNER_ID : Action_Result
+{
+#region Properties.
+public List<User>  My_Result { get; set; }
+public Params_Get_User_By_OWNER_ID My_Params_Get_User_By_OWNER_ID { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_User_By_Where
+public partial class Result_Get_User_By_Where : Action_Result
+{
+#region Properties.
+public List<User>  My_Result { get; set; }
+public Params_Get_User_By_Where My_Params_Get_User_By_Where { get; set; }
 #endregion
 }
 #endregion

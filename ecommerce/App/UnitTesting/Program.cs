@@ -29,11 +29,17 @@ namespace UnitTesting
 
 
 
+            Params_Get_SetupEntries_Per_Table oParams_Get_SetupEntries_Per_Table = new Params_Get_SetupEntries_Per_Table();
+            oParams_Get_SetupEntries_Per_Table.OWNER_ID = 1;
+            oParams_Get_SetupEntries_Per_Table.TBL_NAME = "_USER_TYPE";
+            oParams_Get_SetupEntries_Per_Table.ISVISIBLE = true;
+            oParams_Get_SetupEntries_Per_Table.ISDELETED = false;
 
+            var result = oBLC.Get_SetupEntries_Per_Table(oParams_Get_SetupEntries_Per_Table);
+            Console.WriteLine(result);
+            Console.WriteLine(result);
 
-
-
-
+            //User_account oUser_account = new User_account();
 
             #endregion
             //User oUser = new User();
@@ -74,9 +80,9 @@ namespace UnitTesting
 
 
 
-            Params_Get_Product_size_By_PRODUCT_ID oParams_Get_Product_size_By_PRODUCT_ID = new Params_Get_Product_size_By_PRODUCT_ID();
-            oParams_Get_Product_size_By_PRODUCT_ID.PRODUCT_ID = 8;
-            var myresult = oBLC.Get_Product_size_By_PRODUCT_ID_Adv(oParams_Get_Product_size_By_PRODUCT_ID);
+            //Params_Get_Product_size_By_PRODUCT_ID oParams_Get_Product_size_By_PRODUCT_ID = new Params_Get_Product_size_By_PRODUCT_ID();
+            //oParams_Get_Product_size_By_PRODUCT_ID.PRODUCT_ID = 8;
+            //var myresult = oBLC.Get_Product_size_By_PRODUCT_ID_Adv(oParams_Get_Product_size_By_PRODUCT_ID);
         }
     }
 }

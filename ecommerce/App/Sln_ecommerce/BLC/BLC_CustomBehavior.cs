@@ -236,7 +236,35 @@ namespace BLC
             #endregion
         }
         #endregion
-        #endregion        
+        #endregion 
+        public List<User_Type> Get_SetupEntries_Per_Table(Params_Get_SetupEntries_Per_Table i_Params_Get_SetupEntries_Per_Table)
+        {
+            List<User_Type> Olist_User_Type = new List<User_Type>();
+            List<dynamic> oList = _AppContext.UP_GET_SETUP_ENTRIES(
+                i_Params_Get_SetupEntries_Per_Table.OWNER_ID,
+                i_Params_Get_SetupEntries_Per_Table.TBL_NAME,
+                i_Params_Get_SetupEntries_Per_Table.ISVISIBLE,
+                i_Params_Get_SetupEntries_Per_Table.ISDELETED
+                );
+
+            if ((oList != null) && (oList.Count > 0))
+            {
+                foreach (var x in oList)
+                {
+                    User_Type oUser_Type = new User_Type();
+                    oTools.CopyPropValues(x, oUser_Type);
+                    Olist_User_Type.Add(oUser_Type);
+                }
+                //oTools.CopyPropValues(oList, Olist_User_Type);
+
+
+            }
+                return Olist_User_Type;
+
+
+           
+        }
+            
     }
     #region Business Entities
     #region Setup
@@ -270,6 +298,41 @@ namespace BLC
     {
         public string My_URL { get; set; }
     }
+    public partial class Params_Get_SetupEntries_Per_Table
+    {
+   
+        public int OWNER_ID { get; set; }
+        public string TBL_NAME { get; set; }
+        public bool ISVISIBLE { get; set; }
+        public bool ISDELETED { get; set; }
+        
+    }
+    public partial class User_Type
+    {
+   
+        public int OWNER_ID { get; set; }
+        public string TBL_NAME { get; set; }
+        public string CODE_NAME { get; set; }
+        public bool ISSYSTEM { get; set; }
+        public bool ISDELETEABLE { get; set; }
+        public bool ISUPDATEABLE { get; set; }
+        public int DISPLAY_ORDER { get; set; }
+        public bool ISVISIBLE { get; set; }
+        public bool ISDELETED { get; set; }
+
+        public string CODE_VALUE_EN { get; set; }
+        public string CODE_VALUE_FR { get; set; }
+        public string CODE_VALUE_AR { get; set; }
+        public string NOTES { get; set; }
+        public string ENTRY_DATE { get; set; }
+        public string ENTRY_USER_ID { get; set; }
+
+
+
+
+
+
+    }
     #endregion
     #region Product
     public partial class Product
@@ -302,6 +365,8 @@ namespace BLC
     public partial class User
     {
         public string myTicket { get; set; }
+        public string My_Image_Url { get; set; }
+        public List<Uploaded_file> My_Uploaded_files { get; set; }
 
     }
     #endregion
