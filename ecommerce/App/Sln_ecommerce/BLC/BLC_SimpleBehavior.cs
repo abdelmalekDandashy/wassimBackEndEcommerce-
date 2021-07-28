@@ -3482,6 +3482,12 @@ List<User_account> oList = new List<User_account>();
 User_account oUser_account = new User_account();
 long? tmp_TOTAL_COUNT = 0;
 if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_Where");}
+#region PreEvent_Get_User_account_By_Where
+if (OnPreEvent_Get_User_account_By_Where != null)
+{
+OnPreEvent_Get_User_account_By_Where(i_Params_Get_User_account_By_Where);
+}
+#endregion
 #region Body Section.
 if ((i_Params_Get_User_account_By_Where.OWNER_ID == null) || (i_Params_Get_User_account_By_Where.OWNER_ID == 0)) { i_Params_Get_User_account_By_Where.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_User_account_By_Where.START_ROW == null) { i_Params_Get_User_account_By_Where.START_ROW = 0; }
@@ -3497,6 +3503,12 @@ oList.Add(oUser_account);
 }
 }
 i_Params_Get_User_account_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+#region PostEvent_Get_User_account_By_Where
+if (OnPostEvent_Get_User_account_By_Where != null)
+{
+OnPostEvent_Get_User_account_By_Where(ref oList,i_Params_Get_User_account_By_Where);
+}
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_Where");}
 return oList;

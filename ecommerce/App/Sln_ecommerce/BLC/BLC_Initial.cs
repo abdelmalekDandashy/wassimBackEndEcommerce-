@@ -104,6 +104,7 @@ namespace BLC
             #region Declaration And Initialization Section.
             #endregion
             #region Body Section.
+        
             Register_Uploaded_Events_Handlers();
 
 

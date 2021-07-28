@@ -369,6 +369,14 @@ namespace BLC
         public List<Uploaded_file> My_Uploaded_files { get; set; }
 
     }
+    
+    public partial class User_account
+    {
+
+        public List<Uploaded_file> My_Uploaded_files { get; set; }
+        public string My_Image_Url { get; set; }
+
+    }
     #endregion
 }
 

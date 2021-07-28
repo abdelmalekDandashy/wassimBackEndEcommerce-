@@ -139,7 +139,7 @@ namespace CodeGenerator
                     {   
                         TBL_NAME = "[TBL_USER_ACCOUNT]",
                         UI_METHOD_NAME = "Get_User_account_By_Where",
-                        Mode = 1
+                        Mode = 0
                     }
 
                 );

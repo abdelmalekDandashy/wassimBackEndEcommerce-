@@ -28,6 +28,10 @@ Edit_User,
 Delete_User,
 EditSetup,
 Get_SetupEntries_Per_Table,
+Get_User_account_By_OWNER_ID,
+Get_User_account_By_Where,
+Edit_User_account,
+Delete_User_account,
 Authenticate
 }
 #endregion
@@ -96,6 +100,10 @@ public  delegate void PreEvent_Handler_Get_User_By_Where(Params_Get_User_By_Wher
 public  delegate void  PostEvent_Handler_Get_User_By_Where(ref List<User>  i_Result, Params_Get_User_By_Where i_Params_Get_User_By_Where);
 public event PreEvent_Handler_Get_User_By_Where OnPreEvent_Get_User_By_Where;
 public event PostEvent_Handler_Get_User_By_Where OnPostEvent_Get_User_By_Where;
+public  delegate void PreEvent_Handler_Get_User_account_By_Where(Params_Get_User_account_By_Where i_Params_Get_User_account_By_Where);
+public  delegate void  PostEvent_Handler_Get_User_account_By_Where(ref List<User_account>  i_Result, Params_Get_User_account_By_Where i_Params_Get_User_account_By_Where);
+public event PreEvent_Handler_Get_User_account_By_Where OnPreEvent_Get_User_account_By_Where;
+public event PostEvent_Handler_Get_User_account_By_Where OnPostEvent_Get_User_account_By_Where;
 #region Uploaded Files Events Handlers
 #region Register_Uploaded_Events_Handlers
 public void Register_Uploaded_Events_Handlers()
@@ -109,6 +117,7 @@ this.OnPreEvent_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD += BLC_OnPr
 this.OnPostEvent_Get_Product_By_Where += BLC_OnPostEvent_Get_Product_By_Where_Uploaded_Files;
 this.OnPostEvent_Get_Category_By_Where += BLC_OnPostEvent_Get_Category_By_Where_Uploaded_Files;
 this.OnPostEvent_Get_User_By_Where += BLC_OnPostEvent_Get_User_By_Where_Uploaded_Files;
+this.OnPostEvent_Get_User_account_By_Where += BLC_OnPostEvent_Get_User_account_By_Where_Uploaded_Files;
 #endregion
 }
 #endregion
@@ -182,6 +191,32 @@ if ((oList_Uploaded_files != null) && (oList_Uploaded_files.Count() > 0))
 {
 oUploaded_file = oList_Uploaded_files.Last();
 oRow_User.My_Image_Url = string.Format("{0}/Files/Uploaded/{1}.{2}", str_WEB_PATH, oUploaded_file.UPLOADED_FILE_ID.ToString(), oUploaded_file.EXTENSION);
+}
+#endregion
+}
+}
+}
+#endregion
+#region BLC_OnPostEvent_Get_User_account_By_Where_Uploaded_Files
+private void BLC_OnPostEvent_Get_User_account_By_Where_Uploaded_Files(ref List<User_account> i_Result, Params_Get_User_account_By_Where i_Params_Get_User_account_By_Where)
+{
+#region Declaration And Initialization Section.
+Uploaded_file oUploaded_file = new Uploaded_file();
+List<Uploaded_file> oList_Uploaded_files = new List<Uploaded_file>();
+string str_WEB_PATH = ConfigurationManager.AppSettings["WEB_PATH"].ToString();
+#endregion
+if (i_Result != null)
+{
+foreach (var oRow_User_account in i_Result)
+{
+#region Images
+oRow_User_account.My_Uploaded_files = Get_Uploaded_Files("[TBL_USER_ACCOUNT]", "USER_ACCOUNT_IMAGE", oRow_User_account.USER_ACCOUNT_ID);
+if (oRow_User_account.My_Uploaded_files != null)
+{
+foreach (var oRow_Uploaded_file in oRow_User_account.My_Uploaded_files)
+{
+oRow_Uploaded_file.My_URL = string.Format("{0}/Files/Uploaded/{1}.{2}", str_WEB_PATH, oRow_Uploaded_file.UPLOADED_FILE_ID.ToString(), oRow_Uploaded_file.EXTENSION);
+}
 }
 #endregion
 }
