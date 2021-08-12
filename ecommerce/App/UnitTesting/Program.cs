@@ -25,22 +25,6 @@ namespace UnitTesting
             string str_Bucket_Name = string.Empty;
             string str_Main_Folder_Path = string.Empty;
             Tools.Tools oTools = new Tools.Tools();
-
-
-
-
-            Params_Get_SetupEntries_Per_Table oParams_Get_SetupEntries_Per_Table = new Params_Get_SetupEntries_Per_Table();
-            oParams_Get_SetupEntries_Per_Table.OWNER_ID = 1;
-            oParams_Get_SetupEntries_Per_Table.TBL_NAME = "_USER_TYPE";
-            oParams_Get_SetupEntries_Per_Table.ISVISIBLE = true;
-            oParams_Get_SetupEntries_Per_Table.ISDELETED = false;
-
-            var result = oBLC.Get_SetupEntries_Per_Table(oParams_Get_SetupEntries_Per_Table);
-            Console.WriteLine(result);
-            Console.WriteLine(result);
-
-            //User_account oUser_account = new User_account();
-
             #endregion
             //User oUser = new User();
             //oTools.SetPropertiesDefaultValue(oUser);
@@ -77,6 +61,11 @@ namespace UnitTesting
 
 
             //}
+
+            Params_Get_Product_By_Where oParams_Get_Product_By_Where = new Params_Get_Product_By_Where();
+            oParams_Get_Product_By_Where.OWNER_ID = 1;
+            var myresult = oBLC.Get_Product_By_Where_Adv(oParams_Get_Product_By_Where);
+            Console.WriteLine();
 
 
 

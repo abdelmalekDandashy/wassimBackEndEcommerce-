@@ -83,7 +83,7 @@ namespace CodeGenerator
             //oCodeBooster.Methods_With_Events.Add("Edit_Car");
             //oCodeBooster.Methods_With_Events.Add("Delete_Car");
             //oCodeBooster.Methods_With_Events.Add("Edit_Uploaded_file");
-            //oCodeBooster.Methods_With_Events.Add("Delete_Person");
+            oCodeBooster.Methods_With_Events.Add("Get_Product_By_Where_Adv");
             #endregion
             #region Excluding Tables From 12M Hanlder
             oCodeBooster.Tables_Exluded_From_12M_Hanlder = new List<string>();
@@ -303,7 +303,7 @@ namespace CodeGenerator
             //oCodeBooster.Is_MemCached_Enabled = true;
             #endregion
 
-            oCodeBoosterClient.Local_Patch_Folder = @"D:\wassimPatches\";
+            oCodeBoosterClient.Local_Patch_Folder = @"G:\wassimPatches\";   
             oCodeBoosterClient.Is_Apply_CB_Rules = true;
             oCodeBoosterClient.Show_Embedded_TSql_Exceptions = false;
             oCodeBooster.Is_Profiling_Enabled = false;

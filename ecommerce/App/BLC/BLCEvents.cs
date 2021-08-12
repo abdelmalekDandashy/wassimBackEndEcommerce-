@@ -21,8 +21,9 @@ Delete_Product,
 Get_Category_By_OWNER_ID,
 Get_Category_By_Where,
 Edit_Category,
-Delete_Category
-}
+Delete_Category,
+            Authenticate
+        }
 #endregion
 
 #region Prepare_BLCInitializer
@@ -85,10 +86,6 @@ public  delegate void PreEvent_Handler_Get_Product_By_Where(Params_Get_Product_B
 public  delegate void  PostEvent_Handler_Get_Product_By_Where(ref List<Product>  i_Result, Params_Get_Product_By_Where i_Params_Get_Product_By_Where);
 public event PreEvent_Handler_Get_Product_By_Where OnPreEvent_Get_Product_By_Where;
 public event PostEvent_Handler_Get_Product_By_Where OnPostEvent_Get_Product_By_Where;
-public  delegate void PreEvent_Handler_Get_Product_By_Where_Adv(Params_Get_Product_By_Where i_Params_Get_Product_By_Where);
-public  delegate void  PostEvent_Handler_Get_Product_By_Where_Adv(List<Product>  i_Result, Params_Get_Product_By_Where i_Params_Get_Product_By_Where);
-public event PreEvent_Handler_Get_Product_By_Where_Adv OnPreEvent_Get_Product_By_Where_Adv;
-public event PostEvent_Handler_Get_Product_By_Where_Adv OnPostEvent_Get_Product_By_Where_Adv;
 #region Uploaded Files Events Handlers
 #region Register_Uploaded_Events_Handlers
 public void Register_Uploaded_Events_Handlers()

@@ -279,20 +279,6 @@ oTools.CopyPropValues(oDBEntry, oUser);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USER_ID_Adv");}
 return oUser;
 }
-public User_account Get_User_account_By_USER_ACCOUNT_ID_Adv(Params_Get_User_account_By_USER_ACCOUNT_ID i_Params_Get_User_account_By_USER_ACCOUNT_ID)
-{
-User_account oUser_account = null;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_USER_ACCOUNT_ID_Adv");}
-#region Body Section.
-DALC.User_account oDBEntry = _AppContext.Get_User_account_By_USER_ACCOUNT_ID_Adv(i_Params_Get_User_account_By_USER_ACCOUNT_ID.USER_ACCOUNT_ID);
-oUser_account = new User_account();
-oTools.CopyPropValues(oDBEntry, oUser_account);
-oUser_account.My_User = new User();
-oTools.CopyPropValues(oDBEntry.My_User, oUser_account.My_User);
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_USER_ACCOUNT_ID_Adv");}
-return oUser_account;
-}
 public List<Address> Get_Address_By_ADDRESS_ID_List_Adv(Params_Get_Address_By_ADDRESS_ID_List i_Params_Get_Address_By_ADDRESS_ID_List)
 {
 Address oAddress = null;
@@ -709,29 +695,6 @@ oList.Add(oUser);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USER_ID_List_Adv");}
-return oList;
-}
-public List<User_account> Get_User_account_By_USER_ACCOUNT_ID_List_Adv(Params_Get_User_account_By_USER_ACCOUNT_ID_List i_Params_Get_User_account_By_USER_ACCOUNT_ID_List)
-{
-User_account oUser_account = null;
-List<User_account> oList = new List<User_account>();
-Params_Get_User_account_By_USER_ACCOUNT_ID_List_SP oParams_Get_User_account_By_USER_ACCOUNT_ID_List_SP = new Params_Get_User_account_By_USER_ACCOUNT_ID_List_SP();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_USER_ACCOUNT_ID_List_Adv");}
-#region Body Section.
-List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_USER_ACCOUNT_ID_List_Adv(i_Params_Get_User_account_By_USER_ACCOUNT_ID_List.USER_ACCOUNT_ID_LIST);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oUser_account = new User_account();
-oTools.CopyPropValues(oDBEntry, oUser_account);
-oUser_account.My_User = new User();
-oTools.CopyPropValues(oDBEntry.My_User, oUser_account.My_User);
-oList.Add(oUser_account);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_USER_ACCOUNT_ID_List_Adv");}
 return oList;
 }
 public List<Address> Get_Address_By_PERSON_ID_Adv(Params_Get_Address_By_PERSON_ID i_Params_Get_Address_By_PERSON_ID)
@@ -1836,50 +1799,6 @@ oList.Add(oUser);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USERNAME_Adv");}
 return oList;
 }
-public List<User_account> Get_User_account_By_OWNER_ID_Adv(Params_Get_User_account_By_OWNER_ID i_Params_Get_User_account_By_OWNER_ID)
-{
-List<User_account> oList = new List<User_account>();
-User_account oUser_account = new User_account();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_OWNER_ID_Adv");}
-#region Body Section.
-List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_OWNER_ID_Adv(i_Params_Get_User_account_By_OWNER_ID.OWNER_ID);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oUser_account = new User_account();
-oTools.CopyPropValues(oDBEntry, oUser_account);
-oUser_account.My_User = new User();
-oTools.CopyPropValues(oDBEntry.My_User, oUser_account.My_User);
-oList.Add(oUser_account);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_OWNER_ID_Adv");}
-return oList;
-}
-public List<User_account> Get_User_account_By_USER_ID_Adv(Params_Get_User_account_By_USER_ID i_Params_Get_User_account_By_USER_ID)
-{
-List<User_account> oList = new List<User_account>();
-User_account oUser_account = new User_account();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_USER_ID_Adv");}
-#region Body Section.
-List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_USER_ID_Adv(i_Params_Get_User_account_By_USER_ID.USER_ID);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oUser_account = new User_account();
-oTools.CopyPropValues(oDBEntry, oUser_account);
-oUser_account.My_User = new User();
-oTools.CopyPropValues(oDBEntry.My_User, oUser_account.My_User);
-oList.Add(oUser_account);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_USER_ID_Adv");}
-return oList;
-}
 public List<Address> Get_Address_By_PERSON_ID_List_Adv(Params_Get_Address_By_PERSON_ID_List i_Params_Get_Address_By_PERSON_ID_List)
 {
 List<Address> oList = new List<Address>();
@@ -2378,28 +2297,6 @@ oList.Add(oProduct_size);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_SIZE_ID_List_Adv");}
-return oList;
-}
-public List<User_account> Get_User_account_By_USER_ID_List_Adv(Params_Get_User_account_By_USER_ID_List i_Params_Get_User_account_By_USER_ID_List)
-{
-List<User_account> oList = new List<User_account>();
-User_account oUser_account = new User_account();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_USER_ID_List_Adv");}
-#region Body Section.
-List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_USER_ID_List_Adv(i_Params_Get_User_account_By_USER_ID_List.USER_ID_LIST);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oUser_account = new User_account();
-oTools.CopyPropValues(oDBEntry, oUser_account);
-oUser_account.My_User = new User();
-oTools.CopyPropValues(oDBEntry.My_User, oUser_account.My_User);
-oList.Add(oUser_account);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_USER_ID_List_Adv");}
 return oList;
 }
 public List<Address> Get_Address_By_Criteria_Adv(Params_Get_Address_By_Criteria i_Params_Get_Address_By_Criteria)
@@ -3265,12 +3162,6 @@ List<Product> oList = new List<Product>();
 long? tmp_TOTAL_COUNT = 0;
 Product oProduct = null;
 if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_By_Where_Adv");}
-#region PreEvent_Get_Product_By_Where_Adv
-if (OnPreEvent_Get_Product_By_Where_Adv != null)
-{
-OnPreEvent_Get_Product_By_Where_Adv(i_Params_Get_Product_By_Where);
-}
-#endregion
 #region Body Section.
 if ((i_Params_Get_Product_By_Where.OWNER_ID == null) || (i_Params_Get_Product_By_Where.OWNER_ID == 0)) { i_Params_Get_Product_By_Where.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_Product_By_Where.START_ROW == null) { i_Params_Get_Product_By_Where.START_ROW = 0; }
@@ -3288,12 +3179,6 @@ oList.Add(oProduct);
 }
 }
 i_Params_Get_Product_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-#region PostEvent_Get_Product_By_Where_Adv
-if (OnPostEvent_Get_Product_By_Where_Adv != null)
-{
-OnPostEvent_Get_Product_By_Where_Adv(oList,i_Params_Get_Product_By_Where);
-}
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_By_Where_Adv");}
 return oList;
@@ -3474,7 +3359,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_Criteria_Adv");}
 if ((i_Params_Get_User_By_Criteria.OWNER_ID == null) || (i_Params_Get_User_By_Criteria.OWNER_ID == 0)) { i_Params_Get_User_By_Criteria.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_User_By_Criteria.START_ROW == null) { i_Params_Get_User_By_Criteria.START_ROW = 0; }
 if ((i_Params_Get_User_By_Criteria.END_ROW == null) || (i_Params_Get_User_By_Criteria.END_ROW == 0)) { i_Params_Get_User_By_Criteria.END_ROW = 1000000; }
-List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Criteria_Adv(i_Params_Get_User_By_Criteria.EMAIL,i_Params_Get_User_By_Criteria.USERNAME,i_Params_Get_User_By_Criteria.PASSWORD,i_Params_Get_User_By_Criteria.USER_TYPE_CODE,i_Params_Get_User_By_Criteria.OWNER_ID,i_Params_Get_User_By_Criteria.START_ROW,i_Params_Get_User_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Criteria_Adv(i_Params_Get_User_By_Criteria.USERNAME,i_Params_Get_User_By_Criteria.PASSWORD,i_Params_Get_User_By_Criteria.USER_TYPE_CODE,i_Params_Get_User_By_Criteria.OWNER_ID,i_Params_Get_User_By_Criteria.START_ROW,i_Params_Get_User_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -3499,7 +3384,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_Where_Adv");}
 if ((i_Params_Get_User_By_Where.OWNER_ID == null) || (i_Params_Get_User_By_Where.OWNER_ID == 0)) { i_Params_Get_User_By_Where.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_User_By_Where.START_ROW == null) { i_Params_Get_User_By_Where.START_ROW = 0; }
 if ((i_Params_Get_User_By_Where.END_ROW == null) || (i_Params_Get_User_By_Where.END_ROW == 0)) { i_Params_Get_User_By_Where.END_ROW = 1000000; }
-List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Where_Adv(i_Params_Get_User_By_Where.EMAIL,i_Params_Get_User_By_Where.USERNAME,i_Params_Get_User_By_Where.PASSWORD,i_Params_Get_User_By_Where.USER_TYPE_CODE,i_Params_Get_User_By_Where.OWNER_ID,i_Params_Get_User_By_Where.START_ROW,i_Params_Get_User_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Where_Adv(i_Params_Get_User_By_Where.USERNAME,i_Params_Get_User_By_Where.PASSWORD,i_Params_Get_User_By_Where.USER_TYPE_CODE,i_Params_Get_User_By_Where.OWNER_ID,i_Params_Get_User_By_Where.START_ROW,i_Params_Get_User_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -3512,60 +3397,6 @@ oList.Add(oUser);
 i_Params_Get_User_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_Where_Adv");}
-return oList;
-}
-public List<User_account> Get_User_account_By_Criteria_Adv(Params_Get_User_account_By_Criteria i_Params_Get_User_account_By_Criteria)
-{
-List<User_account> oList = new List<User_account>();
-long? tmp_TOTAL_COUNT = 0;
-User_account oUser_account = null;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_Criteria_Adv");}
-#region Body Section.
-if ((i_Params_Get_User_account_By_Criteria.OWNER_ID == null) || (i_Params_Get_User_account_By_Criteria.OWNER_ID == 0)) { i_Params_Get_User_account_By_Criteria.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_User_account_By_Criteria.START_ROW == null) { i_Params_Get_User_account_By_Criteria.START_ROW = 0; }
-if ((i_Params_Get_User_account_By_Criteria.END_ROW == null) || (i_Params_Get_User_account_By_Criteria.END_ROW == 0)) { i_Params_Get_User_account_By_Criteria.END_ROW = 1000000; }
-List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_Criteria_Adv(i_Params_Get_User_account_By_Criteria.DESCRIPTION,i_Params_Get_User_account_By_Criteria.OWNER_ID,i_Params_Get_User_account_By_Criteria.START_ROW,i_Params_Get_User_account_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oUser_account = new User_account();
-oTools.CopyPropValues(oDBEntry, oUser_account);
-oUser_account.My_User = new User();
-oTools.CopyPropValues(oDBEntry.My_User, oUser_account.My_User);
-oList.Add(oUser_account);
-}
-}
-i_Params_Get_User_account_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_Criteria_Adv");}
-return oList;
-}
-public List<User_account> Get_User_account_By_Where_Adv(Params_Get_User_account_By_Where i_Params_Get_User_account_By_Where)
-{
-List<User_account> oList = new List<User_account>();
-long? tmp_TOTAL_COUNT = 0;
-User_account oUser_account = null;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_Where_Adv");}
-#region Body Section.
-if ((i_Params_Get_User_account_By_Where.OWNER_ID == null) || (i_Params_Get_User_account_By_Where.OWNER_ID == 0)) { i_Params_Get_User_account_By_Where.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_User_account_By_Where.START_ROW == null) { i_Params_Get_User_account_By_Where.START_ROW = 0; }
-if ((i_Params_Get_User_account_By_Where.END_ROW == null) || (i_Params_Get_User_account_By_Where.END_ROW == 0)) { i_Params_Get_User_account_By_Where.END_ROW = 1000000; }
-List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_Where_Adv(i_Params_Get_User_account_By_Where.DESCRIPTION,i_Params_Get_User_account_By_Where.OWNER_ID,i_Params_Get_User_account_By_Where.START_ROW,i_Params_Get_User_account_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oUser_account = new User_account();
-oTools.CopyPropValues(oDBEntry, oUser_account);
-oUser_account.My_User = new User();
-oTools.CopyPropValues(oDBEntry.My_User, oUser_account.My_User);
-oList.Add(oUser_account);
-}
-}
-i_Params_Get_User_account_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_Where_Adv");}
 return oList;
 }
 public List<Address> Get_Address_By_Criteria_InList_Adv(Params_Get_Address_By_Criteria_InList i_Params_Get_Address_By_Criteria_InList)
@@ -4770,86 +4601,6 @@ i_Params_Get_Product_size_By_Where_InList.TOTAL_COUNT = oParams_Get_Product_size
 i_Params_Get_Product_size_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_Where_InList_Adv");}
-return oList;
-}
-public List<User_account> Get_User_account_By_Criteria_InList_Adv(Params_Get_User_account_By_Criteria_InList i_Params_Get_User_account_By_Criteria_InList)
-{
-List<User_account> oList = new List<User_account>();
-User_account oUser_account = new User_account();
-long? tmp_TOTAL_COUNT = 0; 
-Params_Get_User_account_By_Criteria_InList_SP oParams_Get_User_account_By_Criteria_InList_SP = new Params_Get_User_account_By_Criteria_InList_SP();
-Params_Get_User_By_USER_ID oParams_Get_User_By_USER_ID = new Params_Get_User_By_USER_ID();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_Criteria_InList_Adv");}
-#region Body Section.
-if ((i_Params_Get_User_account_By_Criteria_InList.OWNER_ID == null) || (i_Params_Get_User_account_By_Criteria_InList.OWNER_ID == 0)) { i_Params_Get_User_account_By_Criteria_InList.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_User_account_By_Criteria_InList.START_ROW == null) { i_Params_Get_User_account_By_Criteria_InList.START_ROW = 0; }
-if ((i_Params_Get_User_account_By_Criteria_InList.END_ROW == null) || (i_Params_Get_User_account_By_Criteria_InList.END_ROW == 0)) { i_Params_Get_User_account_By_Criteria_InList.END_ROW = 1000000; }
-oParams_Get_User_account_By_Criteria_InList_SP.OWNER_ID = i_Params_Get_User_account_By_Criteria_InList.OWNER_ID;
-oParams_Get_User_account_By_Criteria_InList_SP.DESCRIPTION = i_Params_Get_User_account_By_Criteria_InList.DESCRIPTION;
-if ( i_Params_Get_User_account_By_Criteria_InList.USER_ID_LIST == null)
-{
-i_Params_Get_User_account_By_Criteria_InList.USER_ID_LIST = new List<long?>();
-}
-oParams_Get_User_account_By_Criteria_InList_SP.USER_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_User_account_By_Criteria_InList.USER_ID_LIST);
-oParams_Get_User_account_By_Criteria_InList_SP.START_ROW = i_Params_Get_User_account_By_Criteria_InList.START_ROW;
-oParams_Get_User_account_By_Criteria_InList_SP.END_ROW = i_Params_Get_User_account_By_Criteria_InList.END_ROW;
-oParams_Get_User_account_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_User_account_By_Criteria_InList.TOTAL_COUNT;
-List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_Criteria_InList_Adv(i_Params_Get_User_account_By_Criteria_InList.DESCRIPTION,i_Params_Get_User_account_By_Criteria_InList.USER_ID_LIST,i_Params_Get_User_account_By_Criteria_InList.OWNER_ID,i_Params_Get_User_account_By_Criteria_InList.START_ROW,i_Params_Get_User_account_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oUser_account = new User_account();
-oTools.CopyPropValues(oDBEntry, oUser_account);
-oUser_account.My_User = new User();
-oTools.CopyPropValues(oDBEntry.My_User, oUser_account.My_User);
-oList.Add(oUser_account);
-}
-}
-i_Params_Get_User_account_By_Criteria_InList.TOTAL_COUNT = oParams_Get_User_account_By_Criteria_InList_SP.TOTAL_COUNT;
-i_Params_Get_User_account_By_Criteria_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_Criteria_InList_Adv");}
-return oList;
-}
-public List<User_account> Get_User_account_By_Where_InList_Adv(Params_Get_User_account_By_Where_InList i_Params_Get_User_account_By_Where_InList)
-{
-List<User_account> oList = new List<User_account>();
-User_account oUser_account = new User_account();
-long? tmp_TOTAL_COUNT = 0; 
-Params_Get_User_account_By_Where_InList_SP oParams_Get_User_account_By_Where_InList_SP = new Params_Get_User_account_By_Where_InList_SP();
-Params_Get_User_By_USER_ID oParams_Get_User_By_USER_ID = new Params_Get_User_By_USER_ID();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_Where_InList_Adv");}
-#region Body Section.
-if ((i_Params_Get_User_account_By_Where_InList.OWNER_ID == null) || (i_Params_Get_User_account_By_Where_InList.OWNER_ID == 0)) { i_Params_Get_User_account_By_Where_InList.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_User_account_By_Where_InList.START_ROW == null) { i_Params_Get_User_account_By_Where_InList.START_ROW = 0; }
-if ((i_Params_Get_User_account_By_Where_InList.END_ROW == null) || (i_Params_Get_User_account_By_Where_InList.END_ROW == 0)) { i_Params_Get_User_account_By_Where_InList.END_ROW = 1000000; }
-oParams_Get_User_account_By_Where_InList_SP.OWNER_ID = i_Params_Get_User_account_By_Where_InList.OWNER_ID;
-oParams_Get_User_account_By_Where_InList_SP.DESCRIPTION = i_Params_Get_User_account_By_Where_InList.DESCRIPTION;
-if ( i_Params_Get_User_account_By_Where_InList.USER_ID_LIST == null)
-{
-i_Params_Get_User_account_By_Where_InList.USER_ID_LIST = new List<long?>();
-}
-oParams_Get_User_account_By_Where_InList_SP.USER_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_User_account_By_Where_InList.USER_ID_LIST);
-oParams_Get_User_account_By_Where_InList_SP.START_ROW = i_Params_Get_User_account_By_Where_InList.START_ROW;
-oParams_Get_User_account_By_Where_InList_SP.END_ROW = i_Params_Get_User_account_By_Where_InList.END_ROW;
-oParams_Get_User_account_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_User_account_By_Where_InList.TOTAL_COUNT;
-List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_Where_InList_Adv(i_Params_Get_User_account_By_Where_InList.DESCRIPTION,i_Params_Get_User_account_By_Where_InList.USER_ID_LIST,i_Params_Get_User_account_By_Where_InList.OWNER_ID,i_Params_Get_User_account_By_Where_InList.START_ROW,i_Params_Get_User_account_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oUser_account = new User_account();
-oTools.CopyPropValues(oDBEntry, oUser_account);
-oUser_account.My_User = new User();
-oTools.CopyPropValues(oDBEntry.My_User, oUser_account.My_User);
-oList.Add(oUser_account);
-}
-}
-i_Params_Get_User_account_By_Where_InList.TOTAL_COUNT = oParams_Get_User_account_By_Where_InList_SP.TOTAL_COUNT;
-i_Params_Get_User_account_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_Where_InList_Adv");}
 return oList;
 }
 }
