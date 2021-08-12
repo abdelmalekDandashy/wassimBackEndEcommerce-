@@ -446,40 +446,16 @@ namespace CodeGenerator
                     //#endregion
                     //#endregion
 
-                    //#region PRODCUT
-                    //#region Search Screen
-                    //oUIFields_Criteria = new UIFields();
-                    //oUIFields_Criteria.MainTableName = "[TBL_PRODUCT]";
-                    //oUIFields_Criteria.Based_On_Type = "BLC.Params_Get_Product_By_Where";
-
-                    //oUIFields_Result = new UIFields();
-                    //oUIFields_Result.MainTableName = "[TBL_PRODUCT]";
-                    //oUIFields_Result.Based_On_Type = "BLC.Product";
-                    //oUIFields_Result.GetMethodName = "Get_Product_By_Where";
-                    //oUIFields_Result.GridFields = new List<GridField>();
-
-                    //oUIFields_Result.Has_Related_Data = true;
-                    //oUIFields_Result.Has_Related_Files = true;
-
-
-
-                    //oSearch_AdvancedProp = new Search_AdvancedProp();
-                    //oSearch_AdvancedProp.ContainerMargins = "0,5,0,5";
-                    //oCodeBooster.Entity_FriendlyName = "Product";
-                    //oCodeBoosterClient.Generate_ListUI(Enum_SearchMethod.With_Criteria_Section, oUIFields_Criteria, oUIFields_Result, oSearch_AdvancedProp);
-                    //#endregion
-                    //#endregion
-
-                    #region user account
+                    #region PRODCUT
                     #region Search Screen
                     oUIFields_Criteria = new UIFields();
-                    oUIFields_Criteria.MainTableName = "[TBL_USER_ACCOUNT]";
-                    oUIFields_Criteria.Based_On_Type = "BLC.Params_Get_User_account_By_OWNER_ID";
+                    oUIFields_Criteria.MainTableName = "[TBL_PRODUCT]";
+                    oUIFields_Criteria.Based_On_Type = "BLC.Params_Get_Product_By_Where";
 
                     oUIFields_Result = new UIFields();
-                    oUIFields_Result.MainTableName = "[TBL_USER_ACCOUNT]";
-                    oUIFields_Result.Based_On_Type = "BLC.User_account";
-                    oUIFields_Result.GetMethodName = "Get_User_account_By_Where";
+                    oUIFields_Result.MainTableName = "[TBL_PRODUCT]";
+                    oUIFields_Result.Based_On_Type = "BLC.Product";
+                    oUIFields_Result.GetMethodName = "Get_Product_By_Where";
                     oUIFields_Result.GridFields = new List<GridField>();
 
                     oUIFields_Result.Has_Related_Data = true;
@@ -489,10 +465,34 @@ namespace CodeGenerator
 
                     oSearch_AdvancedProp = new Search_AdvancedProp();
                     oSearch_AdvancedProp.ContainerMargins = "0,5,0,5";
-                    oCodeBooster.Entity_FriendlyName = "User_account";
+                    oCodeBooster.Entity_FriendlyName = "Product";
                     oCodeBoosterClient.Generate_ListUI(Enum_SearchMethod.With_Criteria_Section, oUIFields_Criteria, oUIFields_Result, oSearch_AdvancedProp);
                     #endregion
                     #endregion
+
+                    //#region user account
+                    //#region Search Screen
+                    //oUIFields_Criteria = new UIFields();
+                    //oUIFields_Criteria.MainTableName = "[TBL_USER_ACCOUNT]";
+                    //oUIFields_Criteria.Based_On_Type = "BLC.Params_Get_User_account_By_OWNER_ID";
+
+                    //oUIFields_Result = new UIFields();
+                    //oUIFields_Result.MainTableName = "[TBL_USER_ACCOUNT]";
+                    //oUIFields_Result.Based_On_Type = "BLC.User_account";
+                    //oUIFields_Result.GetMethodName = "Get_User_account_By_Where";
+                    //oUIFields_Result.GridFields = new List<GridField>();
+
+                    //oUIFields_Result.Has_Related_Data = true;
+                    //oUIFields_Result.Has_Related_Files = true;
+
+
+
+                    //oSearch_AdvancedProp = new Search_AdvancedProp();
+                    //oSearch_AdvancedProp.ContainerMargins = "0,5,0,5";
+                    //oCodeBooster.Entity_FriendlyName = "User_account";
+                    //oCodeBoosterClient.Generate_ListUI(Enum_SearchMethod.With_Criteria_Section, oUIFields_Criteria, oUIFields_Result, oSearch_AdvancedProp);
+                    //#endregion
+                    //#endregion
 
                     //#region user
                     //#region Search Screen
