@@ -722,9 +722,75 @@ else
 oResult_Get_Product_By_Where.ExceptionMsg = ex.Message;
 }
 }
-#endregion  
+#endregion
 #region Return Section
 return oResult_Get_Product_By_Where;
+#endregion
+}
+#endregion
+#region Get_Product_By_Where_Adv
+[HttpPost]
+[Route("Get_Product_By_Where_Adv")]
+public Result_Get_Product_By_Where_Adv Get_Product_By_Where_Adv(Params_Get_Product_By_Where i_Params_Get_Product_By_Where)
+{
+#region Declaration And Initialization Section.
+List<Product>  oReturnValue = new List<Product> ();
+string i_Ticket = string.Empty;
+Result_Get_Product_By_Where_Adv oResult_Get_Product_By_Where_Adv = new Result_Get_Product_By_Where_Adv();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_Product_By_Where_Adv(i_Params_Get_Product_By_Where);
+oResult_Get_Product_By_Where_Adv.My_Result = oReturnValue;
+oResult_Get_Product_By_Where_Adv.My_Params_Get_Product_By_Where = i_Params_Get_Product_By_Where;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_Product_By_Where_Adv.ExceptionMsg = string.Format("Get_Product_By_Where_Adv : {0}", ex.Message);
+}
+else
+{
+oResult_Get_Product_By_Where_Adv.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_Product_By_Where_Adv;
 #endregion
 }
 #endregion
@@ -833,6 +899,15 @@ public Params_Get_Product_By_OWNER_ID My_Params_Get_Product_By_OWNER_ID { get; s
 #endregion
 #region Result_Get_Product_By_Where
 public partial class Result_Get_Product_By_Where : Action_Result
+{
+#region Properties.
+public List<Product>  My_Result { get; set; }
+public Params_Get_Product_By_Where My_Params_Get_Product_By_Where { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_Product_By_Where_Adv
+public partial class Result_Get_Product_By_Where_Adv : Action_Result
 {
 #region Properties.
 public List<Product>  My_Result { get; set; }

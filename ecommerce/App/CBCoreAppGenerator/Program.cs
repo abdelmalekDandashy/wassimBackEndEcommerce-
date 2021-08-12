@@ -231,7 +231,7 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Get_Category_By_Where");
             oCodeBooster.APIMethodsSelection.Add("Edit_Category");
             oCodeBooster.APIMethodsSelection.Add("Delete_Category");
-
+            oCodeBooster.APIMethodsSelection.Add("Get_Product_By_Where_Adv");
             //oCodeBooster.APIMethodsSelection.Add("Authenticate");
             //----------------------------
 
@@ -249,7 +249,7 @@ namespace CodeGenerator
             //oCodeBooster.Is_MemCached_Enabled = true;
             #endregion
 
-            oCodeBoosterClient.Local_Patch_Folder = @"G:\wassimPatches\";   
+            oCodeBoosterClient.Local_Patch_Folder = @"D:\patches\";   
             oCodeBoosterClient.Is_Apply_CB_Rules = true;
             oCodeBoosterClient.Show_Embedded_TSql_Exceptions = false;
             oCodeBooster.Is_Profiling_Enabled = false;

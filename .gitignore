@@ -441,3 +441,9 @@ $RECYCLE.BIN/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# app config between 2 PCs
+App.config
+ecommerce/App/UnitTesting/App.config
+ecommerce/App/WebAPI/App.config
+ecommerce/App/CBCoreAppGenerator/App.config
