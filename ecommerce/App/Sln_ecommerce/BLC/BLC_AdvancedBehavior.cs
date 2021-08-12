@@ -3162,6 +3162,12 @@ List<Product> oList = new List<Product>();
 long? tmp_TOTAL_COUNT = 0;
 Product oProduct = null;
 if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_By_Where_Adv");}
+#region PreEvent_Get_Product_By_Where_Adv
+if (OnPreEvent_Get_Product_By_Where_Adv != null)
+{
+OnPreEvent_Get_Product_By_Where_Adv(i_Params_Get_Product_By_Where);
+}
+#endregion
 #region Body Section.
 if ((i_Params_Get_Product_By_Where.OWNER_ID == null) || (i_Params_Get_Product_By_Where.OWNER_ID == 0)) { i_Params_Get_Product_By_Where.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_Product_By_Where.START_ROW == null) { i_Params_Get_Product_By_Where.START_ROW = 0; }
@@ -3179,6 +3185,12 @@ oList.Add(oProduct);
 }
 }
 i_Params_Get_Product_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+#region PostEvent_Get_Product_By_Where_Adv
+if (OnPostEvent_Get_Product_By_Where_Adv != null)
+{
+OnPostEvent_Get_Product_By_Where_Adv(oList,i_Params_Get_Product_By_Where);
+}
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_By_Where_Adv");}
 return oList;

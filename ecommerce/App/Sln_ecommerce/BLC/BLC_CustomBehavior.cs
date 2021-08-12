@@ -217,6 +217,9 @@ namespace BLC
     {
         public List<Uploaded_file> My_Uploaded_files { get; set; }
         public string My_Image_Url { get; set; }
+        public List<Product_color> My_Color { get; set; }
+        public List<Product_size> My_Size { get; set; }
+
     }
     #endregion
     #region Product

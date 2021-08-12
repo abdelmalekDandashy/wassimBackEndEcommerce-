@@ -62,11 +62,16 @@ namespace UnitTesting
 
             //}
 
+            Params_Get_Product_By_Where oParams_Get_Product_By_Where = new Params_Get_Product_By_Where();
+            oParams_Get_Product_By_Where.OWNER_ID = 1;
+            var myresult = oBLC.Get_Product_By_Where_Adv(oParams_Get_Product_By_Where);
+            Console.WriteLine();
 
 
-            Params_Get_Product_size_By_PRODUCT_ID oParams_Get_Product_size_By_PRODUCT_ID = new Params_Get_Product_size_By_PRODUCT_ID();
-            oParams_Get_Product_size_By_PRODUCT_ID.PRODUCT_ID = 8;
-            var myresult = oBLC.Get_Product_size_By_PRODUCT_ID_Adv(oParams_Get_Product_size_By_PRODUCT_ID);
+
+            //Params_Get_Product_size_By_PRODUCT_ID oParams_Get_Product_size_By_PRODUCT_ID = new Params_Get_Product_size_By_PRODUCT_ID();
+            //oParams_Get_Product_size_By_PRODUCT_ID.PRODUCT_ID = 8;
+            //var myresult = oBLC.Get_Product_size_By_PRODUCT_ID_Adv(oParams_Get_Product_size_By_PRODUCT_ID);
         }
     }
 }
