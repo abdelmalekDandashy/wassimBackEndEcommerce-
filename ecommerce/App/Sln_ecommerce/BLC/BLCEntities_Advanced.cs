@@ -139,23 +139,7 @@ public partial class Product
 {
 #region Advanced Properties
 public Category My_Category {get;set;}
-#endregion
-}
-#endregion
-#region Product_color
-public partial class Product_color
-{
-#region Advanced Properties
-public Product My_Product {get;set;}
 public Color My_Color {get;set;}
-#endregion
-}
-#endregion
-#region Product_size
-public partial class Product_size
-{
-#region Advanced Properties
-public Product My_Product {get;set;}
 public Size My_Size {get;set;}
 #endregion
 }
@@ -178,6 +162,15 @@ public partial class Uploaded_file
 public partial class User
 {
 #region Advanced Properties
+#endregion
+}
+#endregion
+#region User_account
+public partial class User_account
+{
+#region Advanced Properties
+public Adress My_Adress {get;set;}
+public User My_User {get;set;}
 #endregion
 }
 #endregion

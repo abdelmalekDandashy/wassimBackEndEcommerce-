@@ -156,24 +156,6 @@ public Int32? PRODUCT_ID {get;set;}
 #endregion
 }
 #endregion
-#region Params_Get_Product_color_By_PRODUCT_COLOR_ID
-public partial class Params_Get_Product_color_By_PRODUCT_COLOR_ID
-{
-#region Properties
-public long? PRODUCT_COLOR_ID {get;set;}
-
-#endregion
-}
-#endregion
-#region Params_Get_Product_size_By_PRODUCT_SIZE_ID
-public partial class Params_Get_Product_size_By_PRODUCT_SIZE_ID
-{
-#region Properties
-public long? PRODUCT_SIZE_ID {get;set;}
-
-#endregion
-}
-#endregion
 #region Params_Get_Size_By_SIZE_ID
 public partial class Params_Get_Size_By_SIZE_ID
 {
@@ -197,6 +179,15 @@ public partial class Params_Get_User_By_USER_ID
 {
 #region Properties
 public long? USER_ID {get;set;}
+
+#endregion
+}
+#endregion
+#region Params_Get_User_account_By_USER_ACCOUNT_ID
+public partial class Params_Get_User_account_By_USER_ACCOUNT_ID
+{
+#region Properties
+public long? USER_ACCOUNT_ID {get;set;}
 
 #endregion
 }
@@ -336,24 +327,6 @@ public partial class Params_Get_Product_By_PRODUCT_ID_List_SP
 public string PRODUCT_ID_LIST {get;set;}
 
 }
-public partial class Params_Get_Product_color_By_PRODUCT_COLOR_ID_List
-{
-public List<long?> PRODUCT_COLOR_ID_LIST {get;set;}
-}
-public partial class Params_Get_Product_color_By_PRODUCT_COLOR_ID_List_SP
-{
-public string PRODUCT_COLOR_ID_LIST {get;set;}
-
-}
-public partial class Params_Get_Product_size_By_PRODUCT_SIZE_ID_List
-{
-public List<long?> PRODUCT_SIZE_ID_LIST {get;set;}
-}
-public partial class Params_Get_Product_size_By_PRODUCT_SIZE_ID_List_SP
-{
-public string PRODUCT_SIZE_ID_LIST {get;set;}
-
-}
 public partial class Params_Get_Size_By_SIZE_ID_List
 {
 public List<Int32?> SIZE_ID_LIST {get;set;}
@@ -379,6 +352,15 @@ public List<long?> USER_ID_LIST {get;set;}
 public partial class Params_Get_User_By_USER_ID_List_SP
 {
 public string USER_ID_LIST {get;set;}
+
+}
+public partial class Params_Get_User_account_By_USER_ACCOUNT_ID_List
+{
+public List<long?> USER_ACCOUNT_ID_LIST {get;set;}
+}
+public partial class Params_Get_User_account_By_USER_ACCOUNT_ID_List_SP
+{
+public string USER_ACCOUNT_ID_LIST {get;set;}
 
 }
 public partial class Params_Get_Address_By_PERSON_ID
@@ -577,32 +559,12 @@ public partial class Params_Get_Product_By_IS_RECOMMENDED
 public bool? IS_RECOMMENDED {get;set;}
 
 }
-public partial class Params_Get_Product_color_By_OWNER_ID
-{
-public Int32? OWNER_ID {get;set;}
-
-}
-public partial class Params_Get_Product_color_By_PRODUCT_ID
-{
-public Int32? PRODUCT_ID {get;set;}
-
-}
-public partial class Params_Get_Product_color_By_COLOR_ID
+public partial class Params_Get_Product_By_COLOR_ID
 {
 public Int32? COLOR_ID {get;set;}
 
 }
-public partial class Params_Get_Product_size_By_OWNER_ID
-{
-public Int32? OWNER_ID {get;set;}
-
-}
-public partial class Params_Get_Product_size_By_PRODUCT_ID
-{
-public Int32? PRODUCT_ID {get;set;}
-
-}
-public partial class Params_Get_Product_size_By_SIZE_ID
+public partial class Params_Get_Product_By_SIZE_ID
 {
 public Int32? SIZE_ID {get;set;}
 
@@ -643,6 +605,21 @@ public Int32? OWNER_ID {get;set;}
 public partial class Params_Get_User_By_USERNAME
 {
 public string USERNAME {get;set;}
+
+}
+public partial class Params_Get_User_account_By_OWNER_ID
+{
+public Int32? OWNER_ID {get;set;}
+
+}
+public partial class Params_Get_User_account_By_USER_ID
+{
+public long? USER_ID {get;set;}
+
+}
+public partial class Params_Get_User_account_By_ADRESS_ID
+{
+public Int32? ADRESS_ID {get;set;}
 
 }
 public partial class Params_Get_Address_By_PERSON_ID_List
@@ -725,24 +702,24 @@ public partial class Params_Get_Product_By_CATEGORY_ID_List
 public List<Int32?> CATEGORY_ID_LIST {get;set;}
 
 }
-public partial class Params_Get_Product_color_By_PRODUCT_ID_List
-{
-public List<Int32?> PRODUCT_ID_LIST {get;set;}
-
-}
-public partial class Params_Get_Product_color_By_COLOR_ID_List
+public partial class Params_Get_Product_By_COLOR_ID_List
 {
 public List<Int32?> COLOR_ID_LIST {get;set;}
 
 }
-public partial class Params_Get_Product_size_By_PRODUCT_ID_List
-{
-public List<Int32?> PRODUCT_ID_LIST {get;set;}
-
-}
-public partial class Params_Get_Product_size_By_SIZE_ID_List
+public partial class Params_Get_Product_By_SIZE_ID_List
 {
 public List<Int32?> SIZE_ID_LIST {get;set;}
+
+}
+public partial class Params_Get_User_account_By_USER_ID_List
+{
+public List<long?> USER_ID_LIST {get;set;}
+
+}
+public partial class Params_Get_User_account_By_ADRESS_ID_List
+{
+public List<Int32?> ADRESS_ID_LIST {get;set;}
 
 }
 public partial class Params_Get_Address_By_Criteria
@@ -1149,42 +1126,6 @@ public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
 }
-public partial class Params_Get_Product_color_By_Criteria
-{
-
-public Int32? OWNER_ID {get;set;}
-public string DESCRIPTION {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Product_color_By_Where
-{
-
-public Int32? OWNER_ID {get;set;}
-public string DESCRIPTION {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Product_size_By_Criteria
-{
-
-public Int32? OWNER_ID {get;set;}
-public string DESCRIPTION {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Product_size_By_Where
-{
-
-public Int32? OWNER_ID {get;set;}
-public string DESCRIPTION {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
 public partial class Params_Get_Size_By_Criteria
 {
 
@@ -1231,8 +1172,10 @@ public partial class Params_Get_User_By_Criteria
 {
 
 public Int32? OWNER_ID {get;set;}
+public string EMAIL {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
+public string PHONE {get;set;}
 public string USER_TYPE_CODE {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
@@ -1242,9 +1185,29 @@ public partial class Params_Get_User_By_Where
 {
 
 public Int32? OWNER_ID {get;set;}
+public string EMAIL {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
+public string PHONE {get;set;}
 public string USER_TYPE_CODE {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_account_By_Criteria
+{
+
+public Int32? OWNER_ID {get;set;}
+public string DESCRIPTION {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_account_By_Where
+{
+
+public Int32? OWNER_ID {get;set;}
+public string DESCRIPTION {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1710,6 +1673,8 @@ public Int32? OWNER_ID {get;set;}
 public string NAME {get;set;}
 public string DESCRIPTION {get;set;}
 public List<Int32?> CATEGORY_ID_LIST {get;set;}
+public List<Int32?> COLOR_ID_LIST {get;set;}
+public List<Int32?> SIZE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1720,6 +1685,8 @@ public Int32? OWNER_ID {get;set;}
 public string NAME {get;set;}
 public string DESCRIPTION {get;set;}
 public string CATEGORY_ID_LIST {get;set;}
+public string COLOR_ID_LIST {get;set;}
+public string SIZE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1731,6 +1698,8 @@ public Int32? OWNER_ID {get;set;}
 public string NAME {get;set;}
 public string DESCRIPTION {get;set;}
 public List<Int32?> CATEGORY_ID_LIST {get;set;}
+public List<Int32?> COLOR_ID_LIST {get;set;}
+public List<Int32?> SIZE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1741,90 +1710,50 @@ public Int32? OWNER_ID {get;set;}
 public string NAME {get;set;}
 public string DESCRIPTION {get;set;}
 public string CATEGORY_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Product_color_By_Criteria_InList
-{
-
-public Int32? OWNER_ID {get;set;}
-public string DESCRIPTION {get;set;}
-public List<Int32?> PRODUCT_ID_LIST {get;set;}
-public List<Int32?> COLOR_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Product_color_By_Criteria_InList_SP
-{
-public Int32? OWNER_ID {get;set;}
-public string DESCRIPTION {get;set;}
-public string PRODUCT_ID_LIST {get;set;}
 public string COLOR_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Product_color_By_Where_InList
-{
-
-public Int32? OWNER_ID {get;set;}
-public string DESCRIPTION {get;set;}
-public List<Int32?> PRODUCT_ID_LIST {get;set;}
-public List<Int32?> COLOR_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Product_color_By_Where_InList_SP
-{
-public Int32? OWNER_ID {get;set;}
-public string DESCRIPTION {get;set;}
-public string PRODUCT_ID_LIST {get;set;}
-public string COLOR_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Product_size_By_Criteria_InList
-{
-
-public Int32? OWNER_ID {get;set;}
-public string DESCRIPTION {get;set;}
-public List<Int32?> PRODUCT_ID_LIST {get;set;}
-public List<Int32?> SIZE_ID_LIST {get;set;}
-public long? START_ROW {get;set;}
-public long? END_ROW {get;set;}
-public long? TOTAL_COUNT {get;set;}
-}
-public partial class Params_Get_Product_size_By_Criteria_InList_SP
-{
-public Int32? OWNER_ID {get;set;}
-public string DESCRIPTION {get;set;}
-public string PRODUCT_ID_LIST {get;set;}
 public string SIZE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
 }
-public partial class Params_Get_Product_size_By_Where_InList
+public partial class Params_Get_User_account_By_Criteria_InList
 {
 
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
-public List<Int32?> PRODUCT_ID_LIST {get;set;}
-public List<Int32?> SIZE_ID_LIST {get;set;}
+public List<Int32?> ADRESS_ID_LIST {get;set;}
+public List<long?> USER_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
 }
-public partial class Params_Get_Product_size_By_Where_InList_SP
+public partial class Params_Get_User_account_By_Criteria_InList_SP
 {
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
-public string PRODUCT_ID_LIST {get;set;}
-public string SIZE_ID_LIST {get;set;}
+public string ADRESS_ID_LIST {get;set;}
+public string USER_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_account_By_Where_InList
+{
+
+public Int32? OWNER_ID {get;set;}
+public string DESCRIPTION {get;set;}
+public List<Int32?> ADRESS_ID_LIST {get;set;}
+public List<long?> USER_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_User_account_By_Where_InList_SP
+{
+public Int32? OWNER_ID {get;set;}
+public string DESCRIPTION {get;set;}
+public string ADRESS_ID_LIST {get;set;}
+public string USER_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1949,22 +1878,6 @@ public Int32? PRODUCT_ID {get;set;}
 #endregion
 }
 #endregion
-#region Params_Delete_Product_color
-public partial class Params_Delete_Product_color
-{
-#region Properties
-public long? PRODUCT_COLOR_ID {get;set;}
-#endregion
-}
-#endregion
-#region Params_Delete_Product_size
-public partial class Params_Delete_Product_size
-{
-#region Properties
-public long? PRODUCT_SIZE_ID {get;set;}
-#endregion
-}
-#endregion
 #region Params_Delete_Size
 public partial class Params_Delete_Size
 {
@@ -1986,6 +1899,14 @@ public partial class Params_Delete_User
 {
 #region Properties
 public long? USER_ID {get;set;}
+#endregion
+}
+#endregion
+#region Params_Delete_User_account
+public partial class Params_Delete_User_account
+{
+#region Properties
+public long? USER_ACCOUNT_ID {get;set;}
 #endregion
 }
 #endregion
@@ -2147,27 +2068,11 @@ public partial class Params_Delete_Product_By_IS_RECOMMENDED
 {
 public bool? IS_RECOMMENDED {get;set;}
 }
-public partial class Params_Delete_Product_color_By_OWNER_ID
-{
-public Int32? OWNER_ID {get;set;}
-}
-public partial class Params_Delete_Product_color_By_PRODUCT_ID
-{
-public Int32? PRODUCT_ID {get;set;}
-}
-public partial class Params_Delete_Product_color_By_COLOR_ID
+public partial class Params_Delete_Product_By_COLOR_ID
 {
 public Int32? COLOR_ID {get;set;}
 }
-public partial class Params_Delete_Product_size_By_OWNER_ID
-{
-public Int32? OWNER_ID {get;set;}
-}
-public partial class Params_Delete_Product_size_By_PRODUCT_ID
-{
-public Int32? PRODUCT_ID {get;set;}
-}
-public partial class Params_Delete_Product_size_By_SIZE_ID
+public partial class Params_Delete_Product_By_SIZE_ID
 {
 public Int32? SIZE_ID {get;set;}
 }
@@ -2201,6 +2106,18 @@ public Int32? OWNER_ID {get;set;}
 public partial class Params_Delete_User_By_USERNAME
 {
 public string USERNAME {get;set;}
+}
+public partial class Params_Delete_User_account_By_OWNER_ID
+{
+public Int32? OWNER_ID {get;set;}
+}
+public partial class Params_Delete_User_account_By_USER_ID
+{
+public long? USER_ID {get;set;}
+}
+public partial class Params_Delete_User_account_By_ADRESS_ID
+{
+public Int32? ADRESS_ID {get;set;}
 }
 public partial class Address
 {
@@ -2372,32 +2289,14 @@ public string DESCRIPTION {get;set;}
 public Int32? CATEGORY_ID {get;set;}
 public Int32? STOCK {get;set;}
 public decimal FULL_PRICE {get;set;}
+public Int32? COLOR_ID {get;set;}
+public Int32? SIZE_ID {get;set;}
 public decimal? DISCOUNT_PRICE {get;set;}
 public bool? IS_BEST_SELLING {get;set;}
 public bool? IS_RECOMMENDED {get;set;}
 public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}
 public Int32? OWNER_ID {get;set;}
-}
-public partial class Product_color
-{
-public long? PRODUCT_COLOR_ID {get;set;}
-public Int32? PRODUCT_ID {get;set;}
-public Int32? COLOR_ID {get;set;}
-public long? ENTRY_USER_ID {get;set;}
-public string ENTRY_DATE {get;set;}
-public Int32? OWNER_ID {get;set;}
-public string DESCRIPTION {get;set;}
-}
-public partial class Product_size
-{
-public long? PRODUCT_SIZE_ID {get;set;}
-public Int32? PRODUCT_ID {get;set;}
-public Int32? SIZE_ID {get;set;}
-public long? ENTRY_USER_ID {get;set;}
-public string ENTRY_DATE {get;set;}
-public Int32? OWNER_ID {get;set;}
-public string DESCRIPTION {get;set;}
 }
 public partial class Size
 {
@@ -2424,11 +2323,23 @@ public partial class User
 {
 public long? USER_ID {get;set;}
 public Int32? OWNER_ID {get;set;}
+public string EMAIL {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
+public string PHONE {get;set;}
 public string USER_TYPE_CODE {get;set;}
 public bool? IS_ACTIVE {get;set;}
 public string ENTRY_DATE {get;set;}
+}
+public partial class User_account
+{
+public long? USER_ACCOUNT_ID {get;set;}
+public Int32? ADRESS_ID {get;set;}
+public long? USER_ID {get;set;}
+public long? ENTRY_USER_ID {get;set;}
+public string ENTRY_DATE {get;set;}
+public Int32? OWNER_ID {get;set;}
+public string DESCRIPTION {get;set;}
 }
 #region Params_Edit_Address_List
 public partial class Params_Edit_Address_List
@@ -2565,24 +2476,6 @@ public List<Product> My_List_To_Delete { get; set; }
 #endregion
 }
 #endregion
-#region Params_Edit_Product_color_List
-public partial class Params_Edit_Product_color_List
-{
-#region Properties
-public List<Product_color> My_List_To_Edit { get; set; }
-public List<Product_color> My_List_To_Delete { get; set; }
-#endregion
-}
-#endregion
-#region Params_Edit_Product_size_List
-public partial class Params_Edit_Product_size_List
-{
-#region Properties
-public List<Product_size> My_List_To_Edit { get; set; }
-public List<Product_size> My_List_To_Delete { get; set; }
-#endregion
-}
-#endregion
 #region Params_Edit_Size_List
 public partial class Params_Edit_Size_List
 {
@@ -2607,6 +2500,15 @@ public partial class Params_Edit_User_List
 #region Properties
 public List<User> My_List_To_Edit { get; set; }
 public List<User> My_List_To_Delete { get; set; }
+#endregion
+}
+#endregion
+#region Params_Edit_User_account_List
+public partial class Params_Edit_User_account_List
+{
+#region Properties
+public List<User_account> My_List_To_Edit { get; set; }
+public List<User_account> My_List_To_Delete { get; set; }
 #endregion
 }
 #endregion

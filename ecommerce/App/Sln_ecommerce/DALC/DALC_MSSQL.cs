@@ -188,30 +188,6 @@ oTools.CopyPropValues_FromDataRecord(R, o);
 }
 return o;
 }
-public Product_color Get_Product_color_By_PRODUCT_COLOR_ID ( long? PRODUCT_COLOR_ID)
-{
-Product_color o = new Product_color();
-dynamic p = new ExpandoObject();
-p.PRODUCT_COLOR_ID = PRODUCT_COLOR_ID;
-IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_PRODUCT_COLOR_ID", p);
-var R = Q.FirstOrDefault();
-if (R != null){
-oTools.CopyPropValues_FromDataRecord(R, o);
-}
-return o;
-}
-public Product_size Get_Product_size_By_PRODUCT_SIZE_ID ( long? PRODUCT_SIZE_ID)
-{
-Product_size o = new Product_size();
-dynamic p = new ExpandoObject();
-p.PRODUCT_SIZE_ID = PRODUCT_SIZE_ID;
-IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_PRODUCT_SIZE_ID", p);
-var R = Q.FirstOrDefault();
-if (R != null){
-oTools.CopyPropValues_FromDataRecord(R, o);
-}
-return o;
-}
 public Size Get_Size_By_SIZE_ID ( Int32? SIZE_ID)
 {
 Size o = new Size();
@@ -242,6 +218,18 @@ User o = new User();
 dynamic p = new ExpandoObject();
 p.USER_ID = USER_ID;
 IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID", p);
+var R = Q.FirstOrDefault();
+if (R != null){
+oTools.CopyPropValues_FromDataRecord(R, o);
+}
+return o;
+}
+public User_account Get_User_account_By_USER_ACCOUNT_ID ( long? USER_ACCOUNT_ID)
+{
+User_account o = new User_account();
+dynamic p = new ExpandoObject();
+p.USER_ACCOUNT_ID = USER_ACCOUNT_ID;
+IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ACCOUNT_ID", p);
 var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
@@ -330,7 +318,7 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(R["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(R["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(R["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(R["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
 o.My_Adress.ADRESS_ID = GV<Int32>(R["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(R["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(R["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(R["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(R["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(R["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(R["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(R["T_ADRESS_OWNER_ID"]);
 }
@@ -418,7 +406,7 @@ oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Invoice = new Invoice();
 o.My_Invoice.INVOICE_ID = GV<Int32>(R["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(R["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(R["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(R["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(R["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(R["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(R["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(R["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(R["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(R["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(R["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(R["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(R["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(R["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(R["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(R["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(R["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(R["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(R["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(R["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(R["T_PRODUCT_OWNER_ID"]);
+o.My_Product.PRODUCT_ID = GV<Int32>(R["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(R["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(R["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(R["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(R["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(R["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(R["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(R["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(R["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(R["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(R["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(R["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(R["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(R["T_PRODUCT_OWNER_ID"]);
 }
 return o;
 }
@@ -445,36 +433,8 @@ if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(R["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(R["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(R["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(R["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(R["T_CATEGORY_OWNER_ID"]);
-}
-return o;
-}
-public Product_color Get_Product_color_By_PRODUCT_COLOR_ID_Adv ( long? PRODUCT_COLOR_ID)
-{
-Product_color o = new Product_color();
-dynamic p = new ExpandoObject();
-p.PRODUCT_COLOR_ID = PRODUCT_COLOR_ID;
-IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_PRODUCT_COLOR_ID_ADV", p);
-var R = Q.FirstOrDefault();
-if (R != null){
-oTools.CopyPropValues_FromDataRecord(R, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(R["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(R["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(R["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(R["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(R["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(R["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(R["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(R["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(R["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(R["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(R["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(R["T_PRODUCT_OWNER_ID"]);
 o.My_Color = new Color();
 o.My_Color.COLOR_ID = GV<Int32>(R["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(R["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(R["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(R["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(R["T_COLOR_OWNER_ID"]);
-}
-return o;
-}
-public Product_size Get_Product_size_By_PRODUCT_SIZE_ID_Adv ( long? PRODUCT_SIZE_ID)
-{
-Product_size o = new Product_size();
-dynamic p = new ExpandoObject();
-p.PRODUCT_SIZE_ID = PRODUCT_SIZE_ID;
-IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_PRODUCT_SIZE_ID_ADV", p);
-var R = Q.FirstOrDefault();
-if (R != null){
-oTools.CopyPropValues_FromDataRecord(R, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(R["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(R["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(R["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(R["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(R["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(R["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(R["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(R["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(R["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(R["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(R["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(R["T_PRODUCT_OWNER_ID"]);
 o.My_Size = new Size();
 o.My_Size.SIZE_ID = GV<Int32>(R["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(R["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(R["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(R["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(R["T_SIZE_OWNER_ID"]);
 }
@@ -501,6 +461,22 @@ IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID_ADV", p
 var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
+}
+return o;
+}
+public User_account Get_User_account_By_USER_ACCOUNT_ID_Adv ( long? USER_ACCOUNT_ID)
+{
+User_account o = new User_account();
+dynamic p = new ExpandoObject();
+p.USER_ACCOUNT_ID = USER_ACCOUNT_ID;
+IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ACCOUNT_ID_ADV", p);
+var R = Q.FirstOrDefault();
+if (R != null){
+oTools.CopyPropValues_FromDataRecord(R, o);
+o.My_Adress = new Adress();
+o.My_Adress.ADRESS_ID = GV<Int32>(R["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(R["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(R["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(R["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(R["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(R["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(R["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(R["T_ADRESS_OWNER_ID"]);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(R["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(R["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(R["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
 }
 return o;
 }
@@ -714,34 +690,6 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Product_color> Get_Product_color_By_PRODUCT_COLOR_ID_List ( List<long?> PRODUCT_COLOR_ID_LIST)
-{
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.PRODUCT_COLOR_ID_LIST = string.Join(",", PRODUCT_COLOR_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_PRODUCT_COLOR_ID_LIST", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_PRODUCT_SIZE_ID_List ( List<long?> PRODUCT_SIZE_ID_LIST)
-{
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.PRODUCT_SIZE_ID_LIST = string.Join(",", PRODUCT_SIZE_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_PRODUCT_SIZE_ID_LIST", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
 public List<Size> Get_Size_By_SIZE_ID_List ( List<Int32?> SIZE_ID_LIST)
 {
 List<Size> oList = new List<Size>();
@@ -778,6 +726,20 @@ p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray());
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID_LIST", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ACCOUNT_ID_List ( List<long?> USER_ACCOUNT_ID_LIST)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.USER_ACCOUNT_ID_LIST = string.Join(",", USER_ACCOUNT_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ACCOUNT_ID_LIST", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -876,7 +838,7 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
 o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
@@ -976,7 +938,7 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Invoice = new Invoice();
 o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -1007,40 +969,8 @@ Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_color> Get_Product_color_By_PRODUCT_COLOR_ID_List_Adv ( List<long?> PRODUCT_COLOR_ID_LIST)
-{
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.PRODUCT_COLOR_ID_LIST = string.Join(",", PRODUCT_COLOR_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_PRODUCT_COLOR_ID_LIST_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 o.My_Color = new Color();
 o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_PRODUCT_SIZE_ID_List_Adv ( List<long?> PRODUCT_SIZE_ID_LIST)
-{
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.PRODUCT_SIZE_ID_LIST = string.Join(",", PRODUCT_SIZE_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_PRODUCT_SIZE_ID_LIST_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 o.My_Size = new Size();
 o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
@@ -1071,6 +1001,24 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USER_ID_LIST_AD
 if (R != null) {foreach (var X in R) {
 User o = new User();
 oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ACCOUNT_ID_List_Adv ( List<long?> USER_ACCOUNT_ID_LIST)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.USER_ACCOUNT_ID_LIST = string.Join(",", USER_ACCOUNT_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ACCOUNT_ID_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Adress = new Adress();
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -1608,84 +1556,28 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Product_color> Get_Product_color_By_OWNER_ID ( Int32? OWNER_ID)
+public List<Product> Get_Product_By_COLOR_ID ( Int32? COLOR_ID)
 {
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.OWNER_ID = OWNER_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_OWNER_ID", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_color> Get_Product_color_By_PRODUCT_ID ( Int32? PRODUCT_ID)
-{
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.PRODUCT_ID = PRODUCT_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_PRODUCT_ID", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_color> Get_Product_color_By_COLOR_ID ( Int32? COLOR_ID)
-{
-List<Product_color> oList = new List<Product_color>();
+List<Product> oList = new List<Product>();
 dynamic p = new ExpandoObject();
 p.COLOR_ID = COLOR_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_COLOR_ID", p);
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_BY_COLOR_ID", p);
 if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
+Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
 }
 return oList;
 }
-public List<Product_size> Get_Product_size_By_OWNER_ID ( Int32? OWNER_ID)
+public List<Product> Get_Product_By_SIZE_ID ( Int32? SIZE_ID)
 {
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.OWNER_ID = OWNER_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_OWNER_ID", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_PRODUCT_ID ( Int32? PRODUCT_ID)
-{
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.PRODUCT_ID = PRODUCT_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_PRODUCT_ID", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_SIZE_ID ( Int32? SIZE_ID)
-{
-List<Product_size> oList = new List<Product_size>();
+List<Product> oList = new List<Product>();
 dynamic p = new ExpandoObject();
 p.SIZE_ID = SIZE_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_SIZE_ID", p);
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_BY_SIZE_ID", p);
 if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
+Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -1784,6 +1676,48 @@ p.USERNAME = USERNAME;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USERNAME", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_OWNER_ID ( Int32? OWNER_ID)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.OWNER_ID = OWNER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_OWNER_ID", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ID ( long? USER_ID)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.USER_ID = USER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ID", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_ADRESS_ID ( Int32? ADRESS_ID)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.ADRESS_ID = ADRESS_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_ADRESS_ID", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -2058,7 +1992,7 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
 o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
@@ -2076,7 +2010,7 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
 o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
@@ -2094,7 +2028,7 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
 o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
@@ -2340,7 +2274,7 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Invoice = new Invoice();
 o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -2358,7 +2292,7 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Invoice = new Invoice();
 o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -2376,7 +2310,7 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Invoice = new Invoice();
 o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -2407,6 +2341,10 @@ Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
+o.My_Color = new Color();
+o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
+o.My_Size = new Size();
+o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -2423,6 +2361,10 @@ Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
+o.My_Color = new Color();
+o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
+o.My_Size = new Size();
+o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -2439,6 +2381,10 @@ Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
+o.My_Color = new Color();
+o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
+o.My_Size = new Size();
+o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -2455,76 +2401,28 @@ Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_color> Get_Product_color_By_OWNER_ID_Adv ( Int32? OWNER_ID)
-{
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.OWNER_ID = OWNER_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_OWNER_ID_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 o.My_Color = new Color();
 o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
+o.My_Size = new Size();
+o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
 }
 }
 return oList;
 }
-public List<Product_color> Get_Product_color_By_PRODUCT_ID_Adv ( Int32? PRODUCT_ID)
+public List<Product> Get_Product_By_COLOR_ID_Adv ( Int32? COLOR_ID)
 {
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.PRODUCT_ID = PRODUCT_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_PRODUCT_ID_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
-o.My_Color = new Color();
-o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_color> Get_Product_color_By_COLOR_ID_Adv ( Int32? COLOR_ID)
-{
-List<Product_color> oList = new List<Product_color>();
+List<Product> oList = new List<Product>();
 dynamic p = new ExpandoObject();
 p.COLOR_ID = COLOR_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_COLOR_ID_ADV", p);
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_BY_COLOR_ID_ADV", p);
 if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
+Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Category = new Category();
+o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Color = new Color();
 o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_OWNER_ID_Adv ( Int32? OWNER_ID)
-{
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.OWNER_ID = OWNER_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_OWNER_ID_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 o.My_Size = new Size();
 o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
@@ -2532,35 +2430,19 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Product_size> Get_Product_size_By_PRODUCT_ID_Adv ( Int32? PRODUCT_ID)
+public List<Product> Get_Product_By_SIZE_ID_Adv ( Int32? SIZE_ID)
 {
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.PRODUCT_ID = PRODUCT_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_PRODUCT_ID_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
-o.My_Size = new Size();
-o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_SIZE_ID_Adv ( Int32? SIZE_ID)
-{
-List<Product_size> oList = new List<Product_size>();
+List<Product> oList = new List<Product>();
 dynamic p = new ExpandoObject();
 p.SIZE_ID = SIZE_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_SIZE_ID_ADV", p);
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_BY_SIZE_ID_ADV", p);
 if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
+Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Category = new Category();
+o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
+o.My_Color = new Color();
+o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
 o.My_Size = new Size();
 o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
@@ -2605,6 +2487,60 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USERNAME_ADV", 
 if (R != null) {foreach (var X in R) {
 User o = new User();
 oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_OWNER_ID_Adv ( Int32? OWNER_ID)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.OWNER_ID = OWNER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_OWNER_ID_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Adress = new Adress();
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ID_Adv ( long? USER_ID)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.USER_ID = USER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ID_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Adress = new Adress();
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_ADRESS_ID_Adv ( Int32? ADRESS_ID)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.ADRESS_ID = ADRESS_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_ADRESS_ID_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Adress = new Adress();
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -2834,56 +2770,56 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Product_color> Get_Product_color_By_PRODUCT_ID_List ( List<Int32?> PRODUCT_ID_LIST)
+public List<Product> Get_Product_By_COLOR_ID_List ( List<Int32?> COLOR_ID_LIST)
 {
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_PRODUCT_ID_LIST", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_color> Get_Product_color_By_COLOR_ID_List ( List<Int32?> COLOR_ID_LIST)
-{
-List<Product_color> oList = new List<Product_color>();
+List<Product> oList = new List<Product>();
 dynamic p = new ExpandoObject();
 p.COLOR_ID_LIST = string.Join(",", COLOR_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_COLOR_ID_LIST", p);
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_BY_COLOR_ID_LIST", p);
 if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
+Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
 }
 return oList;
 }
-public List<Product_size> Get_Product_size_By_PRODUCT_ID_List ( List<Int32?> PRODUCT_ID_LIST)
+public List<Product> Get_Product_By_SIZE_ID_List ( List<Int32?> SIZE_ID_LIST)
 {
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_PRODUCT_ID_LIST", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_SIZE_ID_List ( List<Int32?> SIZE_ID_LIST)
-{
-List<Product_size> oList = new List<Product_size>();
+List<Product> oList = new List<Product>();
 dynamic p = new ExpandoObject();
 p.SIZE_ID_LIST = string.Join(",", SIZE_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_SIZE_ID_LIST", p);
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_BY_SIZE_ID_LIST", p);
 if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
+Product o = new Product();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ID_List ( List<long?> USER_ID_LIST)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ID_LIST", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_ADRESS_ID_List ( List<Int32?> ADRESS_ID_LIST)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.ADRESS_ID_LIST = string.Join(",", ADRESS_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_ADRESS_ID_LIST", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -3036,7 +2972,7 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
 o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
@@ -3054,7 +2990,7 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
 o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
@@ -3158,7 +3094,7 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Invoice = new Invoice();
 o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -3176,7 +3112,7 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Invoice = new Invoice();
 o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -3193,58 +3129,28 @@ Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_color> Get_Product_color_By_PRODUCT_ID_List_Adv ( List<Int32?> PRODUCT_ID_LIST)
-{
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_PRODUCT_ID_LIST_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 o.My_Color = new Color();
 o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
+o.My_Size = new Size();
+o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
 }
 }
 return oList;
 }
-public List<Product_color> Get_Product_color_By_COLOR_ID_List_Adv ( List<Int32?> COLOR_ID_LIST)
+public List<Product> Get_Product_By_COLOR_ID_List_Adv ( List<Int32?> COLOR_ID_LIST)
 {
-List<Product_color> oList = new List<Product_color>();
+List<Product> oList = new List<Product>();
 dynamic p = new ExpandoObject();
 p.COLOR_ID_LIST = string.Join(",", COLOR_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_COLOR_ID_LIST_ADV", p);
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_BY_COLOR_ID_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
+Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Category = new Category();
+o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
 o.My_Color = new Color();
 o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_PRODUCT_ID_List_Adv ( List<Int32?> PRODUCT_ID_LIST)
-{
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_PRODUCT_ID_LIST_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 o.My_Size = new Size();
 o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
@@ -3252,19 +3158,57 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Product_size> Get_Product_size_By_SIZE_ID_List_Adv ( List<Int32?> SIZE_ID_LIST)
+public List<Product> Get_Product_By_SIZE_ID_List_Adv ( List<Int32?> SIZE_ID_LIST)
 {
-List<Product_size> oList = new List<Product_size>();
+List<Product> oList = new List<Product>();
 dynamic p = new ExpandoObject();
 p.SIZE_ID_LIST = string.Join(",", SIZE_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_SIZE_ID_LIST_ADV", p);
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_BY_SIZE_ID_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
+Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Category = new Category();
+o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
+o.My_Color = new Color();
+o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
 o.My_Size = new Size();
 o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ID_List_Adv ( List<long?> USER_ID_LIST)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_USER_ID_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Adress = new Adress();
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User_account> Get_User_account_By_ADRESS_ID_List_Adv ( List<Int32?> ADRESS_ID_LIST)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.ADRESS_ID_LIST = string.Join(",", ADRESS_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_ADRESS_ID_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Adress = new Adress();
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -3810,66 +3754,6 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Product_color> Get_Product_color_By_Criteria ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_CRITERIA", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Product_color> Get_Product_color_By_Where ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_WHERE", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Product_size> Get_Product_size_By_Criteria ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_CRITERIA", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Product_size> Get_Product_size_By_Where ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_WHERE", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
 public List<Size> Get_Size_By_Criteria ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Size> oList = new List<Size>();
@@ -3930,11 +3814,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Criteria ( string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User> Get_User_By_Criteria ( string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.EMAIL = EMAIL; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.PHONE = PHONE; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
@@ -3945,14 +3829,44 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Where ( string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User> Get_User_By_Where ( string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.EMAIL = EMAIL; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.PHONE = PHONE; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_account> Get_User_account_By_Criteria ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_CRITERIA", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_account> Get_User_account_By_Where ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_WHERE", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -4174,7 +4088,7 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
 o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
@@ -4193,7 +4107,7 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
 o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
@@ -4384,7 +4298,7 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Invoice = new Invoice();
 o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -4403,7 +4317,7 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Invoice = new Invoice();
 o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -4481,6 +4395,10 @@ Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
+o.My_Color = new Color();
+o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
+o.My_Size = new Size();
+o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -4498,80 +4416,8 @@ Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Product_color> Get_Product_color_By_Criteria_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_CRITERIA_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 o.My_Color = new Color();
 o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Product_color> Get_Product_color_By_Where_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_WHERE_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
-o.My_Color = new Color();
-o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Product_size> Get_Product_size_By_Criteria_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_CRITERIA_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
-o.My_Size = new Size();
-o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Product_size> Get_Product_size_By_Where_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_WHERE_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 o.My_Size = new Size();
 o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
@@ -4610,11 +4456,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Criteria_Adv ( string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User> Get_User_By_Criteria_Adv ( string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.EMAIL = EMAIL; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.PHONE = PHONE; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_ADV", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
@@ -4625,15 +4471,53 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Where_Adv ( string USERNAME, string PASSWORD, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User> Get_User_By_Where_Adv ( string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
-p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.EMAIL = EMAIL; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.PHONE = PHONE; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_ADV", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
 oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_account> Get_User_account_By_Criteria_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_CRITERIA_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Adress = new Adress();
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_account> Get_User_account_By_Where_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_WHERE_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Adress = new Adress();
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -4910,11 +4794,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Product> Get_Product_By_Criteria_InList ( string NAME, string DESCRIPTION, List<Int32?> CATEGORY_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Product> Get_Product_By_Criteria_InList ( string NAME, string DESCRIPTION, List<Int32?> CATEGORY_ID_LIST, List<Int32?> COLOR_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Product> oList = new List<Product>();
 dynamic p = new ExpandoObject();
-p.NAME = NAME; p.DESCRIPTION = DESCRIPTION; p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.NAME = NAME; p.DESCRIPTION = DESCRIPTION; p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.COLOR_ID_LIST = string.Join(",", COLOR_ID_LIST.ToArray()); p.SIZE_ID_LIST = string.Join(",", SIZE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_BY_CRITERIA_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
 Product o = new Product();
@@ -4925,11 +4809,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Product> Get_Product_By_Where_InList ( string NAME, string DESCRIPTION, List<Int32?> CATEGORY_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Product> Get_Product_By_Where_InList ( string NAME, string DESCRIPTION, List<Int32?> CATEGORY_ID_LIST, List<Int32?> COLOR_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Product> oList = new List<Product>();
 dynamic p = new ExpandoObject();
-p.NAME = NAME; p.DESCRIPTION = DESCRIPTION; p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.NAME = NAME; p.DESCRIPTION = DESCRIPTION; p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.COLOR_ID_LIST = string.Join(",", COLOR_ID_LIST.ToArray()); p.SIZE_ID_LIST = string.Join(",", SIZE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_BY_WHERE_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
 Product o = new Product();
@@ -4940,14 +4824,14 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Product_color> Get_Product_color_By_Criteria_InList ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> COLOR_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User_account> Get_User_account_By_Criteria_InList ( string DESCRIPTION, List<Int32?> ADRESS_ID_LIST, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
-List<Product_color> oList = new List<Product_color>();
+List<User_account> oList = new List<User_account>();
 dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.COLOR_ID_LIST = string.Join(",", COLOR_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_CRITERIA_IN_LIST", p);
+p.DESCRIPTION = DESCRIPTION; p.ADRESS_ID_LIST = string.Join(",", ADRESS_ID_LIST.ToArray()); p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_CRITERIA_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
+User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -4955,44 +4839,14 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Product_color> Get_Product_color_By_Where_InList ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> COLOR_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User_account> Get_User_account_By_Where_InList ( string DESCRIPTION, List<Int32?> ADRESS_ID_LIST, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
-List<Product_color> oList = new List<Product_color>();
+List<User_account> oList = new List<User_account>();
 dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.COLOR_ID_LIST = string.Join(",", COLOR_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_WHERE_IN_LIST", p);
+p.DESCRIPTION = DESCRIPTION; p.ADRESS_ID_LIST = string.Join(",", ADRESS_ID_LIST.ToArray()); p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_WHERE_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Product_size> Get_Product_size_By_Criteria_InList ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.SIZE_ID_LIST = string.Join(",", SIZE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_CRITERIA_IN_LIST", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Product_size> Get_Product_size_By_Where_InList ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.SIZE_ID_LIST = string.Join(",", SIZE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_WHERE_IN_LIST", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
+User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -5124,7 +4978,7 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
 o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
@@ -5143,7 +4997,7 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
 o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
@@ -5304,7 +5158,7 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Invoice = new Invoice();
 o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -5323,96 +5177,47 @@ oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Invoice = new Invoice();
 o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
+o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
 }
 }
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Product> Get_Product_By_Criteria_InList_Adv ( string NAME, string DESCRIPTION, List<Int32?> CATEGORY_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Product> Get_Product_By_Criteria_InList_Adv ( string NAME, string DESCRIPTION, List<Int32?> CATEGORY_ID_LIST, List<Int32?> COLOR_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Product> oList = new List<Product>();
 dynamic p = new ExpandoObject();
-p.NAME = NAME; p.DESCRIPTION = DESCRIPTION; p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.NAME = NAME; p.DESCRIPTION = DESCRIPTION; p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.COLOR_ID_LIST = string.Join(",", COLOR_ID_LIST.ToArray()); p.SIZE_ID_LIST = string.Join(",", SIZE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_BY_CRITERIA_IN_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
 Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
+o.My_Color = new Color();
+o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
+o.My_Size = new Size();
+o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
 }
 }
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Product> Get_Product_By_Where_InList_Adv ( string NAME, string DESCRIPTION, List<Int32?> CATEGORY_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Product> Get_Product_By_Where_InList_Adv ( string NAME, string DESCRIPTION, List<Int32?> CATEGORY_ID_LIST, List<Int32?> COLOR_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Product> oList = new List<Product>();
 dynamic p = new ExpandoObject();
-p.NAME = NAME; p.DESCRIPTION = DESCRIPTION; p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.NAME = NAME; p.DESCRIPTION = DESCRIPTION; p.CATEGORY_ID_LIST = string.Join(",", CATEGORY_ID_LIST.ToArray()); p.COLOR_ID_LIST = string.Join(",", COLOR_ID_LIST.ToArray()); p.SIZE_ID_LIST = string.Join(",", SIZE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_BY_WHERE_IN_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
 Product o = new Product();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Category = new Category();
 o.My_Category.CATEGORY_ID = GV<Int32>(X["T_CATEGORY_CATEGORY_ID"]);o.My_Category.NAME = GV<String>(X["T_CATEGORY_NAME"]);o.My_Category.ENTRY_USER_ID = GV<Int64>(X["T_CATEGORY_ENTRY_USER_ID"]);o.My_Category.ENTRY_DATE = GV<String>(X["T_CATEGORY_ENTRY_DATE"]);o.My_Category.OWNER_ID = GV<Int32>(X["T_CATEGORY_OWNER_ID"]);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Product_color> Get_Product_color_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> COLOR_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.COLOR_ID_LIST = string.Join(",", COLOR_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_CRITERIA_IN_LIST_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 o.My_Color = new Color();
 o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Product_color> Get_Product_color_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> COLOR_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_color> oList = new List<Product_color>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.COLOR_ID_LIST = string.Join(",", COLOR_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_COLOR_BY_WHERE_IN_LIST_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_color o = new Product_color();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
-o.My_Color = new Color();
-o.My_Color.COLOR_ID = GV<Int32>(X["T_COLOR_COLOR_ID"]);o.My_Color.NAME = GV<String>(X["T_COLOR_NAME"]);o.My_Color.ENTRY_USER_ID = GV<Int64>(X["T_COLOR_ENTRY_USER_ID"]);o.My_Color.ENTRY_DATE = GV<String>(X["T_COLOR_ENTRY_DATE"]);o.My_Color.OWNER_ID = GV<Int32>(X["T_COLOR_OWNER_ID"]);
-oList.Add(o);
-}
-}
-TOTAL_COUNT = p.TOTAL_COUNT;
-return oList;
-}
-public List<Product_size> Get_Product_size_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
-{
-List<Product_size> oList = new List<Product_size>();
-dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.SIZE_ID_LIST = string.Join(",", SIZE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_CRITERIA_IN_LIST_ADV", p);
-if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 o.My_Size = new Size();
 o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
 oList.Add(o);
@@ -5421,19 +5226,38 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Product_size> Get_Product_size_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User_account> Get_User_account_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> ADRESS_ID_LIST, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
-List<Product_size> oList = new List<Product_size>();
+List<User_account> oList = new List<User_account>();
 dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.SIZE_ID_LIST = string.Join(",", SIZE_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_PRODUCT_SIZE_BY_WHERE_IN_LIST_ADV", p);
+p.DESCRIPTION = DESCRIPTION; p.ADRESS_ID_LIST = string.Join(",", ADRESS_ID_LIST.ToArray()); p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_CRITERIA_IN_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
-Product_size o = new Product_size();
+User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
-o.My_Size = new Size();
-o.My_Size.SIZE_ID = GV<Int32>(X["T_SIZE_SIZE_ID"]);o.My_Size.DESCRIPTION = GV<String>(X["T_SIZE_DESCRIPTION"]);o.My_Size.ENTRY_USER_ID = GV<Int64>(X["T_SIZE_ENTRY_USER_ID"]);o.My_Size.ENTRY_DATE = GV<String>(X["T_SIZE_ENTRY_DATE"]);o.My_Size.OWNER_ID = GV<Int32>(X["T_SIZE_OWNER_ID"]);
+o.My_Adress = new Adress();
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<User_account> Get_User_account_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> ADRESS_ID_LIST, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<User_account> oList = new List<User_account>();
+dynamic p = new ExpandoObject();
+p.DESCRIPTION = DESCRIPTION; p.ADRESS_ID_LIST = string.Join(",", ADRESS_ID_LIST.ToArray()); p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_ACCOUNT_BY_WHERE_IN_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+User_account o = new User_account();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Adress = new Adress();
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -5515,16 +5339,6 @@ public void Delete_Product ( Int32? PRODUCT_ID)
 var p = new { PRODUCT_ID = PRODUCT_ID };
 ExecuteDelete("UPG_DELETE_PRODUCT", p);
 }
-public void Delete_Product_color ( long? PRODUCT_COLOR_ID)
-{
-var p = new { PRODUCT_COLOR_ID = PRODUCT_COLOR_ID };
-ExecuteDelete("UPG_DELETE_PRODUCT_COLOR", p);
-}
-public void Delete_Product_size ( long? PRODUCT_SIZE_ID)
-{
-var p = new { PRODUCT_SIZE_ID = PRODUCT_SIZE_ID };
-ExecuteDelete("UPG_DELETE_PRODUCT_SIZE", p);
-}
 public void Delete_Size ( Int32? SIZE_ID)
 {
 var p = new { SIZE_ID = SIZE_ID };
@@ -5539,6 +5353,11 @@ public void Delete_User ( long? USER_ID)
 {
 var p = new { USER_ID = USER_ID };
 ExecuteDelete("UPG_DELETE_USER", p);
+}
+public void Delete_User_account ( long? USER_ACCOUNT_ID)
+{
+var p = new { USER_ACCOUNT_ID = USER_ACCOUNT_ID };
+ExecuteDelete("UPG_DELETE_USER_ACCOUNT", p);
 }
 public void Delete_Address_By_PERSON_ID ( long? PERSON_ID)
 {
@@ -5730,35 +5549,15 @@ public void Delete_Product_By_IS_RECOMMENDED ( bool? IS_RECOMMENDED)
 var p = new { IS_RECOMMENDED = IS_RECOMMENDED };
 ExecuteDelete("UPG_DELETE_PRODUCT_BY_IS_RECOMMENDED", p);
 }
-public void Delete_Product_color_By_OWNER_ID ( Int32? OWNER_ID)
-{
-var p = new { OWNER_ID = OWNER_ID };
-ExecuteDelete("UPG_DELETE_PRODUCT_COLOR_BY_OWNER_ID", p);
-}
-public void Delete_Product_color_By_PRODUCT_ID ( Int32? PRODUCT_ID)
-{
-var p = new { PRODUCT_ID = PRODUCT_ID };
-ExecuteDelete("UPG_DELETE_PRODUCT_COLOR_BY_PRODUCT_ID", p);
-}
-public void Delete_Product_color_By_COLOR_ID ( Int32? COLOR_ID)
+public void Delete_Product_By_COLOR_ID ( Int32? COLOR_ID)
 {
 var p = new { COLOR_ID = COLOR_ID };
-ExecuteDelete("UPG_DELETE_PRODUCT_COLOR_BY_COLOR_ID", p);
+ExecuteDelete("UPG_DELETE_PRODUCT_BY_COLOR_ID", p);
 }
-public void Delete_Product_size_By_OWNER_ID ( Int32? OWNER_ID)
-{
-var p = new { OWNER_ID = OWNER_ID };
-ExecuteDelete("UPG_DELETE_PRODUCT_SIZE_BY_OWNER_ID", p);
-}
-public void Delete_Product_size_By_PRODUCT_ID ( Int32? PRODUCT_ID)
-{
-var p = new { PRODUCT_ID = PRODUCT_ID };
-ExecuteDelete("UPG_DELETE_PRODUCT_SIZE_BY_PRODUCT_ID", p);
-}
-public void Delete_Product_size_By_SIZE_ID ( Int32? SIZE_ID)
+public void Delete_Product_By_SIZE_ID ( Int32? SIZE_ID)
 {
 var p = new { SIZE_ID = SIZE_ID };
-ExecuteDelete("UPG_DELETE_PRODUCT_SIZE_BY_SIZE_ID", p);
+ExecuteDelete("UPG_DELETE_PRODUCT_BY_SIZE_ID", p);
 }
 public void Delete_Size_By_OWNER_ID ( Int32? OWNER_ID)
 {
@@ -5794,6 +5593,21 @@ public void Delete_User_By_USERNAME ( string USERNAME)
 {
 var p = new { USERNAME = USERNAME };
 ExecuteDelete("UPG_DELETE_USER_BY_USERNAME", p);
+}
+public void Delete_User_account_By_OWNER_ID ( Int32? OWNER_ID)
+{
+var p = new { OWNER_ID = OWNER_ID };
+ExecuteDelete("UPG_DELETE_USER_ACCOUNT_BY_OWNER_ID", p);
+}
+public void Delete_User_account_By_USER_ID ( long? USER_ID)
+{
+var p = new { USER_ID = USER_ID };
+ExecuteDelete("UPG_DELETE_USER_ACCOUNT_BY_USER_ID", p);
+}
+public void Delete_User_account_By_ADRESS_ID ( Int32? ADRESS_ID)
+{
+var p = new { ADRESS_ID = ADRESS_ID };
+ExecuteDelete("UPG_DELETE_USER_ACCOUNT_BY_ADRESS_ID", p);
 }
 public long? Edit_Address ( long? ADDRESS_ID, long? PERSON_ID, string ADDRESS_TYPE_CODE, long? LOC_L1_ID, long? LOC_L2_ID, long? LOC_L3_ID, long? LOC_L4_ID, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, string NOTES, string ENTRY_DATE, long? ENTRY_USER_ID, Int32? OWNER_ID)
 {
@@ -5893,26 +5707,12 @@ oPerson.PERSON_ID = PERSON_ID;oPerson.FIRST_NAME = FIRST_NAME;oPerson.LAST_NAME 
 ExecuteEdit("UPG_EDIT_PERSON", oPerson, "PERSON_ID");
 return oPerson.PERSON_ID;
 }
-public Int32? Edit_Product ( Int32? PRODUCT_ID, string NAME, string DESCRIPTION, Int32? CATEGORY_ID, Int32? STOCK, decimal FULL_PRICE, decimal? DISCOUNT_PRICE, bool? IS_BEST_SELLING, bool? IS_RECOMMENDED, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
+public Int32? Edit_Product ( Int32? PRODUCT_ID, string NAME, string DESCRIPTION, Int32? CATEGORY_ID, Int32? STOCK, decimal FULL_PRICE, Int32? COLOR_ID, Int32? SIZE_ID, decimal? DISCOUNT_PRICE, bool? IS_BEST_SELLING, bool? IS_RECOMMENDED, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
 {
 Product oProduct = new Product();
-oProduct.PRODUCT_ID = PRODUCT_ID;oProduct.NAME = NAME;oProduct.DESCRIPTION = DESCRIPTION;oProduct.CATEGORY_ID = CATEGORY_ID;oProduct.STOCK = STOCK;oProduct.FULL_PRICE = FULL_PRICE;oProduct.DISCOUNT_PRICE = DISCOUNT_PRICE;oProduct.IS_BEST_SELLING = IS_BEST_SELLING;oProduct.IS_RECOMMENDED = IS_RECOMMENDED;oProduct.ENTRY_USER_ID = ENTRY_USER_ID;oProduct.ENTRY_DATE = ENTRY_DATE;oProduct.OWNER_ID = OWNER_ID;
+oProduct.PRODUCT_ID = PRODUCT_ID;oProduct.NAME = NAME;oProduct.DESCRIPTION = DESCRIPTION;oProduct.CATEGORY_ID = CATEGORY_ID;oProduct.STOCK = STOCK;oProduct.FULL_PRICE = FULL_PRICE;oProduct.COLOR_ID = COLOR_ID;oProduct.SIZE_ID = SIZE_ID;oProduct.DISCOUNT_PRICE = DISCOUNT_PRICE;oProduct.IS_BEST_SELLING = IS_BEST_SELLING;oProduct.IS_RECOMMENDED = IS_RECOMMENDED;oProduct.ENTRY_USER_ID = ENTRY_USER_ID;oProduct.ENTRY_DATE = ENTRY_DATE;oProduct.OWNER_ID = OWNER_ID;
 ExecuteEdit("UPG_EDIT_PRODUCT", oProduct, "PRODUCT_ID");
 return oProduct.PRODUCT_ID;
-}
-public long? Edit_Product_color ( long? PRODUCT_COLOR_ID, Int32? PRODUCT_ID, Int32? COLOR_ID, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION)
-{
-Product_color oProduct_color = new Product_color();
-oProduct_color.PRODUCT_COLOR_ID = PRODUCT_COLOR_ID;oProduct_color.PRODUCT_ID = PRODUCT_ID;oProduct_color.COLOR_ID = COLOR_ID;oProduct_color.ENTRY_USER_ID = ENTRY_USER_ID;oProduct_color.ENTRY_DATE = ENTRY_DATE;oProduct_color.OWNER_ID = OWNER_ID;oProduct_color.DESCRIPTION = DESCRIPTION;
-ExecuteEdit("UPG_EDIT_PRODUCT_COLOR", oProduct_color, "PRODUCT_COLOR_ID");
-return oProduct_color.PRODUCT_COLOR_ID;
-}
-public long? Edit_Product_size ( long? PRODUCT_SIZE_ID, Int32? PRODUCT_ID, Int32? SIZE_ID, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION)
-{
-Product_size oProduct_size = new Product_size();
-oProduct_size.PRODUCT_SIZE_ID = PRODUCT_SIZE_ID;oProduct_size.PRODUCT_ID = PRODUCT_ID;oProduct_size.SIZE_ID = SIZE_ID;oProduct_size.ENTRY_USER_ID = ENTRY_USER_ID;oProduct_size.ENTRY_DATE = ENTRY_DATE;oProduct_size.OWNER_ID = OWNER_ID;oProduct_size.DESCRIPTION = DESCRIPTION;
-ExecuteEdit("UPG_EDIT_PRODUCT_SIZE", oProduct_size, "PRODUCT_SIZE_ID");
-return oProduct_size.PRODUCT_SIZE_ID;
 }
 public Int32? Edit_Size ( Int32? SIZE_ID, string DESCRIPTION, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
 {
@@ -5928,12 +5728,19 @@ oUploaded_file.UPLOADED_FILE_ID = UPLOADED_FILE_ID;oUploaded_file.REL_ENTITY = R
 ExecuteEdit("UPG_EDIT_UPLOADED_FILE", oUploaded_file, "UPLOADED_FILE_ID");
 return oUploaded_file.UPLOADED_FILE_ID;
 }
-public long? Edit_User ( long? USER_ID, Int32? OWNER_ID, string USERNAME, string PASSWORD, string USER_TYPE_CODE, bool? IS_ACTIVE, string ENTRY_DATE)
+public long? Edit_User ( long? USER_ID, Int32? OWNER_ID, string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, bool? IS_ACTIVE, string ENTRY_DATE)
 {
 User oUser = new User();
-oUser.USER_ID = USER_ID;oUser.OWNER_ID = OWNER_ID;oUser.USERNAME = USERNAME;oUser.PASSWORD = PASSWORD;oUser.USER_TYPE_CODE = USER_TYPE_CODE;oUser.IS_ACTIVE = IS_ACTIVE;oUser.ENTRY_DATE = ENTRY_DATE;
+oUser.USER_ID = USER_ID;oUser.OWNER_ID = OWNER_ID;oUser.EMAIL = EMAIL;oUser.USERNAME = USERNAME;oUser.PASSWORD = PASSWORD;oUser.PHONE = PHONE;oUser.USER_TYPE_CODE = USER_TYPE_CODE;oUser.IS_ACTIVE = IS_ACTIVE;oUser.ENTRY_DATE = ENTRY_DATE;
 ExecuteEdit("UPG_EDIT_USER", oUser, "USER_ID");
 return oUser.USER_ID;
+}
+public long? Edit_User_account ( long? USER_ACCOUNT_ID, Int32? ADRESS_ID, long? USER_ID, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION)
+{
+User_account oUser_account = new User_account();
+oUser_account.USER_ACCOUNT_ID = USER_ACCOUNT_ID;oUser_account.ADRESS_ID = ADRESS_ID;oUser_account.USER_ID = USER_ID;oUser_account.ENTRY_USER_ID = ENTRY_USER_ID;oUser_account.ENTRY_DATE = ENTRY_DATE;oUser_account.OWNER_ID = OWNER_ID;oUser_account.DESCRIPTION = DESCRIPTION;
+ExecuteEdit("UPG_EDIT_USER_ACCOUNT", oUser_account, "USER_ACCOUNT_ID");
+return oUser_account.USER_ACCOUNT_ID;
 }
 public List<dynamic> GET_DISTINCT_SETUP_TBL ( Int32? OWNER_ID)
 {
@@ -6193,7 +6000,7 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_PRODUCT", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.PRODUCT_ID = GV<Int32>(X["PRODUCT_ID"]);o.NAME = GV<String>(X["NAME"]);o.DESCRIPTION = GV<String>(X["DESCRIPTION"]);o.CATEGORY_ID = GV<Int32>(X["CATEGORY_ID"]);o.STOCK = GV<Int32>(X["STOCK"]);o.FULL_PRICE = GV<Decimal>(X["FULL_PRICE"]);o.DISCOUNT_PRICE = GV<Decimal>(X["DISCOUNT_PRICE"]);o.IS_BEST_SELLING = GV<Boolean>(X["IS_BEST_SELLING"]);o.IS_RECOMMENDED = GV<Boolean>(X["IS_RECOMMENDED"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
+o.PRODUCT_ID = GV<Int32>(X["PRODUCT_ID"]);o.NAME = GV<String>(X["NAME"]);o.DESCRIPTION = GV<String>(X["DESCRIPTION"]);o.CATEGORY_ID = GV<Int32>(X["CATEGORY_ID"]);o.STOCK = GV<Int32>(X["STOCK"]);o.FULL_PRICE = GV<Decimal>(X["FULL_PRICE"]);o.COLOR_ID = GV<Int32>(X["COLOR_ID"]);o.SIZE_ID = GV<Int32>(X["SIZE_ID"]);o.DISCOUNT_PRICE = GV<Decimal>(X["DISCOUNT_PRICE"]);o.IS_BEST_SELLING = GV<Boolean>(X["IS_BEST_SELLING"]);o.IS_RECOMMENDED = GV<Boolean>(X["IS_RECOMMENDED"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -6263,7 +6070,21 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.USER_TYPE_CODE = GV<String>(X["USER_TYPE_CODE"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.EMAIL = GV<String>(X["EMAIL"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.PHONE = GV<String>(X["PHONE"]);o.ADRESS_ID = GV<Int32>(X["ADRESS_ID"]);o.USER_TYPE_CODE = GV<String>(X["USER_TYPE_CODE"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<dynamic> UP_BULK_UPSERT_USER_ACCOUNT ( string JSON_CONTENT)
+{
+List<dynamic> oList = new List<dynamic>();
+dynamic p = new ExpandoObject();
+p.JSON_CONTENT = JSON_CONTENT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER_ACCOUNT", p);
+if (R != null) {foreach (var X in R) {
+dynamic o = new ExpandoObject();
+o.USER_ACCOUNT_ID = GV<Int64>(X["USER_ACCOUNT_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.DESCRIPTION = GV<String>(X["DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -6387,7 +6208,7 @@ p.OWNER_ID = OWNER_ID; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_GET_USER_BY_CREDENTIALS", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.EMAIL = GV<String>(X["EMAIL"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
 oList.Add(o);
 }
 }

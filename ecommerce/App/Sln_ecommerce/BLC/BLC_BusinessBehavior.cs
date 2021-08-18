@@ -189,8 +189,91 @@ oScope.Complete();
 if (OnPostEvent_General != null){OnPostEvent_General("Edit_Adress_WithInvoice");}
 }
 #endregion
-#region Edit_Adress_WithRelatedData(Adress i_Adress,List<Customer> i_List_Customer,List<Invoice> i_List_Invoice)
-public void Edit_Adress_WithRelatedData(Adress i_Adress,List<Customer> i_List_Customer,List<Invoice> i_List_Invoice)
+#region Reset_User_account_By_Adress
+public void Reset_User_account_By_Adress(Adress i_Adress, List<User_account> i_User_account_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_User_account_By_ADRESS_ID oParams_Delete_User_account_By_ADRESS_ID = new Params_Delete_User_account_By_ADRESS_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_User_account_By_Adress");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing User_account
+//---------------------------------
+oParams_Delete_User_account_By_ADRESS_ID.ADRESS_ID = i_Adress.ADRESS_ID;
+Delete_User_account_By_ADRESS_ID(oParams_Delete_User_account_By_ADRESS_ID);
+//---------------------------------
+// Edit User_account
+//---------------------------------
+Edit_Adress_WithUser_account(i_Adress, i_User_account_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_User_account_By_Adress");}
+}
+#endregion
+#region Reset_User_account_By_Adress
+public void Reset_User_account_By_Adress(Adress i_Adress, List<User_account> i_User_account_List_To_Delete,List<User_account> i_User_account_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_User_account oParams_Delete_User_account = new Params_Delete_User_account();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_User_account_By_Adress");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_User_account_List_To_Delete != null)
+{
+foreach (var oRow in i_User_account_List_To_Delete)
+{
+oParams_Delete_User_account.USER_ACCOUNT_ID = oRow.USER_ACCOUNT_ID;
+Delete_User_account(oParams_Delete_User_account);
+}
+}
+//---------------------------------
+// Edit User_account
+//---------------------------------
+Edit_Adress_WithUser_account(i_Adress, i_User_account_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_User_account_By_Adress");}
+}
+#endregion
+#region Edit_Adress_With_User_account(Adress i_Adress,List<User_account> i_User_accountList)
+public void Edit_Adress_WithUser_account(Adress i_Adress,List<User_account> i_List_User_account)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Adress_WithUser_account");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_Adress(i_Adress);
+if (i_List_User_account != null)
+{
+foreach(User_account oUser_account in i_List_User_account)
+{
+oUser_account.ADRESS_ID = i_Adress.ADRESS_ID;
+Edit_User_account(oUser_account);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Adress_WithUser_account");}
+}
+#endregion
+#region Edit_Adress_WithRelatedData(Adress i_Adress,List<Customer> i_List_Customer,List<Invoice> i_List_Invoice,List<User_account> i_List_User_account)
+public void Edit_Adress_WithRelatedData(Adress i_Adress,List<Customer> i_List_Customer,List<Invoice> i_List_Invoice,List<User_account> i_List_User_account)
 {
 #region Declaration And Initialization Section.
 #endregion
@@ -217,6 +300,14 @@ oInvoice.ADRESS_ID = i_Adress.ADRESS_ID;
 Edit_Invoice(oInvoice);
 }
 }
+if (i_List_User_account != null)
+{
+foreach(User_account oUser_account in i_List_User_account)
+{
+oUser_account.ADRESS_ID = i_Adress.ADRESS_ID;
+Edit_User_account(oUser_account);
+}
+}
 //-------------------------------
 oScope.Complete();
 }
@@ -231,6 +322,7 @@ public void Delete_Adress_With_Children(Adress i_Adress)
 Params_Delete_Adress oParams_Delete_Adress = new Params_Delete_Adress();
 Params_Delete_Customer_By_ADRESS_ID oParams_Delete_Customer_By_ADRESS_ID = new Params_Delete_Customer_By_ADRESS_ID();
 Params_Delete_Invoice_By_ADRESS_ID oParams_Delete_Invoice_By_ADRESS_ID = new Params_Delete_Invoice_By_ADRESS_ID();
+Params_Delete_User_account_By_ADRESS_ID oParams_Delete_User_account_By_ADRESS_ID = new Params_Delete_User_account_By_ADRESS_ID();
 #endregion
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Adress_With_Children");}
  #region Body Section.
@@ -241,6 +333,8 @@ oParams_Delete_Customer_By_ADRESS_ID.ADRESS_ID = i_Adress.ADRESS_ID;
 Delete_Customer_By_ADRESS_ID(oParams_Delete_Customer_By_ADRESS_ID);
 oParams_Delete_Invoice_By_ADRESS_ID.ADRESS_ID = i_Adress.ADRESS_ID;
 Delete_Invoice_By_ADRESS_ID(oParams_Delete_Invoice_By_ADRESS_ID);
+oParams_Delete_User_account_By_ADRESS_ID.ADRESS_ID = i_Adress.ADRESS_ID;
+Delete_User_account_By_ADRESS_ID(oParams_Delete_User_account_By_ADRESS_ID);
 //-------------------------
 
 //-------------------------
@@ -389,91 +483,91 @@ oScope.Complete();
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Category_With_Children");}
 }
 #endregion
-#region Reset_Product_color_By_Color
-public void Reset_Product_color_By_Color(Color i_Color, List<Product_color> i_Product_color_List)
+#region Reset_Product_By_Color
+public void Reset_Product_By_Color(Color i_Color, List<Product> i_Product_List)
 {
 #region Declaration And Initialization Section.
-Params_Delete_Product_color_By_COLOR_ID oParams_Delete_Product_color_By_COLOR_ID = new Params_Delete_Product_color_By_COLOR_ID();
+Params_Delete_Product_By_COLOR_ID oParams_Delete_Product_By_COLOR_ID = new Params_Delete_Product_By_COLOR_ID();
 #endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Product_color_By_Color");}
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Product_By_Color");}
 #region Body Section.
 using (TransactionScope oScope = new TransactionScope())
 {
-// Delete Existing Product_color
+// Delete Existing Product
 //---------------------------------
-oParams_Delete_Product_color_By_COLOR_ID.COLOR_ID = i_Color.COLOR_ID;
-Delete_Product_color_By_COLOR_ID(oParams_Delete_Product_color_By_COLOR_ID);
+oParams_Delete_Product_By_COLOR_ID.COLOR_ID = i_Color.COLOR_ID;
+Delete_Product_By_COLOR_ID(oParams_Delete_Product_By_COLOR_ID);
 //---------------------------------
-// Edit Product_color
+// Edit Product
 //---------------------------------
-Edit_Color_WithProduct_color(i_Color, i_Product_color_List);
+Edit_Color_WithProduct(i_Color, i_Product_List);
 //---------------------------------
 oScope.Complete();
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Product_color_By_Color");}
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Product_By_Color");}
 }
 #endregion
-#region Reset_Product_color_By_Color
-public void Reset_Product_color_By_Color(Color i_Color, List<Product_color> i_Product_color_List_To_Delete,List<Product_color> i_Product_color_List_To_Create)
+#region Reset_Product_By_Color
+public void Reset_Product_By_Color(Color i_Color, List<Product> i_Product_List_To_Delete,List<Product> i_Product_List_To_Create)
 {
 #region Declaration And Initialization Section.
-Params_Delete_Product_color oParams_Delete_Product_color = new Params_Delete_Product_color();
+Params_Delete_Product oParams_Delete_Product = new Params_Delete_Product();
 #endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Product_color_By_Color");}
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Product_By_Color");}
 #region Body Section.
 using (TransactionScope oScope = new TransactionScope())
 {
 // Delete Specified Items 
 //---------------------------------
- if (i_Product_color_List_To_Delete != null)
+ if (i_Product_List_To_Delete != null)
 {
-foreach (var oRow in i_Product_color_List_To_Delete)
+foreach (var oRow in i_Product_List_To_Delete)
 {
-oParams_Delete_Product_color.PRODUCT_COLOR_ID = oRow.PRODUCT_COLOR_ID;
-Delete_Product_color(oParams_Delete_Product_color);
+oParams_Delete_Product.PRODUCT_ID = oRow.PRODUCT_ID;
+Delete_Product(oParams_Delete_Product);
 }
 }
 //---------------------------------
-// Edit Product_color
+// Edit Product
 //---------------------------------
-Edit_Color_WithProduct_color(i_Color, i_Product_color_List_To_Create);
+Edit_Color_WithProduct(i_Color, i_Product_List_To_Create);
 //---------------------------------
 oScope.Complete();
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Product_color_By_Color");}
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Product_By_Color");}
 }
 #endregion
-#region Edit_Color_With_Product_color(Color i_Color,List<Product_color> i_Product_colorList)
-public void Edit_Color_WithProduct_color(Color i_Color,List<Product_color> i_List_Product_color)
+#region Edit_Color_With_Product(Color i_Color,List<Product> i_ProductList)
+public void Edit_Color_WithProduct(Color i_Color,List<Product> i_List_Product)
 {
 #region Declaration And Initialization Section.
 #endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Color_WithProduct_color");}
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Color_WithProduct");}
 #region Body Section.
 using (TransactionScope oScope = new TransactionScope())
 {
 // Business Operation.
 //-------------------------------
 Edit_Color(i_Color);
-if (i_List_Product_color != null)
+if (i_List_Product != null)
 {
-foreach(Product_color oProduct_color in i_List_Product_color)
+foreach(Product oProduct in i_List_Product)
 {
-oProduct_color.COLOR_ID = i_Color.COLOR_ID;
-Edit_Product_color(oProduct_color);
+oProduct.COLOR_ID = i_Color.COLOR_ID;
+Edit_Product(oProduct);
 }
 }
 //-------------------------------
 oScope.Complete();
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Color_WithProduct_color");}
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Color_WithProduct");}
 }
 #endregion
-#region Edit_Color_WithRelatedData(Color i_Color,List<Product_color> i_List_Product_color)
-public void Edit_Color_WithRelatedData(Color i_Color,List<Product_color> i_List_Product_color)
+#region Edit_Color_WithRelatedData(Color i_Color,List<Product> i_List_Product)
+public void Edit_Color_WithRelatedData(Color i_Color,List<Product> i_List_Product)
 {
 #region Declaration And Initialization Section.
 #endregion
@@ -484,12 +578,12 @@ using (TransactionScope oScope = new TransactionScope())
 // Business Operation.
 //-------------------------------
 Edit_Color(i_Color);
-if (i_List_Product_color != null)
+if (i_List_Product != null)
 {
-foreach(Product_color oProduct_color in i_List_Product_color)
+foreach(Product oProduct in i_List_Product)
 {
-oProduct_color.COLOR_ID = i_Color.COLOR_ID;
-Edit_Product_color(oProduct_color);
+oProduct.COLOR_ID = i_Color.COLOR_ID;
+Edit_Product(oProduct);
 }
 }
 //-------------------------------
@@ -504,15 +598,15 @@ public void Delete_Color_With_Children(Color i_Color)
 {
  #region Declaration And Initialization Section.
 Params_Delete_Color oParams_Delete_Color = new Params_Delete_Color();
-Params_Delete_Product_color_By_COLOR_ID oParams_Delete_Product_color_By_COLOR_ID = new Params_Delete_Product_color_By_COLOR_ID();
+Params_Delete_Product_By_COLOR_ID oParams_Delete_Product_By_COLOR_ID = new Params_Delete_Product_By_COLOR_ID();
 #endregion
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Color_With_Children");}
  #region Body Section.
 using (TransactionScope oScope = new TransactionScope())
 {
 //-------------------------
-oParams_Delete_Product_color_By_COLOR_ID.COLOR_ID = i_Color.COLOR_ID;
-Delete_Product_color_By_COLOR_ID(oParams_Delete_Product_color_By_COLOR_ID);
+oParams_Delete_Product_By_COLOR_ID.COLOR_ID = i_Color.COLOR_ID;
+Delete_Product_By_COLOR_ID(oParams_Delete_Product_By_COLOR_ID);
 //-------------------------
 
 //-------------------------
@@ -1936,174 +2030,8 @@ oScope.Complete();
 if (OnPostEvent_General != null){OnPostEvent_General("Edit_Product_WithOrder_details");}
 }
 #endregion
-#region Reset_Product_color_By_Product
-public void Reset_Product_color_By_Product(Product i_Product, List<Product_color> i_Product_color_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Product_color_By_PRODUCT_ID oParams_Delete_Product_color_By_PRODUCT_ID = new Params_Delete_Product_color_By_PRODUCT_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Product_color_By_Product");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Product_color
-//---------------------------------
-oParams_Delete_Product_color_By_PRODUCT_ID.PRODUCT_ID = i_Product.PRODUCT_ID;
-Delete_Product_color_By_PRODUCT_ID(oParams_Delete_Product_color_By_PRODUCT_ID);
-//---------------------------------
-// Edit Product_color
-//---------------------------------
-Edit_Product_WithProduct_color(i_Product, i_Product_color_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Product_color_By_Product");}
-}
-#endregion
-#region Reset_Product_color_By_Product
-public void Reset_Product_color_By_Product(Product i_Product, List<Product_color> i_Product_color_List_To_Delete,List<Product_color> i_Product_color_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Product_color oParams_Delete_Product_color = new Params_Delete_Product_color();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Product_color_By_Product");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Product_color_List_To_Delete != null)
-{
-foreach (var oRow in i_Product_color_List_To_Delete)
-{
-oParams_Delete_Product_color.PRODUCT_COLOR_ID = oRow.PRODUCT_COLOR_ID;
-Delete_Product_color(oParams_Delete_Product_color);
-}
-}
-//---------------------------------
-// Edit Product_color
-//---------------------------------
-Edit_Product_WithProduct_color(i_Product, i_Product_color_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Product_color_By_Product");}
-}
-#endregion
-#region Edit_Product_With_Product_color(Product i_Product,List<Product_color> i_Product_colorList)
-public void Edit_Product_WithProduct_color(Product i_Product,List<Product_color> i_List_Product_color)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Product_WithProduct_color");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Product(i_Product);
-if (i_List_Product_color != null)
-{
-foreach(Product_color oProduct_color in i_List_Product_color)
-{
-oProduct_color.PRODUCT_ID = i_Product.PRODUCT_ID;
-Edit_Product_color(oProduct_color);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Product_WithProduct_color");}
-}
-#endregion
-#region Reset_Product_size_By_Product
-public void Reset_Product_size_By_Product(Product i_Product, List<Product_size> i_Product_size_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Product_size_By_PRODUCT_ID oParams_Delete_Product_size_By_PRODUCT_ID = new Params_Delete_Product_size_By_PRODUCT_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Product_size_By_Product");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Product_size
-//---------------------------------
-oParams_Delete_Product_size_By_PRODUCT_ID.PRODUCT_ID = i_Product.PRODUCT_ID;
-Delete_Product_size_By_PRODUCT_ID(oParams_Delete_Product_size_By_PRODUCT_ID);
-//---------------------------------
-// Edit Product_size
-//---------------------------------
-Edit_Product_WithProduct_size(i_Product, i_Product_size_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Product_size_By_Product");}
-}
-#endregion
-#region Reset_Product_size_By_Product
-public void Reset_Product_size_By_Product(Product i_Product, List<Product_size> i_Product_size_List_To_Delete,List<Product_size> i_Product_size_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Product_size oParams_Delete_Product_size = new Params_Delete_Product_size();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Product_size_By_Product");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Product_size_List_To_Delete != null)
-{
-foreach (var oRow in i_Product_size_List_To_Delete)
-{
-oParams_Delete_Product_size.PRODUCT_SIZE_ID = oRow.PRODUCT_SIZE_ID;
-Delete_Product_size(oParams_Delete_Product_size);
-}
-}
-//---------------------------------
-// Edit Product_size
-//---------------------------------
-Edit_Product_WithProduct_size(i_Product, i_Product_size_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Product_size_By_Product");}
-}
-#endregion
-#region Edit_Product_With_Product_size(Product i_Product,List<Product_size> i_Product_sizeList)
-public void Edit_Product_WithProduct_size(Product i_Product,List<Product_size> i_List_Product_size)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Product_WithProduct_size");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Product(i_Product);
-if (i_List_Product_size != null)
-{
-foreach(Product_size oProduct_size in i_List_Product_size)
-{
-oProduct_size.PRODUCT_ID = i_Product.PRODUCT_ID;
-Edit_Product_size(oProduct_size);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Product_WithProduct_size");}
-}
-#endregion
-#region Edit_Product_WithRelatedData(Product i_Product,List<Order_details> i_List_Order_details,List<Product_color> i_List_Product_color,List<Product_size> i_List_Product_size)
-public void Edit_Product_WithRelatedData(Product i_Product,List<Order_details> i_List_Order_details,List<Product_color> i_List_Product_color,List<Product_size> i_List_Product_size)
+#region Edit_Product_WithRelatedData(Product i_Product,List<Order_details> i_List_Order_details)
+public void Edit_Product_WithRelatedData(Product i_Product,List<Order_details> i_List_Order_details)
 {
 #region Declaration And Initialization Section.
 #endregion
@@ -2122,22 +2050,6 @@ oOrder_details.PRODUCT_ID = i_Product.PRODUCT_ID;
 Edit_Order_details(oOrder_details);
 }
 }
-if (i_List_Product_color != null)
-{
-foreach(Product_color oProduct_color in i_List_Product_color)
-{
-oProduct_color.PRODUCT_ID = i_Product.PRODUCT_ID;
-Edit_Product_color(oProduct_color);
-}
-}
-if (i_List_Product_size != null)
-{
-foreach(Product_size oProduct_size in i_List_Product_size)
-{
-oProduct_size.PRODUCT_ID = i_Product.PRODUCT_ID;
-Edit_Product_size(oProduct_size);
-}
-}
 //-------------------------------
 oScope.Complete();
 }
@@ -2151,8 +2063,6 @@ public void Delete_Product_With_Children(Product i_Product)
  #region Declaration And Initialization Section.
 Params_Delete_Product oParams_Delete_Product = new Params_Delete_Product();
 Params_Delete_Order_details_By_PRODUCT_ID oParams_Delete_Order_details_By_PRODUCT_ID = new Params_Delete_Order_details_By_PRODUCT_ID();
-Params_Delete_Product_color_By_PRODUCT_ID oParams_Delete_Product_color_By_PRODUCT_ID = new Params_Delete_Product_color_By_PRODUCT_ID();
-Params_Delete_Product_size_By_PRODUCT_ID oParams_Delete_Product_size_By_PRODUCT_ID = new Params_Delete_Product_size_By_PRODUCT_ID();
 #endregion
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Product_With_Children");}
  #region Body Section.
@@ -2161,10 +2071,6 @@ using (TransactionScope oScope = new TransactionScope())
 //-------------------------
 oParams_Delete_Order_details_By_PRODUCT_ID.PRODUCT_ID = i_Product.PRODUCT_ID;
 Delete_Order_details_By_PRODUCT_ID(oParams_Delete_Order_details_By_PRODUCT_ID);
-oParams_Delete_Product_color_By_PRODUCT_ID.PRODUCT_ID = i_Product.PRODUCT_ID;
-Delete_Product_color_By_PRODUCT_ID(oParams_Delete_Product_color_By_PRODUCT_ID);
-oParams_Delete_Product_size_By_PRODUCT_ID.PRODUCT_ID = i_Product.PRODUCT_ID;
-Delete_Product_size_By_PRODUCT_ID(oParams_Delete_Product_size_By_PRODUCT_ID);
 //-------------------------
 
 //-------------------------
@@ -2177,91 +2083,91 @@ oScope.Complete();
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product_With_Children");}
 }
 #endregion
-#region Reset_Product_size_By_Size
-public void Reset_Product_size_By_Size(Size i_Size, List<Product_size> i_Product_size_List)
+#region Reset_Product_By_Size
+public void Reset_Product_By_Size(Size i_Size, List<Product> i_Product_List)
 {
 #region Declaration And Initialization Section.
-Params_Delete_Product_size_By_SIZE_ID oParams_Delete_Product_size_By_SIZE_ID = new Params_Delete_Product_size_By_SIZE_ID();
+Params_Delete_Product_By_SIZE_ID oParams_Delete_Product_By_SIZE_ID = new Params_Delete_Product_By_SIZE_ID();
 #endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Product_size_By_Size");}
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Product_By_Size");}
 #region Body Section.
 using (TransactionScope oScope = new TransactionScope())
 {
-// Delete Existing Product_size
+// Delete Existing Product
 //---------------------------------
-oParams_Delete_Product_size_By_SIZE_ID.SIZE_ID = i_Size.SIZE_ID;
-Delete_Product_size_By_SIZE_ID(oParams_Delete_Product_size_By_SIZE_ID);
+oParams_Delete_Product_By_SIZE_ID.SIZE_ID = i_Size.SIZE_ID;
+Delete_Product_By_SIZE_ID(oParams_Delete_Product_By_SIZE_ID);
 //---------------------------------
-// Edit Product_size
+// Edit Product
 //---------------------------------
-Edit_Size_WithProduct_size(i_Size, i_Product_size_List);
+Edit_Size_WithProduct(i_Size, i_Product_List);
 //---------------------------------
 oScope.Complete();
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Product_size_By_Size");}
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Product_By_Size");}
 }
 #endregion
-#region Reset_Product_size_By_Size
-public void Reset_Product_size_By_Size(Size i_Size, List<Product_size> i_Product_size_List_To_Delete,List<Product_size> i_Product_size_List_To_Create)
+#region Reset_Product_By_Size
+public void Reset_Product_By_Size(Size i_Size, List<Product> i_Product_List_To_Delete,List<Product> i_Product_List_To_Create)
 {
 #region Declaration And Initialization Section.
-Params_Delete_Product_size oParams_Delete_Product_size = new Params_Delete_Product_size();
+Params_Delete_Product oParams_Delete_Product = new Params_Delete_Product();
 #endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Product_size_By_Size");}
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Product_By_Size");}
 #region Body Section.
 using (TransactionScope oScope = new TransactionScope())
 {
 // Delete Specified Items 
 //---------------------------------
- if (i_Product_size_List_To_Delete != null)
+ if (i_Product_List_To_Delete != null)
 {
-foreach (var oRow in i_Product_size_List_To_Delete)
+foreach (var oRow in i_Product_List_To_Delete)
 {
-oParams_Delete_Product_size.PRODUCT_SIZE_ID = oRow.PRODUCT_SIZE_ID;
-Delete_Product_size(oParams_Delete_Product_size);
+oParams_Delete_Product.PRODUCT_ID = oRow.PRODUCT_ID;
+Delete_Product(oParams_Delete_Product);
 }
 }
 //---------------------------------
-// Edit Product_size
+// Edit Product
 //---------------------------------
-Edit_Size_WithProduct_size(i_Size, i_Product_size_List_To_Create);
+Edit_Size_WithProduct(i_Size, i_Product_List_To_Create);
 //---------------------------------
 oScope.Complete();
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Product_size_By_Size");}
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Product_By_Size");}
 }
 #endregion
-#region Edit_Size_With_Product_size(Size i_Size,List<Product_size> i_Product_sizeList)
-public void Edit_Size_WithProduct_size(Size i_Size,List<Product_size> i_List_Product_size)
+#region Edit_Size_With_Product(Size i_Size,List<Product> i_ProductList)
+public void Edit_Size_WithProduct(Size i_Size,List<Product> i_List_Product)
 {
 #region Declaration And Initialization Section.
 #endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Size_WithProduct_size");}
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_Size_WithProduct");}
 #region Body Section.
 using (TransactionScope oScope = new TransactionScope())
 {
 // Business Operation.
 //-------------------------------
 Edit_Size(i_Size);
-if (i_List_Product_size != null)
+if (i_List_Product != null)
 {
-foreach(Product_size oProduct_size in i_List_Product_size)
+foreach(Product oProduct in i_List_Product)
 {
-oProduct_size.SIZE_ID = i_Size.SIZE_ID;
-Edit_Product_size(oProduct_size);
+oProduct.SIZE_ID = i_Size.SIZE_ID;
+Edit_Product(oProduct);
 }
 }
 //-------------------------------
 oScope.Complete();
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Size_WithProduct_size");}
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_Size_WithProduct");}
 }
 #endregion
-#region Edit_Size_WithRelatedData(Size i_Size,List<Product_size> i_List_Product_size)
-public void Edit_Size_WithRelatedData(Size i_Size,List<Product_size> i_List_Product_size)
+#region Edit_Size_WithRelatedData(Size i_Size,List<Product> i_List_Product)
+public void Edit_Size_WithRelatedData(Size i_Size,List<Product> i_List_Product)
 {
 #region Declaration And Initialization Section.
 #endregion
@@ -2272,12 +2178,12 @@ using (TransactionScope oScope = new TransactionScope())
 // Business Operation.
 //-------------------------------
 Edit_Size(i_Size);
-if (i_List_Product_size != null)
+if (i_List_Product != null)
 {
-foreach(Product_size oProduct_size in i_List_Product_size)
+foreach(Product oProduct in i_List_Product)
 {
-oProduct_size.SIZE_ID = i_Size.SIZE_ID;
-Edit_Product_size(oProduct_size);
+oProduct.SIZE_ID = i_Size.SIZE_ID;
+Edit_Product(oProduct);
 }
 }
 //-------------------------------
@@ -2292,15 +2198,15 @@ public void Delete_Size_With_Children(Size i_Size)
 {
  #region Declaration And Initialization Section.
 Params_Delete_Size oParams_Delete_Size = new Params_Delete_Size();
-Params_Delete_Product_size_By_SIZE_ID oParams_Delete_Product_size_By_SIZE_ID = new Params_Delete_Product_size_By_SIZE_ID();
+Params_Delete_Product_By_SIZE_ID oParams_Delete_Product_By_SIZE_ID = new Params_Delete_Product_By_SIZE_ID();
 #endregion
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Size_With_Children");}
  #region Body Section.
 using (TransactionScope oScope = new TransactionScope())
 {
 //-------------------------
-oParams_Delete_Product_size_By_SIZE_ID.SIZE_ID = i_Size.SIZE_ID;
-Delete_Product_size_By_SIZE_ID(oParams_Delete_Product_size_By_SIZE_ID);
+oParams_Delete_Product_By_SIZE_ID.SIZE_ID = i_Size.SIZE_ID;
+Delete_Product_By_SIZE_ID(oParams_Delete_Product_By_SIZE_ID);
 //-------------------------
 
 //-------------------------

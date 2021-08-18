@@ -48,6 +48,70 @@ return Is_Valid;
 #endregion
 }
 #endregion
+#region Delete_Address
+[HttpPost]
+[Route("Delete_Address")]
+public Result_Delete_Address Delete_Address(Params_Delete_Address i_Params_Delete_Address)
+{
+#region Declaration And Initialization Section.
+string i_Ticket = string.Empty;
+Result_Delete_Address oResult_Delete_Address = new Result_Delete_Address();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oBLC.Delete_Address(i_Params_Delete_Address);
+oResult_Delete_Address.My_Params_Delete_Address = i_Params_Delete_Address;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Delete_Address.ExceptionMsg = string.Format("Delete_Address : {0}", ex.Message);
+}
+else
+{
+oResult_Delete_Address.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Delete_Address;
+#endregion
+}
+#endregion
 #region Delete_Category
 [HttpPost]
 [Route("Delete_Category")]
@@ -293,6 +357,70 @@ oResult_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD.ExceptionMsg = ex.M
 #endregion
 #region Return Section
 return oResult_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD;
+#endregion
+}
+#endregion
+#region Edit_Address
+[HttpPost]
+[Route("Edit_Address")]
+public Result_Edit_Address Edit_Address(Address i_Address)
+{
+#region Declaration And Initialization Section.
+string i_Ticket = string.Empty;
+Result_Edit_Address oResult_Edit_Address = new Result_Edit_Address();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oBLC.Edit_Address(i_Address);
+oResult_Edit_Address.My_Address = i_Address;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Edit_Address.ExceptionMsg = string.Format("Edit_Address : {0}", ex.Message);
+}
+else
+{
+oResult_Edit_Address.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Edit_Address;
 #endregion
 }
 #endregion
@@ -765,11 +893,7 @@ throw new Exception("Invalid Ticket");
 //-------------------
 
 BLC.BLC oBLC_Default = new BLC.BLC();
-BLCInitializer oBLCInitializer = new BLCInitializer();
-oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
-oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
-oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
-oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Get_Product_By_Where_Adv);
 using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
 {
 oReturnValue = oBLC.Get_Product_By_Where_Adv(i_Params_Get_Product_By_Where);
@@ -794,6 +918,72 @@ return oResult_Get_Product_By_Where_Adv;
 #endregion
 }
 #endregion
+#region Get_User_account_By_USER_ID_Adv
+[HttpPost]
+[Route("Get_User_account_By_USER_ID_Adv")]
+public Result_Get_User_account_By_USER_ID_Adv Get_User_account_By_USER_ID_Adv(Params_Get_User_account_By_USER_ID i_Params_Get_User_account_By_USER_ID)
+{
+#region Declaration And Initialization Section.
+List<User_account>  oReturnValue = new List<User_account> ();
+string i_Ticket = string.Empty;
+Result_Get_User_account_By_USER_ID_Adv oResult_Get_User_account_By_USER_ID_Adv = new Result_Get_User_account_By_USER_ID_Adv();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_User_account_By_USER_ID_Adv(i_Params_Get_User_account_By_USER_ID);
+oResult_Get_User_account_By_USER_ID_Adv.My_Result = oReturnValue;
+oResult_Get_User_account_By_USER_ID_Adv.My_Params_Get_User_account_By_USER_ID = i_Params_Get_User_account_By_USER_ID;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_User_account_By_USER_ID_Adv.ExceptionMsg = string.Format("Get_User_account_By_USER_ID_Adv : {0}", ex.Message);
+}
+else
+{
+oResult_Get_User_account_By_USER_ID_Adv.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_User_account_By_USER_ID_Adv;
+#endregion
+}
+#endregion
 }
 
 #region Action_Result
@@ -811,6 +1001,14 @@ public Action_Result()
 this.ExceptionMsg = string.Empty;
 #endregion
 }
+#endregion
+}
+#endregion
+#region Result_Delete_Address
+public partial class Result_Delete_Address : Action_Result
+{
+#region Properties.
+public Params_Delete_Address My_Params_Delete_Address { get; set; }
 #endregion
 }
 #endregion
@@ -843,6 +1041,14 @@ public partial class Result_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD
 {
 #region Properties.
 public Params_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD My_Params_Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD { get; set; }
+#endregion
+}
+#endregion
+#region Result_Edit_Address
+public partial class Result_Edit_Address : Action_Result
+{
+#region Properties.
+public Address My_Address { get; set; }
 #endregion
 }
 #endregion
@@ -912,6 +1118,15 @@ public partial class Result_Get_Product_By_Where_Adv : Action_Result
 #region Properties.
 public List<Product>  My_Result { get; set; }
 public Params_Get_Product_By_Where My_Params_Get_Product_By_Where { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_User_account_By_USER_ID_Adv
+public partial class Result_Get_User_account_By_USER_ID_Adv : Action_Result
+{
+#region Properties.
+public List<User_account>  My_Result { get; set; }
+public Params_Get_User_account_By_USER_ID My_Params_Get_User_account_By_USER_ID { get; set; }
 #endregion
 }
 #endregion

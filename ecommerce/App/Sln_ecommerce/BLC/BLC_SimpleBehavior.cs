@@ -40,11 +40,10 @@ private Order_details _Order_details;
 private Owner _Owner;
 private Person _Person;
 private Product _Product;
-private Product_color _Product_color;
-private Product_size _Product_size;
 private Size _Size;
 private Uploaded_file _Uploaded_file;
 private User _User;
+private User_account _User_account;
 #endregion
 #region Stop Executing Flags For Edit and Delete Operations
 private bool _Stop_Edit_Address_Execution;
@@ -77,16 +76,14 @@ private bool _Stop_Edit_Person_Execution;
 private bool _Stop_Delete_Person_Execution;
 private bool _Stop_Edit_Product_Execution;
 private bool _Stop_Delete_Product_Execution;
-private bool _Stop_Edit_Product_color_Execution;
-private bool _Stop_Delete_Product_color_Execution;
-private bool _Stop_Edit_Product_size_Execution;
-private bool _Stop_Delete_Product_size_Execution;
 private bool _Stop_Edit_Size_Execution;
 private bool _Stop_Delete_Size_Execution;
 private bool _Stop_Edit_Uploaded_file_Execution;
 private bool _Stop_Delete_Uploaded_file_Execution;
 private bool _Stop_Edit_User_Execution;
 private bool _Stop_Delete_User_Execution;
+private bool _Stop_Edit_User_account_Execution;
+private bool _Stop_Delete_User_account_Execution;
 #endregion
 #endregion
 public Address Get_Address_By_ADDRESS_ID(Params_Get_Address_By_ADDRESS_ID i_Params_Get_Address_By_ADDRESS_ID)
@@ -269,30 +266,6 @@ oTools.CopyPropValues(oDBEntry, oProduct);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_By_PRODUCT_ID");}
 return oProduct;
 }
-public Product_color Get_Product_color_By_PRODUCT_COLOR_ID(Params_Get_Product_color_By_PRODUCT_COLOR_ID i_Params_Get_Product_color_By_PRODUCT_COLOR_ID)
-{
-Product_color oProduct_color = null;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_color_By_PRODUCT_COLOR_ID");}
-#region Body Section.
-DALC.Product_color oDBEntry = _AppContext.Get_Product_color_By_PRODUCT_COLOR_ID(i_Params_Get_Product_color_By_PRODUCT_COLOR_ID.PRODUCT_COLOR_ID);
-oProduct_color = new Product_color();
-oTools.CopyPropValues(oDBEntry, oProduct_color);
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_color_By_PRODUCT_COLOR_ID");}
-return oProduct_color;
-}
-public Product_size Get_Product_size_By_PRODUCT_SIZE_ID(Params_Get_Product_size_By_PRODUCT_SIZE_ID i_Params_Get_Product_size_By_PRODUCT_SIZE_ID)
-{
-Product_size oProduct_size = null;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_size_By_PRODUCT_SIZE_ID");}
-#region Body Section.
-DALC.Product_size oDBEntry = _AppContext.Get_Product_size_By_PRODUCT_SIZE_ID(i_Params_Get_Product_size_By_PRODUCT_SIZE_ID.PRODUCT_SIZE_ID);
-oProduct_size = new Product_size();
-oTools.CopyPropValues(oDBEntry, oProduct_size);
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_PRODUCT_SIZE_ID");}
-return oProduct_size;
-}
 public Size Get_Size_By_SIZE_ID(Params_Get_Size_By_SIZE_ID i_Params_Get_Size_By_SIZE_ID)
 {
 Size oSize = null;
@@ -328,6 +301,18 @@ oTools.CopyPropValues(oDBEntry, oUser);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USER_ID");}
 return oUser;
+}
+public User_account Get_User_account_By_USER_ACCOUNT_ID(Params_Get_User_account_By_USER_ACCOUNT_ID i_Params_Get_User_account_By_USER_ACCOUNT_ID)
+{
+User_account oUser_account = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_USER_ACCOUNT_ID");}
+#region Body Section.
+DALC.User_account oDBEntry = _AppContext.Get_User_account_By_USER_ACCOUNT_ID(i_Params_Get_User_account_By_USER_ACCOUNT_ID.USER_ACCOUNT_ID);
+oUser_account = new User_account();
+oTools.CopyPropValues(oDBEntry, oUser_account);
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_USER_ACCOUNT_ID");}
+return oUser_account;
 }
 public List<Address> Get_Address_By_ADDRESS_ID_List(Params_Get_Address_By_ADDRESS_ID_List i_Params_Get_Address_By_ADDRESS_ID_List)
 {
@@ -644,48 +629,6 @@ oList.Add(oProduct);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_By_PRODUCT_ID_List");}
 return oList;
 }
-public List<Product_color> Get_Product_color_By_PRODUCT_COLOR_ID_List(Params_Get_Product_color_By_PRODUCT_COLOR_ID_List i_Params_Get_Product_color_By_PRODUCT_COLOR_ID_List)
-{
-Product_color oProduct_color = null;
-List<Product_color> oList = new List<Product_color>();
-Params_Get_Product_color_By_PRODUCT_COLOR_ID_List_SP oParams_Get_Product_color_By_PRODUCT_COLOR_ID_List_SP = new Params_Get_Product_color_By_PRODUCT_COLOR_ID_List_SP();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_color_By_PRODUCT_COLOR_ID_List");}
-#region Body Section.
-List<DALC.Product_color> oList_DBEntries = _AppContext.Get_Product_color_By_PRODUCT_COLOR_ID_List(i_Params_Get_Product_color_By_PRODUCT_COLOR_ID_List.PRODUCT_COLOR_ID_LIST);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oProduct_color = new Product_color();
-oTools.CopyPropValues(oDBEntry, oProduct_color);
-oList.Add(oProduct_color);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_color_By_PRODUCT_COLOR_ID_List");}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_PRODUCT_SIZE_ID_List(Params_Get_Product_size_By_PRODUCT_SIZE_ID_List i_Params_Get_Product_size_By_PRODUCT_SIZE_ID_List)
-{
-Product_size oProduct_size = null;
-List<Product_size> oList = new List<Product_size>();
-Params_Get_Product_size_By_PRODUCT_SIZE_ID_List_SP oParams_Get_Product_size_By_PRODUCT_SIZE_ID_List_SP = new Params_Get_Product_size_By_PRODUCT_SIZE_ID_List_SP();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_size_By_PRODUCT_SIZE_ID_List");}
-#region Body Section.
-List<DALC.Product_size> oList_DBEntries = _AppContext.Get_Product_size_By_PRODUCT_SIZE_ID_List(i_Params_Get_Product_size_By_PRODUCT_SIZE_ID_List.PRODUCT_SIZE_ID_LIST);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oProduct_size = new Product_size();
-oTools.CopyPropValues(oDBEntry, oProduct_size);
-oList.Add(oProduct_size);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_PRODUCT_SIZE_ID_List");}
-return oList;
-}
 public List<Size> Get_Size_By_SIZE_ID_List(Params_Get_Size_By_SIZE_ID_List i_Params_Get_Size_By_SIZE_ID_List)
 {
 Size oSize = null;
@@ -747,6 +690,27 @@ oList.Add(oUser);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USER_ID_List");}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ACCOUNT_ID_List(Params_Get_User_account_By_USER_ACCOUNT_ID_List i_Params_Get_User_account_By_USER_ACCOUNT_ID_List)
+{
+User_account oUser_account = null;
+List<User_account> oList = new List<User_account>();
+Params_Get_User_account_By_USER_ACCOUNT_ID_List_SP oParams_Get_User_account_By_USER_ACCOUNT_ID_List_SP = new Params_Get_User_account_By_USER_ACCOUNT_ID_List_SP();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_USER_ACCOUNT_ID_List");}
+#region Body Section.
+List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_USER_ACCOUNT_ID_List(i_Params_Get_User_account_By_USER_ACCOUNT_ID_List.USER_ACCOUNT_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser_account = new User_account();
+oTools.CopyPropValues(oDBEntry, oUser_account);
+oList.Add(oUser_account);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_USER_ACCOUNT_ID_List");}
 return oList;
 }
 public List<Address> Get_Address_By_PERSON_ID(Params_Get_Address_By_PERSON_ID i_Params_Get_Address_By_PERSON_ID)
@@ -1509,124 +1473,44 @@ oList.Add(oProduct);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_By_IS_RECOMMENDED");}
 return oList;
 }
-public List<Product_color> Get_Product_color_By_OWNER_ID(Params_Get_Product_color_By_OWNER_ID i_Params_Get_Product_color_By_OWNER_ID)
+public List<Product> Get_Product_By_COLOR_ID(Params_Get_Product_By_COLOR_ID i_Params_Get_Product_By_COLOR_ID)
 {
-List<Product_color> oList = new List<Product_color>();
-Product_color oProduct_color = new Product_color();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_color_By_OWNER_ID");}
+List<Product> oList = new List<Product>();
+Product oProduct = new Product();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_By_COLOR_ID");}
 #region Body Section.
-List<DALC.Product_color> oList_DBEntries = _AppContext.Get_Product_color_By_OWNER_ID(i_Params_Get_Product_color_By_OWNER_ID.OWNER_ID);
+List<DALC.Product> oList_DBEntries = _AppContext.Get_Product_By_COLOR_ID(i_Params_Get_Product_By_COLOR_ID.COLOR_ID);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
-oProduct_color = new Product_color();
-oTools.CopyPropValues(oDBEntry, oProduct_color);
-oList.Add(oProduct_color);
+oProduct = new Product();
+oTools.CopyPropValues(oDBEntry, oProduct);
+oList.Add(oProduct);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_color_By_OWNER_ID");}
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_By_COLOR_ID");}
 return oList;
 }
-public List<Product_color> Get_Product_color_By_PRODUCT_ID(Params_Get_Product_color_By_PRODUCT_ID i_Params_Get_Product_color_By_PRODUCT_ID)
+public List<Product> Get_Product_By_SIZE_ID(Params_Get_Product_By_SIZE_ID i_Params_Get_Product_By_SIZE_ID)
 {
-List<Product_color> oList = new List<Product_color>();
-Product_color oProduct_color = new Product_color();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_color_By_PRODUCT_ID");}
+List<Product> oList = new List<Product>();
+Product oProduct = new Product();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_By_SIZE_ID");}
 #region Body Section.
-List<DALC.Product_color> oList_DBEntries = _AppContext.Get_Product_color_By_PRODUCT_ID(i_Params_Get_Product_color_By_PRODUCT_ID.PRODUCT_ID);
+List<DALC.Product> oList_DBEntries = _AppContext.Get_Product_By_SIZE_ID(i_Params_Get_Product_By_SIZE_ID.SIZE_ID);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
-oProduct_color = new Product_color();
-oTools.CopyPropValues(oDBEntry, oProduct_color);
-oList.Add(oProduct_color);
+oProduct = new Product();
+oTools.CopyPropValues(oDBEntry, oProduct);
+oList.Add(oProduct);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_color_By_PRODUCT_ID");}
-return oList;
-}
-public List<Product_color> Get_Product_color_By_COLOR_ID(Params_Get_Product_color_By_COLOR_ID i_Params_Get_Product_color_By_COLOR_ID)
-{
-List<Product_color> oList = new List<Product_color>();
-Product_color oProduct_color = new Product_color();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_color_By_COLOR_ID");}
-#region Body Section.
-List<DALC.Product_color> oList_DBEntries = _AppContext.Get_Product_color_By_COLOR_ID(i_Params_Get_Product_color_By_COLOR_ID.COLOR_ID);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oProduct_color = new Product_color();
-oTools.CopyPropValues(oDBEntry, oProduct_color);
-oList.Add(oProduct_color);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_color_By_COLOR_ID");}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_OWNER_ID(Params_Get_Product_size_By_OWNER_ID i_Params_Get_Product_size_By_OWNER_ID)
-{
-List<Product_size> oList = new List<Product_size>();
-Product_size oProduct_size = new Product_size();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_size_By_OWNER_ID");}
-#region Body Section.
-List<DALC.Product_size> oList_DBEntries = _AppContext.Get_Product_size_By_OWNER_ID(i_Params_Get_Product_size_By_OWNER_ID.OWNER_ID);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oProduct_size = new Product_size();
-oTools.CopyPropValues(oDBEntry, oProduct_size);
-oList.Add(oProduct_size);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_OWNER_ID");}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_PRODUCT_ID(Params_Get_Product_size_By_PRODUCT_ID i_Params_Get_Product_size_By_PRODUCT_ID)
-{
-List<Product_size> oList = new List<Product_size>();
-Product_size oProduct_size = new Product_size();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_size_By_PRODUCT_ID");}
-#region Body Section.
-List<DALC.Product_size> oList_DBEntries = _AppContext.Get_Product_size_By_PRODUCT_ID(i_Params_Get_Product_size_By_PRODUCT_ID.PRODUCT_ID);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oProduct_size = new Product_size();
-oTools.CopyPropValues(oDBEntry, oProduct_size);
-oList.Add(oProduct_size);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_PRODUCT_ID");}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_SIZE_ID(Params_Get_Product_size_By_SIZE_ID i_Params_Get_Product_size_By_SIZE_ID)
-{
-List<Product_size> oList = new List<Product_size>();
-Product_size oProduct_size = new Product_size();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_size_By_SIZE_ID");}
-#region Body Section.
-List<DALC.Product_size> oList_DBEntries = _AppContext.Get_Product_size_By_SIZE_ID(i_Params_Get_Product_size_By_SIZE_ID.SIZE_ID);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oProduct_size = new Product_size();
-oTools.CopyPropValues(oDBEntry, oProduct_size);
-oList.Add(oProduct_size);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_SIZE_ID");}
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_By_SIZE_ID");}
 return oList;
 }
 public List<Size> Get_Size_By_OWNER_ID(Params_Get_Size_By_OWNER_ID i_Params_Get_Size_By_OWNER_ID)
@@ -1767,6 +1651,66 @@ oList.Add(oUser);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USERNAME");}
+return oList;
+}
+public List<User_account> Get_User_account_By_OWNER_ID(Params_Get_User_account_By_OWNER_ID i_Params_Get_User_account_By_OWNER_ID)
+{
+List<User_account> oList = new List<User_account>();
+User_account oUser_account = new User_account();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_OWNER_ID");}
+#region Body Section.
+List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_OWNER_ID(i_Params_Get_User_account_By_OWNER_ID.OWNER_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser_account = new User_account();
+oTools.CopyPropValues(oDBEntry, oUser_account);
+oList.Add(oUser_account);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_OWNER_ID");}
+return oList;
+}
+public List<User_account> Get_User_account_By_USER_ID(Params_Get_User_account_By_USER_ID i_Params_Get_User_account_By_USER_ID)
+{
+List<User_account> oList = new List<User_account>();
+User_account oUser_account = new User_account();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_USER_ID");}
+#region Body Section.
+List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_USER_ID(i_Params_Get_User_account_By_USER_ID.USER_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser_account = new User_account();
+oTools.CopyPropValues(oDBEntry, oUser_account);
+oList.Add(oUser_account);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_USER_ID");}
+return oList;
+}
+public List<User_account> Get_User_account_By_ADRESS_ID(Params_Get_User_account_By_ADRESS_ID i_Params_Get_User_account_By_ADRESS_ID)
+{
+List<User_account> oList = new List<User_account>();
+User_account oUser_account = new User_account();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_ADRESS_ID");}
+#region Body Section.
+List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_ADRESS_ID(i_Params_Get_User_account_By_ADRESS_ID.ADRESS_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser_account = new User_account();
+oTools.CopyPropValues(oDBEntry, oUser_account);
+oList.Add(oUser_account);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_ADRESS_ID");}
 return oList;
 }
 public List<Address> Get_Address_By_PERSON_ID_List(Params_Get_Address_By_PERSON_ID_List i_Params_Get_Address_By_PERSON_ID_List)
@@ -2089,84 +2033,84 @@ oList.Add(oProduct);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_By_CATEGORY_ID_List");}
 return oList;
 }
-public List<Product_color> Get_Product_color_By_PRODUCT_ID_List(Params_Get_Product_color_By_PRODUCT_ID_List i_Params_Get_Product_color_By_PRODUCT_ID_List)
+public List<Product> Get_Product_By_COLOR_ID_List(Params_Get_Product_By_COLOR_ID_List i_Params_Get_Product_By_COLOR_ID_List)
 {
-List<Product_color> oList = new List<Product_color>();
-Product_color oProduct_color = new Product_color();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_color_By_PRODUCT_ID_List");}
+List<Product> oList = new List<Product>();
+Product oProduct = new Product();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_By_COLOR_ID_List");}
 #region Body Section.
-List<DALC.Product_color> oList_DBEntries = _AppContext.Get_Product_color_By_PRODUCT_ID_List(i_Params_Get_Product_color_By_PRODUCT_ID_List.PRODUCT_ID_LIST);
+List<DALC.Product> oList_DBEntries = _AppContext.Get_Product_By_COLOR_ID_List(i_Params_Get_Product_By_COLOR_ID_List.COLOR_ID_LIST);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
-oProduct_color = new Product_color();
-oTools.CopyPropValues(oDBEntry, oProduct_color);
-oList.Add(oProduct_color);
+oProduct = new Product();
+oTools.CopyPropValues(oDBEntry, oProduct);
+oList.Add(oProduct);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_color_By_PRODUCT_ID_List");}
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_By_COLOR_ID_List");}
 return oList;
 }
-public List<Product_color> Get_Product_color_By_COLOR_ID_List(Params_Get_Product_color_By_COLOR_ID_List i_Params_Get_Product_color_By_COLOR_ID_List)
+public List<Product> Get_Product_By_SIZE_ID_List(Params_Get_Product_By_SIZE_ID_List i_Params_Get_Product_By_SIZE_ID_List)
 {
-List<Product_color> oList = new List<Product_color>();
-Product_color oProduct_color = new Product_color();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_color_By_COLOR_ID_List");}
+List<Product> oList = new List<Product>();
+Product oProduct = new Product();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_By_SIZE_ID_List");}
 #region Body Section.
-List<DALC.Product_color> oList_DBEntries = _AppContext.Get_Product_color_By_COLOR_ID_List(i_Params_Get_Product_color_By_COLOR_ID_List.COLOR_ID_LIST);
+List<DALC.Product> oList_DBEntries = _AppContext.Get_Product_By_SIZE_ID_List(i_Params_Get_Product_By_SIZE_ID_List.SIZE_ID_LIST);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
-oProduct_color = new Product_color();
-oTools.CopyPropValues(oDBEntry, oProduct_color);
-oList.Add(oProduct_color);
+oProduct = new Product();
+oTools.CopyPropValues(oDBEntry, oProduct);
+oList.Add(oProduct);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_color_By_COLOR_ID_List");}
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_By_SIZE_ID_List");}
 return oList;
 }
-public List<Product_size> Get_Product_size_By_PRODUCT_ID_List(Params_Get_Product_size_By_PRODUCT_ID_List i_Params_Get_Product_size_By_PRODUCT_ID_List)
+public List<User_account> Get_User_account_By_USER_ID_List(Params_Get_User_account_By_USER_ID_List i_Params_Get_User_account_By_USER_ID_List)
 {
-List<Product_size> oList = new List<Product_size>();
-Product_size oProduct_size = new Product_size();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_size_By_PRODUCT_ID_List");}
+List<User_account> oList = new List<User_account>();
+User_account oUser_account = new User_account();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_USER_ID_List");}
 #region Body Section.
-List<DALC.Product_size> oList_DBEntries = _AppContext.Get_Product_size_By_PRODUCT_ID_List(i_Params_Get_Product_size_By_PRODUCT_ID_List.PRODUCT_ID_LIST);
+List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_USER_ID_List(i_Params_Get_User_account_By_USER_ID_List.USER_ID_LIST);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
-oProduct_size = new Product_size();
-oTools.CopyPropValues(oDBEntry, oProduct_size);
-oList.Add(oProduct_size);
+oUser_account = new User_account();
+oTools.CopyPropValues(oDBEntry, oUser_account);
+oList.Add(oUser_account);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_PRODUCT_ID_List");}
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_USER_ID_List");}
 return oList;
 }
-public List<Product_size> Get_Product_size_By_SIZE_ID_List(Params_Get_Product_size_By_SIZE_ID_List i_Params_Get_Product_size_By_SIZE_ID_List)
+public List<User_account> Get_User_account_By_ADRESS_ID_List(Params_Get_User_account_By_ADRESS_ID_List i_Params_Get_User_account_By_ADRESS_ID_List)
 {
-List<Product_size> oList = new List<Product_size>();
-Product_size oProduct_size = new Product_size();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_size_By_SIZE_ID_List");}
+List<User_account> oList = new List<User_account>();
+User_account oUser_account = new User_account();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_ADRESS_ID_List");}
 #region Body Section.
-List<DALC.Product_size> oList_DBEntries = _AppContext.Get_Product_size_By_SIZE_ID_List(i_Params_Get_Product_size_By_SIZE_ID_List.SIZE_ID_LIST);
+List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_ADRESS_ID_List(i_Params_Get_User_account_By_ADRESS_ID_List.ADRESS_ID_LIST);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
-oProduct_size = new Product_size();
-oTools.CopyPropValues(oDBEntry, oProduct_size);
-oList.Add(oProduct_size);
+oUser_account = new User_account();
+oTools.CopyPropValues(oDBEntry, oUser_account);
+oList.Add(oUser_account);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_SIZE_ID_List");}
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_ADRESS_ID_List");}
 return oList;
 }
 public List<Address> Get_Address_By_Criteria(Params_Get_Address_By_Criteria i_Params_Get_Address_By_Criteria)
@@ -3093,106 +3037,6 @@ OnPostEvent_Get_Product_By_Where(ref oList,i_Params_Get_Product_By_Where);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_By_Where");}
 return oList;
 }
-public List<Product_color> Get_Product_color_By_Criteria(Params_Get_Product_color_By_Criteria i_Params_Get_Product_color_By_Criteria)
-{
-List<Product_color> oList = new List<Product_color>();
-Product_color oProduct_color = new Product_color();
-long? tmp_TOTAL_COUNT = 0;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_color_By_Criteria");}
-#region Body Section.
-if ((i_Params_Get_Product_color_By_Criteria.OWNER_ID == null) || (i_Params_Get_Product_color_By_Criteria.OWNER_ID == 0)) { i_Params_Get_Product_color_By_Criteria.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Product_color_By_Criteria.START_ROW == null) { i_Params_Get_Product_color_By_Criteria.START_ROW = 0; }
-if ((i_Params_Get_Product_color_By_Criteria.END_ROW == null) || (i_Params_Get_Product_color_By_Criteria.END_ROW == 0)) { i_Params_Get_Product_color_By_Criteria.END_ROW = 1000000; }
-List<DALC.Product_color> oList_DBEntries = _AppContext.Get_Product_color_By_Criteria(i_Params_Get_Product_color_By_Criteria.DESCRIPTION,i_Params_Get_Product_color_By_Criteria.OWNER_ID,i_Params_Get_Product_color_By_Criteria.START_ROW,i_Params_Get_Product_color_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oProduct_color = new Product_color();
-oTools.CopyPropValues(oDBEntry, oProduct_color);
-oList.Add(oProduct_color);
-}
-}
-i_Params_Get_Product_color_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_color_By_Criteria");}
-return oList;
-}
-public List<Product_color> Get_Product_color_By_Where(Params_Get_Product_color_By_Where i_Params_Get_Product_color_By_Where)
-{
-List<Product_color> oList = new List<Product_color>();
-Product_color oProduct_color = new Product_color();
-long? tmp_TOTAL_COUNT = 0;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_color_By_Where");}
-#region Body Section.
-if ((i_Params_Get_Product_color_By_Where.OWNER_ID == null) || (i_Params_Get_Product_color_By_Where.OWNER_ID == 0)) { i_Params_Get_Product_color_By_Where.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Product_color_By_Where.START_ROW == null) { i_Params_Get_Product_color_By_Where.START_ROW = 0; }
-if ((i_Params_Get_Product_color_By_Where.END_ROW == null) || (i_Params_Get_Product_color_By_Where.END_ROW == 0)) { i_Params_Get_Product_color_By_Where.END_ROW = 1000000; }
-List<DALC.Product_color> oList_DBEntries = _AppContext.Get_Product_color_By_Where(i_Params_Get_Product_color_By_Where.DESCRIPTION,i_Params_Get_Product_color_By_Where.OWNER_ID,i_Params_Get_Product_color_By_Where.START_ROW,i_Params_Get_Product_color_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oProduct_color = new Product_color();
-oTools.CopyPropValues(oDBEntry, oProduct_color);
-oList.Add(oProduct_color);
-}
-}
-i_Params_Get_Product_color_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_color_By_Where");}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_Criteria(Params_Get_Product_size_By_Criteria i_Params_Get_Product_size_By_Criteria)
-{
-List<Product_size> oList = new List<Product_size>();
-Product_size oProduct_size = new Product_size();
-long? tmp_TOTAL_COUNT = 0;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_size_By_Criteria");}
-#region Body Section.
-if ((i_Params_Get_Product_size_By_Criteria.OWNER_ID == null) || (i_Params_Get_Product_size_By_Criteria.OWNER_ID == 0)) { i_Params_Get_Product_size_By_Criteria.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Product_size_By_Criteria.START_ROW == null) { i_Params_Get_Product_size_By_Criteria.START_ROW = 0; }
-if ((i_Params_Get_Product_size_By_Criteria.END_ROW == null) || (i_Params_Get_Product_size_By_Criteria.END_ROW == 0)) { i_Params_Get_Product_size_By_Criteria.END_ROW = 1000000; }
-List<DALC.Product_size> oList_DBEntries = _AppContext.Get_Product_size_By_Criteria(i_Params_Get_Product_size_By_Criteria.DESCRIPTION,i_Params_Get_Product_size_By_Criteria.OWNER_ID,i_Params_Get_Product_size_By_Criteria.START_ROW,i_Params_Get_Product_size_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oProduct_size = new Product_size();
-oTools.CopyPropValues(oDBEntry, oProduct_size);
-oList.Add(oProduct_size);
-}
-}
-i_Params_Get_Product_size_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_Criteria");}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_Where(Params_Get_Product_size_By_Where i_Params_Get_Product_size_By_Where)
-{
-List<Product_size> oList = new List<Product_size>();
-Product_size oProduct_size = new Product_size();
-long? tmp_TOTAL_COUNT = 0;
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_size_By_Where");}
-#region Body Section.
-if ((i_Params_Get_Product_size_By_Where.OWNER_ID == null) || (i_Params_Get_Product_size_By_Where.OWNER_ID == 0)) { i_Params_Get_Product_size_By_Where.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Product_size_By_Where.START_ROW == null) { i_Params_Get_Product_size_By_Where.START_ROW = 0; }
-if ((i_Params_Get_Product_size_By_Where.END_ROW == null) || (i_Params_Get_Product_size_By_Where.END_ROW == 0)) { i_Params_Get_Product_size_By_Where.END_ROW = 1000000; }
-List<DALC.Product_size> oList_DBEntries = _AppContext.Get_Product_size_By_Where(i_Params_Get_Product_size_By_Where.DESCRIPTION,i_Params_Get_Product_size_By_Where.OWNER_ID,i_Params_Get_Product_size_By_Where.START_ROW,i_Params_Get_Product_size_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oProduct_size = new Product_size();
-oTools.CopyPropValues(oDBEntry, oProduct_size);
-oList.Add(oProduct_size);
-}
-}
-i_Params_Get_Product_size_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_Where");}
-return oList;
-}
 public List<Size> Get_Size_By_Criteria(Params_Get_Size_By_Criteria i_Params_Get_Size_By_Criteria)
 {
 List<Size> oList = new List<Size>();
@@ -3303,7 +3147,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_Criteria");}
 if ((i_Params_Get_User_By_Criteria.OWNER_ID == null) || (i_Params_Get_User_By_Criteria.OWNER_ID == 0)) { i_Params_Get_User_By_Criteria.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_User_By_Criteria.START_ROW == null) { i_Params_Get_User_By_Criteria.START_ROW = 0; }
 if ((i_Params_Get_User_By_Criteria.END_ROW == null) || (i_Params_Get_User_By_Criteria.END_ROW == 0)) { i_Params_Get_User_By_Criteria.END_ROW = 1000000; }
-List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Criteria(i_Params_Get_User_By_Criteria.USERNAME,i_Params_Get_User_By_Criteria.PASSWORD,i_Params_Get_User_By_Criteria.USER_TYPE_CODE,i_Params_Get_User_By_Criteria.OWNER_ID,i_Params_Get_User_By_Criteria.START_ROW,i_Params_Get_User_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Criteria(i_Params_Get_User_By_Criteria.EMAIL,i_Params_Get_User_By_Criteria.USERNAME,i_Params_Get_User_By_Criteria.PASSWORD,i_Params_Get_User_By_Criteria.PHONE,i_Params_Get_User_By_Criteria.USER_TYPE_CODE,i_Params_Get_User_By_Criteria.OWNER_ID,i_Params_Get_User_By_Criteria.START_ROW,i_Params_Get_User_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -3328,7 +3172,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_Where");}
 if ((i_Params_Get_User_By_Where.OWNER_ID == null) || (i_Params_Get_User_By_Where.OWNER_ID == 0)) { i_Params_Get_User_By_Where.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_User_By_Where.START_ROW == null) { i_Params_Get_User_By_Where.START_ROW = 0; }
 if ((i_Params_Get_User_By_Where.END_ROW == null) || (i_Params_Get_User_By_Where.END_ROW == 0)) { i_Params_Get_User_By_Where.END_ROW = 1000000; }
-List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Where(i_Params_Get_User_By_Where.USERNAME,i_Params_Get_User_By_Where.PASSWORD,i_Params_Get_User_By_Where.USER_TYPE_CODE,i_Params_Get_User_By_Where.OWNER_ID,i_Params_Get_User_By_Where.START_ROW,i_Params_Get_User_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Where(i_Params_Get_User_By_Where.EMAIL,i_Params_Get_User_By_Where.USERNAME,i_Params_Get_User_By_Where.PASSWORD,i_Params_Get_User_By_Where.PHONE,i_Params_Get_User_By_Where.USER_TYPE_CODE,i_Params_Get_User_By_Where.OWNER_ID,i_Params_Get_User_By_Where.START_ROW,i_Params_Get_User_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -3341,6 +3185,56 @@ oList.Add(oUser);
 i_Params_Get_User_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_Where");}
+return oList;
+}
+public List<User_account> Get_User_account_By_Criteria(Params_Get_User_account_By_Criteria i_Params_Get_User_account_By_Criteria)
+{
+List<User_account> oList = new List<User_account>();
+User_account oUser_account = new User_account();
+long? tmp_TOTAL_COUNT = 0;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_Criteria");}
+#region Body Section.
+if ((i_Params_Get_User_account_By_Criteria.OWNER_ID == null) || (i_Params_Get_User_account_By_Criteria.OWNER_ID == 0)) { i_Params_Get_User_account_By_Criteria.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_User_account_By_Criteria.START_ROW == null) { i_Params_Get_User_account_By_Criteria.START_ROW = 0; }
+if ((i_Params_Get_User_account_By_Criteria.END_ROW == null) || (i_Params_Get_User_account_By_Criteria.END_ROW == 0)) { i_Params_Get_User_account_By_Criteria.END_ROW = 1000000; }
+List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_Criteria(i_Params_Get_User_account_By_Criteria.DESCRIPTION,i_Params_Get_User_account_By_Criteria.OWNER_ID,i_Params_Get_User_account_By_Criteria.START_ROW,i_Params_Get_User_account_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser_account = new User_account();
+oTools.CopyPropValues(oDBEntry, oUser_account);
+oList.Add(oUser_account);
+}
+}
+i_Params_Get_User_account_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_Criteria");}
+return oList;
+}
+public List<User_account> Get_User_account_By_Where(Params_Get_User_account_By_Where i_Params_Get_User_account_By_Where)
+{
+List<User_account> oList = new List<User_account>();
+User_account oUser_account = new User_account();
+long? tmp_TOTAL_COUNT = 0;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_Where");}
+#region Body Section.
+if ((i_Params_Get_User_account_By_Where.OWNER_ID == null) || (i_Params_Get_User_account_By_Where.OWNER_ID == 0)) { i_Params_Get_User_account_By_Where.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_User_account_By_Where.START_ROW == null) { i_Params_Get_User_account_By_Where.START_ROW = 0; }
+if ((i_Params_Get_User_account_By_Where.END_ROW == null) || (i_Params_Get_User_account_By_Where.END_ROW == 0)) { i_Params_Get_User_account_By_Where.END_ROW = 1000000; }
+List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_Where(i_Params_Get_User_account_By_Where.DESCRIPTION,i_Params_Get_User_account_By_Where.OWNER_ID,i_Params_Get_User_account_By_Where.START_ROW,i_Params_Get_User_account_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser_account = new User_account();
+oTools.CopyPropValues(oDBEntry, oUser_account);
+oList.Add(oUser_account);
+}
+}
+i_Params_Get_User_account_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_Where");}
 return oList;
 }
 public List<Address> Get_Address_By_Criteria_InList(Params_Get_Address_By_Criteria_InList i_Params_Get_Address_By_Criteria_InList)
@@ -4172,10 +4066,20 @@ if ( i_Params_Get_Product_By_Criteria_InList.CATEGORY_ID_LIST == null)
 i_Params_Get_Product_By_Criteria_InList.CATEGORY_ID_LIST = new List<Int32?>();
 }
 oParams_Get_Product_By_Criteria_InList_SP.CATEGORY_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_By_Criteria_InList.CATEGORY_ID_LIST);
+if ( i_Params_Get_Product_By_Criteria_InList.COLOR_ID_LIST == null)
+{
+i_Params_Get_Product_By_Criteria_InList.COLOR_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Product_By_Criteria_InList_SP.COLOR_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_By_Criteria_InList.COLOR_ID_LIST);
+if ( i_Params_Get_Product_By_Criteria_InList.SIZE_ID_LIST == null)
+{
+i_Params_Get_Product_By_Criteria_InList.SIZE_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Product_By_Criteria_InList_SP.SIZE_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_By_Criteria_InList.SIZE_ID_LIST);
 oParams_Get_Product_By_Criteria_InList_SP.START_ROW = i_Params_Get_Product_By_Criteria_InList.START_ROW;
 oParams_Get_Product_By_Criteria_InList_SP.END_ROW = i_Params_Get_Product_By_Criteria_InList.END_ROW;
 oParams_Get_Product_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_Product_By_Criteria_InList.TOTAL_COUNT;
-List<DALC.Product> oList_DBEntries = _AppContext.Get_Product_By_Criteria_InList(i_Params_Get_Product_By_Criteria_InList.NAME,i_Params_Get_Product_By_Criteria_InList.DESCRIPTION,i_Params_Get_Product_By_Criteria_InList.CATEGORY_ID_LIST,i_Params_Get_Product_By_Criteria_InList.OWNER_ID,i_Params_Get_Product_By_Criteria_InList.START_ROW,i_Params_Get_Product_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Product> oList_DBEntries = _AppContext.Get_Product_By_Criteria_InList(i_Params_Get_Product_By_Criteria_InList.NAME,i_Params_Get_Product_By_Criteria_InList.DESCRIPTION,i_Params_Get_Product_By_Criteria_InList.CATEGORY_ID_LIST,i_Params_Get_Product_By_Criteria_InList.COLOR_ID_LIST,i_Params_Get_Product_By_Criteria_InList.SIZE_ID_LIST,i_Params_Get_Product_By_Criteria_InList.OWNER_ID,i_Params_Get_Product_By_Criteria_InList.START_ROW,i_Params_Get_Product_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -4210,10 +4114,20 @@ if ( i_Params_Get_Product_By_Where_InList.CATEGORY_ID_LIST == null)
 i_Params_Get_Product_By_Where_InList.CATEGORY_ID_LIST = new List<Int32?>();
 }
 oParams_Get_Product_By_Where_InList_SP.CATEGORY_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_By_Where_InList.CATEGORY_ID_LIST);
+if ( i_Params_Get_Product_By_Where_InList.COLOR_ID_LIST == null)
+{
+i_Params_Get_Product_By_Where_InList.COLOR_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Product_By_Where_InList_SP.COLOR_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_By_Where_InList.COLOR_ID_LIST);
+if ( i_Params_Get_Product_By_Where_InList.SIZE_ID_LIST == null)
+{
+i_Params_Get_Product_By_Where_InList.SIZE_ID_LIST = new List<Int32?>();
+}
+oParams_Get_Product_By_Where_InList_SP.SIZE_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_By_Where_InList.SIZE_ID_LIST);
 oParams_Get_Product_By_Where_InList_SP.START_ROW = i_Params_Get_Product_By_Where_InList.START_ROW;
 oParams_Get_Product_By_Where_InList_SP.END_ROW = i_Params_Get_Product_By_Where_InList.END_ROW;
 oParams_Get_Product_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_Product_By_Where_InList.TOTAL_COUNT;
-List<DALC.Product> oList_DBEntries = _AppContext.Get_Product_By_Where_InList(i_Params_Get_Product_By_Where_InList.NAME,i_Params_Get_Product_By_Where_InList.DESCRIPTION,i_Params_Get_Product_By_Where_InList.CATEGORY_ID_LIST,i_Params_Get_Product_By_Where_InList.OWNER_ID,i_Params_Get_Product_By_Where_InList.START_ROW,i_Params_Get_Product_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Product> oList_DBEntries = _AppContext.Get_Product_By_Where_InList(i_Params_Get_Product_By_Where_InList.NAME,i_Params_Get_Product_By_Where_InList.DESCRIPTION,i_Params_Get_Product_By_Where_InList.CATEGORY_ID_LIST,i_Params_Get_Product_By_Where_InList.COLOR_ID_LIST,i_Params_Get_Product_By_Where_InList.SIZE_ID_LIST,i_Params_Get_Product_By_Where_InList.OWNER_ID,i_Params_Get_Product_By_Where_InList.START_ROW,i_Params_Get_Product_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -4229,172 +4143,88 @@ i_Params_Get_Product_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_By_Where_InList");}
 return oList;
 }
-public List<Product_color> Get_Product_color_By_Criteria_InList(Params_Get_Product_color_By_Criteria_InList i_Params_Get_Product_color_By_Criteria_InList)
+public List<User_account> Get_User_account_By_Criteria_InList(Params_Get_User_account_By_Criteria_InList i_Params_Get_User_account_By_Criteria_InList)
 {
-List<Product_color> oList = new List<Product_color>();
-Product_color oProduct_color = new Product_color();
+List<User_account> oList = new List<User_account>();
+User_account oUser_account = new User_account();
 long? tmp_TOTAL_COUNT = 0;
-Params_Get_Product_color_By_Criteria_InList_SP oParams_Get_Product_color_By_Criteria_InList_SP = new Params_Get_Product_color_By_Criteria_InList_SP();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_color_By_Criteria_InList");}
+Params_Get_User_account_By_Criteria_InList_SP oParams_Get_User_account_By_Criteria_InList_SP = new Params_Get_User_account_By_Criteria_InList_SP();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_Criteria_InList");}
 #region Body Section.
-if ((i_Params_Get_Product_color_By_Criteria_InList.OWNER_ID == null) || (i_Params_Get_Product_color_By_Criteria_InList.OWNER_ID == 0)) { i_Params_Get_Product_color_By_Criteria_InList.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Product_color_By_Criteria_InList.START_ROW == null) { i_Params_Get_Product_color_By_Criteria_InList.START_ROW = 0; }
-if ((i_Params_Get_Product_color_By_Criteria_InList.END_ROW == null) || (i_Params_Get_Product_color_By_Criteria_InList.END_ROW == 0)) { i_Params_Get_Product_color_By_Criteria_InList.END_ROW = 1000000; }
-oParams_Get_Product_color_By_Criteria_InList_SP.OWNER_ID = i_Params_Get_Product_color_By_Criteria_InList.OWNER_ID;
-oParams_Get_Product_color_By_Criteria_InList_SP.DESCRIPTION = i_Params_Get_Product_color_By_Criteria_InList.DESCRIPTION;
-if ( i_Params_Get_Product_color_By_Criteria_InList.PRODUCT_ID_LIST == null)
+if ((i_Params_Get_User_account_By_Criteria_InList.OWNER_ID == null) || (i_Params_Get_User_account_By_Criteria_InList.OWNER_ID == 0)) { i_Params_Get_User_account_By_Criteria_InList.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_User_account_By_Criteria_InList.START_ROW == null) { i_Params_Get_User_account_By_Criteria_InList.START_ROW = 0; }
+if ((i_Params_Get_User_account_By_Criteria_InList.END_ROW == null) || (i_Params_Get_User_account_By_Criteria_InList.END_ROW == 0)) { i_Params_Get_User_account_By_Criteria_InList.END_ROW = 1000000; }
+oParams_Get_User_account_By_Criteria_InList_SP.OWNER_ID = i_Params_Get_User_account_By_Criteria_InList.OWNER_ID;
+oParams_Get_User_account_By_Criteria_InList_SP.DESCRIPTION = i_Params_Get_User_account_By_Criteria_InList.DESCRIPTION;
+if ( i_Params_Get_User_account_By_Criteria_InList.ADRESS_ID_LIST == null)
 {
-i_Params_Get_Product_color_By_Criteria_InList.PRODUCT_ID_LIST = new List<Int32?>();
+i_Params_Get_User_account_By_Criteria_InList.ADRESS_ID_LIST = new List<Int32?>();
 }
-oParams_Get_Product_color_By_Criteria_InList_SP.PRODUCT_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_color_By_Criteria_InList.PRODUCT_ID_LIST);
-if ( i_Params_Get_Product_color_By_Criteria_InList.COLOR_ID_LIST == null)
+oParams_Get_User_account_By_Criteria_InList_SP.ADRESS_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_User_account_By_Criteria_InList.ADRESS_ID_LIST);
+if ( i_Params_Get_User_account_By_Criteria_InList.USER_ID_LIST == null)
 {
-i_Params_Get_Product_color_By_Criteria_InList.COLOR_ID_LIST = new List<Int32?>();
+i_Params_Get_User_account_By_Criteria_InList.USER_ID_LIST = new List<long?>();
 }
-oParams_Get_Product_color_By_Criteria_InList_SP.COLOR_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_color_By_Criteria_InList.COLOR_ID_LIST);
-oParams_Get_Product_color_By_Criteria_InList_SP.START_ROW = i_Params_Get_Product_color_By_Criteria_InList.START_ROW;
-oParams_Get_Product_color_By_Criteria_InList_SP.END_ROW = i_Params_Get_Product_color_By_Criteria_InList.END_ROW;
-oParams_Get_Product_color_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_Product_color_By_Criteria_InList.TOTAL_COUNT;
-List<DALC.Product_color> oList_DBEntries = _AppContext.Get_Product_color_By_Criteria_InList(i_Params_Get_Product_color_By_Criteria_InList.DESCRIPTION,i_Params_Get_Product_color_By_Criteria_InList.PRODUCT_ID_LIST,i_Params_Get_Product_color_By_Criteria_InList.COLOR_ID_LIST,i_Params_Get_Product_color_By_Criteria_InList.OWNER_ID,i_Params_Get_Product_color_By_Criteria_InList.START_ROW,i_Params_Get_Product_color_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
+oParams_Get_User_account_By_Criteria_InList_SP.USER_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_User_account_By_Criteria_InList.USER_ID_LIST);
+oParams_Get_User_account_By_Criteria_InList_SP.START_ROW = i_Params_Get_User_account_By_Criteria_InList.START_ROW;
+oParams_Get_User_account_By_Criteria_InList_SP.END_ROW = i_Params_Get_User_account_By_Criteria_InList.END_ROW;
+oParams_Get_User_account_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_User_account_By_Criteria_InList.TOTAL_COUNT;
+List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_Criteria_InList(i_Params_Get_User_account_By_Criteria_InList.DESCRIPTION,i_Params_Get_User_account_By_Criteria_InList.ADRESS_ID_LIST,i_Params_Get_User_account_By_Criteria_InList.USER_ID_LIST,i_Params_Get_User_account_By_Criteria_InList.OWNER_ID,i_Params_Get_User_account_By_Criteria_InList.START_ROW,i_Params_Get_User_account_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
-oProduct_color = new Product_color();
-oTools.CopyPropValues(oDBEntry, oProduct_color);
-oList.Add(oProduct_color);
+oUser_account = new User_account();
+oTools.CopyPropValues(oDBEntry, oUser_account);
+oList.Add(oUser_account);
 }
 }
-i_Params_Get_Product_color_By_Criteria_InList.TOTAL_COUNT = oParams_Get_Product_color_By_Criteria_InList_SP.TOTAL_COUNT;
-i_Params_Get_Product_color_By_Criteria_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
+i_Params_Get_User_account_By_Criteria_InList.TOTAL_COUNT = oParams_Get_User_account_By_Criteria_InList_SP.TOTAL_COUNT;
+i_Params_Get_User_account_By_Criteria_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_color_By_Criteria_InList");}
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_Criteria_InList");}
 return oList;
 }
-public List<Product_color> Get_Product_color_By_Where_InList(Params_Get_Product_color_By_Where_InList i_Params_Get_Product_color_By_Where_InList)
+public List<User_account> Get_User_account_By_Where_InList(Params_Get_User_account_By_Where_InList i_Params_Get_User_account_By_Where_InList)
 {
-List<Product_color> oList = new List<Product_color>();
-Product_color oProduct_color = new Product_color();
+List<User_account> oList = new List<User_account>();
+User_account oUser_account = new User_account();
 long? tmp_TOTAL_COUNT = 0;
-Params_Get_Product_color_By_Where_InList_SP oParams_Get_Product_color_By_Where_InList_SP = new Params_Get_Product_color_By_Where_InList_SP();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_color_By_Where_InList");}
+Params_Get_User_account_By_Where_InList_SP oParams_Get_User_account_By_Where_InList_SP = new Params_Get_User_account_By_Where_InList_SP();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_account_By_Where_InList");}
 #region Body Section.
-if ((i_Params_Get_Product_color_By_Where_InList.OWNER_ID == null) || (i_Params_Get_Product_color_By_Where_InList.OWNER_ID == 0)) { i_Params_Get_Product_color_By_Where_InList.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Product_color_By_Where_InList.START_ROW == null) { i_Params_Get_Product_color_By_Where_InList.START_ROW = 0; }
-if ((i_Params_Get_Product_color_By_Where_InList.END_ROW == null) || (i_Params_Get_Product_color_By_Where_InList.END_ROW == 0)) { i_Params_Get_Product_color_By_Where_InList.END_ROW = 1000000; }
-oParams_Get_Product_color_By_Where_InList_SP.OWNER_ID = i_Params_Get_Product_color_By_Where_InList.OWNER_ID;
-oParams_Get_Product_color_By_Where_InList_SP.DESCRIPTION = i_Params_Get_Product_color_By_Where_InList.DESCRIPTION;
-if ( i_Params_Get_Product_color_By_Where_InList.PRODUCT_ID_LIST == null)
+if ((i_Params_Get_User_account_By_Where_InList.OWNER_ID == null) || (i_Params_Get_User_account_By_Where_InList.OWNER_ID == 0)) { i_Params_Get_User_account_By_Where_InList.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_User_account_By_Where_InList.START_ROW == null) { i_Params_Get_User_account_By_Where_InList.START_ROW = 0; }
+if ((i_Params_Get_User_account_By_Where_InList.END_ROW == null) || (i_Params_Get_User_account_By_Where_InList.END_ROW == 0)) { i_Params_Get_User_account_By_Where_InList.END_ROW = 1000000; }
+oParams_Get_User_account_By_Where_InList_SP.OWNER_ID = i_Params_Get_User_account_By_Where_InList.OWNER_ID;
+oParams_Get_User_account_By_Where_InList_SP.DESCRIPTION = i_Params_Get_User_account_By_Where_InList.DESCRIPTION;
+if ( i_Params_Get_User_account_By_Where_InList.ADRESS_ID_LIST == null)
 {
-i_Params_Get_Product_color_By_Where_InList.PRODUCT_ID_LIST = new List<Int32?>();
+i_Params_Get_User_account_By_Where_InList.ADRESS_ID_LIST = new List<Int32?>();
 }
-oParams_Get_Product_color_By_Where_InList_SP.PRODUCT_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_color_By_Where_InList.PRODUCT_ID_LIST);
-if ( i_Params_Get_Product_color_By_Where_InList.COLOR_ID_LIST == null)
+oParams_Get_User_account_By_Where_InList_SP.ADRESS_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_User_account_By_Where_InList.ADRESS_ID_LIST);
+if ( i_Params_Get_User_account_By_Where_InList.USER_ID_LIST == null)
 {
-i_Params_Get_Product_color_By_Where_InList.COLOR_ID_LIST = new List<Int32?>();
+i_Params_Get_User_account_By_Where_InList.USER_ID_LIST = new List<long?>();
 }
-oParams_Get_Product_color_By_Where_InList_SP.COLOR_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_color_By_Where_InList.COLOR_ID_LIST);
-oParams_Get_Product_color_By_Where_InList_SP.START_ROW = i_Params_Get_Product_color_By_Where_InList.START_ROW;
-oParams_Get_Product_color_By_Where_InList_SP.END_ROW = i_Params_Get_Product_color_By_Where_InList.END_ROW;
-oParams_Get_Product_color_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_Product_color_By_Where_InList.TOTAL_COUNT;
-List<DALC.Product_color> oList_DBEntries = _AppContext.Get_Product_color_By_Where_InList(i_Params_Get_Product_color_By_Where_InList.DESCRIPTION,i_Params_Get_Product_color_By_Where_InList.PRODUCT_ID_LIST,i_Params_Get_Product_color_By_Where_InList.COLOR_ID_LIST,i_Params_Get_Product_color_By_Where_InList.OWNER_ID,i_Params_Get_Product_color_By_Where_InList.START_ROW,i_Params_Get_Product_color_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
+oParams_Get_User_account_By_Where_InList_SP.USER_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_User_account_By_Where_InList.USER_ID_LIST);
+oParams_Get_User_account_By_Where_InList_SP.START_ROW = i_Params_Get_User_account_By_Where_InList.START_ROW;
+oParams_Get_User_account_By_Where_InList_SP.END_ROW = i_Params_Get_User_account_By_Where_InList.END_ROW;
+oParams_Get_User_account_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_User_account_By_Where_InList.TOTAL_COUNT;
+List<DALC.User_account> oList_DBEntries = _AppContext.Get_User_account_By_Where_InList(i_Params_Get_User_account_By_Where_InList.DESCRIPTION,i_Params_Get_User_account_By_Where_InList.ADRESS_ID_LIST,i_Params_Get_User_account_By_Where_InList.USER_ID_LIST,i_Params_Get_User_account_By_Where_InList.OWNER_ID,i_Params_Get_User_account_By_Where_InList.START_ROW,i_Params_Get_User_account_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
-oProduct_color = new Product_color();
-oTools.CopyPropValues(oDBEntry, oProduct_color);
-oList.Add(oProduct_color);
+oUser_account = new User_account();
+oTools.CopyPropValues(oDBEntry, oUser_account);
+oList.Add(oUser_account);
 }
 }
-i_Params_Get_Product_color_By_Where_InList.TOTAL_COUNT = oParams_Get_Product_color_By_Where_InList_SP.TOTAL_COUNT;
-i_Params_Get_Product_color_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
+i_Params_Get_User_account_By_Where_InList.TOTAL_COUNT = oParams_Get_User_account_By_Where_InList_SP.TOTAL_COUNT;
+i_Params_Get_User_account_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_color_By_Where_InList");}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_Criteria_InList(Params_Get_Product_size_By_Criteria_InList i_Params_Get_Product_size_By_Criteria_InList)
-{
-List<Product_size> oList = new List<Product_size>();
-Product_size oProduct_size = new Product_size();
-long? tmp_TOTAL_COUNT = 0;
-Params_Get_Product_size_By_Criteria_InList_SP oParams_Get_Product_size_By_Criteria_InList_SP = new Params_Get_Product_size_By_Criteria_InList_SP();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_size_By_Criteria_InList");}
-#region Body Section.
-if ((i_Params_Get_Product_size_By_Criteria_InList.OWNER_ID == null) || (i_Params_Get_Product_size_By_Criteria_InList.OWNER_ID == 0)) { i_Params_Get_Product_size_By_Criteria_InList.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Product_size_By_Criteria_InList.START_ROW == null) { i_Params_Get_Product_size_By_Criteria_InList.START_ROW = 0; }
-if ((i_Params_Get_Product_size_By_Criteria_InList.END_ROW == null) || (i_Params_Get_Product_size_By_Criteria_InList.END_ROW == 0)) { i_Params_Get_Product_size_By_Criteria_InList.END_ROW = 1000000; }
-oParams_Get_Product_size_By_Criteria_InList_SP.OWNER_ID = i_Params_Get_Product_size_By_Criteria_InList.OWNER_ID;
-oParams_Get_Product_size_By_Criteria_InList_SP.DESCRIPTION = i_Params_Get_Product_size_By_Criteria_InList.DESCRIPTION;
-if ( i_Params_Get_Product_size_By_Criteria_InList.PRODUCT_ID_LIST == null)
-{
-i_Params_Get_Product_size_By_Criteria_InList.PRODUCT_ID_LIST = new List<Int32?>();
-}
-oParams_Get_Product_size_By_Criteria_InList_SP.PRODUCT_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_size_By_Criteria_InList.PRODUCT_ID_LIST);
-if ( i_Params_Get_Product_size_By_Criteria_InList.SIZE_ID_LIST == null)
-{
-i_Params_Get_Product_size_By_Criteria_InList.SIZE_ID_LIST = new List<Int32?>();
-}
-oParams_Get_Product_size_By_Criteria_InList_SP.SIZE_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_size_By_Criteria_InList.SIZE_ID_LIST);
-oParams_Get_Product_size_By_Criteria_InList_SP.START_ROW = i_Params_Get_Product_size_By_Criteria_InList.START_ROW;
-oParams_Get_Product_size_By_Criteria_InList_SP.END_ROW = i_Params_Get_Product_size_By_Criteria_InList.END_ROW;
-oParams_Get_Product_size_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_Product_size_By_Criteria_InList.TOTAL_COUNT;
-List<DALC.Product_size> oList_DBEntries = _AppContext.Get_Product_size_By_Criteria_InList(i_Params_Get_Product_size_By_Criteria_InList.DESCRIPTION,i_Params_Get_Product_size_By_Criteria_InList.PRODUCT_ID_LIST,i_Params_Get_Product_size_By_Criteria_InList.SIZE_ID_LIST,i_Params_Get_Product_size_By_Criteria_InList.OWNER_ID,i_Params_Get_Product_size_By_Criteria_InList.START_ROW,i_Params_Get_Product_size_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oProduct_size = new Product_size();
-oTools.CopyPropValues(oDBEntry, oProduct_size);
-oList.Add(oProduct_size);
-}
-}
-i_Params_Get_Product_size_By_Criteria_InList.TOTAL_COUNT = oParams_Get_Product_size_By_Criteria_InList_SP.TOTAL_COUNT;
-i_Params_Get_Product_size_By_Criteria_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_Criteria_InList");}
-return oList;
-}
-public List<Product_size> Get_Product_size_By_Where_InList(Params_Get_Product_size_By_Where_InList i_Params_Get_Product_size_By_Where_InList)
-{
-List<Product_size> oList = new List<Product_size>();
-Product_size oProduct_size = new Product_size();
-long? tmp_TOTAL_COUNT = 0;
-Params_Get_Product_size_By_Where_InList_SP oParams_Get_Product_size_By_Where_InList_SP = new Params_Get_Product_size_By_Where_InList_SP();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Product_size_By_Where_InList");}
-#region Body Section.
-if ((i_Params_Get_Product_size_By_Where_InList.OWNER_ID == null) || (i_Params_Get_Product_size_By_Where_InList.OWNER_ID == 0)) { i_Params_Get_Product_size_By_Where_InList.OWNER_ID = this.OwnerID; }
-if (i_Params_Get_Product_size_By_Where_InList.START_ROW == null) { i_Params_Get_Product_size_By_Where_InList.START_ROW = 0; }
-if ((i_Params_Get_Product_size_By_Where_InList.END_ROW == null) || (i_Params_Get_Product_size_By_Where_InList.END_ROW == 0)) { i_Params_Get_Product_size_By_Where_InList.END_ROW = 1000000; }
-oParams_Get_Product_size_By_Where_InList_SP.OWNER_ID = i_Params_Get_Product_size_By_Where_InList.OWNER_ID;
-oParams_Get_Product_size_By_Where_InList_SP.DESCRIPTION = i_Params_Get_Product_size_By_Where_InList.DESCRIPTION;
-if ( i_Params_Get_Product_size_By_Where_InList.PRODUCT_ID_LIST == null)
-{
-i_Params_Get_Product_size_By_Where_InList.PRODUCT_ID_LIST = new List<Int32?>();
-}
-oParams_Get_Product_size_By_Where_InList_SP.PRODUCT_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_size_By_Where_InList.PRODUCT_ID_LIST);
-if ( i_Params_Get_Product_size_By_Where_InList.SIZE_ID_LIST == null)
-{
-i_Params_Get_Product_size_By_Where_InList.SIZE_ID_LIST = new List<Int32?>();
-}
-oParams_Get_Product_size_By_Where_InList_SP.SIZE_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Product_size_By_Where_InList.SIZE_ID_LIST);
-oParams_Get_Product_size_By_Where_InList_SP.START_ROW = i_Params_Get_Product_size_By_Where_InList.START_ROW;
-oParams_Get_Product_size_By_Where_InList_SP.END_ROW = i_Params_Get_Product_size_By_Where_InList.END_ROW;
-oParams_Get_Product_size_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_Product_size_By_Where_InList.TOTAL_COUNT;
-List<DALC.Product_size> oList_DBEntries = _AppContext.Get_Product_size_By_Where_InList(i_Params_Get_Product_size_By_Where_InList.DESCRIPTION,i_Params_Get_Product_size_By_Where_InList.PRODUCT_ID_LIST,i_Params_Get_Product_size_By_Where_InList.SIZE_ID_LIST,i_Params_Get_Product_size_By_Where_InList.OWNER_ID,i_Params_Get_Product_size_By_Where_InList.START_ROW,i_Params_Get_Product_size_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oProduct_size = new Product_size();
-oTools.CopyPropValues(oDBEntry, oProduct_size);
-oList.Add(oProduct_size);
-}
-}
-i_Params_Get_Product_size_By_Where_InList.TOTAL_COUNT = oParams_Get_Product_size_By_Where_InList_SP.TOTAL_COUNT;
-i_Params_Get_Product_size_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Product_size_By_Where_InList");}
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_account_By_Where_InList");}
 return oList;
 }
 public void Delete_Address(Params_Delete_Address i_Params_Delete_Address)
@@ -5006,88 +4836,6 @@ throw new Exception(ex.Message);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product");}
 }
-public void Delete_Product_color(Params_Delete_Product_color i_Params_Delete_Product_color)
-{
-Params_Get_Product_color_By_PRODUCT_COLOR_ID oParams_Get_Product_color_By_PRODUCT_COLOR_ID = new Params_Get_Product_color_By_PRODUCT_COLOR_ID();
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Product_color");}
-#region Body Section.
-try
-{
-oParams_Get_Product_color_By_PRODUCT_COLOR_ID.PRODUCT_COLOR_ID = i_Params_Delete_Product_color.PRODUCT_COLOR_ID;
-_Product_color = Get_Product_color_By_PRODUCT_COLOR_ID_Adv(oParams_Get_Product_color_By_PRODUCT_COLOR_ID);
-if (_Product_color != null)
-{
-using (TransactionScope oScope = new TransactionScope())
-{
-if (_Stop_Delete_Product_color_Execution)
-{
-_Stop_Delete_Product_color_Execution = false;
-return;
-}
-_AppContext.Delete_Product_color(i_Params_Delete_Product_color.PRODUCT_COLOR_ID);
-oScope.Complete();
-}
-}
-}
-catch (BLCException blcex)
-{
-throw new BLCException(blcex.Message);
-}
-catch (Exception ex)
-{
-if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
-{
-throw new BLCException("Cannot be deleted because of related records in other tables");
-}
-else
-{
-throw new Exception(ex.Message);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product_color");}
-}
-public void Delete_Product_size(Params_Delete_Product_size i_Params_Delete_Product_size)
-{
-Params_Get_Product_size_By_PRODUCT_SIZE_ID oParams_Get_Product_size_By_PRODUCT_SIZE_ID = new Params_Get_Product_size_By_PRODUCT_SIZE_ID();
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Product_size");}
-#region Body Section.
-try
-{
-oParams_Get_Product_size_By_PRODUCT_SIZE_ID.PRODUCT_SIZE_ID = i_Params_Delete_Product_size.PRODUCT_SIZE_ID;
-_Product_size = Get_Product_size_By_PRODUCT_SIZE_ID_Adv(oParams_Get_Product_size_By_PRODUCT_SIZE_ID);
-if (_Product_size != null)
-{
-using (TransactionScope oScope = new TransactionScope())
-{
-if (_Stop_Delete_Product_size_Execution)
-{
-_Stop_Delete_Product_size_Execution = false;
-return;
-}
-_AppContext.Delete_Product_size(i_Params_Delete_Product_size.PRODUCT_SIZE_ID);
-oScope.Complete();
-}
-}
-}
-catch (BLCException blcex)
-{
-throw new BLCException(blcex.Message);
-}
-catch (Exception ex)
-{
-if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
-{
-throw new BLCException("Cannot be deleted because of related records in other tables");
-}
-else
-{
-throw new Exception(ex.Message);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product_size");}
-}
 public void Delete_Size(Params_Delete_Size i_Params_Delete_Size)
 {
 Params_Get_Size_By_SIZE_ID oParams_Get_Size_By_SIZE_ID = new Params_Get_Size_By_SIZE_ID();
@@ -5216,6 +4964,47 @@ throw new Exception(ex.Message);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_User");}
+}
+public void Delete_User_account(Params_Delete_User_account i_Params_Delete_User_account)
+{
+Params_Get_User_account_By_USER_ACCOUNT_ID oParams_Get_User_account_By_USER_ACCOUNT_ID = new Params_Get_User_account_By_USER_ACCOUNT_ID();
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_account");}
+#region Body Section.
+try
+{
+oParams_Get_User_account_By_USER_ACCOUNT_ID.USER_ACCOUNT_ID = i_Params_Delete_User_account.USER_ACCOUNT_ID;
+_User_account = Get_User_account_By_USER_ACCOUNT_ID_Adv(oParams_Get_User_account_By_USER_ACCOUNT_ID);
+if (_User_account != null)
+{
+using (TransactionScope oScope = new TransactionScope())
+{
+if (_Stop_Delete_User_account_Execution)
+{
+_Stop_Delete_User_account_Execution = false;
+return;
+}
+_AppContext.Delete_User_account(i_Params_Delete_User_account.USER_ACCOUNT_ID);
+oScope.Complete();
+}
+}
+}
+catch (BLCException blcex)
+{
+throw new BLCException(blcex.Message);
+}
+catch (Exception ex)
+{
+if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+{
+throw new BLCException("Cannot be deleted because of related records in other tables");
+}
+else
+{
+throw new Exception(ex.Message);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_account");}
 }
 public void Delete_Address_By_PERSON_ID(Params_Delete_Address_By_PERSON_ID i_Params_Delete_Address_By_PERSON_ID)
 {
@@ -6623,22 +6412,22 @@ throw new Exception(ex.Message);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product_By_IS_RECOMMENDED");}
 }
-public void Delete_Product_color_By_OWNER_ID(Params_Delete_Product_color_By_OWNER_ID i_Params_Delete_Product_color_By_OWNER_ID)
+public void Delete_Product_By_COLOR_ID(Params_Delete_Product_By_COLOR_ID i_Params_Delete_Product_By_COLOR_ID)
 {
-Params_Get_Product_color_By_OWNER_ID oParams_Get_Product_color_By_OWNER_ID = new Params_Get_Product_color_By_OWNER_ID();
-List<Product_color> _List_Product_color = new List<Product_color>();
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Product_color_By_OWNER_ID");}
+Params_Get_Product_By_COLOR_ID oParams_Get_Product_By_COLOR_ID = new Params_Get_Product_By_COLOR_ID();
+List<Product> _List_Product = new List<Product>();
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_Product_By_COLOR_ID");}
 #region Body Section.
 try
 {
 using (TransactionScope oScope = new TransactionScope())
 {
-if (_Stop_Delete_Product_color_Execution)
+if (_Stop_Delete_Product_Execution)
 {
-_Stop_Delete_Product_color_Execution = false;
+_Stop_Delete_Product_Execution = false;
 return;
 }
-_AppContext.Delete_Product_color_By_OWNER_ID(i_Params_Delete_Product_color_By_OWNER_ID.OWNER_ID);
+_AppContext.Delete_Product_By_COLOR_ID(i_Params_Delete_Product_By_COLOR_ID.COLOR_ID);
 oScope.Complete();
 }
 }
@@ -6658,24 +6447,24 @@ throw new Exception(ex.Message);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product_color_By_OWNER_ID");}
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product_By_COLOR_ID");}
 }
-public void Delete_Product_color_By_PRODUCT_ID(Params_Delete_Product_color_By_PRODUCT_ID i_Params_Delete_Product_color_By_PRODUCT_ID)
+public void Delete_Product_By_SIZE_ID(Params_Delete_Product_By_SIZE_ID i_Params_Delete_Product_By_SIZE_ID)
 {
-Params_Get_Product_color_By_PRODUCT_ID oParams_Get_Product_color_By_PRODUCT_ID = new Params_Get_Product_color_By_PRODUCT_ID();
-List<Product_color> _List_Product_color = new List<Product_color>();
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Product_color_By_PRODUCT_ID");}
+Params_Get_Product_By_SIZE_ID oParams_Get_Product_By_SIZE_ID = new Params_Get_Product_By_SIZE_ID();
+List<Product> _List_Product = new List<Product>();
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_Product_By_SIZE_ID");}
 #region Body Section.
 try
 {
 using (TransactionScope oScope = new TransactionScope())
 {
-if (_Stop_Delete_Product_color_Execution)
+if (_Stop_Delete_Product_Execution)
 {
-_Stop_Delete_Product_color_Execution = false;
+_Stop_Delete_Product_Execution = false;
 return;
 }
-_AppContext.Delete_Product_color_By_PRODUCT_ID(i_Params_Delete_Product_color_By_PRODUCT_ID.PRODUCT_ID);
+_AppContext.Delete_Product_By_SIZE_ID(i_Params_Delete_Product_By_SIZE_ID.SIZE_ID);
 oScope.Complete();
 }
 }
@@ -6695,155 +6484,7 @@ throw new Exception(ex.Message);
 }
 }
 #endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product_color_By_PRODUCT_ID");}
-}
-public void Delete_Product_color_By_COLOR_ID(Params_Delete_Product_color_By_COLOR_ID i_Params_Delete_Product_color_By_COLOR_ID)
-{
-Params_Get_Product_color_By_COLOR_ID oParams_Get_Product_color_By_COLOR_ID = new Params_Get_Product_color_By_COLOR_ID();
-List<Product_color> _List_Product_color = new List<Product_color>();
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Product_color_By_COLOR_ID");}
-#region Body Section.
-try
-{
-using (TransactionScope oScope = new TransactionScope())
-{
-if (_Stop_Delete_Product_color_Execution)
-{
-_Stop_Delete_Product_color_Execution = false;
-return;
-}
-_AppContext.Delete_Product_color_By_COLOR_ID(i_Params_Delete_Product_color_By_COLOR_ID.COLOR_ID);
-oScope.Complete();
-}
-}
-catch (BLCException blcex)
-{
-throw new BLCException(blcex.Message);
-}
-catch (Exception ex)
-{
-if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
-{
-throw new BLCException("Cannot be deleted because of related records in other tables");
-}
-else
-{
-throw new Exception(ex.Message);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product_color_By_COLOR_ID");}
-}
-public void Delete_Product_size_By_OWNER_ID(Params_Delete_Product_size_By_OWNER_ID i_Params_Delete_Product_size_By_OWNER_ID)
-{
-Params_Get_Product_size_By_OWNER_ID oParams_Get_Product_size_By_OWNER_ID = new Params_Get_Product_size_By_OWNER_ID();
-List<Product_size> _List_Product_size = new List<Product_size>();
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Product_size_By_OWNER_ID");}
-#region Body Section.
-try
-{
-using (TransactionScope oScope = new TransactionScope())
-{
-if (_Stop_Delete_Product_size_Execution)
-{
-_Stop_Delete_Product_size_Execution = false;
-return;
-}
-_AppContext.Delete_Product_size_By_OWNER_ID(i_Params_Delete_Product_size_By_OWNER_ID.OWNER_ID);
-oScope.Complete();
-}
-}
-catch (BLCException blcex)
-{
-throw new BLCException(blcex.Message);
-}
-catch (Exception ex)
-{
-if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
-{
-throw new BLCException("Cannot be deleted because of related records in other tables");
-}
-else
-{
-throw new Exception(ex.Message);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product_size_By_OWNER_ID");}
-}
-public void Delete_Product_size_By_PRODUCT_ID(Params_Delete_Product_size_By_PRODUCT_ID i_Params_Delete_Product_size_By_PRODUCT_ID)
-{
-Params_Get_Product_size_By_PRODUCT_ID oParams_Get_Product_size_By_PRODUCT_ID = new Params_Get_Product_size_By_PRODUCT_ID();
-List<Product_size> _List_Product_size = new List<Product_size>();
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Product_size_By_PRODUCT_ID");}
-#region Body Section.
-try
-{
-using (TransactionScope oScope = new TransactionScope())
-{
-if (_Stop_Delete_Product_size_Execution)
-{
-_Stop_Delete_Product_size_Execution = false;
-return;
-}
-_AppContext.Delete_Product_size_By_PRODUCT_ID(i_Params_Delete_Product_size_By_PRODUCT_ID.PRODUCT_ID);
-oScope.Complete();
-}
-}
-catch (BLCException blcex)
-{
-throw new BLCException(blcex.Message);
-}
-catch (Exception ex)
-{
-if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
-{
-throw new BLCException("Cannot be deleted because of related records in other tables");
-}
-else
-{
-throw new Exception(ex.Message);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product_size_By_PRODUCT_ID");}
-}
-public void Delete_Product_size_By_SIZE_ID(Params_Delete_Product_size_By_SIZE_ID i_Params_Delete_Product_size_By_SIZE_ID)
-{
-Params_Get_Product_size_By_SIZE_ID oParams_Get_Product_size_By_SIZE_ID = new Params_Get_Product_size_By_SIZE_ID();
-List<Product_size> _List_Product_size = new List<Product_size>();
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Product_size_By_SIZE_ID");}
-#region Body Section.
-try
-{
-using (TransactionScope oScope = new TransactionScope())
-{
-if (_Stop_Delete_Product_size_Execution)
-{
-_Stop_Delete_Product_size_Execution = false;
-return;
-}
-_AppContext.Delete_Product_size_By_SIZE_ID(i_Params_Delete_Product_size_By_SIZE_ID.SIZE_ID);
-oScope.Complete();
-}
-}
-catch (BLCException blcex)
-{
-throw new BLCException(blcex.Message);
-}
-catch (Exception ex)
-{
-if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
-{
-throw new BLCException("Cannot be deleted because of related records in other tables");
-}
-else
-{
-throw new Exception(ex.Message);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product_size_By_SIZE_ID");}
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_Product_By_SIZE_ID");}
 }
 public void Delete_Size_By_OWNER_ID(Params_Delete_Size_By_OWNER_ID i_Params_Delete_Size_By_OWNER_ID)
 {
@@ -7107,6 +6748,115 @@ throw new Exception(ex.Message);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_By_USERNAME");}
+}
+public void Delete_User_account_By_OWNER_ID(Params_Delete_User_account_By_OWNER_ID i_Params_Delete_User_account_By_OWNER_ID)
+{
+Params_Get_User_account_By_OWNER_ID oParams_Get_User_account_By_OWNER_ID = new Params_Get_User_account_By_OWNER_ID();
+List<User_account> _List_User_account = new List<User_account>();
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_account_By_OWNER_ID");}
+#region Body Section.
+try
+{
+using (TransactionScope oScope = new TransactionScope())
+{
+if (_Stop_Delete_User_account_Execution)
+{
+_Stop_Delete_User_account_Execution = false;
+return;
+}
+_AppContext.Delete_User_account_By_OWNER_ID(i_Params_Delete_User_account_By_OWNER_ID.OWNER_ID);
+oScope.Complete();
+}
+}
+catch (BLCException blcex)
+{
+throw new BLCException(blcex.Message);
+}
+catch (Exception ex)
+{
+if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+{
+throw new BLCException("Cannot be deleted because of related records in other tables");
+}
+else
+{
+throw new Exception(ex.Message);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_account_By_OWNER_ID");}
+}
+public void Delete_User_account_By_USER_ID(Params_Delete_User_account_By_USER_ID i_Params_Delete_User_account_By_USER_ID)
+{
+Params_Get_User_account_By_USER_ID oParams_Get_User_account_By_USER_ID = new Params_Get_User_account_By_USER_ID();
+List<User_account> _List_User_account = new List<User_account>();
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_account_By_USER_ID");}
+#region Body Section.
+try
+{
+using (TransactionScope oScope = new TransactionScope())
+{
+if (_Stop_Delete_User_account_Execution)
+{
+_Stop_Delete_User_account_Execution = false;
+return;
+}
+_AppContext.Delete_User_account_By_USER_ID(i_Params_Delete_User_account_By_USER_ID.USER_ID);
+oScope.Complete();
+}
+}
+catch (BLCException blcex)
+{
+throw new BLCException(blcex.Message);
+}
+catch (Exception ex)
+{
+if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+{
+throw new BLCException("Cannot be deleted because of related records in other tables");
+}
+else
+{
+throw new Exception(ex.Message);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_account_By_USER_ID");}
+}
+public void Delete_User_account_By_ADRESS_ID(Params_Delete_User_account_By_ADRESS_ID i_Params_Delete_User_account_By_ADRESS_ID)
+{
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_account_By_ADRESS_ID");}
+#region Body Section.
+try
+{
+using (TransactionScope oScope = new TransactionScope())
+{
+if (_Stop_Delete_User_account_Execution)
+{
+_Stop_Delete_User_account_Execution = false;
+return;
+}
+_AppContext.Delete_User_account_By_ADRESS_ID(i_Params_Delete_User_account_By_ADRESS_ID.ADRESS_ID);
+oScope.Complete();
+}
+}
+catch (BLCException blcex)
+{
+throw new BLCException(blcex.Message);
+}
+catch (Exception ex)
+{
+if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+{
+throw new BLCException("Cannot be deleted because of related records in other tables");
+}
+else
+{
+throw new Exception(ex.Message);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_account_By_ADRESS_ID");}
 }
 public void Edit_Address(Address i_Address) 
 {
@@ -7647,6 +7397,8 @@ i_Product.PRODUCT_ID
 ,i_Product.CATEGORY_ID
 ,i_Product.STOCK
 ,i_Product.FULL_PRICE
+,i_Product.COLOR_ID
+,i_Product.SIZE_ID
 ,i_Product.DISCOUNT_PRICE
 ,i_Product.IS_BEST_SELLING
 ,i_Product.IS_RECOMMENDED
@@ -7658,76 +7410,6 @@ oScope.Complete();
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Edit_Product");}
-}
-public void Edit_Product_color(Product_color i_Product_color) 
-{
-Enum_EditMode oEditMode_Flag = Enum_EditMode.Update;
-if (i_Product_color.PRODUCT_COLOR_ID == -1)
-{
-oEditMode_Flag = Enum_EditMode.Add;
-}
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Product_color");}
-#region Body Section.
-if ((i_Product_color.PRODUCT_COLOR_ID == null) || (i_Product_color.PRODUCT_COLOR_ID == 0)) { throw new BLCException("Missing primary key while calling Edit_Product_color"); }
-i_Product_color.ENTRY_USER_ID = this.UserID;
-i_Product_color.ENTRY_DATE    = oTools.GetDateString(DateTime.Today);
-i_Product_color.OWNER_ID      = this.OwnerID;
-using (TransactionScope oScope = new TransactionScope())
-{
-if (_Stop_Edit_Product_color_Execution)
-{
-_Stop_Edit_Product_color_Execution = false;
-return;
-}
-i_Product_color.PRODUCT_COLOR_ID = _AppContext.Edit_Product_color
-(
-i_Product_color.PRODUCT_COLOR_ID
-,i_Product_color.PRODUCT_ID
-,i_Product_color.COLOR_ID
-,i_Product_color.ENTRY_USER_ID
-,i_Product_color.ENTRY_DATE
-,i_Product_color.OWNER_ID
-,i_Product_color.DESCRIPTION
-);
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Product_color");}
-}
-public void Edit_Product_size(Product_size i_Product_size) 
-{
-Enum_EditMode oEditMode_Flag = Enum_EditMode.Update;
-if (i_Product_size.PRODUCT_SIZE_ID == -1)
-{
-oEditMode_Flag = Enum_EditMode.Add;
-}
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Product_size");}
-#region Body Section.
-if ((i_Product_size.PRODUCT_SIZE_ID == null) || (i_Product_size.PRODUCT_SIZE_ID == 0)) { throw new BLCException("Missing primary key while calling Edit_Product_size"); }
-i_Product_size.ENTRY_USER_ID = this.UserID;
-i_Product_size.ENTRY_DATE    = oTools.GetDateString(DateTime.Today);
-i_Product_size.OWNER_ID      = this.OwnerID;
-using (TransactionScope oScope = new TransactionScope())
-{
-if (_Stop_Edit_Product_size_Execution)
-{
-_Stop_Edit_Product_size_Execution = false;
-return;
-}
-i_Product_size.PRODUCT_SIZE_ID = _AppContext.Edit_Product_size
-(
-i_Product_size.PRODUCT_SIZE_ID
-,i_Product_size.PRODUCT_ID
-,i_Product_size.SIZE_ID
-,i_Product_size.ENTRY_USER_ID
-,i_Product_size.ENTRY_DATE
-,i_Product_size.OWNER_ID
-,i_Product_size.DESCRIPTION
-);
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Product_size");}
 }
 public void Edit_Size(Size i_Size) 
 {
@@ -7835,8 +7517,10 @@ i_User.USER_ID = _AppContext.Edit_User
 (
 i_User.USER_ID
 ,i_User.OWNER_ID
+,i_User.EMAIL
 ,i_User.USERNAME
 ,i_User.PASSWORD
+,i_User.PHONE
 ,i_User.USER_TYPE_CODE
 ,i_User.IS_ACTIVE
 ,i_User.ENTRY_DATE
@@ -7845,6 +7529,41 @@ oScope.Complete();
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Edit_User");}
+}
+public void Edit_User_account(User_account i_User_account) 
+{
+Enum_EditMode oEditMode_Flag = Enum_EditMode.Update;
+if (i_User_account.USER_ACCOUNT_ID == -1)
+{
+oEditMode_Flag = Enum_EditMode.Add;
+}
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_User_account");}
+#region Body Section.
+if ((i_User_account.USER_ACCOUNT_ID == null) || (i_User_account.USER_ACCOUNT_ID == 0)) { throw new BLCException("Missing primary key while calling Edit_User_account"); }
+i_User_account.ENTRY_USER_ID = this.UserID;
+i_User_account.ENTRY_DATE    = oTools.GetDateString(DateTime.Today);
+i_User_account.OWNER_ID      = this.OwnerID;
+using (TransactionScope oScope = new TransactionScope())
+{
+if (_Stop_Edit_User_account_Execution)
+{
+_Stop_Edit_User_account_Execution = false;
+return;
+}
+i_User_account.USER_ACCOUNT_ID = _AppContext.Edit_User_account
+(
+i_User_account.USER_ACCOUNT_ID
+,i_User_account.ADRESS_ID
+,i_User_account.USER_ID
+,i_User_account.ENTRY_USER_ID
+,i_User_account.ENTRY_DATE
+,i_User_account.OWNER_ID
+,i_User_account.DESCRIPTION
+);
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_User_account");}
 }
 public void Edit_Address_List(List<Address> i_List_Address)
 {
@@ -8491,92 +8210,6 @@ oScope.Complete();
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Edit_Product_List");}
 }
-public void Edit_Product_color_List(List<Product_color> i_List_Product_color)
-{
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Product_color_List");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-if (i_List_Product_color != null)
-{
-foreach (var oRow in i_List_Product_color)
-{
-Edit_Product_color(oRow);
-}
-}
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Product_color_List");}
-}
-public void Edit_Product_color_List(Params_Edit_Product_color_List i_Params_Edit_Product_color_List)
-{
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Product_color_List");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-if (i_Params_Edit_Product_color_List.My_List_To_Delete != null)
-{
-foreach (var oRow in i_Params_Edit_Product_color_List.My_List_To_Delete)
-{
-Delete_Product_color(new Params_Delete_Product_color() { PRODUCT_COLOR_ID = oRow.PRODUCT_COLOR_ID });
-}
-}
-if (i_Params_Edit_Product_color_List.My_List_To_Edit != null)
-{
-foreach (var oRow in i_Params_Edit_Product_color_List.My_List_To_Edit)
-{
-Edit_Product_color(oRow);
-}
-}
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Product_color_List");}
-}
-public void Edit_Product_size_List(List<Product_size> i_List_Product_size)
-{
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Product_size_List");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-if (i_List_Product_size != null)
-{
-foreach (var oRow in i_List_Product_size)
-{
-Edit_Product_size(oRow);
-}
-}
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Product_size_List");}
-}
-public void Edit_Product_size_List(Params_Edit_Product_size_List i_Params_Edit_Product_size_List)
-{
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Product_size_List");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-if (i_Params_Edit_Product_size_List.My_List_To_Delete != null)
-{
-foreach (var oRow in i_Params_Edit_Product_size_List.My_List_To_Delete)
-{
-Delete_Product_size(new Params_Delete_Product_size() { PRODUCT_SIZE_ID = oRow.PRODUCT_SIZE_ID });
-}
-}
-if (i_Params_Edit_Product_size_List.My_List_To_Edit != null)
-{
-foreach (var oRow in i_Params_Edit_Product_size_List.My_List_To_Edit)
-{
-Edit_Product_size(oRow);
-}
-}
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Product_size_List");}
-}
 public void Edit_Size_List(List<Size> i_List_Size)
 {
 if (OnPreEvent_General != null){OnPreEvent_General("Edit_Size_List");}
@@ -8705,6 +8338,49 @@ oScope.Complete();
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Edit_User_List");}
+}
+public void Edit_User_account_List(List<User_account> i_List_User_account)
+{
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_User_account_List");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+if (i_List_User_account != null)
+{
+foreach (var oRow in i_List_User_account)
+{
+Edit_User_account(oRow);
+}
+}
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_User_account_List");}
+}
+public void Edit_User_account_List(Params_Edit_User_account_List i_Params_Edit_User_account_List)
+{
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_User_account_List");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+if (i_Params_Edit_User_account_List.My_List_To_Delete != null)
+{
+foreach (var oRow in i_Params_Edit_User_account_List.My_List_To_Delete)
+{
+Delete_User_account(new Params_Delete_User_account() { USER_ACCOUNT_ID = oRow.USER_ACCOUNT_ID });
+}
+}
+if (i_Params_Edit_User_account_List.My_List_To_Edit != null)
+{
+foreach (var oRow in i_Params_Edit_User_account_List.My_List_To_Edit)
+{
+Edit_User_account(oRow);
+}
+}
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_User_account_List");}
 }
 }
 }

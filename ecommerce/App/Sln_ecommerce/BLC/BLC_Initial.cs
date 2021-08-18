@@ -113,33 +113,7 @@ namespace BLC
         private void BLC_OnPostEvent_Get_Product_By_Where_Adv(List<Product> i_Result, Params_Get_Product_By_Where i_Params_Get_Product_By_Where)
         {
 
-            if (i_Result != null)
-            {
-                //var oListColors;
-                foreach (Product item in i_Result)
-                {
-                    Params_Get_Product_color_By_PRODUCT_ID oParams_Get_Product_color_By_PRODUCT_ID = new Params_Get_Product_color_By_PRODUCT_ID();
-                    oParams_Get_Product_color_By_PRODUCT_ID.PRODUCT_ID = item.PRODUCT_ID;
-                    List<Product_color> oListColors = this.Get_Product_color_By_PRODUCT_ID_Adv(oParams_Get_Product_color_By_PRODUCT_ID);
-
-                    item.My_Color = oListColors;
-                }
-            }
-
-            if (i_Result != null)
-            {
-                foreach (Product item in i_Result)
-                {
-                    Params_Get_Product_size_By_PRODUCT_ID oParams_Get_Product_size_By_PRODUCT_ID = new Params_Get_Product_size_By_PRODUCT_ID();
-                    oParams_Get_Product_size_By_PRODUCT_ID.PRODUCT_ID = item.PRODUCT_ID;
-                    List<Product_size> oListSizes = this.Get_Product_size_By_PRODUCT_ID_Adv(oParams_Get_Product_size_By_PRODUCT_ID);
-
-                        item.My_Size= oListSizes;
-         
-
-                }
-            }
-            ////throw new NotImplementedException();
+ 
         }
         #endregion
         #region IDisposable Members
