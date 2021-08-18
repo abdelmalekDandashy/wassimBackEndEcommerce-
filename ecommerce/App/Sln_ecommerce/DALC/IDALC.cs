@@ -703,6 +703,6 @@ List<dynamic> UP_GENERATE_INSERT_STATEMENTS ( string @tableName);
 List<dynamic> UP_GET_NEXT_VALUE ( string STARTER_CODE,ref  long? VALUE);
 List<dynamic> UP_GET_SETUP_ENTRIES ( Int32? OWNER_ID, string TBL_NAME, bool? ISDELETED, bool? ISVISIBLE);
 List<dynamic> UP_GET_SETUP_ENTRY ( Int32? OWNER_ID, string TBL_NAME, string CODE_NAME);
-List<dynamic> UP_GET_USER_BY_CREDENTIALS ( Int32? OWNER_ID, string USERNAME, string PASSWORD);
+List<dynamic> UP_GET_USER_BY_CREDENTIALS ( Int32? OWNER_ID, string EMAIL, string PASSWORD);
 }
 }

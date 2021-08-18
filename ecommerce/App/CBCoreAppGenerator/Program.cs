@@ -237,6 +237,7 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Get_User_account_By_USER_ID_Adv");
             oCodeBooster.APIMethodsSelection.Add("Edit_Address");
             oCodeBooster.APIMethodsSelection.Add("Delete_Address");
+            oCodeBooster.APIMethodsSelection.Add("Authenticate");
             //oCodeBooster.APIMethodsSelection.Add("Edit_Category");
             //oCodeBooster.APIMethodsSelection.Add("Delete_Category");
             //oCodeBooster.APIMethodsSelection.Add("Get_Product_By_Where_Adv");

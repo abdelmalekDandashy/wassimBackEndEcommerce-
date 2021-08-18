@@ -6070,7 +6070,7 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.EMAIL = GV<String>(X["EMAIL"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.PHONE = GV<String>(X["PHONE"]);o.ADRESS_ID = GV<Int32>(X["ADRESS_ID"]);o.USER_TYPE_CODE = GV<String>(X["USER_TYPE_CODE"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.EMAIL = GV<String>(X["EMAIL"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.PHONE = GV<String>(X["PHONE"]);o.USER_TYPE_CODE = GV<String>(X["USER_TYPE_CODE"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -6084,7 +6084,7 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER_ACCOUNT", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.USER_ACCOUNT_ID = GV<Int64>(X["USER_ACCOUNT_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.DESCRIPTION = GV<String>(X["DESCRIPTION"]);
+o.USER_ACCOUNT_ID = GV<Int64>(X["USER_ACCOUNT_ID"]);o.ADRESS_ID = GV<Int32>(X["ADRESS_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.DESCRIPTION = GV<String>(X["DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -6200,15 +6200,15 @@ oList.Add(o);
 }
 return oList;
 }
-public List<dynamic> UP_GET_USER_BY_CREDENTIALS ( Int32? OWNER_ID, string USERNAME, string PASSWORD)
+public List<dynamic> UP_GET_USER_BY_CREDENTIALS ( Int32? OWNER_ID, string EMAIL, string PASSWORD)
 {
 List<dynamic> oList = new List<dynamic>();
 dynamic p = new ExpandoObject();
-p.OWNER_ID = OWNER_ID; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD;
+p.OWNER_ID = OWNER_ID; p.EMAIL = EMAIL; p.PASSWORD = PASSWORD;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_GET_USER_BY_CREDENTIALS", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.EMAIL = GV<String>(X["EMAIL"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.EMAIL = GV<String>(X["EMAIL"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.PHONE = GV<String>(X["PHONE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
 oList.Add(o);
 }
 }

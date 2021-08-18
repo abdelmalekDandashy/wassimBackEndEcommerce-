@@ -6825,6 +6825,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_account_By_USE
 }
 public void Delete_User_account_By_ADRESS_ID(Params_Delete_User_account_By_ADRESS_ID i_Params_Delete_User_account_By_ADRESS_ID)
 {
+Params_Get_User_account_By_ADRESS_ID oParams_Get_User_account_By_ADRESS_ID = new Params_Get_User_account_By_ADRESS_ID();
+List<User_account> _List_User_account = new List<User_account>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_account_By_ADRESS_ID");}
 #region Body Section.
 try

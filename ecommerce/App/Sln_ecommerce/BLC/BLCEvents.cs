@@ -22,7 +22,10 @@ Get_Category_By_OWNER_ID,
 Get_Category_By_Where,
 Edit_Category,
 Delete_Category,
-Get_Product_By_Where_Adv
+Get_Product_By_Where_Adv,
+Get_User_account_By_USER_ID_Adv,
+Edit_Address,
+Delete_Address
 }
 #endregion
 

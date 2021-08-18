@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Newtonsoft.Json;
 
 namespace BLC
 {
@@ -177,7 +178,103 @@ namespace BLC
             #endregion
         }
         #endregion
-        #endregion        
+        #endregion
+
+        #region authenticate
+        public User Authenticate(Params_Authenticate i_Params_Authenticate)
+            {
+                #region declaration
+            
+                User oUser = new User();
+            #endregion
+
+            List<dynamic> oList = _AppContext.UP_GET_USER_BY_CREDENTIALS
+                (
+                i_Params_Authenticate.OWNER_ID,
+                i_Params_Authenticate.EMAIL,
+                i_Params_Authenticate.PASSWORD
+                );
+
+
+            if ((oList != null) && (oList.Count > 0)) {
+
+                //Console.WriteLine(JsonConvert.SerializeObject(oList));
+
+                oUser.USER_ID = oList[0].USER_ID;
+                oUser.OWNER_ID = oList[0].OWNER_ID;
+                oUser.EMAIL = oList[0].EMAIL;
+                oUser.USERNAME = oList[0].USERNAME;
+                oUser.PHONE = oList[0].PHONE;
+
+                var MinutesEplapsedSinceMidnight = (long?)(DateTime.Now - DateTime.Today).TotalMinutes;
+                var TicketText = string.Format
+                    (
+                    "USER_ID:{0}[~!@]OWNER_ID:{1}[~!@]START_DATE:{2}[~!@]START_MINUTE:{3}[~!@]SESSION_PERIOD:{4}",
+                    oUser.USER_ID,
+                    oUser.OWNER_ID,
+                    oTools.GetDateString(DateTime.Today),
+                    MinutesEplapsedSinceMidnight.ToString(),
+                    60
+                    );
+                oUser.myTicket = TicketText;
+
+            }
+            else
+            {
+                //Console.WriteLine(JsonConvert.SerializeObject(oList));
+                //Console.WriteLine("password or email 8alat");
+
+                throw new BLCException("email or password are invalid");
+            }
+
+
+            //if ((oList != null) && (oList.Count > 0))
+            //{   
+            //    if (i_Params_Authenticate.PASSWORD == oList[0].PASSWORD)
+            //    {
+            //        //oUser.USER_ID = oList[0].USER_ID;
+            //        //oUser.OWNER_ID = oList[0].OWNER_ID;
+            //        //oUser.USERNAME = oList[0].USERNAME;
+            //        //oUser.EMAIL = oList[0].EMAIL;
+            //        //oUser.MOBILE = oList[0].MOBILE;
+            //        //oUser.FIRST_NAME = oList[0].FIRST_NAME;
+            //        //oUser.LAST_NAME = oList[0].LAST_NAME;
+            //        //oUser.DOB = oList[0].DOB;
+            //        //oUser.STUDENT_ID = oList[0].STUDENT_ID;
+            //        //oUser.TEACHER_ID = oList[0].TEACHER_ID;
+            //        //oUser.USER_TYPE_CODE_ID = oList[0].USER_TYPE_CODE_ID;
+
+
+
+            //        //oUser.My_User_type_code = oList[0].My_User_type_code;
+
+            //        var MinutesEplapsedSinceMidnight = (long?)(DateTime.Now - DateTime.Today).TotalMinutes;
+            //        var TicketText = string.Format
+            //            (
+            //            "USER_ID:{0}[~!@]OWNER_ID:{1}[~!@]START_DATE:{2}[~!@]START_MINUTE:{3}[~!@]SESSION_PERIOD:{4}",
+            //            oUser.USER_ID,
+            //            oUser.OWNER_ID,
+            //            oTools.GetDateString(DateTime.Today),
+            //            MinutesEplapsedSinceMidnight.ToString(),
+            //            60
+            //            );
+            //        //oUser.myTicket = TicketText;
+            //    }
+            //    else
+            //    {
+            //        throw new BLCException("error");
+            //    }
+
+            //}
+            //else
+            //{
+            //    throw new BLCException("error2 ");
+            //}
+
+            return oUser;
+
+            }
+        #endregion
     }
     #region Business Entities
     #region Setup
@@ -222,6 +319,14 @@ namespace BLC
 
     }
     #endregion
+
+    #region User
+    public partial class User
+    {
+    public string myTicket { get; set; }
+
+    }
+    #endregion
     #region Product
     public partial class Category
     {
@@ -229,6 +334,16 @@ namespace BLC
         //public string My_Image_Url { get; set; }
     }
     #endregion
+    #region Params_Authenticate
+    public partial class Params_Authenticate
+    {
+        public int OWNER_ID { get; set; }
+        public string EMAIL { get; set; }
+        public string PASSWORD { get; set; }
+    }
+    #endregion
+
+
     #endregion
 }
 

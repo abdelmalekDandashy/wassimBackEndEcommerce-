@@ -62,10 +62,22 @@ namespace UnitTesting
 
             //}
 
-            Params_Get_Product_By_Where oParams_Get_Product_By_Where = new Params_Get_Product_By_Where();
-            oParams_Get_Product_By_Where.OWNER_ID = 1;
-            var myresult = oBLC.Get_Product_By_Where_Adv(oParams_Get_Product_By_Where);
-            Console.WriteLine();
+            //Params_Get_Product_By_Where oParams_Get_Product_By_Where = new Params_Get_Product_By_Where();
+            //oParams_Get_Product_By_Where.OWNER_ID = 1;
+            //var myresult = oBLC.Get_Product_By_Where_Adv(oParams_Get_Product_By_Where);
+            //Console.WriteLine();
+
+            //Params_Authenticate oParams_Authenticate = new Params_Authenticate();
+
+            //oParams_Authenticate.EMAIL = "2";
+            //oParams_Authenticate.OWNER_ID = 1;
+            //oParams_Authenticate.PASSWORD = "2";
+
+            //var result  = oBLC.Authenticate(oParams_Authenticate);
+            //Console.WriteLine(result);
+
+            //var result = oBLC.Authenticate(oParams_Authenticate);
+            //Console.WriteLine(result);
 
 
 
