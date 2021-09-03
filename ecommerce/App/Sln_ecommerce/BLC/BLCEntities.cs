@@ -84,6 +84,15 @@ public Int32? INVOICE_ID {get;set;}
 #endregion
 }
 #endregion
+#region Params_Get_Invoice_status_By_INVOICE_STATUS_ID
+public partial class Params_Get_Invoice_status_By_INVOICE_STATUS_ID
+{
+#region Properties
+public Int32? INVOICE_STATUS_ID {get;set;}
+
+#endregion
+}
+#endregion
 #region Params_Get_Loc_l1_By_LOC_L1_ID
 public partial class Params_Get_Loc_l1_By_LOC_L1_ID
 {
@@ -253,6 +262,15 @@ public List<Int32?> INVOICE_ID_LIST {get;set;}
 public partial class Params_Get_Invoice_By_INVOICE_ID_List_SP
 {
 public string INVOICE_ID_LIST {get;set;}
+
+}
+public partial class Params_Get_Invoice_status_By_INVOICE_STATUS_ID_List
+{
+public List<Int32?> INVOICE_STATUS_ID_LIST {get;set;}
+}
+public partial class Params_Get_Invoice_status_By_INVOICE_STATUS_ID_List_SP
+{
+public string INVOICE_STATUS_ID_LIST {get;set;}
 
 }
 public partial class Params_Get_Loc_l1_By_LOC_L1_ID_List
@@ -456,9 +474,19 @@ public partial class Params_Get_Invoice_By_CUSTOMER_ID
 public Int32? CUSTOMER_ID {get;set;}
 
 }
-public partial class Params_Get_Invoice_By_ADRESS_ID
+public partial class Params_Get_Invoice_By_ORDER_DETAILS_ID
 {
-public Int32? ADRESS_ID {get;set;}
+public Int32? ORDER_DETAILS_ID {get;set;}
+
+}
+public partial class Params_Get_Invoice_By_INVOICE_STATUS_ID
+{
+public Int32? INVOICE_STATUS_ID {get;set;}
+
+}
+public partial class Params_Get_Invoice_status_By_OWNER_ID
+{
+public Int32? OWNER_ID {get;set;}
 
 }
 public partial class Params_Get_Loc_l1_By_CODE
@@ -522,11 +550,6 @@ public Int32? OWNER_ID {get;set;}
 public partial class Params_Get_Order_details_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
-
-}
-public partial class Params_Get_Order_details_By_INVOICE_ID
-{
-public Int32? INVOICE_ID {get;set;}
 
 }
 public partial class Params_Get_Order_details_By_PRODUCT_ID
@@ -667,9 +690,14 @@ public partial class Params_Get_Invoice_By_CUSTOMER_ID_List
 public List<Int32?> CUSTOMER_ID_LIST {get;set;}
 
 }
-public partial class Params_Get_Invoice_By_ADRESS_ID_List
+public partial class Params_Get_Invoice_By_ORDER_DETAILS_ID_List
 {
-public List<Int32?> ADRESS_ID_LIST {get;set;}
+public List<Int32?> ORDER_DETAILS_ID_LIST {get;set;}
+
+}
+public partial class Params_Get_Invoice_By_INVOICE_STATUS_ID_List
+{
+public List<Int32?> INVOICE_STATUS_ID_LIST {get;set;}
 
 }
 public partial class Params_Get_Loc_l2_By_LOC_L1_ID_List
@@ -685,11 +713,6 @@ public List<long?> LOC_L2_ID_LIST {get;set;}
 public partial class Params_Get_Loc_l4_By_LOC_L3_ID_List
 {
 public List<long?> LOC_L3_ID_LIST {get;set;}
-
-}
-public partial class Params_Get_Order_details_By_INVOICE_ID_List
-{
-public List<Int32?> INVOICE_ID_LIST {get;set;}
 
 }
 public partial class Params_Get_Order_details_By_PRODUCT_ID_List
@@ -1462,7 +1485,8 @@ public partial class Params_Get_Invoice_By_Criteria_InList
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public List<Int32?> CUSTOMER_ID_LIST {get;set;}
-public List<Int32?> ADRESS_ID_LIST {get;set;}
+public List<Int32?> ORDER_DETAILS_ID_LIST {get;set;}
+public List<Int32?> INVOICE_STATUS_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1472,7 +1496,8 @@ public partial class Params_Get_Invoice_By_Criteria_InList_SP
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public string CUSTOMER_ID_LIST {get;set;}
-public string ADRESS_ID_LIST {get;set;}
+public string ORDER_DETAILS_ID_LIST {get;set;}
+public string INVOICE_STATUS_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1483,7 +1508,8 @@ public partial class Params_Get_Invoice_By_Where_InList
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public List<Int32?> CUSTOMER_ID_LIST {get;set;}
-public List<Int32?> ADRESS_ID_LIST {get;set;}
+public List<Int32?> ORDER_DETAILS_ID_LIST {get;set;}
+public List<Int32?> INVOICE_STATUS_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1493,7 +1519,8 @@ public partial class Params_Get_Invoice_By_Where_InList_SP
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public string CUSTOMER_ID_LIST {get;set;}
-public string ADRESS_ID_LIST {get;set;}
+public string ORDER_DETAILS_ID_LIST {get;set;}
+public string INVOICE_STATUS_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1629,7 +1656,6 @@ public partial class Params_Get_Order_details_By_Criteria_InList
 
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
-public List<Int32?> INVOICE_ID_LIST {get;set;}
 public List<Int32?> PRODUCT_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
@@ -1639,7 +1665,6 @@ public partial class Params_Get_Order_details_By_Criteria_InList_SP
 {
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
-public string INVOICE_ID_LIST {get;set;}
 public string PRODUCT_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
@@ -1650,7 +1675,6 @@ public partial class Params_Get_Order_details_By_Where_InList
 
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
-public List<Int32?> INVOICE_ID_LIST {get;set;}
 public List<Int32?> PRODUCT_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
@@ -1660,7 +1684,6 @@ public partial class Params_Get_Order_details_By_Where_InList_SP
 {
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
-public string INVOICE_ID_LIST {get;set;}
 public string PRODUCT_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
@@ -1811,6 +1834,14 @@ public partial class Params_Delete_Invoice
 {
 #region Properties
 public Int32? INVOICE_ID {get;set;}
+#endregion
+}
+#endregion
+#region Params_Delete_Invoice_status
+public partial class Params_Delete_Invoice_status
+{
+#region Properties
+public Int32? INVOICE_STATUS_ID {get;set;}
 #endregion
 }
 #endregion
@@ -1985,9 +2016,17 @@ public partial class Params_Delete_Invoice_By_CUSTOMER_ID
 {
 public Int32? CUSTOMER_ID {get;set;}
 }
-public partial class Params_Delete_Invoice_By_ADRESS_ID
+public partial class Params_Delete_Invoice_By_ORDER_DETAILS_ID
 {
-public Int32? ADRESS_ID {get;set;}
+public Int32? ORDER_DETAILS_ID {get;set;}
+}
+public partial class Params_Delete_Invoice_By_INVOICE_STATUS_ID
+{
+public Int32? INVOICE_STATUS_ID {get;set;}
+}
+public partial class Params_Delete_Invoice_status_By_OWNER_ID
+{
+public Int32? OWNER_ID {get;set;}
 }
 public partial class Params_Delete_Loc_l1_By_CODE
 {
@@ -2039,10 +2078,6 @@ public Int32? OWNER_ID {get;set;}
 public partial class Params_Delete_Order_details_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
-}
-public partial class Params_Delete_Order_details_By_INVOICE_ID
-{
-public Int32? INVOICE_ID {get;set;}
 }
 public partial class Params_Delete_Order_details_By_PRODUCT_ID
 {
@@ -2193,13 +2228,21 @@ public partial class Invoice
 {
 public Int32? INVOICE_ID {get;set;}
 public Int32? CUSTOMER_ID {get;set;}
+public Int32? ORDER_DETAILS_ID {get;set;}
 public Int32? AMMOUNT {get;set;}
-public Int32? ADRESS_ID {get;set;}
-public Int32? ORDER_STATUS {get;set;}
+public Int32? INVOICE_STATUS_ID {get;set;}
 public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
+}
+public partial class Invoice_status
+{
+public Int32? INVOICE_STATUS_ID {get;set;}
+public string INVOICE_STATUS {get;set;}
+public long? ENTRY_USER_ID {get;set;}
+public string ENTRY_DATE {get;set;}
+public Int32? OWNER_ID {get;set;}
 }
 public partial class Loc_l1
 {
@@ -2247,7 +2290,6 @@ public Int32? OWNER_ID {get;set;}
 public partial class Order_details
 {
 public Int32? ORDER_DETAILS_ID {get;set;}
-public Int32? INVOICE_ID {get;set;}
 public Int32? PRODUCT_ID {get;set;}
 public decimal PRICE {get;set;}
 public Int32? QUANTITY {get;set;}
@@ -2401,6 +2443,15 @@ public partial class Params_Edit_Invoice_List
 #region Properties
 public List<Invoice> My_List_To_Edit { get; set; }
 public List<Invoice> My_List_To_Delete { get; set; }
+#endregion
+}
+#endregion
+#region Params_Edit_Invoice_status_List
+public partial class Params_Edit_Invoice_status_List
+{
+#region Properties
+public List<Invoice_status> My_List_To_Edit { get; set; }
+public List<Invoice_status> My_List_To_Delete { get; set; }
 #endregion
 }
 #endregion

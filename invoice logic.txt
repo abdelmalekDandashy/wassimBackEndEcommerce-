@@ -1,0 +1,27 @@
+-if products in fetoura < products in stock ==> send to UI rejected (error msg: out of stock...)
+
+what wassim should send to malek:
+
+-USER_ID
+-OWNER_ID
+-array of products:[{product_id, quantity},{pepsi,2},{cola, 55}]
+-USER_ACCOUNT_ID
+
+
+what should malek do:
+
+-result = get product_by_product_ID_LIST (w be5od menno el sale price)
+-for each product:
+	-if (stock quantity >= quantity in fetoura)?{
+		VAR INVOICE_STATUS = "PENDING"
+	
+		var TOTAL_PRICE= result[i].product.price * fetoura.product.quantity
+		}
+	-else{
+		VAR INVOICE_STATUS = "REJECTED"
+		}
+	
+
+
+
+3mol 0001 patch

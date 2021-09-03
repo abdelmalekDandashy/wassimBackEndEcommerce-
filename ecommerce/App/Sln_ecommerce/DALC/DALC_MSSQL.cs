@@ -92,6 +92,18 @@ oTools.CopyPropValues_FromDataRecord(R, o);
 }
 return o;
 }
+public Invoice_status Get_Invoice_status_By_INVOICE_STATUS_ID ( Int32? INVOICE_STATUS_ID)
+{
+Invoice_status o = new Invoice_status();
+dynamic p = new ExpandoObject();
+p.INVOICE_STATUS_ID = INVOICE_STATUS_ID;
+IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_INVOICE_STATUS_BY_INVOICE_STATUS_ID", p);
+var R = Q.FirstOrDefault();
+if (R != null){
+oTools.CopyPropValues_FromDataRecord(R, o);
+}
+return o;
+}
 public Loc_l1 Get_Loc_l1_By_LOC_L1_ID ( long? LOC_L1_ID)
 {
 Loc_l1 o = new Loc_l1();
@@ -335,8 +347,22 @@ if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Customer = new Customer();
 o.My_Customer.CUSTOMER_ID = GV<Int32>(R["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(R["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(R["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(R["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(R["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(R["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(R["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(R["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(R["T_CUSTOMER_OWNER_ID"]);
-o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(R["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(R["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(R["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(R["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(R["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(R["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(R["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(R["T_ADRESS_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(R["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(R["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(R["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(R["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(R["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(R["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(R["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(R["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(R["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(R["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(R["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(R["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(R["T_INVOICE_STATUS_OWNER_ID"]);
+}
+return o;
+}
+public Invoice_status Get_Invoice_status_By_INVOICE_STATUS_ID_Adv ( Int32? INVOICE_STATUS_ID)
+{
+Invoice_status o = new Invoice_status();
+dynamic p = new ExpandoObject();
+p.INVOICE_STATUS_ID = INVOICE_STATUS_ID;
+IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_INVOICE_STATUS_BY_INVOICE_STATUS_ID_ADV", p);
+var R = Q.FirstOrDefault();
+if (R != null){
+oTools.CopyPropValues_FromDataRecord(R, o);
 }
 return o;
 }
@@ -403,8 +429,6 @@ IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_ORDER_
 var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
-o.My_Invoice = new Invoice();
-o.My_Invoice.INVOICE_ID = GV<Int32>(R["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(R["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(R["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(R["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(R["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(R["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(R["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(R["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(R["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
 o.My_Product.PRODUCT_ID = GV<Int32>(R["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(R["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(R["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(R["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(R["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(R["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(R["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(R["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(R["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(R["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(R["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(R["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(R["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(R["T_PRODUCT_OWNER_ID"]);
 }
@@ -572,6 +596,20 @@ p.INVOICE_ID_LIST = string.Join(",", INVOICE_ID_LIST.ToArray());
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_INVOICE_ID_LIST", p);
 if (R != null) {foreach (var X in R) {
 Invoice o = new Invoice();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<Invoice_status> Get_Invoice_status_By_INVOICE_STATUS_ID_List ( List<Int32?> INVOICE_STATUS_ID_LIST)
+{
+List<Invoice_status> oList = new List<Invoice_status>();
+dynamic p = new ExpandoObject();
+p.INVOICE_STATUS_ID_LIST = string.Join(",", INVOICE_STATUS_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_STATUS_BY_INVOICE_STATUS_ID_LIST", p);
+if (R != null) {foreach (var X in R) {
+Invoice_status o = new Invoice_status();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -857,8 +895,24 @@ Invoice o = new Invoice();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Customer = new Customer();
 o.My_Customer.CUSTOMER_ID = GV<Int32>(X["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(X["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(X["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(X["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(X["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(X["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(X["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(X["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(X["T_CUSTOMER_OWNER_ID"]);
-o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(X["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(X["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(X["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(X["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(X["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(X["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(X["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(X["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(X["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(X["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(X["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(X["T_INVOICE_STATUS_OWNER_ID"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<Invoice_status> Get_Invoice_status_By_INVOICE_STATUS_ID_List_Adv ( List<Int32?> INVOICE_STATUS_ID_LIST)
+{
+List<Invoice_status> oList = new List<Invoice_status>();
+dynamic p = new ExpandoObject();
+p.INVOICE_STATUS_ID_LIST = string.Join(",", INVOICE_STATUS_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_STATUS_BY_INVOICE_STATUS_ID_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+Invoice_status o = new Invoice_status();
+oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
 }
@@ -935,8 +989,6 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_ORDER_
 if (R != null) {foreach (var X in R) {
 Order_details o = new Order_details();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Invoice = new Invoice();
-o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
 o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
@@ -1276,14 +1328,42 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Invoice> Get_Invoice_By_ADRESS_ID ( Int32? ADRESS_ID)
+public List<Invoice> Get_Invoice_By_ORDER_DETAILS_ID ( Int32? ORDER_DETAILS_ID)
 {
 List<Invoice> oList = new List<Invoice>();
 dynamic p = new ExpandoObject();
-p.ADRESS_ID = ADRESS_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_ADRESS_ID", p);
+p.ORDER_DETAILS_ID = ORDER_DETAILS_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_ORDER_DETAILS_ID", p);
 if (R != null) {foreach (var X in R) {
 Invoice o = new Invoice();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<Invoice> Get_Invoice_By_INVOICE_STATUS_ID ( Int32? INVOICE_STATUS_ID)
+{
+List<Invoice> oList = new List<Invoice>();
+dynamic p = new ExpandoObject();
+p.INVOICE_STATUS_ID = INVOICE_STATUS_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_INVOICE_STATUS_ID", p);
+if (R != null) {foreach (var X in R) {
+Invoice o = new Invoice();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<Invoice_status> Get_Invoice_status_By_OWNER_ID ( Int32? OWNER_ID)
+{
+List<Invoice_status> oList = new List<Invoice_status>();
+dynamic p = new ExpandoObject();
+p.OWNER_ID = OWNER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_STATUS_BY_OWNER_ID", p);
+if (R != null) {foreach (var X in R) {
+Invoice_status o = new Invoice_status();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -1450,20 +1530,6 @@ List<Order_details> oList = new List<Order_details>();
 dynamic p = new ExpandoObject();
 p.OWNER_ID = OWNER_ID;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_OWNER_ID", p);
-if (R != null) {foreach (var X in R) {
-Order_details o = new Order_details();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Order_details> Get_Order_details_By_INVOICE_ID ( Int32? INVOICE_ID)
-{
-List<Order_details> oList = new List<Order_details>();
-dynamic p = new ExpandoObject();
-p.INVOICE_ID = INVOICE_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_INVOICE_ID", p);
 if (R != null) {foreach (var X in R) {
 Order_details o = new Order_details();
 oTools.CopyPropValues_FromDataRecord(X, o);
@@ -2047,8 +2113,10 @@ Invoice o = new Invoice();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Customer = new Customer();
 o.My_Customer.CUSTOMER_ID = GV<Int32>(X["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(X["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(X["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(X["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(X["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(X["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(X["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(X["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(X["T_CUSTOMER_OWNER_ID"]);
-o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(X["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(X["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(X["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(X["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(X["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(X["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(X["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(X["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(X["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(X["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(X["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(X["T_INVOICE_STATUS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -2065,26 +2133,64 @@ Invoice o = new Invoice();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Customer = new Customer();
 o.My_Customer.CUSTOMER_ID = GV<Int32>(X["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(X["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(X["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(X["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(X["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(X["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(X["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(X["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(X["T_CUSTOMER_OWNER_ID"]);
-o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(X["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(X["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(X["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(X["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(X["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(X["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(X["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(X["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(X["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(X["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(X["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(X["T_INVOICE_STATUS_OWNER_ID"]);
 oList.Add(o);
 }
 }
 return oList;
 }
-public List<Invoice> Get_Invoice_By_ADRESS_ID_Adv ( Int32? ADRESS_ID)
+public List<Invoice> Get_Invoice_By_ORDER_DETAILS_ID_Adv ( Int32? ORDER_DETAILS_ID)
 {
 List<Invoice> oList = new List<Invoice>();
 dynamic p = new ExpandoObject();
-p.ADRESS_ID = ADRESS_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_ADRESS_ID_ADV", p);
+p.ORDER_DETAILS_ID = ORDER_DETAILS_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_ORDER_DETAILS_ID_ADV", p);
 if (R != null) {foreach (var X in R) {
 Invoice o = new Invoice();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Customer = new Customer();
 o.My_Customer.CUSTOMER_ID = GV<Int32>(X["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(X["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(X["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(X["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(X["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(X["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(X["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(X["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(X["T_CUSTOMER_OWNER_ID"]);
-o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(X["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(X["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(X["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(X["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(X["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(X["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(X["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(X["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(X["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(X["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(X["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(X["T_INVOICE_STATUS_OWNER_ID"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<Invoice> Get_Invoice_By_INVOICE_STATUS_ID_Adv ( Int32? INVOICE_STATUS_ID)
+{
+List<Invoice> oList = new List<Invoice>();
+dynamic p = new ExpandoObject();
+p.INVOICE_STATUS_ID = INVOICE_STATUS_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_INVOICE_STATUS_ID_ADV", p);
+if (R != null) {foreach (var X in R) {
+Invoice o = new Invoice();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Customer = new Customer();
+o.My_Customer.CUSTOMER_ID = GV<Int32>(X["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(X["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(X["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(X["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(X["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(X["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(X["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(X["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(X["T_CUSTOMER_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(X["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(X["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(X["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(X["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(X["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(X["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(X["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(X["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(X["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(X["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(X["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(X["T_INVOICE_STATUS_OWNER_ID"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<Invoice_status> Get_Invoice_status_By_OWNER_ID_Adv ( Int32? OWNER_ID)
+{
+List<Invoice_status> oList = new List<Invoice_status>();
+dynamic p = new ExpandoObject();
+p.OWNER_ID = OWNER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_STATUS_BY_OWNER_ID_ADV", p);
+if (R != null) {foreach (var X in R) {
+Invoice_status o = new Invoice_status();
+oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
 }
@@ -2271,26 +2377,6 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_OWNER_
 if (R != null) {foreach (var X in R) {
 Order_details o = new Order_details();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Invoice = new Invoice();
-o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Order_details> Get_Order_details_By_INVOICE_ID_Adv ( Int32? INVOICE_ID)
-{
-List<Order_details> oList = new List<Order_details>();
-dynamic p = new ExpandoObject();
-p.INVOICE_ID = INVOICE_ID;
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_INVOICE_ID_ADV", p);
-if (R != null) {foreach (var X in R) {
-Order_details o = new Order_details();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Invoice = new Invoice();
-o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
 o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
@@ -2307,8 +2393,6 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_PRODUC
 if (R != null) {foreach (var X in R) {
 Order_details o = new Order_details();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Invoice = new Invoice();
-o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
 o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
@@ -2672,12 +2756,26 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Invoice> Get_Invoice_By_ADRESS_ID_List ( List<Int32?> ADRESS_ID_LIST)
+public List<Invoice> Get_Invoice_By_ORDER_DETAILS_ID_List ( List<Int32?> ORDER_DETAILS_ID_LIST)
 {
 List<Invoice> oList = new List<Invoice>();
 dynamic p = new ExpandoObject();
-p.ADRESS_ID_LIST = string.Join(",", ADRESS_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_ADRESS_ID_LIST", p);
+p.ORDER_DETAILS_ID_LIST = string.Join(",", ORDER_DETAILS_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_ORDER_DETAILS_ID_LIST", p);
+if (R != null) {foreach (var X in R) {
+Invoice o = new Invoice();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<Invoice> Get_Invoice_By_INVOICE_STATUS_ID_List ( List<Int32?> INVOICE_STATUS_ID_LIST)
+{
+List<Invoice> oList = new List<Invoice>();
+dynamic p = new ExpandoObject();
+p.INVOICE_STATUS_ID_LIST = string.Join(",", INVOICE_STATUS_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_INVOICE_STATUS_ID_LIST", p);
 if (R != null) {foreach (var X in R) {
 Invoice o = new Invoice();
 oTools.CopyPropValues_FromDataRecord(X, o);
@@ -2722,20 +2820,6 @@ p.LOC_L3_ID_LIST = string.Join(",", LOC_L3_ID_LIST.ToArray());
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_LOC_L4_BY_LOC_L3_ID_LIST", p);
 if (R != null) {foreach (var X in R) {
 Loc_l4 o = new Loc_l4();
-oTools.CopyPropValues_FromDataRecord(X, o);
-oList.Add(o);
-}
-}
-return oList;
-}
-public List<Order_details> Get_Order_details_By_INVOICE_ID_List ( List<Int32?> INVOICE_ID_LIST)
-{
-List<Order_details> oList = new List<Order_details>();
-dynamic p = new ExpandoObject();
-p.INVOICE_ID_LIST = string.Join(",", INVOICE_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_INVOICE_ID_LIST", p);
-if (R != null) {foreach (var X in R) {
-Order_details o = new Order_details();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -3009,26 +3093,50 @@ Invoice o = new Invoice();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Customer = new Customer();
 o.My_Customer.CUSTOMER_ID = GV<Int32>(X["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(X["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(X["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(X["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(X["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(X["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(X["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(X["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(X["T_CUSTOMER_OWNER_ID"]);
-o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(X["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(X["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(X["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(X["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(X["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(X["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(X["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(X["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(X["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(X["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(X["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(X["T_INVOICE_STATUS_OWNER_ID"]);
 oList.Add(o);
 }
 }
 return oList;
 }
-public List<Invoice> Get_Invoice_By_ADRESS_ID_List_Adv ( List<Int32?> ADRESS_ID_LIST)
+public List<Invoice> Get_Invoice_By_ORDER_DETAILS_ID_List_Adv ( List<Int32?> ORDER_DETAILS_ID_LIST)
 {
 List<Invoice> oList = new List<Invoice>();
 dynamic p = new ExpandoObject();
-p.ADRESS_ID_LIST = string.Join(",", ADRESS_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_ADRESS_ID_LIST_ADV", p);
+p.ORDER_DETAILS_ID_LIST = string.Join(",", ORDER_DETAILS_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_ORDER_DETAILS_ID_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
 Invoice o = new Invoice();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Customer = new Customer();
 o.My_Customer.CUSTOMER_ID = GV<Int32>(X["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(X["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(X["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(X["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(X["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(X["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(X["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(X["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(X["T_CUSTOMER_OWNER_ID"]);
-o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(X["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(X["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(X["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(X["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(X["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(X["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(X["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(X["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(X["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(X["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(X["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(X["T_INVOICE_STATUS_OWNER_ID"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<Invoice> Get_Invoice_By_INVOICE_STATUS_ID_List_Adv ( List<Int32?> INVOICE_STATUS_ID_LIST)
+{
+List<Invoice> oList = new List<Invoice>();
+dynamic p = new ExpandoObject();
+p.INVOICE_STATUS_ID_LIST = string.Join(",", INVOICE_STATUS_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_INVOICE_STATUS_ID_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+Invoice o = new Invoice();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_Customer = new Customer();
+o.My_Customer.CUSTOMER_ID = GV<Int32>(X["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(X["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(X["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(X["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(X["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(X["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(X["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(X["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(X["T_CUSTOMER_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(X["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(X["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(X["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(X["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(X["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(X["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(X["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(X["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(X["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(X["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(X["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(X["T_INVOICE_STATUS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -3082,24 +3190,6 @@ oList.Add(o);
 }
 return oList;
 }
-public List<Order_details> Get_Order_details_By_INVOICE_ID_List_Adv ( List<Int32?> INVOICE_ID_LIST)
-{
-List<Order_details> oList = new List<Order_details>();
-dynamic p = new ExpandoObject();
-p.INVOICE_ID_LIST = string.Join(",", INVOICE_ID_LIST.ToArray());
-IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_INVOICE_ID_LIST_ADV", p);
-if (R != null) {foreach (var X in R) {
-Order_details o = new Order_details();
-oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Invoice = new Invoice();
-o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
-o.My_Product = new Product();
-o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
-oList.Add(o);
-}
-}
-return oList;
-}
 public List<Order_details> Get_Order_details_By_PRODUCT_ID_List_Adv ( List<Int32?> PRODUCT_ID_LIST)
 {
 List<Order_details> oList = new List<Order_details>();
@@ -3109,8 +3199,6 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_PRODUC
 if (R != null) {foreach (var X in R) {
 Order_details o = new Order_details();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Invoice = new Invoice();
-o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
 o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
@@ -4127,8 +4215,10 @@ Invoice o = new Invoice();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Customer = new Customer();
 o.My_Customer.CUSTOMER_ID = GV<Int32>(X["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(X["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(X["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(X["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(X["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(X["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(X["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(X["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(X["T_CUSTOMER_OWNER_ID"]);
-o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(X["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(X["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(X["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(X["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(X["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(X["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(X["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(X["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(X["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(X["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(X["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(X["T_INVOICE_STATUS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -4146,8 +4236,10 @@ Invoice o = new Invoice();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Customer = new Customer();
 o.My_Customer.CUSTOMER_ID = GV<Int32>(X["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(X["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(X["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(X["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(X["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(X["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(X["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(X["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(X["T_CUSTOMER_OWNER_ID"]);
-o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(X["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(X["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(X["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(X["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(X["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(X["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(X["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(X["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(X["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(X["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(X["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(X["T_INVOICE_STATUS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -4295,8 +4387,6 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_CRITER
 if (R != null) {foreach (var X in R) {
 Order_details o = new Order_details();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Invoice = new Invoice();
-o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
 o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
@@ -4314,8 +4404,6 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_WHERE_
 if (R != null) {foreach (var X in R) {
 Order_details o = new Order_details();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Invoice = new Invoice();
-o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
 o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
@@ -4644,11 +4732,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Invoice> Get_Invoice_By_Criteria_InList ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Invoice> Get_Invoice_By_Criteria_InList ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ORDER_DETAILS_ID_LIST, List<Int32?> INVOICE_STATUS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Invoice> oList = new List<Invoice>();
 dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.CUSTOMER_ID_LIST = string.Join(",", CUSTOMER_ID_LIST.ToArray()); p.ADRESS_ID_LIST = string.Join(",", ADRESS_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.CUSTOMER_ID_LIST = string.Join(",", CUSTOMER_ID_LIST.ToArray()); p.ORDER_DETAILS_ID_LIST = string.Join(",", ORDER_DETAILS_ID_LIST.ToArray()); p.INVOICE_STATUS_ID_LIST = string.Join(",", INVOICE_STATUS_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_CRITERIA_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
 Invoice o = new Invoice();
@@ -4659,11 +4747,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Invoice> Get_Invoice_By_Where_InList ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Invoice> Get_Invoice_By_Where_InList ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ORDER_DETAILS_ID_LIST, List<Int32?> INVOICE_STATUS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Invoice> oList = new List<Invoice>();
 dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.CUSTOMER_ID_LIST = string.Join(",", CUSTOMER_ID_LIST.ToArray()); p.ADRESS_ID_LIST = string.Join(",", ADRESS_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.CUSTOMER_ID_LIST = string.Join(",", CUSTOMER_ID_LIST.ToArray()); p.ORDER_DETAILS_ID_LIST = string.Join(",", ORDER_DETAILS_ID_LIST.ToArray()); p.INVOICE_STATUS_ID_LIST = string.Join(",", INVOICE_STATUS_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_WHERE_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
 Invoice o = new Invoice();
@@ -4764,11 +4852,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Order_details> Get_Order_details_By_Criteria_InList ( string DESCRIPTION, List<Int32?> INVOICE_ID_LIST, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Order_details> Get_Order_details_By_Criteria_InList ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Order_details> oList = new List<Order_details>();
 dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.INVOICE_ID_LIST = string.Join(",", INVOICE_ID_LIST.ToArray()); p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_CRITERIA_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
 Order_details o = new Order_details();
@@ -4779,11 +4867,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Order_details> Get_Order_details_By_Where_InList ( string DESCRIPTION, List<Int32?> INVOICE_ID_LIST, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Order_details> Get_Order_details_By_Where_InList ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Order_details> oList = new List<Order_details>();
 dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.INVOICE_ID_LIST = string.Join(",", INVOICE_ID_LIST.ToArray()); p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_WHERE_IN_LIST", p);
 if (R != null) {foreach (var X in R) {
 Order_details o = new Order_details();
@@ -5006,38 +5094,42 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Invoice> Get_Invoice_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Invoice> Get_Invoice_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ORDER_DETAILS_ID_LIST, List<Int32?> INVOICE_STATUS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Invoice> oList = new List<Invoice>();
 dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.CUSTOMER_ID_LIST = string.Join(",", CUSTOMER_ID_LIST.ToArray()); p.ADRESS_ID_LIST = string.Join(",", ADRESS_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.CUSTOMER_ID_LIST = string.Join(",", CUSTOMER_ID_LIST.ToArray()); p.ORDER_DETAILS_ID_LIST = string.Join(",", ORDER_DETAILS_ID_LIST.ToArray()); p.INVOICE_STATUS_ID_LIST = string.Join(",", INVOICE_STATUS_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_CRITERIA_IN_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
 Invoice o = new Invoice();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Customer = new Customer();
 o.My_Customer.CUSTOMER_ID = GV<Int32>(X["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(X["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(X["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(X["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(X["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(X["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(X["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(X["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(X["T_CUSTOMER_OWNER_ID"]);
-o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(X["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(X["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(X["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(X["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(X["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(X["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(X["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(X["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(X["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(X["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(X["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(X["T_INVOICE_STATUS_OWNER_ID"]);
 oList.Add(o);
 }
 }
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Invoice> Get_Invoice_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Invoice> Get_Invoice_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ORDER_DETAILS_ID_LIST, List<Int32?> INVOICE_STATUS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Invoice> oList = new List<Invoice>();
 dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.CUSTOMER_ID_LIST = string.Join(",", CUSTOMER_ID_LIST.ToArray()); p.ADRESS_ID_LIST = string.Join(",", ADRESS_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.CUSTOMER_ID_LIST = string.Join(",", CUSTOMER_ID_LIST.ToArray()); p.ORDER_DETAILS_ID_LIST = string.Join(",", ORDER_DETAILS_ID_LIST.ToArray()); p.INVOICE_STATUS_ID_LIST = string.Join(",", INVOICE_STATUS_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_INVOICE_BY_WHERE_IN_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
 Invoice o = new Invoice();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Customer = new Customer();
 o.My_Customer.CUSTOMER_ID = GV<Int32>(X["T_CUSTOMER_CUSTOMER_ID"]);o.My_Customer.USER_ID = GV<Int64>(X["T_CUSTOMER_USER_ID"]);o.My_Customer.FIRST_NAME = GV<String>(X["T_CUSTOMER_FIRST_NAME"]);o.My_Customer.LAST_NAME = GV<String>(X["T_CUSTOMER_LAST_NAME"]);o.My_Customer.ADRESS_ID = GV<Int32>(X["T_CUSTOMER_ADRESS_ID"]);o.My_Customer.PHONE = GV<String>(X["T_CUSTOMER_PHONE"]);o.My_Customer.ENTRY_USER_ID = GV<Int64>(X["T_CUSTOMER_ENTRY_USER_ID"]);o.My_Customer.ENTRY_DATE = GV<String>(X["T_CUSTOMER_ENTRY_DATE"]);o.My_Customer.OWNER_ID = GV<Int32>(X["T_CUSTOMER_OWNER_ID"]);
-o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Order_details = new Order_details();
+o.My_Order_details.ORDER_DETAILS_ID = GV<Int32>(X["T_ORDER_DETAILS_ORDER_DETAILS_ID"]);o.My_Order_details.PRODUCT_ID = GV<Int32>(X["T_ORDER_DETAILS_PRODUCT_ID"]);o.My_Order_details.PRICE = GV<Decimal>(X["T_ORDER_DETAILS_PRICE"]);o.My_Order_details.QUANTITY = GV<Int32>(X["T_ORDER_DETAILS_QUANTITY"]);o.My_Order_details.ENTRY_USER_ID = GV<Int64>(X["T_ORDER_DETAILS_ENTRY_USER_ID"]);o.My_Order_details.ENTRY_DATE = GV<String>(X["T_ORDER_DETAILS_ENTRY_DATE"]);o.My_Order_details.OWNER_ID = GV<Int32>(X["T_ORDER_DETAILS_OWNER_ID"]);o.My_Order_details.DESCRIPTION = GV<String>(X["T_ORDER_DETAILS_DESCRIPTION"]);
+o.My_Invoice_status = new Invoice_status();
+o.My_Invoice_status.INVOICE_STATUS_ID = GV<Int32>(X["T_INVOICE_STATUS_INVOICE_STATUS_ID"]);o.My_Invoice_status.INVOICE_STATUS = GV<String>(X["T_INVOICE_STATUS_INVOICE_STATUS"]);o.My_Invoice_status.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_STATUS_ENTRY_USER_ID"]);o.My_Invoice_status.ENTRY_DATE = GV<String>(X["T_INVOICE_STATUS_ENTRY_DATE"]);o.My_Invoice_status.OWNER_ID = GV<Int32>(X["T_INVOICE_STATUS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -5146,17 +5238,15 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Order_details> Get_Order_details_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> INVOICE_ID_LIST, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Order_details> Get_Order_details_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Order_details> oList = new List<Order_details>();
 dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.INVOICE_ID_LIST = string.Join(",", INVOICE_ID_LIST.ToArray()); p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_CRITERIA_IN_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
 Order_details o = new Order_details();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Invoice = new Invoice();
-o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
 o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
@@ -5165,17 +5255,15 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Order_details> Get_Order_details_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> INVOICE_ID_LIST, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Order_details> Get_Order_details_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Order_details> oList = new List<Order_details>();
 dynamic p = new ExpandoObject();
-p.DESCRIPTION = DESCRIPTION; p.INVOICE_ID_LIST = string.Join(",", INVOICE_ID_LIST.ToArray()); p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.DESCRIPTION = DESCRIPTION; p.PRODUCT_ID_LIST = string.Join(",", PRODUCT_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ORDER_DETAILS_BY_WHERE_IN_LIST_ADV", p);
 if (R != null) {foreach (var X in R) {
 Order_details o = new Order_details();
 oTools.CopyPropValues_FromDataRecord(X, o);
-o.My_Invoice = new Invoice();
-o.My_Invoice.INVOICE_ID = GV<Int32>(X["T_INVOICE_INVOICE_ID"]);o.My_Invoice.CUSTOMER_ID = GV<Int32>(X["T_INVOICE_CUSTOMER_ID"]);o.My_Invoice.AMMOUNT = GV<Int32>(X["T_INVOICE_AMMOUNT"]);o.My_Invoice.ADRESS_ID = GV<Int32>(X["T_INVOICE_ADRESS_ID"]);o.My_Invoice.ORDER_STATUS = GV<Int32>(X["T_INVOICE_ORDER_STATUS"]);o.My_Invoice.ENTRY_USER_ID = GV<Int64>(X["T_INVOICE_ENTRY_USER_ID"]);o.My_Invoice.ENTRY_DATE = GV<String>(X["T_INVOICE_ENTRY_DATE"]);o.My_Invoice.OWNER_ID = GV<Int32>(X["T_INVOICE_OWNER_ID"]);o.My_Invoice.DESCRIPTION = GV<String>(X["T_INVOICE_DESCRIPTION"]);
 o.My_Product = new Product();
 o.My_Product.PRODUCT_ID = GV<Int32>(X["T_PRODUCT_PRODUCT_ID"]);o.My_Product.NAME = GV<String>(X["T_PRODUCT_NAME"]);o.My_Product.DESCRIPTION = GV<String>(X["T_PRODUCT_DESCRIPTION"]);o.My_Product.CATEGORY_ID = GV<Int32>(X["T_PRODUCT_CATEGORY_ID"]);o.My_Product.STOCK = GV<Int32>(X["T_PRODUCT_STOCK"]);o.My_Product.FULL_PRICE = GV<Decimal>(X["T_PRODUCT_FULL_PRICE"]);o.My_Product.COLOR_ID = GV<Int32>(X["T_PRODUCT_COLOR_ID"]);o.My_Product.SIZE_ID = GV<Int32>(X["T_PRODUCT_SIZE_ID"]);o.My_Product.DISCOUNT_PRICE = GV<Decimal>(X["T_PRODUCT_DISCOUNT_PRICE"]);o.My_Product.IS_BEST_SELLING = GV<Boolean>(X["T_PRODUCT_IS_BEST_SELLING"]);o.My_Product.IS_RECOMMENDED = GV<Boolean>(X["T_PRODUCT_IS_RECOMMENDED"]);o.My_Product.ENTRY_USER_ID = GV<Int64>(X["T_PRODUCT_ENTRY_USER_ID"]);o.My_Product.ENTRY_DATE = GV<String>(X["T_PRODUCT_ENTRY_DATE"]);o.My_Product.OWNER_ID = GV<Int32>(X["T_PRODUCT_OWNER_ID"]);
 oList.Add(o);
@@ -5298,6 +5386,11 @@ public void Delete_Invoice ( Int32? INVOICE_ID)
 {
 var p = new { INVOICE_ID = INVOICE_ID };
 ExecuteDelete("UPG_DELETE_INVOICE", p);
+}
+public void Delete_Invoice_status ( Int32? INVOICE_STATUS_ID)
+{
+var p = new { INVOICE_STATUS_ID = INVOICE_STATUS_ID };
+ExecuteDelete("UPG_DELETE_INVOICE_STATUS", p);
 }
 public void Delete_Loc_l1 ( long? LOC_L1_ID)
 {
@@ -5449,10 +5542,20 @@ public void Delete_Invoice_By_CUSTOMER_ID ( Int32? CUSTOMER_ID)
 var p = new { CUSTOMER_ID = CUSTOMER_ID };
 ExecuteDelete("UPG_DELETE_INVOICE_BY_CUSTOMER_ID", p);
 }
-public void Delete_Invoice_By_ADRESS_ID ( Int32? ADRESS_ID)
+public void Delete_Invoice_By_ORDER_DETAILS_ID ( Int32? ORDER_DETAILS_ID)
 {
-var p = new { ADRESS_ID = ADRESS_ID };
-ExecuteDelete("UPG_DELETE_INVOICE_BY_ADRESS_ID", p);
+var p = new { ORDER_DETAILS_ID = ORDER_DETAILS_ID };
+ExecuteDelete("UPG_DELETE_INVOICE_BY_ORDER_DETAILS_ID", p);
+}
+public void Delete_Invoice_By_INVOICE_STATUS_ID ( Int32? INVOICE_STATUS_ID)
+{
+var p = new { INVOICE_STATUS_ID = INVOICE_STATUS_ID };
+ExecuteDelete("UPG_DELETE_INVOICE_BY_INVOICE_STATUS_ID", p);
+}
+public void Delete_Invoice_status_By_OWNER_ID ( Int32? OWNER_ID)
+{
+var p = new { OWNER_ID = OWNER_ID };
+ExecuteDelete("UPG_DELETE_INVOICE_STATUS_BY_OWNER_ID", p);
 }
 public void Delete_Loc_l1_By_CODE ( string CODE)
 {
@@ -5513,11 +5616,6 @@ public void Delete_Order_details_By_OWNER_ID ( Int32? OWNER_ID)
 {
 var p = new { OWNER_ID = OWNER_ID };
 ExecuteDelete("UPG_DELETE_ORDER_DETAILS_BY_OWNER_ID", p);
-}
-public void Delete_Order_details_By_INVOICE_ID ( Int32? INVOICE_ID)
-{
-var p = new { INVOICE_ID = INVOICE_ID };
-ExecuteDelete("UPG_DELETE_ORDER_DETAILS_BY_INVOICE_ID", p);
 }
 public void Delete_Order_details_By_PRODUCT_ID ( Int32? PRODUCT_ID)
 {
@@ -5651,12 +5749,19 @@ oCustomer.CUSTOMER_ID = CUSTOMER_ID;oCustomer.USER_ID = USER_ID;oCustomer.FIRST_
 ExecuteEdit("UPG_EDIT_CUSTOMER", oCustomer, "CUSTOMER_ID");
 return oCustomer.CUSTOMER_ID;
 }
-public Int32? Edit_Invoice ( Int32? INVOICE_ID, Int32? CUSTOMER_ID, Int32? AMMOUNT, Int32? ADRESS_ID, Int32? ORDER_STATUS, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION)
+public Int32? Edit_Invoice ( Int32? INVOICE_ID, Int32? CUSTOMER_ID, Int32? ORDER_DETAILS_ID, Int32? AMMOUNT, Int32? INVOICE_STATUS_ID, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION)
 {
 Invoice oInvoice = new Invoice();
-oInvoice.INVOICE_ID = INVOICE_ID;oInvoice.CUSTOMER_ID = CUSTOMER_ID;oInvoice.AMMOUNT = AMMOUNT;oInvoice.ADRESS_ID = ADRESS_ID;oInvoice.ORDER_STATUS = ORDER_STATUS;oInvoice.ENTRY_USER_ID = ENTRY_USER_ID;oInvoice.ENTRY_DATE = ENTRY_DATE;oInvoice.OWNER_ID = OWNER_ID;oInvoice.DESCRIPTION = DESCRIPTION;
+oInvoice.INVOICE_ID = INVOICE_ID;oInvoice.CUSTOMER_ID = CUSTOMER_ID;oInvoice.ORDER_DETAILS_ID = ORDER_DETAILS_ID;oInvoice.AMMOUNT = AMMOUNT;oInvoice.INVOICE_STATUS_ID = INVOICE_STATUS_ID;oInvoice.ENTRY_USER_ID = ENTRY_USER_ID;oInvoice.ENTRY_DATE = ENTRY_DATE;oInvoice.OWNER_ID = OWNER_ID;oInvoice.DESCRIPTION = DESCRIPTION;
 ExecuteEdit("UPG_EDIT_INVOICE", oInvoice, "INVOICE_ID");
 return oInvoice.INVOICE_ID;
+}
+public Int32? Edit_Invoice_status ( Int32? INVOICE_STATUS_ID, string INVOICE_STATUS, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
+{
+Invoice_status oInvoice_status = new Invoice_status();
+oInvoice_status.INVOICE_STATUS_ID = INVOICE_STATUS_ID;oInvoice_status.INVOICE_STATUS = INVOICE_STATUS;oInvoice_status.ENTRY_USER_ID = ENTRY_USER_ID;oInvoice_status.ENTRY_DATE = ENTRY_DATE;oInvoice_status.OWNER_ID = OWNER_ID;
+ExecuteEdit("UPG_EDIT_INVOICE_STATUS", oInvoice_status, "INVOICE_STATUS_ID");
+return oInvoice_status.INVOICE_STATUS_ID;
 }
 public long? Edit_Loc_l1 ( long? LOC_L1_ID, string CODE, string DESCRIPTION, string NOTES, string ENTRY_DATE, long? ENTRY_USER_ID, Int32? OWNER_ID)
 {
@@ -5686,10 +5791,10 @@ oLoc_l4.LOC_L4_ID = LOC_L4_ID;oLoc_l4.CODE = CODE;oLoc_l4.DESCRIPTION = DESCRIPT
 ExecuteEdit("UPG_EDIT_LOC_L4", oLoc_l4, "LOC_L4_ID");
 return oLoc_l4.LOC_L4_ID;
 }
-public Int32? Edit_Order_details ( Int32? ORDER_DETAILS_ID, Int32? INVOICE_ID, Int32? PRODUCT_ID, decimal PRICE, Int32? QUANTITY, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION)
+public Int32? Edit_Order_details ( Int32? ORDER_DETAILS_ID, Int32? PRODUCT_ID, decimal PRICE, Int32? QUANTITY, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION)
 {
 Order_details oOrder_details = new Order_details();
-oOrder_details.ORDER_DETAILS_ID = ORDER_DETAILS_ID;oOrder_details.INVOICE_ID = INVOICE_ID;oOrder_details.PRODUCT_ID = PRODUCT_ID;oOrder_details.PRICE = PRICE;oOrder_details.QUANTITY = QUANTITY;oOrder_details.ENTRY_USER_ID = ENTRY_USER_ID;oOrder_details.ENTRY_DATE = ENTRY_DATE;oOrder_details.OWNER_ID = OWNER_ID;oOrder_details.DESCRIPTION = DESCRIPTION;
+oOrder_details.ORDER_DETAILS_ID = ORDER_DETAILS_ID;oOrder_details.PRODUCT_ID = PRODUCT_ID;oOrder_details.PRICE = PRICE;oOrder_details.QUANTITY = QUANTITY;oOrder_details.ENTRY_USER_ID = ENTRY_USER_ID;oOrder_details.ENTRY_DATE = ENTRY_DATE;oOrder_details.OWNER_ID = OWNER_ID;oOrder_details.DESCRIPTION = DESCRIPTION;
 ExecuteEdit("UPG_EDIT_ORDER_DETAILS", oOrder_details, "ORDER_DETAILS_ID");
 return oOrder_details.ORDER_DETAILS_ID;
 }

@@ -85,15 +85,24 @@ public partial class Invoice
 {
 public Int32? INVOICE_ID {get;set;}
 public Int32? CUSTOMER_ID {get;set;}
+public Int32? ORDER_DETAILS_ID {get;set;}
 public Int32? AMMOUNT {get;set;}
-public Int32? ADRESS_ID {get;set;}
-public Int32? ORDER_STATUS {get;set;}
+public Int32? INVOICE_STATUS_ID {get;set;}
 public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public Customer My_Customer {get;set;}
-public Adress My_Adress {get;set;}
+public Order_details My_Order_details {get;set;}
+public Invoice_status My_Invoice_status {get;set;}
+}
+public partial class Invoice_status
+{
+public Int32? INVOICE_STATUS_ID {get;set;}
+public string INVOICE_STATUS {get;set;}
+public long? ENTRY_USER_ID {get;set;}
+public string ENTRY_DATE {get;set;}
+public Int32? OWNER_ID {get;set;}
 }
 public partial class Loc_l1
 {
@@ -144,7 +153,6 @@ public Loc_l3 My_Loc_l3 {get;set;}
 public partial class Order_details
 {
 public Int32? ORDER_DETAILS_ID {get;set;}
-public Int32? INVOICE_ID {get;set;}
 public Int32? PRODUCT_ID {get;set;}
 public decimal PRICE {get;set;}
 public Int32? QUANTITY {get;set;}
@@ -152,7 +160,6 @@ public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
-public Invoice My_Invoice {get;set;}
 public Product My_Product {get;set;}
 }
 public partial class Owner
@@ -255,6 +262,7 @@ Color Get_Color_By_COLOR_ID ( Int32? COLOR_ID);
 Contact Get_Contact_By_CONTACT_ID ( Int32? CONTACT_ID);
 Customer Get_Customer_By_CUSTOMER_ID ( Int32? CUSTOMER_ID);
 Invoice Get_Invoice_By_INVOICE_ID ( Int32? INVOICE_ID);
+Invoice_status Get_Invoice_status_By_INVOICE_STATUS_ID ( Int32? INVOICE_STATUS_ID);
 Loc_l1 Get_Loc_l1_By_LOC_L1_ID ( long? LOC_L1_ID);
 Loc_l2 Get_Loc_l2_By_LOC_L2_ID ( long? LOC_L2_ID);
 Loc_l3 Get_Loc_l3_By_LOC_L3_ID ( long? LOC_L3_ID);
@@ -274,6 +282,7 @@ Color Get_Color_By_COLOR_ID_Adv ( Int32? COLOR_ID);
 Contact Get_Contact_By_CONTACT_ID_Adv ( Int32? CONTACT_ID);
 Customer Get_Customer_By_CUSTOMER_ID_Adv ( Int32? CUSTOMER_ID);
 Invoice Get_Invoice_By_INVOICE_ID_Adv ( Int32? INVOICE_ID);
+Invoice_status Get_Invoice_status_By_INVOICE_STATUS_ID_Adv ( Int32? INVOICE_STATUS_ID);
 Loc_l1 Get_Loc_l1_By_LOC_L1_ID_Adv ( long? LOC_L1_ID);
 Loc_l2 Get_Loc_l2_By_LOC_L2_ID_Adv ( long? LOC_L2_ID);
 Loc_l3 Get_Loc_l3_By_LOC_L3_ID_Adv ( long? LOC_L3_ID);
@@ -291,6 +300,7 @@ List<Color> Get_Color_By_COLOR_ID_List ( List<Int32?> COLOR_ID_LIST);
 List<Contact> Get_Contact_By_CONTACT_ID_List ( List<Int32?> CONTACT_ID_LIST);
 List<Customer> Get_Customer_By_CUSTOMER_ID_List ( List<Int32?> CUSTOMER_ID_LIST);
 List<Invoice> Get_Invoice_By_INVOICE_ID_List ( List<Int32?> INVOICE_ID_LIST);
+List<Invoice_status> Get_Invoice_status_By_INVOICE_STATUS_ID_List ( List<Int32?> INVOICE_STATUS_ID_LIST);
 List<Loc_l1> Get_Loc_l1_By_LOC_L1_ID_List ( List<long?> LOC_L1_ID_LIST);
 List<Loc_l2> Get_Loc_l2_By_LOC_L2_ID_List ( List<long?> LOC_L2_ID_LIST);
 List<Loc_l3> Get_Loc_l3_By_LOC_L3_ID_List ( List<long?> LOC_L3_ID_LIST);
@@ -310,6 +320,7 @@ List<Color> Get_Color_By_COLOR_ID_List_Adv ( List<Int32?> COLOR_ID_LIST);
 List<Contact> Get_Contact_By_CONTACT_ID_List_Adv ( List<Int32?> CONTACT_ID_LIST);
 List<Customer> Get_Customer_By_CUSTOMER_ID_List_Adv ( List<Int32?> CUSTOMER_ID_LIST);
 List<Invoice> Get_Invoice_By_INVOICE_ID_List_Adv ( List<Int32?> INVOICE_ID_LIST);
+List<Invoice_status> Get_Invoice_status_By_INVOICE_STATUS_ID_List_Adv ( List<Int32?> INVOICE_STATUS_ID_LIST);
 List<Loc_l1> Get_Loc_l1_By_LOC_L1_ID_List_Adv ( List<long?> LOC_L1_ID_LIST);
 List<Loc_l2> Get_Loc_l2_By_LOC_L2_ID_List_Adv ( List<long?> LOC_L2_ID_LIST);
 List<Loc_l3> Get_Loc_l3_By_LOC_L3_ID_List_Adv ( List<long?> LOC_L3_ID_LIST);
@@ -338,7 +349,9 @@ List<Customer> Get_Customer_By_ADRESS_ID ( Int32? ADRESS_ID);
 List<Customer> Get_Customer_By_USER_ID ( long? USER_ID);
 List<Invoice> Get_Invoice_By_OWNER_ID ( Int32? OWNER_ID);
 List<Invoice> Get_Invoice_By_CUSTOMER_ID ( Int32? CUSTOMER_ID);
-List<Invoice> Get_Invoice_By_ADRESS_ID ( Int32? ADRESS_ID);
+List<Invoice> Get_Invoice_By_ORDER_DETAILS_ID ( Int32? ORDER_DETAILS_ID);
+List<Invoice> Get_Invoice_By_INVOICE_STATUS_ID ( Int32? INVOICE_STATUS_ID);
+List<Invoice_status> Get_Invoice_status_By_OWNER_ID ( Int32? OWNER_ID);
 List<Loc_l1> Get_Loc_l1_By_CODE ( string CODE);
 List<Loc_l1> Get_Loc_l1_By_OWNER_ID ( Int32? OWNER_ID);
 List<Loc_l2> Get_Loc_l2_By_LOC_L1_ID_CODE ( long? LOC_L1_ID, string CODE);
@@ -351,7 +364,6 @@ List<Loc_l4> Get_Loc_l4_By_LOC_L3_ID_CODE ( long? LOC_L3_ID, string CODE);
 List<Loc_l4> Get_Loc_l4_By_LOC_L3_ID ( long? LOC_L3_ID);
 List<Loc_l4> Get_Loc_l4_By_OWNER_ID ( Int32? OWNER_ID);
 List<Order_details> Get_Order_details_By_OWNER_ID ( Int32? OWNER_ID);
-List<Order_details> Get_Order_details_By_INVOICE_ID ( Int32? INVOICE_ID);
 List<Order_details> Get_Order_details_By_PRODUCT_ID ( Int32? PRODUCT_ID);
 List<Person> Get_Person_By_OWNER_ID ( Int32? OWNER_ID);
 List<Product> Get_Product_By_OWNER_ID ( Int32? OWNER_ID);
@@ -388,7 +400,9 @@ List<Customer> Get_Customer_By_ADRESS_ID_Adv ( Int32? ADRESS_ID);
 List<Customer> Get_Customer_By_USER_ID_Adv ( long? USER_ID);
 List<Invoice> Get_Invoice_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<Invoice> Get_Invoice_By_CUSTOMER_ID_Adv ( Int32? CUSTOMER_ID);
-List<Invoice> Get_Invoice_By_ADRESS_ID_Adv ( Int32? ADRESS_ID);
+List<Invoice> Get_Invoice_By_ORDER_DETAILS_ID_Adv ( Int32? ORDER_DETAILS_ID);
+List<Invoice> Get_Invoice_By_INVOICE_STATUS_ID_Adv ( Int32? INVOICE_STATUS_ID);
+List<Invoice_status> Get_Invoice_status_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<Loc_l1> Get_Loc_l1_By_CODE_Adv ( string CODE);
 List<Loc_l1> Get_Loc_l1_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<Loc_l2> Get_Loc_l2_By_LOC_L1_ID_CODE_Adv ( long? LOC_L1_ID, string CODE);
@@ -401,7 +415,6 @@ List<Loc_l4> Get_Loc_l4_By_LOC_L3_ID_CODE_Adv ( long? LOC_L3_ID, string CODE);
 List<Loc_l4> Get_Loc_l4_By_LOC_L3_ID_Adv ( long? LOC_L3_ID);
 List<Loc_l4> Get_Loc_l4_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<Order_details> Get_Order_details_By_OWNER_ID_Adv ( Int32? OWNER_ID);
-List<Order_details> Get_Order_details_By_INVOICE_ID_Adv ( Int32? INVOICE_ID);
 List<Order_details> Get_Order_details_By_PRODUCT_ID_Adv ( Int32? PRODUCT_ID);
 List<Person> Get_Person_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<Product> Get_Product_By_OWNER_ID_Adv ( Int32? OWNER_ID);
@@ -425,11 +438,11 @@ List<Contact> Get_Contact_By_PERSON_ID_List ( List<long?> PERSON_ID_LIST);
 List<Customer> Get_Customer_By_ADRESS_ID_List ( List<Int32?> ADRESS_ID_LIST);
 List<Customer> Get_Customer_By_USER_ID_List ( List<long?> USER_ID_LIST);
 List<Invoice> Get_Invoice_By_CUSTOMER_ID_List ( List<Int32?> CUSTOMER_ID_LIST);
-List<Invoice> Get_Invoice_By_ADRESS_ID_List ( List<Int32?> ADRESS_ID_LIST);
+List<Invoice> Get_Invoice_By_ORDER_DETAILS_ID_List ( List<Int32?> ORDER_DETAILS_ID_LIST);
+List<Invoice> Get_Invoice_By_INVOICE_STATUS_ID_List ( List<Int32?> INVOICE_STATUS_ID_LIST);
 List<Loc_l2> Get_Loc_l2_By_LOC_L1_ID_List ( List<long?> LOC_L1_ID_LIST);
 List<Loc_l3> Get_Loc_l3_By_LOC_L2_ID_List ( List<long?> LOC_L2_ID_LIST);
 List<Loc_l4> Get_Loc_l4_By_LOC_L3_ID_List ( List<long?> LOC_L3_ID_LIST);
-List<Order_details> Get_Order_details_By_INVOICE_ID_List ( List<Int32?> INVOICE_ID_LIST);
 List<Order_details> Get_Order_details_By_PRODUCT_ID_List ( List<Int32?> PRODUCT_ID_LIST);
 List<Product> Get_Product_By_CATEGORY_ID_List ( List<Int32?> CATEGORY_ID_LIST);
 List<Product> Get_Product_By_COLOR_ID_List ( List<Int32?> COLOR_ID_LIST);
@@ -445,11 +458,11 @@ List<Contact> Get_Contact_By_PERSON_ID_List_Adv ( List<long?> PERSON_ID_LIST);
 List<Customer> Get_Customer_By_ADRESS_ID_List_Adv ( List<Int32?> ADRESS_ID_LIST);
 List<Customer> Get_Customer_By_USER_ID_List_Adv ( List<long?> USER_ID_LIST);
 List<Invoice> Get_Invoice_By_CUSTOMER_ID_List_Adv ( List<Int32?> CUSTOMER_ID_LIST);
-List<Invoice> Get_Invoice_By_ADRESS_ID_List_Adv ( List<Int32?> ADRESS_ID_LIST);
+List<Invoice> Get_Invoice_By_ORDER_DETAILS_ID_List_Adv ( List<Int32?> ORDER_DETAILS_ID_LIST);
+List<Invoice> Get_Invoice_By_INVOICE_STATUS_ID_List_Adv ( List<Int32?> INVOICE_STATUS_ID_LIST);
 List<Loc_l2> Get_Loc_l2_By_LOC_L1_ID_List_Adv ( List<long?> LOC_L1_ID_LIST);
 List<Loc_l3> Get_Loc_l3_By_LOC_L2_ID_List_Adv ( List<long?> LOC_L2_ID_LIST);
 List<Loc_l4> Get_Loc_l4_By_LOC_L3_ID_List_Adv ( List<long?> LOC_L3_ID_LIST);
-List<Order_details> Get_Order_details_By_INVOICE_ID_List_Adv ( List<Int32?> INVOICE_ID_LIST);
 List<Order_details> Get_Order_details_By_PRODUCT_ID_List_Adv ( List<Int32?> PRODUCT_ID_LIST);
 List<Product> Get_Product_By_CATEGORY_ID_List_Adv ( List<Int32?> CATEGORY_ID_LIST);
 List<Product> Get_Product_By_COLOR_ID_List_Adv ( List<Int32?> COLOR_ID_LIST);
@@ -546,16 +559,16 @@ List<Contact> Get_Contact_By_Criteria_InList ( string CONTACT_TYPE_CODE, string 
 List<Contact> Get_Contact_By_Where_InList ( string CONTACT_TYPE_CODE, string CONTACT, string DESCRIPTION, List<long?> PERSON_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Customer> Get_Customer_By_Criteria_InList ( string FIRST_NAME, string LAST_NAME, string PHONE, List<long?> USER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Customer> Get_Customer_By_Where_InList ( string FIRST_NAME, string LAST_NAME, string PHONE, List<long?> USER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Invoice> Get_Invoice_By_Criteria_InList ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Invoice> Get_Invoice_By_Where_InList ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Invoice> Get_Invoice_By_Criteria_InList ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ORDER_DETAILS_ID_LIST, List<Int32?> INVOICE_STATUS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Invoice> Get_Invoice_By_Where_InList ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ORDER_DETAILS_ID_LIST, List<Int32?> INVOICE_STATUS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Loc_l2> Get_Loc_l2_By_Criteria_InList ( string CODE, string DESCRIPTION, List<long?> LOC_L1_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Loc_l2> Get_Loc_l2_By_Where_InList ( string CODE, string DESCRIPTION, List<long?> LOC_L1_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Loc_l3> Get_Loc_l3_By_Criteria_InList ( string CODE, string DESCRIPTION, List<long?> LOC_L2_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Loc_l3> Get_Loc_l3_By_Where_InList ( string CODE, string DESCRIPTION, List<long?> LOC_L2_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Loc_l4> Get_Loc_l4_By_Criteria_InList ( string CODE, string DESCRIPTION, List<long?> LOC_L3_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Loc_l4> Get_Loc_l4_By_Where_InList ( string CODE, string DESCRIPTION, List<long?> LOC_L3_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Order_details> Get_Order_details_By_Criteria_InList ( string DESCRIPTION, List<Int32?> INVOICE_ID_LIST, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Order_details> Get_Order_details_By_Where_InList ( string DESCRIPTION, List<Int32?> INVOICE_ID_LIST, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Order_details> Get_Order_details_By_Criteria_InList ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Order_details> Get_Order_details_By_Where_InList ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Product> Get_Product_By_Criteria_InList ( string NAME, string DESCRIPTION, List<Int32?> CATEGORY_ID_LIST, List<Int32?> COLOR_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Product> Get_Product_By_Where_InList ( string NAME, string DESCRIPTION, List<Int32?> CATEGORY_ID_LIST, List<Int32?> COLOR_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User_account> Get_User_account_By_Criteria_InList ( string DESCRIPTION, List<Int32?> ADRESS_ID_LIST, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
@@ -568,16 +581,16 @@ List<Contact> Get_Contact_By_Criteria_InList_Adv ( string CONTACT_TYPE_CODE, str
 List<Contact> Get_Contact_By_Where_InList_Adv ( string CONTACT_TYPE_CODE, string CONTACT, string DESCRIPTION, List<long?> PERSON_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Customer> Get_Customer_By_Criteria_InList_Adv ( string FIRST_NAME, string LAST_NAME, string PHONE, List<long?> USER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Customer> Get_Customer_By_Where_InList_Adv ( string FIRST_NAME, string LAST_NAME, string PHONE, List<long?> USER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Invoice> Get_Invoice_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Invoice> Get_Invoice_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Invoice> Get_Invoice_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ORDER_DETAILS_ID_LIST, List<Int32?> INVOICE_STATUS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Invoice> Get_Invoice_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> CUSTOMER_ID_LIST, List<Int32?> ORDER_DETAILS_ID_LIST, List<Int32?> INVOICE_STATUS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Loc_l2> Get_Loc_l2_By_Criteria_InList_Adv ( string CODE, string DESCRIPTION, List<long?> LOC_L1_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Loc_l2> Get_Loc_l2_By_Where_InList_Adv ( string CODE, string DESCRIPTION, List<long?> LOC_L1_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Loc_l3> Get_Loc_l3_By_Criteria_InList_Adv ( string CODE, string DESCRIPTION, List<long?> LOC_L2_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Loc_l3> Get_Loc_l3_By_Where_InList_Adv ( string CODE, string DESCRIPTION, List<long?> LOC_L2_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Loc_l4> Get_Loc_l4_By_Criteria_InList_Adv ( string CODE, string DESCRIPTION, List<long?> LOC_L3_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Loc_l4> Get_Loc_l4_By_Where_InList_Adv ( string CODE, string DESCRIPTION, List<long?> LOC_L3_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Order_details> Get_Order_details_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> INVOICE_ID_LIST, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Order_details> Get_Order_details_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> INVOICE_ID_LIST, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Order_details> Get_Order_details_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Order_details> Get_Order_details_By_Where_InList_Adv ( string DESCRIPTION, List<Int32?> PRODUCT_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Product> Get_Product_By_Criteria_InList_Adv ( string NAME, string DESCRIPTION, List<Int32?> CATEGORY_ID_LIST, List<Int32?> COLOR_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Product> Get_Product_By_Where_InList_Adv ( string NAME, string DESCRIPTION, List<Int32?> CATEGORY_ID_LIST, List<Int32?> COLOR_ID_LIST, List<Int32?> SIZE_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User_account> Get_User_account_By_Criteria_InList_Adv ( string DESCRIPTION, List<Int32?> ADRESS_ID_LIST, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
@@ -589,6 +602,7 @@ void Delete_Color ( Int32? COLOR_ID);
 void Delete_Contact ( Int32? CONTACT_ID);
 void Delete_Customer ( Int32? CUSTOMER_ID);
 void Delete_Invoice ( Int32? INVOICE_ID);
+void Delete_Invoice_status ( Int32? INVOICE_STATUS_ID);
 void Delete_Loc_l1 ( long? LOC_L1_ID);
 void Delete_Loc_l2 ( long? LOC_L2_ID);
 void Delete_Loc_l3 ( long? LOC_L3_ID);
@@ -619,7 +633,9 @@ void Delete_Customer_By_ADRESS_ID ( Int32? ADRESS_ID);
 void Delete_Customer_By_USER_ID ( long? USER_ID);
 void Delete_Invoice_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_Invoice_By_CUSTOMER_ID ( Int32? CUSTOMER_ID);
-void Delete_Invoice_By_ADRESS_ID ( Int32? ADRESS_ID);
+void Delete_Invoice_By_ORDER_DETAILS_ID ( Int32? ORDER_DETAILS_ID);
+void Delete_Invoice_By_INVOICE_STATUS_ID ( Int32? INVOICE_STATUS_ID);
+void Delete_Invoice_status_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_Loc_l1_By_CODE ( string CODE);
 void Delete_Loc_l1_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_Loc_l2_By_LOC_L1_ID_CODE ( long? LOC_L1_ID, string CODE);
@@ -632,7 +648,6 @@ void Delete_Loc_l4_By_LOC_L3_ID_CODE ( long? LOC_L3_ID, string CODE);
 void Delete_Loc_l4_By_LOC_L3_ID ( long? LOC_L3_ID);
 void Delete_Loc_l4_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_Order_details_By_OWNER_ID ( Int32? OWNER_ID);
-void Delete_Order_details_By_INVOICE_ID ( Int32? INVOICE_ID);
 void Delete_Order_details_By_PRODUCT_ID ( Int32? PRODUCT_ID);
 void Delete_Person_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_Product_By_OWNER_ID ( Int32? OWNER_ID);
@@ -657,12 +672,13 @@ Int32? Edit_Category ( Int32? CATEGORY_ID, string NAME, long? ENTRY_USER_ID, str
 Int32? Edit_Color ( Int32? COLOR_ID, string NAME, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 Int32? Edit_Contact ( Int32? CONTACT_ID, long? PERSON_ID, string CONTACT_TYPE_CODE, string CONTACT, string DESCRIPTION, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 Int32? Edit_Customer ( Int32? CUSTOMER_ID, long? USER_ID, string FIRST_NAME, string LAST_NAME, Int32? ADRESS_ID, string PHONE, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
-Int32? Edit_Invoice ( Int32? INVOICE_ID, Int32? CUSTOMER_ID, Int32? AMMOUNT, Int32? ADRESS_ID, Int32? ORDER_STATUS, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION);
+Int32? Edit_Invoice ( Int32? INVOICE_ID, Int32? CUSTOMER_ID, Int32? ORDER_DETAILS_ID, Int32? AMMOUNT, Int32? INVOICE_STATUS_ID, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION);
+Int32? Edit_Invoice_status ( Int32? INVOICE_STATUS_ID, string INVOICE_STATUS, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 long? Edit_Loc_l1 ( long? LOC_L1_ID, string CODE, string DESCRIPTION, string NOTES, string ENTRY_DATE, long? ENTRY_USER_ID, Int32? OWNER_ID);
 long? Edit_Loc_l2 ( long? LOC_L2_ID, string CODE, string DESCRIPTION, long? LOC_L1_ID, string NOTES, string ENTRY_DATE, long? ENTRY_USER_ID, Int32? OWNER_ID);
 long? Edit_Loc_l3 ( long? LOC_L3_ID, string CODE, string DESCRIPTION, long? LOC_L2_ID, string NOTES, string ENTRY_DATE, long? ENTRY_USER_ID, Int32? OWNER_ID);
 long? Edit_Loc_l4 ( long? LOC_L4_ID, string CODE, string DESCRIPTION, long? LOC_L3_ID, string NOTES, string ENTRY_DATE, long? ENTRY_USER_ID, Int32? OWNER_ID);
-Int32? Edit_Order_details ( Int32? ORDER_DETAILS_ID, Int32? INVOICE_ID, Int32? PRODUCT_ID, decimal PRICE, Int32? QUANTITY, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION);
+Int32? Edit_Order_details ( Int32? ORDER_DETAILS_ID, Int32? PRODUCT_ID, decimal PRICE, Int32? QUANTITY, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION);
 Int32? Edit_Owner ( Int32? OWNER_ID, string CODE, string MAINTENANCE_DUE_DATE, string DESCRIPTION, string ENTRY_DATE);
 long? Edit_Person ( long? PERSON_ID, string FIRST_NAME, string LAST_NAME, string FATHER_NAME, string MOTHER_NAME, string TITLE_CODE, string GENDER_CODE, string RELIGION_CODE, string BIRTH_DATE, bool? IS_BLOCKED, string DESCRIPTION, Int32? OWNER_ID, long? ENTRY_USER_ID, string ENTRY_DATE);
 Int32? Edit_Product ( Int32? PRODUCT_ID, string NAME, string DESCRIPTION, Int32? CATEGORY_ID, Int32? STOCK, decimal FULL_PRICE, Int32? COLOR_ID, Int32? SIZE_ID, decimal? DISCOUNT_PRICE, bool? IS_BEST_SELLING, bool? IS_RECOMMENDED, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);

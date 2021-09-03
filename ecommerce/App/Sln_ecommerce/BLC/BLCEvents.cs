@@ -25,7 +25,8 @@ Delete_Category,
 Get_Product_By_Where_Adv,
 Get_User_account_By_USER_ID_Adv,
 Edit_Address,
-Delete_Address
+Delete_Address,
+Authenticate
 }
 #endregion
 

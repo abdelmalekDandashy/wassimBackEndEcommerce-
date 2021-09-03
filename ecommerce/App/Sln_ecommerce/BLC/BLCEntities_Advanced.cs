@@ -76,7 +76,15 @@ public partial class Invoice
 {
 #region Advanced Properties
 public Customer My_Customer {get;set;}
-public Adress My_Adress {get;set;}
+public Order_details My_Order_details {get;set;}
+public Invoice_status My_Invoice_status {get;set;}
+#endregion
+}
+#endregion
+#region Invoice_status
+public partial class Invoice_status
+{
+#region Advanced Properties
 #endregion
 }
 #endregion
@@ -115,7 +123,6 @@ public Loc_l3 My_Loc_l3 {get;set;}
 public partial class Order_details
 {
 #region Advanced Properties
-public Invoice My_Invoice {get;set;}
 public Product My_Product {get;set;}
 #endregion
 }
