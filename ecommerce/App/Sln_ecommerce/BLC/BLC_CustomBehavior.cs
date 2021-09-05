@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
+using Newtonsoft.Json;
 
 namespace BLC
 {
@@ -233,12 +234,79 @@ namespace BLC
         #endregion
 
 
-        //#region invoice
-        //public  Fetoura(Params_Authenticate i_Params_Authenticate)
-        //{ }
+        #region Fetoura
+        public Invoice Fetoura (Params_Fetoura i_Params_Fetoura)
+        {
+            Invoice oInvoice = new Invoice();
+            List<dynamic> outOfStockProducts = new List<dynamic>();
+            List<int?> oListProduct= new List<int?> { };
+            decimal Total_Price = 0;
 
-        //    #endregion
+            if (i_Params_Fetoura != null && i_Params_Fetoura.PRODUCTS != null && i_Params_Fetoura.PRODUCTS.Count > 0)
+            {   
+               foreach (var product in i_Params_Fetoura.PRODUCTS)
+                {
+                    oListProduct.Add(product.PRODUCT_ID);
+
+                    Params_Get_Product_By_PRODUCT_ID oParams_Get_Product_By_PRODUCT_ID = new Params_Get_Product_By_PRODUCT_ID();
+                    oParams_Get_Product_By_PRODUCT_ID.PRODUCT_ID = product.PRODUCT_ID;
+
+                    var oResult = this.Get_Product_By_PRODUCT_ID(oParams_Get_Product_By_PRODUCT_ID);
+                    if (oResult != null) { 
+                    if(oResult.STOCK < product.QUANTITY) {
+                            outOfStockProducts.Add(product.PRODUCT_ID);
+                        };
+                        if(oResult.STOCK >= product.QUANTITY) {
+                            Total_Price = Total_Price + (
+                              Convert.ToDecimal(oResult.DISCOUNT_PRICE) * Convert.ToDecimal(product.QUANTITY)
+                                );
+
+                        };
+
+                        
+                    }
+                }
+
+
+
+                //if ( outOfStockProducts.Count < 1) {
+
+                //    #region Params_Get_Product_By_PRODUCT_ID_List 
+                //    Params_Get_Product_By_PRODUCT_ID_List oParams_Get_Product_By_PRODUCT_ID_List = new Params_Get_Product_By_PRODUCT_ID_List();
+
+                //    oParams_Get_Product_By_PRODUCT_ID_List.PRODUCT_ID_LIST = oListProduct;
+                //    #endregion
+
+
+                //    var result = this.Get_Product_By_PRODUCT_ID_List(oParams_Get_Product_By_PRODUCT_ID_List);
+                //if (result != null && result.Count > 0)
+                //{
+                //    foreach (var product in result)
+                //    {
+                       
+                //    }
+                //}
+
+                //var jsonString = JsonConvert.SerializeObject(result);
+                //Console.WriteLine(jsonString);
+                //Console.WriteLine(result);
+                //}
+                //else
+                //{
+
+                //    //throw new BLCException("the product(s) with IDs: "+JsonConvert.SerializeObject(outOfStockProducts)+ " are out of stock");
+                //}
+                    oInvoice.outOfStockProducts = outOfStockProducts;
+                oInvoice.total = Total_Price;
+                    return oInvoice;
+              
+            }
+
+            return oInvoice;
         }
+
+        #endregion
+    }
     #region Business Entities
     #region Setup
     #region SetupEntry
@@ -297,12 +365,37 @@ namespace BLC
         //public string My_Image_Url { get; set; }
     }
     #endregion
+    #region Fetoura
+    public partial class Invoice
+    {
+        //public List<Uploaded_file> My_Uploaded_files { get; set; }
+        public List<dynamic> outOfStockProducts { get; set; }
+        public decimal total { get; set; }
+    }
+    #endregion
     #region Params_Authenticate
     public partial class Params_Authenticate
     {
         public int OWNER_ID { get; set; }
         public string EMAIL { get; set; }
         public string PASSWORD { get; set; }
+    }
+    #endregion
+    #region Params_Fetoura
+    public partial class Params_Fetoura
+    {
+        public int OWNER_ID { get; set; }
+        public int USER_ID { get; set; }
+        public List<Fetoura_Products> PRODUCTS { get; set; }
+        public int USER_ACCOUNT_ID { get; set; }
+    }
+    #endregion
+    #region Fetoura_Products
+    public partial class Fetoura_Products
+    {
+        public int PRODUCT_ID { get; set; }
+        public int QUANTITY { get; set; }
+  
     }
     #endregion
 

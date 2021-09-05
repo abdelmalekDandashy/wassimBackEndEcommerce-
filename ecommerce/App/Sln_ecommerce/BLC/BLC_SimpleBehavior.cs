@@ -1089,26 +1089,6 @@ oList.Add(oInvoice);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_OWNER_ID");}
 return oList;
 }
-public List<Invoice> Get_Invoice_By_CUSTOMER_ID(Params_Get_Invoice_By_CUSTOMER_ID i_Params_Get_Invoice_By_CUSTOMER_ID)
-{
-List<Invoice> oList = new List<Invoice>();
-Invoice oInvoice = new Invoice();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_By_CUSTOMER_ID");}
-#region Body Section.
-List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_CUSTOMER_ID(i_Params_Get_Invoice_By_CUSTOMER_ID.CUSTOMER_ID);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oInvoice = new Invoice();
-oTools.CopyPropValues(oDBEntry, oInvoice);
-oList.Add(oInvoice);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_CUSTOMER_ID");}
-return oList;
-}
 public List<Invoice> Get_Invoice_By_ORDER_DETAILS_ID(Params_Get_Invoice_By_ORDER_DETAILS_ID i_Params_Get_Invoice_By_ORDER_DETAILS_ID)
 {
 List<Invoice> oList = new List<Invoice>();
@@ -1147,6 +1127,26 @@ oList.Add(oInvoice);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_INVOICE_STATUS_ID");}
+return oList;
+}
+public List<Invoice> Get_Invoice_By_USER_ACCOUNT_ID(Params_Get_Invoice_By_USER_ACCOUNT_ID i_Params_Get_Invoice_By_USER_ACCOUNT_ID)
+{
+List<Invoice> oList = new List<Invoice>();
+Invoice oInvoice = new Invoice();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_By_USER_ACCOUNT_ID");}
+#region Body Section.
+List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_USER_ACCOUNT_ID(i_Params_Get_Invoice_By_USER_ACCOUNT_ID.USER_ACCOUNT_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oInvoice = new Invoice();
+oTools.CopyPropValues(oDBEntry, oInvoice);
+oList.Add(oInvoice);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_USER_ACCOUNT_ID");}
 return oList;
 }
 public List<Invoice_status> Get_Invoice_status_By_OWNER_ID(Params_Get_Invoice_status_By_OWNER_ID i_Params_Get_Invoice_status_By_OWNER_ID)
@@ -1929,26 +1929,6 @@ oList.Add(oCustomer);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Customer_By_USER_ID_List");}
 return oList;
 }
-public List<Invoice> Get_Invoice_By_CUSTOMER_ID_List(Params_Get_Invoice_By_CUSTOMER_ID_List i_Params_Get_Invoice_By_CUSTOMER_ID_List)
-{
-List<Invoice> oList = new List<Invoice>();
-Invoice oInvoice = new Invoice();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_By_CUSTOMER_ID_List");}
-#region Body Section.
-List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_CUSTOMER_ID_List(i_Params_Get_Invoice_By_CUSTOMER_ID_List.CUSTOMER_ID_LIST);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oInvoice = new Invoice();
-oTools.CopyPropValues(oDBEntry, oInvoice);
-oList.Add(oInvoice);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_CUSTOMER_ID_List");}
-return oList;
-}
 public List<Invoice> Get_Invoice_By_ORDER_DETAILS_ID_List(Params_Get_Invoice_By_ORDER_DETAILS_ID_List i_Params_Get_Invoice_By_ORDER_DETAILS_ID_List)
 {
 List<Invoice> oList = new List<Invoice>();
@@ -1987,6 +1967,26 @@ oList.Add(oInvoice);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_INVOICE_STATUS_ID_List");}
+return oList;
+}
+public List<Invoice> Get_Invoice_By_USER_ACCOUNT_ID_List(Params_Get_Invoice_By_USER_ACCOUNT_ID_List i_Params_Get_Invoice_By_USER_ACCOUNT_ID_List)
+{
+List<Invoice> oList = new List<Invoice>();
+Invoice oInvoice = new Invoice();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_By_USER_ACCOUNT_ID_List");}
+#region Body Section.
+List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_USER_ACCOUNT_ID_List(i_Params_Get_Invoice_By_USER_ACCOUNT_ID_List.USER_ACCOUNT_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oInvoice = new Invoice();
+oTools.CopyPropValues(oDBEntry, oInvoice);
+oList.Add(oInvoice);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_USER_ACCOUNT_ID_List");}
 return oList;
 }
 public List<Loc_l2> Get_Loc_l2_By_LOC_L1_ID_List(Params_Get_Loc_l2_By_LOC_L1_ID_List i_Params_Get_Loc_l2_By_LOC_L1_ID_List)
@@ -2579,6 +2579,56 @@ oList.Add(oInvoice);
 i_Params_Get_Invoice_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_Where");}
+return oList;
+}
+public List<Invoice_status> Get_Invoice_status_By_Criteria(Params_Get_Invoice_status_By_Criteria i_Params_Get_Invoice_status_By_Criteria)
+{
+List<Invoice_status> oList = new List<Invoice_status>();
+Invoice_status oInvoice_status = new Invoice_status();
+long? tmp_TOTAL_COUNT = 0;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_status_By_Criteria");}
+#region Body Section.
+if ((i_Params_Get_Invoice_status_By_Criteria.OWNER_ID == null) || (i_Params_Get_Invoice_status_By_Criteria.OWNER_ID == 0)) { i_Params_Get_Invoice_status_By_Criteria.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Invoice_status_By_Criteria.START_ROW == null) { i_Params_Get_Invoice_status_By_Criteria.START_ROW = 0; }
+if ((i_Params_Get_Invoice_status_By_Criteria.END_ROW == null) || (i_Params_Get_Invoice_status_By_Criteria.END_ROW == 0)) { i_Params_Get_Invoice_status_By_Criteria.END_ROW = 1000000; }
+List<DALC.Invoice_status> oList_DBEntries = _AppContext.Get_Invoice_status_By_Criteria(i_Params_Get_Invoice_status_By_Criteria.INVOICE_STATUS,i_Params_Get_Invoice_status_By_Criteria.OWNER_ID,i_Params_Get_Invoice_status_By_Criteria.START_ROW,i_Params_Get_Invoice_status_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oInvoice_status = new Invoice_status();
+oTools.CopyPropValues(oDBEntry, oInvoice_status);
+oList.Add(oInvoice_status);
+}
+}
+i_Params_Get_Invoice_status_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_status_By_Criteria");}
+return oList;
+}
+public List<Invoice_status> Get_Invoice_status_By_Where(Params_Get_Invoice_status_By_Where i_Params_Get_Invoice_status_By_Where)
+{
+List<Invoice_status> oList = new List<Invoice_status>();
+Invoice_status oInvoice_status = new Invoice_status();
+long? tmp_TOTAL_COUNT = 0;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_status_By_Where");}
+#region Body Section.
+if ((i_Params_Get_Invoice_status_By_Where.OWNER_ID == null) || (i_Params_Get_Invoice_status_By_Where.OWNER_ID == 0)) { i_Params_Get_Invoice_status_By_Where.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Invoice_status_By_Where.START_ROW == null) { i_Params_Get_Invoice_status_By_Where.START_ROW = 0; }
+if ((i_Params_Get_Invoice_status_By_Where.END_ROW == null) || (i_Params_Get_Invoice_status_By_Where.END_ROW == 0)) { i_Params_Get_Invoice_status_By_Where.END_ROW = 1000000; }
+List<DALC.Invoice_status> oList_DBEntries = _AppContext.Get_Invoice_status_By_Where(i_Params_Get_Invoice_status_By_Where.INVOICE_STATUS,i_Params_Get_Invoice_status_By_Where.OWNER_ID,i_Params_Get_Invoice_status_By_Where.START_ROW,i_Params_Get_Invoice_status_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oInvoice_status = new Invoice_status();
+oTools.CopyPropValues(oDBEntry, oInvoice_status);
+oList.Add(oInvoice_status);
+}
+}
+i_Params_Get_Invoice_status_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_status_By_Where");}
 return oList;
 }
 public List<Loc_l1> Get_Loc_l1_By_Criteria(Params_Get_Loc_l1_By_Criteria i_Params_Get_Loc_l1_By_Criteria)
@@ -3720,11 +3770,11 @@ if (i_Params_Get_Invoice_By_Criteria_InList.START_ROW == null) { i_Params_Get_In
 if ((i_Params_Get_Invoice_By_Criteria_InList.END_ROW == null) || (i_Params_Get_Invoice_By_Criteria_InList.END_ROW == 0)) { i_Params_Get_Invoice_By_Criteria_InList.END_ROW = 1000000; }
 oParams_Get_Invoice_By_Criteria_InList_SP.OWNER_ID = i_Params_Get_Invoice_By_Criteria_InList.OWNER_ID;
 oParams_Get_Invoice_By_Criteria_InList_SP.DESCRIPTION = i_Params_Get_Invoice_By_Criteria_InList.DESCRIPTION;
-if ( i_Params_Get_Invoice_By_Criteria_InList.CUSTOMER_ID_LIST == null)
+if ( i_Params_Get_Invoice_By_Criteria_InList.USER_ACCOUNT_ID_LIST == null)
 {
-i_Params_Get_Invoice_By_Criteria_InList.CUSTOMER_ID_LIST = new List<Int32?>();
+i_Params_Get_Invoice_By_Criteria_InList.USER_ACCOUNT_ID_LIST = new List<long?>();
 }
-oParams_Get_Invoice_By_Criteria_InList_SP.CUSTOMER_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Invoice_By_Criteria_InList.CUSTOMER_ID_LIST);
+oParams_Get_Invoice_By_Criteria_InList_SP.USER_ACCOUNT_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_Invoice_By_Criteria_InList.USER_ACCOUNT_ID_LIST);
 if ( i_Params_Get_Invoice_By_Criteria_InList.ORDER_DETAILS_ID_LIST == null)
 {
 i_Params_Get_Invoice_By_Criteria_InList.ORDER_DETAILS_ID_LIST = new List<Int32?>();
@@ -3738,7 +3788,7 @@ oParams_Get_Invoice_By_Criteria_InList_SP.INVOICE_STATUS_ID_LIST = oTools.Conver
 oParams_Get_Invoice_By_Criteria_InList_SP.START_ROW = i_Params_Get_Invoice_By_Criteria_InList.START_ROW;
 oParams_Get_Invoice_By_Criteria_InList_SP.END_ROW = i_Params_Get_Invoice_By_Criteria_InList.END_ROW;
 oParams_Get_Invoice_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_Invoice_By_Criteria_InList.TOTAL_COUNT;
-List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_Criteria_InList(i_Params_Get_Invoice_By_Criteria_InList.DESCRIPTION,i_Params_Get_Invoice_By_Criteria_InList.CUSTOMER_ID_LIST,i_Params_Get_Invoice_By_Criteria_InList.ORDER_DETAILS_ID_LIST,i_Params_Get_Invoice_By_Criteria_InList.INVOICE_STATUS_ID_LIST,i_Params_Get_Invoice_By_Criteria_InList.OWNER_ID,i_Params_Get_Invoice_By_Criteria_InList.START_ROW,i_Params_Get_Invoice_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_Criteria_InList(i_Params_Get_Invoice_By_Criteria_InList.DESCRIPTION,i_Params_Get_Invoice_By_Criteria_InList.USER_ACCOUNT_ID_LIST,i_Params_Get_Invoice_By_Criteria_InList.ORDER_DETAILS_ID_LIST,i_Params_Get_Invoice_By_Criteria_InList.INVOICE_STATUS_ID_LIST,i_Params_Get_Invoice_By_Criteria_InList.OWNER_ID,i_Params_Get_Invoice_By_Criteria_InList.START_ROW,i_Params_Get_Invoice_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -3767,11 +3817,11 @@ if (i_Params_Get_Invoice_By_Where_InList.START_ROW == null) { i_Params_Get_Invoi
 if ((i_Params_Get_Invoice_By_Where_InList.END_ROW == null) || (i_Params_Get_Invoice_By_Where_InList.END_ROW == 0)) { i_Params_Get_Invoice_By_Where_InList.END_ROW = 1000000; }
 oParams_Get_Invoice_By_Where_InList_SP.OWNER_ID = i_Params_Get_Invoice_By_Where_InList.OWNER_ID;
 oParams_Get_Invoice_By_Where_InList_SP.DESCRIPTION = i_Params_Get_Invoice_By_Where_InList.DESCRIPTION;
-if ( i_Params_Get_Invoice_By_Where_InList.CUSTOMER_ID_LIST == null)
+if ( i_Params_Get_Invoice_By_Where_InList.USER_ACCOUNT_ID_LIST == null)
 {
-i_Params_Get_Invoice_By_Where_InList.CUSTOMER_ID_LIST = new List<Int32?>();
+i_Params_Get_Invoice_By_Where_InList.USER_ACCOUNT_ID_LIST = new List<long?>();
 }
-oParams_Get_Invoice_By_Where_InList_SP.CUSTOMER_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Invoice_By_Where_InList.CUSTOMER_ID_LIST);
+oParams_Get_Invoice_By_Where_InList_SP.USER_ACCOUNT_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_Invoice_By_Where_InList.USER_ACCOUNT_ID_LIST);
 if ( i_Params_Get_Invoice_By_Where_InList.ORDER_DETAILS_ID_LIST == null)
 {
 i_Params_Get_Invoice_By_Where_InList.ORDER_DETAILS_ID_LIST = new List<Int32?>();
@@ -3785,7 +3835,7 @@ oParams_Get_Invoice_By_Where_InList_SP.INVOICE_STATUS_ID_LIST = oTools.Convert_L
 oParams_Get_Invoice_By_Where_InList_SP.START_ROW = i_Params_Get_Invoice_By_Where_InList.START_ROW;
 oParams_Get_Invoice_By_Where_InList_SP.END_ROW = i_Params_Get_Invoice_By_Where_InList.END_ROW;
 oParams_Get_Invoice_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_Invoice_By_Where_InList.TOTAL_COUNT;
-List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_Where_InList(i_Params_Get_Invoice_By_Where_InList.DESCRIPTION,i_Params_Get_Invoice_By_Where_InList.CUSTOMER_ID_LIST,i_Params_Get_Invoice_By_Where_InList.ORDER_DETAILS_ID_LIST,i_Params_Get_Invoice_By_Where_InList.INVOICE_STATUS_ID_LIST,i_Params_Get_Invoice_By_Where_InList.OWNER_ID,i_Params_Get_Invoice_By_Where_InList.START_ROW,i_Params_Get_Invoice_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_Where_InList(i_Params_Get_Invoice_By_Where_InList.DESCRIPTION,i_Params_Get_Invoice_By_Where_InList.USER_ACCOUNT_ID_LIST,i_Params_Get_Invoice_By_Where_InList.ORDER_DETAILS_ID_LIST,i_Params_Get_Invoice_By_Where_InList.INVOICE_STATUS_ID_LIST,i_Params_Get_Invoice_By_Where_InList.OWNER_ID,i_Params_Get_Invoice_By_Where_InList.START_ROW,i_Params_Get_Invoice_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -5726,43 +5776,6 @@ throw new Exception(ex.Message);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Invoice_By_OWNER_ID");}
 }
-public void Delete_Invoice_By_CUSTOMER_ID(Params_Delete_Invoice_By_CUSTOMER_ID i_Params_Delete_Invoice_By_CUSTOMER_ID)
-{
-Params_Get_Invoice_By_CUSTOMER_ID oParams_Get_Invoice_By_CUSTOMER_ID = new Params_Get_Invoice_By_CUSTOMER_ID();
-List<Invoice> _List_Invoice = new List<Invoice>();
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Invoice_By_CUSTOMER_ID");}
-#region Body Section.
-try
-{
-using (TransactionScope oScope = new TransactionScope())
-{
-if (_Stop_Delete_Invoice_Execution)
-{
-_Stop_Delete_Invoice_Execution = false;
-return;
-}
-_AppContext.Delete_Invoice_By_CUSTOMER_ID(i_Params_Delete_Invoice_By_CUSTOMER_ID.CUSTOMER_ID);
-oScope.Complete();
-}
-}
-catch (BLCException blcex)
-{
-throw new BLCException(blcex.Message);
-}
-catch (Exception ex)
-{
-if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
-{
-throw new BLCException("Cannot be deleted because of related records in other tables");
-}
-else
-{
-throw new Exception(ex.Message);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Invoice_By_CUSTOMER_ID");}
-}
 public void Delete_Invoice_By_ORDER_DETAILS_ID(Params_Delete_Invoice_By_ORDER_DETAILS_ID i_Params_Delete_Invoice_By_ORDER_DETAILS_ID)
 {
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Invoice_By_ORDER_DETAILS_ID");}
@@ -5832,6 +5845,41 @@ throw new Exception(ex.Message);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Invoice_By_INVOICE_STATUS_ID");}
+}
+public void Delete_Invoice_By_USER_ACCOUNT_ID(Params_Delete_Invoice_By_USER_ACCOUNT_ID i_Params_Delete_Invoice_By_USER_ACCOUNT_ID)
+{
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_Invoice_By_USER_ACCOUNT_ID");}
+#region Body Section.
+try
+{
+using (TransactionScope oScope = new TransactionScope())
+{
+if (_Stop_Delete_Invoice_Execution)
+{
+_Stop_Delete_Invoice_Execution = false;
+return;
+}
+_AppContext.Delete_Invoice_By_USER_ACCOUNT_ID(i_Params_Delete_Invoice_By_USER_ACCOUNT_ID.USER_ACCOUNT_ID);
+oScope.Complete();
+}
+}
+catch (BLCException blcex)
+{
+throw new BLCException(blcex.Message);
+}
+catch (Exception ex)
+{
+if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+{
+throw new BLCException("Cannot be deleted because of related records in other tables");
+}
+else
+{
+throw new Exception(ex.Message);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_Invoice_By_USER_ACCOUNT_ID");}
 }
 public void Delete_Invoice_status_By_OWNER_ID(Params_Delete_Invoice_status_By_OWNER_ID i_Params_Delete_Invoice_status_By_OWNER_ID)
 {
@@ -7225,7 +7273,7 @@ return;
 i_Invoice.INVOICE_ID = _AppContext.Edit_Invoice
 (
 i_Invoice.INVOICE_ID
-,i_Invoice.CUSTOMER_ID
+,i_Invoice.USER_ACCOUNT_ID
 ,i_Invoice.ORDER_DETAILS_ID
 ,i_Invoice.AMMOUNT
 ,i_Invoice.INVOICE_STATUS_ID

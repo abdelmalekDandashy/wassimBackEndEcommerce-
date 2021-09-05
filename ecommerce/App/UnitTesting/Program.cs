@@ -50,6 +50,28 @@ namespace UnitTesting
             //Console.WriteLine(jsonString);
             //Console.WriteLine(jsonString);
 
+            Params_Fetoura oParams_Fetoura = new Params_Fetoura();
+            Fetoura_Products oFetoura_Products = new Fetoura_Products();
+            oFetoura_Products.PRODUCT_ID = 8;
+            oFetoura_Products.QUANTITY = 30;
+
+
+            List<Fetoura_Products> oList = new List<Fetoura_Products>();
+
+
+            oList.Add(oFetoura_Products);
+            oList.Add(oFetoura_Products);
+            oParams_Fetoura.OWNER_ID = 1;
+            oParams_Fetoura.USER_ACCOUNT_ID = 2;
+            oParams_Fetoura.USER_ID = 1;
+            oParams_Fetoura.PRODUCTS =oList;
+
+            var result = oBLC.Fetoura(oParams_Fetoura);
+            Console.WriteLine(result);
+            Console.WriteLine(result);
+
+
+
 
             //for (int i = 0; i < result.Count; i++)
             //{

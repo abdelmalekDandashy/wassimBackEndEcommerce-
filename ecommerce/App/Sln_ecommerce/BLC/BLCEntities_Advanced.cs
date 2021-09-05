@@ -75,7 +75,7 @@ public Adress My_Adress {get;set;}
 public partial class Invoice
 {
 #region Advanced Properties
-public Customer My_Customer {get;set;}
+public User_account My_User_account {get;set;}
 public Order_details My_Order_details {get;set;}
 public Invoice_status My_Invoice_status {get;set;}
 #endregion

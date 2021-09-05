@@ -1,4 +1,4 @@
--if products in fetoura < products in stock ==> send to UI rejected (error msg: out of stock...)
+-if products in fetoura > products in stock ==> send to UI rejected (error msg: out of stock...)
 
 what wassim should send to malek:
 
@@ -8,7 +8,9 @@ what wassim should send to malek:
 -USER_ACCOUNT_ID
 
 
+
 what should malek do:
+
 
 -result = get product_by_product_ID_LIST (w be5od menno el sale price)
 -for each product:

@@ -119,8 +119,8 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_By_INVOICE_ID_Ad
 DALC.Invoice oDBEntry = _AppContext.Get_Invoice_By_INVOICE_ID_Adv(i_Params_Get_Invoice_By_INVOICE_ID.INVOICE_ID);
 oInvoice = new Invoice();
 oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
 oInvoice.My_Order_details = new Order_details();
 oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
 oInvoice.My_Invoice_status = new Invoice_status();
@@ -435,8 +435,8 @@ foreach (var oDBEntry in oList_DBEntries)
 {
 oInvoice = new Invoice();
 oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
 oInvoice.My_Order_details = new Order_details();
 oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
 oInvoice.My_Invoice_status = new Invoice_status();
@@ -1118,8 +1118,8 @@ foreach (var oDBEntry in oList_DBEntries)
 {
 oInvoice = new Invoice();
 oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
 oInvoice.My_Order_details = new Order_details();
 oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
 oInvoice.My_Invoice_status = new Invoice_status();
@@ -1129,32 +1129,6 @@ oList.Add(oInvoice);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_OWNER_ID_Adv");}
-return oList;
-}
-public List<Invoice> Get_Invoice_By_CUSTOMER_ID_Adv(Params_Get_Invoice_By_CUSTOMER_ID i_Params_Get_Invoice_By_CUSTOMER_ID)
-{
-List<Invoice> oList = new List<Invoice>();
-Invoice oInvoice = new Invoice();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_By_CUSTOMER_ID_Adv");}
-#region Body Section.
-List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_CUSTOMER_ID_Adv(i_Params_Get_Invoice_By_CUSTOMER_ID.CUSTOMER_ID);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oInvoice = new Invoice();
-oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
-oInvoice.My_Order_details = new Order_details();
-oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
-oInvoice.My_Invoice_status = new Invoice_status();
-oTools.CopyPropValues(oDBEntry.My_Invoice_status, oInvoice.My_Invoice_status);
-oList.Add(oInvoice);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_CUSTOMER_ID_Adv");}
 return oList;
 }
 public List<Invoice> Get_Invoice_By_ORDER_DETAILS_ID_Adv(Params_Get_Invoice_By_ORDER_DETAILS_ID i_Params_Get_Invoice_By_ORDER_DETAILS_ID)
@@ -1170,8 +1144,8 @@ foreach (var oDBEntry in oList_DBEntries)
 {
 oInvoice = new Invoice();
 oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
 oInvoice.My_Order_details = new Order_details();
 oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
 oInvoice.My_Invoice_status = new Invoice_status();
@@ -1196,8 +1170,8 @@ foreach (var oDBEntry in oList_DBEntries)
 {
 oInvoice = new Invoice();
 oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
 oInvoice.My_Order_details = new Order_details();
 oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
 oInvoice.My_Invoice_status = new Invoice_status();
@@ -1207,6 +1181,32 @@ oList.Add(oInvoice);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_INVOICE_STATUS_ID_Adv");}
+return oList;
+}
+public List<Invoice> Get_Invoice_By_USER_ACCOUNT_ID_Adv(Params_Get_Invoice_By_USER_ACCOUNT_ID i_Params_Get_Invoice_By_USER_ACCOUNT_ID)
+{
+List<Invoice> oList = new List<Invoice>();
+Invoice oInvoice = new Invoice();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_By_USER_ACCOUNT_ID_Adv");}
+#region Body Section.
+List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_USER_ACCOUNT_ID_Adv(i_Params_Get_Invoice_By_USER_ACCOUNT_ID.USER_ACCOUNT_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oInvoice = new Invoice();
+oTools.CopyPropValues(oDBEntry, oInvoice);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
+oInvoice.My_Order_details = new Order_details();
+oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
+oInvoice.My_Invoice_status = new Invoice_status();
+oTools.CopyPropValues(oDBEntry.My_Invoice_status, oInvoice.My_Invoice_status);
+oList.Add(oInvoice);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_USER_ACCOUNT_ID_Adv");}
 return oList;
 }
 public List<Invoice_status> Get_Invoice_status_By_OWNER_ID_Adv(Params_Get_Invoice_status_By_OWNER_ID i_Params_Get_Invoice_status_By_OWNER_ID)
@@ -2039,32 +2039,6 @@ oList.Add(oCustomer);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Customer_By_USER_ID_List_Adv");}
 return oList;
 }
-public List<Invoice> Get_Invoice_By_CUSTOMER_ID_List_Adv(Params_Get_Invoice_By_CUSTOMER_ID_List i_Params_Get_Invoice_By_CUSTOMER_ID_List)
-{
-List<Invoice> oList = new List<Invoice>();
-Invoice oInvoice = new Invoice();
-if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_By_CUSTOMER_ID_List_Adv");}
-#region Body Section.
-List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_CUSTOMER_ID_List_Adv(i_Params_Get_Invoice_By_CUSTOMER_ID_List.CUSTOMER_ID_LIST);
-if (oList_DBEntries != null)
-{
-foreach (var oDBEntry in oList_DBEntries)
-{
-oInvoice = new Invoice();
-oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
-oInvoice.My_Order_details = new Order_details();
-oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
-oInvoice.My_Invoice_status = new Invoice_status();
-oTools.CopyPropValues(oDBEntry.My_Invoice_status, oInvoice.My_Invoice_status);
-oList.Add(oInvoice);
-}
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_CUSTOMER_ID_List_Adv");}
-return oList;
-}
 public List<Invoice> Get_Invoice_By_ORDER_DETAILS_ID_List_Adv(Params_Get_Invoice_By_ORDER_DETAILS_ID_List i_Params_Get_Invoice_By_ORDER_DETAILS_ID_List)
 {
 List<Invoice> oList = new List<Invoice>();
@@ -2078,8 +2052,8 @@ foreach (var oDBEntry in oList_DBEntries)
 {
 oInvoice = new Invoice();
 oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
 oInvoice.My_Order_details = new Order_details();
 oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
 oInvoice.My_Invoice_status = new Invoice_status();
@@ -2104,8 +2078,8 @@ foreach (var oDBEntry in oList_DBEntries)
 {
 oInvoice = new Invoice();
 oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
 oInvoice.My_Order_details = new Order_details();
 oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
 oInvoice.My_Invoice_status = new Invoice_status();
@@ -2115,6 +2089,32 @@ oList.Add(oInvoice);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_INVOICE_STATUS_ID_List_Adv");}
+return oList;
+}
+public List<Invoice> Get_Invoice_By_USER_ACCOUNT_ID_List_Adv(Params_Get_Invoice_By_USER_ACCOUNT_ID_List i_Params_Get_Invoice_By_USER_ACCOUNT_ID_List)
+{
+List<Invoice> oList = new List<Invoice>();
+Invoice oInvoice = new Invoice();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_By_USER_ACCOUNT_ID_List_Adv");}
+#region Body Section.
+List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_USER_ACCOUNT_ID_List_Adv(i_Params_Get_Invoice_By_USER_ACCOUNT_ID_List.USER_ACCOUNT_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oInvoice = new Invoice();
+oTools.CopyPropValues(oDBEntry, oInvoice);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
+oInvoice.My_Order_details = new Order_details();
+oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
+oInvoice.My_Invoice_status = new Invoice_status();
+oTools.CopyPropValues(oDBEntry.My_Invoice_status, oInvoice.My_Invoice_status);
+oList.Add(oInvoice);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_USER_ACCOUNT_ID_List_Adv");}
 return oList;
 }
 public List<Loc_l2> Get_Loc_l2_By_LOC_L1_ID_List_Adv(Params_Get_Loc_l2_By_LOC_L1_ID_List i_Params_Get_Loc_l2_By_LOC_L1_ID_List)
@@ -2750,8 +2750,8 @@ foreach (var oDBEntry in oList_DBEntries)
 {
 oInvoice = new Invoice();
 oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
 oInvoice.My_Order_details = new Order_details();
 oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
 oInvoice.My_Invoice_status = new Invoice_status();
@@ -2781,8 +2781,8 @@ foreach (var oDBEntry in oList_DBEntries)
 {
 oInvoice = new Invoice();
 oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
 oInvoice.My_Order_details = new Order_details();
 oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
 oInvoice.My_Invoice_status = new Invoice_status();
@@ -2793,6 +2793,56 @@ oList.Add(oInvoice);
 i_Params_Get_Invoice_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_By_Where_Adv");}
+return oList;
+}
+public List<Invoice_status> Get_Invoice_status_By_Criteria_Adv(Params_Get_Invoice_status_By_Criteria i_Params_Get_Invoice_status_By_Criteria)
+{
+List<Invoice_status> oList = new List<Invoice_status>();
+long? tmp_TOTAL_COUNT = 0;
+Invoice_status oInvoice_status = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_status_By_Criteria_Adv");}
+#region Body Section.
+if ((i_Params_Get_Invoice_status_By_Criteria.OWNER_ID == null) || (i_Params_Get_Invoice_status_By_Criteria.OWNER_ID == 0)) { i_Params_Get_Invoice_status_By_Criteria.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Invoice_status_By_Criteria.START_ROW == null) { i_Params_Get_Invoice_status_By_Criteria.START_ROW = 0; }
+if ((i_Params_Get_Invoice_status_By_Criteria.END_ROW == null) || (i_Params_Get_Invoice_status_By_Criteria.END_ROW == 0)) { i_Params_Get_Invoice_status_By_Criteria.END_ROW = 1000000; }
+List<DALC.Invoice_status> oList_DBEntries = _AppContext.Get_Invoice_status_By_Criteria_Adv(i_Params_Get_Invoice_status_By_Criteria.INVOICE_STATUS,i_Params_Get_Invoice_status_By_Criteria.OWNER_ID,i_Params_Get_Invoice_status_By_Criteria.START_ROW,i_Params_Get_Invoice_status_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oInvoice_status = new Invoice_status();
+oTools.CopyPropValues(oDBEntry, oInvoice_status);
+oList.Add(oInvoice_status);
+}
+}
+i_Params_Get_Invoice_status_By_Criteria.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_status_By_Criteria_Adv");}
+return oList;
+}
+public List<Invoice_status> Get_Invoice_status_By_Where_Adv(Params_Get_Invoice_status_By_Where i_Params_Get_Invoice_status_By_Where)
+{
+List<Invoice_status> oList = new List<Invoice_status>();
+long? tmp_TOTAL_COUNT = 0;
+Invoice_status oInvoice_status = null;
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_status_By_Where_Adv");}
+#region Body Section.
+if ((i_Params_Get_Invoice_status_By_Where.OWNER_ID == null) || (i_Params_Get_Invoice_status_By_Where.OWNER_ID == 0)) { i_Params_Get_Invoice_status_By_Where.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Invoice_status_By_Where.START_ROW == null) { i_Params_Get_Invoice_status_By_Where.START_ROW = 0; }
+if ((i_Params_Get_Invoice_status_By_Where.END_ROW == null) || (i_Params_Get_Invoice_status_By_Where.END_ROW == 0)) { i_Params_Get_Invoice_status_By_Where.END_ROW = 1000000; }
+List<DALC.Invoice_status> oList_DBEntries = _AppContext.Get_Invoice_status_By_Where_Adv(i_Params_Get_Invoice_status_By_Where.INVOICE_STATUS,i_Params_Get_Invoice_status_By_Where.OWNER_ID,i_Params_Get_Invoice_status_By_Where.START_ROW,i_Params_Get_Invoice_status_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oInvoice_status = new Invoice_status();
+oTools.CopyPropValues(oDBEntry, oInvoice_status);
+oList.Add(oInvoice_status);
+}
+}
+i_Params_Get_Invoice_status_By_Where.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Invoice_status_By_Where_Adv");}
 return oList;
 }
 public List<Loc_l1> Get_Loc_l1_By_Criteria_Adv(Params_Get_Loc_l1_By_Criteria i_Params_Get_Loc_l1_By_Criteria)
@@ -3891,7 +3941,7 @@ List<Invoice> oList = new List<Invoice>();
 Invoice oInvoice = new Invoice();
 long? tmp_TOTAL_COUNT = 0; 
 Params_Get_Invoice_By_Criteria_InList_SP oParams_Get_Invoice_By_Criteria_InList_SP = new Params_Get_Invoice_By_Criteria_InList_SP();
-Params_Get_Customer_By_CUSTOMER_ID oParams_Get_Customer_By_CUSTOMER_ID = new Params_Get_Customer_By_CUSTOMER_ID();
+Params_Get_User_account_By_USER_ACCOUNT_ID oParams_Get_User_account_By_USER_ACCOUNT_ID = new Params_Get_User_account_By_USER_ACCOUNT_ID();
 Params_Get_Order_details_By_ORDER_DETAILS_ID oParams_Get_Order_details_By_ORDER_DETAILS_ID = new Params_Get_Order_details_By_ORDER_DETAILS_ID();
 Params_Get_Invoice_status_By_INVOICE_STATUS_ID oParams_Get_Invoice_status_By_INVOICE_STATUS_ID = new Params_Get_Invoice_status_By_INVOICE_STATUS_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_By_Criteria_InList_Adv");}
@@ -3901,11 +3951,11 @@ if (i_Params_Get_Invoice_By_Criteria_InList.START_ROW == null) { i_Params_Get_In
 if ((i_Params_Get_Invoice_By_Criteria_InList.END_ROW == null) || (i_Params_Get_Invoice_By_Criteria_InList.END_ROW == 0)) { i_Params_Get_Invoice_By_Criteria_InList.END_ROW = 1000000; }
 oParams_Get_Invoice_By_Criteria_InList_SP.OWNER_ID = i_Params_Get_Invoice_By_Criteria_InList.OWNER_ID;
 oParams_Get_Invoice_By_Criteria_InList_SP.DESCRIPTION = i_Params_Get_Invoice_By_Criteria_InList.DESCRIPTION;
-if ( i_Params_Get_Invoice_By_Criteria_InList.CUSTOMER_ID_LIST == null)
+if ( i_Params_Get_Invoice_By_Criteria_InList.USER_ACCOUNT_ID_LIST == null)
 {
-i_Params_Get_Invoice_By_Criteria_InList.CUSTOMER_ID_LIST = new List<Int32?>();
+i_Params_Get_Invoice_By_Criteria_InList.USER_ACCOUNT_ID_LIST = new List<long?>();
 }
-oParams_Get_Invoice_By_Criteria_InList_SP.CUSTOMER_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Invoice_By_Criteria_InList.CUSTOMER_ID_LIST);
+oParams_Get_Invoice_By_Criteria_InList_SP.USER_ACCOUNT_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_Invoice_By_Criteria_InList.USER_ACCOUNT_ID_LIST);
 if ( i_Params_Get_Invoice_By_Criteria_InList.ORDER_DETAILS_ID_LIST == null)
 {
 i_Params_Get_Invoice_By_Criteria_InList.ORDER_DETAILS_ID_LIST = new List<Int32?>();
@@ -3919,15 +3969,15 @@ oParams_Get_Invoice_By_Criteria_InList_SP.INVOICE_STATUS_ID_LIST = oTools.Conver
 oParams_Get_Invoice_By_Criteria_InList_SP.START_ROW = i_Params_Get_Invoice_By_Criteria_InList.START_ROW;
 oParams_Get_Invoice_By_Criteria_InList_SP.END_ROW = i_Params_Get_Invoice_By_Criteria_InList.END_ROW;
 oParams_Get_Invoice_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_Invoice_By_Criteria_InList.TOTAL_COUNT;
-List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_Criteria_InList_Adv(i_Params_Get_Invoice_By_Criteria_InList.DESCRIPTION,i_Params_Get_Invoice_By_Criteria_InList.CUSTOMER_ID_LIST,i_Params_Get_Invoice_By_Criteria_InList.ORDER_DETAILS_ID_LIST,i_Params_Get_Invoice_By_Criteria_InList.INVOICE_STATUS_ID_LIST,i_Params_Get_Invoice_By_Criteria_InList.OWNER_ID,i_Params_Get_Invoice_By_Criteria_InList.START_ROW,i_Params_Get_Invoice_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_Criteria_InList_Adv(i_Params_Get_Invoice_By_Criteria_InList.DESCRIPTION,i_Params_Get_Invoice_By_Criteria_InList.USER_ACCOUNT_ID_LIST,i_Params_Get_Invoice_By_Criteria_InList.ORDER_DETAILS_ID_LIST,i_Params_Get_Invoice_By_Criteria_InList.INVOICE_STATUS_ID_LIST,i_Params_Get_Invoice_By_Criteria_InList.OWNER_ID,i_Params_Get_Invoice_By_Criteria_InList.START_ROW,i_Params_Get_Invoice_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
 oInvoice = new Invoice();
 oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
 oInvoice.My_Order_details = new Order_details();
 oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
 oInvoice.My_Invoice_status = new Invoice_status();
@@ -3947,7 +3997,7 @@ List<Invoice> oList = new List<Invoice>();
 Invoice oInvoice = new Invoice();
 long? tmp_TOTAL_COUNT = 0; 
 Params_Get_Invoice_By_Where_InList_SP oParams_Get_Invoice_By_Where_InList_SP = new Params_Get_Invoice_By_Where_InList_SP();
-Params_Get_Customer_By_CUSTOMER_ID oParams_Get_Customer_By_CUSTOMER_ID = new Params_Get_Customer_By_CUSTOMER_ID();
+Params_Get_User_account_By_USER_ACCOUNT_ID oParams_Get_User_account_By_USER_ACCOUNT_ID = new Params_Get_User_account_By_USER_ACCOUNT_ID();
 Params_Get_Order_details_By_ORDER_DETAILS_ID oParams_Get_Order_details_By_ORDER_DETAILS_ID = new Params_Get_Order_details_By_ORDER_DETAILS_ID();
 Params_Get_Invoice_status_By_INVOICE_STATUS_ID oParams_Get_Invoice_status_By_INVOICE_STATUS_ID = new Params_Get_Invoice_status_By_INVOICE_STATUS_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Get_Invoice_By_Where_InList_Adv");}
@@ -3957,11 +4007,11 @@ if (i_Params_Get_Invoice_By_Where_InList.START_ROW == null) { i_Params_Get_Invoi
 if ((i_Params_Get_Invoice_By_Where_InList.END_ROW == null) || (i_Params_Get_Invoice_By_Where_InList.END_ROW == 0)) { i_Params_Get_Invoice_By_Where_InList.END_ROW = 1000000; }
 oParams_Get_Invoice_By_Where_InList_SP.OWNER_ID = i_Params_Get_Invoice_By_Where_InList.OWNER_ID;
 oParams_Get_Invoice_By_Where_InList_SP.DESCRIPTION = i_Params_Get_Invoice_By_Where_InList.DESCRIPTION;
-if ( i_Params_Get_Invoice_By_Where_InList.CUSTOMER_ID_LIST == null)
+if ( i_Params_Get_Invoice_By_Where_InList.USER_ACCOUNT_ID_LIST == null)
 {
-i_Params_Get_Invoice_By_Where_InList.CUSTOMER_ID_LIST = new List<Int32?>();
+i_Params_Get_Invoice_By_Where_InList.USER_ACCOUNT_ID_LIST = new List<long?>();
 }
-oParams_Get_Invoice_By_Where_InList_SP.CUSTOMER_ID_LIST = oTools.Convert_List_To_Comma_Separated<Int32?>(i_Params_Get_Invoice_By_Where_InList.CUSTOMER_ID_LIST);
+oParams_Get_Invoice_By_Where_InList_SP.USER_ACCOUNT_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_Invoice_By_Where_InList.USER_ACCOUNT_ID_LIST);
 if ( i_Params_Get_Invoice_By_Where_InList.ORDER_DETAILS_ID_LIST == null)
 {
 i_Params_Get_Invoice_By_Where_InList.ORDER_DETAILS_ID_LIST = new List<Int32?>();
@@ -3975,15 +4025,15 @@ oParams_Get_Invoice_By_Where_InList_SP.INVOICE_STATUS_ID_LIST = oTools.Convert_L
 oParams_Get_Invoice_By_Where_InList_SP.START_ROW = i_Params_Get_Invoice_By_Where_InList.START_ROW;
 oParams_Get_Invoice_By_Where_InList_SP.END_ROW = i_Params_Get_Invoice_By_Where_InList.END_ROW;
 oParams_Get_Invoice_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_Invoice_By_Where_InList.TOTAL_COUNT;
-List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_Where_InList_Adv(i_Params_Get_Invoice_By_Where_InList.DESCRIPTION,i_Params_Get_Invoice_By_Where_InList.CUSTOMER_ID_LIST,i_Params_Get_Invoice_By_Where_InList.ORDER_DETAILS_ID_LIST,i_Params_Get_Invoice_By_Where_InList.INVOICE_STATUS_ID_LIST,i_Params_Get_Invoice_By_Where_InList.OWNER_ID,i_Params_Get_Invoice_By_Where_InList.START_ROW,i_Params_Get_Invoice_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Invoice> oList_DBEntries = _AppContext.Get_Invoice_By_Where_InList_Adv(i_Params_Get_Invoice_By_Where_InList.DESCRIPTION,i_Params_Get_Invoice_By_Where_InList.USER_ACCOUNT_ID_LIST,i_Params_Get_Invoice_By_Where_InList.ORDER_DETAILS_ID_LIST,i_Params_Get_Invoice_By_Where_InList.INVOICE_STATUS_ID_LIST,i_Params_Get_Invoice_By_Where_InList.OWNER_ID,i_Params_Get_Invoice_By_Where_InList.START_ROW,i_Params_Get_Invoice_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
 {
 oInvoice = new Invoice();
 oTools.CopyPropValues(oDBEntry, oInvoice);
-oInvoice.My_Customer = new Customer();
-oTools.CopyPropValues(oDBEntry.My_Customer, oInvoice.My_Customer);
+oInvoice.My_User_account = new User_account();
+oTools.CopyPropValues(oDBEntry.My_User_account, oInvoice.My_User_account);
 oInvoice.My_Order_details = new Order_details();
 oTools.CopyPropValues(oDBEntry.My_Order_details, oInvoice.My_Order_details);
 oInvoice.My_Invoice_status = new Invoice_status();

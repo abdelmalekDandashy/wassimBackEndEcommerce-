@@ -525,142 +525,6 @@ oScope.Complete();
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Color_With_Children");}
 }
 #endregion
-#region Reset_Invoice_By_Customer
-public void Reset_Invoice_By_Customer(Customer i_Customer, List<Invoice> i_Invoice_List)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Invoice_By_CUSTOMER_ID oParams_Delete_Invoice_By_CUSTOMER_ID = new Params_Delete_Invoice_By_CUSTOMER_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Invoice_By_Customer");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Existing Invoice
-//---------------------------------
-oParams_Delete_Invoice_By_CUSTOMER_ID.CUSTOMER_ID = i_Customer.CUSTOMER_ID;
-Delete_Invoice_By_CUSTOMER_ID(oParams_Delete_Invoice_By_CUSTOMER_ID);
-//---------------------------------
-// Edit Invoice
-//---------------------------------
-Edit_Customer_WithInvoice(i_Customer, i_Invoice_List);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Invoice_By_Customer");}
-}
-#endregion
-#region Reset_Invoice_By_Customer
-public void Reset_Invoice_By_Customer(Customer i_Customer, List<Invoice> i_Invoice_List_To_Delete,List<Invoice> i_Invoice_List_To_Create)
-{
-#region Declaration And Initialization Section.
-Params_Delete_Invoice oParams_Delete_Invoice = new Params_Delete_Invoice();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Reset_Invoice_By_Customer");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Delete Specified Items 
-//---------------------------------
- if (i_Invoice_List_To_Delete != null)
-{
-foreach (var oRow in i_Invoice_List_To_Delete)
-{
-oParams_Delete_Invoice.INVOICE_ID = oRow.INVOICE_ID;
-Delete_Invoice(oParams_Delete_Invoice);
-}
-}
-//---------------------------------
-// Edit Invoice
-//---------------------------------
-Edit_Customer_WithInvoice(i_Customer, i_Invoice_List_To_Create);
-//---------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Reset_Invoice_By_Customer");}
-}
-#endregion
-#region Edit_Customer_With_Invoice(Customer i_Customer,List<Invoice> i_InvoiceList)
-public void Edit_Customer_WithInvoice(Customer i_Customer,List<Invoice> i_List_Invoice)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Customer_WithInvoice");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Customer(i_Customer);
-if (i_List_Invoice != null)
-{
-foreach(Invoice oInvoice in i_List_Invoice)
-{
-oInvoice.CUSTOMER_ID = i_Customer.CUSTOMER_ID;
-Edit_Invoice(oInvoice);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Customer_WithInvoice");}
-}
-#endregion
-#region Edit_Customer_WithRelatedData(Customer i_Customer,List<Invoice> i_List_Invoice)
-public void Edit_Customer_WithRelatedData(Customer i_Customer,List<Invoice> i_List_Invoice)
-{
-#region Declaration And Initialization Section.
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Edit_Customer_WithRelatedData");}
-#region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-// Business Operation.
-//-------------------------------
-Edit_Customer(i_Customer);
-if (i_List_Invoice != null)
-{
-foreach(Invoice oInvoice in i_List_Invoice)
-{
-oInvoice.CUSTOMER_ID = i_Customer.CUSTOMER_ID;
-Edit_Invoice(oInvoice);
-}
-}
-//-------------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Edit_Customer_WithRelatedData");}
-}
-#endregion
-#region Delete_Customer_With_Children(Customer i_Customer)
-public void Delete_Customer_With_Children(Customer i_Customer)
-{
- #region Declaration And Initialization Section.
-Params_Delete_Customer oParams_Delete_Customer = new Params_Delete_Customer();
-Params_Delete_Invoice_By_CUSTOMER_ID oParams_Delete_Invoice_By_CUSTOMER_ID = new Params_Delete_Invoice_By_CUSTOMER_ID();
-#endregion
-if (OnPreEvent_General != null){OnPreEvent_General("Delete_Customer_With_Children");}
- #region Body Section.
-using (TransactionScope oScope = new TransactionScope())
-{
-//-------------------------
-oParams_Delete_Invoice_By_CUSTOMER_ID.CUSTOMER_ID = i_Customer.CUSTOMER_ID;
-Delete_Invoice_By_CUSTOMER_ID(oParams_Delete_Invoice_By_CUSTOMER_ID);
-//-------------------------
-
-//-------------------------
-oParams_Delete_Customer.CUSTOMER_ID = i_Customer.CUSTOMER_ID;
-Delete_Customer(oParams_Delete_Customer);
-//-------------------------
-oScope.Complete();
-}
-#endregion
-if (OnPostEvent_General != null){OnPostEvent_General("Delete_Customer_With_Children");}
-}
-#endregion
 #region Reset_Invoice_By_Invoice_status
 public void Reset_Invoice_By_Invoice_status(Invoice_status i_Invoice_status, List<Invoice> i_Invoice_List)
 {
@@ -2259,6 +2123,142 @@ oScope.Complete();
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Size_With_Children");}
+}
+#endregion
+#region Reset_Invoice_By_User_account
+public void Reset_Invoice_By_User_account(User_account i_User_account, List<Invoice> i_Invoice_List)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Invoice_By_USER_ACCOUNT_ID oParams_Delete_Invoice_By_USER_ACCOUNT_ID = new Params_Delete_Invoice_By_USER_ACCOUNT_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Invoice_By_User_account");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Existing Invoice
+//---------------------------------
+oParams_Delete_Invoice_By_USER_ACCOUNT_ID.USER_ACCOUNT_ID = i_User_account.USER_ACCOUNT_ID;
+Delete_Invoice_By_USER_ACCOUNT_ID(oParams_Delete_Invoice_By_USER_ACCOUNT_ID);
+//---------------------------------
+// Edit Invoice
+//---------------------------------
+Edit_User_account_WithInvoice(i_User_account, i_Invoice_List);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Invoice_By_User_account");}
+}
+#endregion
+#region Reset_Invoice_By_User_account
+public void Reset_Invoice_By_User_account(User_account i_User_account, List<Invoice> i_Invoice_List_To_Delete,List<Invoice> i_Invoice_List_To_Create)
+{
+#region Declaration And Initialization Section.
+Params_Delete_Invoice oParams_Delete_Invoice = new Params_Delete_Invoice();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Reset_Invoice_By_User_account");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Delete Specified Items 
+//---------------------------------
+ if (i_Invoice_List_To_Delete != null)
+{
+foreach (var oRow in i_Invoice_List_To_Delete)
+{
+oParams_Delete_Invoice.INVOICE_ID = oRow.INVOICE_ID;
+Delete_Invoice(oParams_Delete_Invoice);
+}
+}
+//---------------------------------
+// Edit Invoice
+//---------------------------------
+Edit_User_account_WithInvoice(i_User_account, i_Invoice_List_To_Create);
+//---------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Reset_Invoice_By_User_account");}
+}
+#endregion
+#region Edit_User_account_With_Invoice(User_account i_User_account,List<Invoice> i_InvoiceList)
+public void Edit_User_account_WithInvoice(User_account i_User_account,List<Invoice> i_List_Invoice)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_User_account_WithInvoice");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_User_account(i_User_account);
+if (i_List_Invoice != null)
+{
+foreach(Invoice oInvoice in i_List_Invoice)
+{
+oInvoice.USER_ACCOUNT_ID = i_User_account.USER_ACCOUNT_ID;
+Edit_Invoice(oInvoice);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_User_account_WithInvoice");}
+}
+#endregion
+#region Edit_User_account_WithRelatedData(User_account i_User_account,List<Invoice> i_List_Invoice)
+public void Edit_User_account_WithRelatedData(User_account i_User_account,List<Invoice> i_List_Invoice)
+{
+#region Declaration And Initialization Section.
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Edit_User_account_WithRelatedData");}
+#region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+// Business Operation.
+//-------------------------------
+Edit_User_account(i_User_account);
+if (i_List_Invoice != null)
+{
+foreach(Invoice oInvoice in i_List_Invoice)
+{
+oInvoice.USER_ACCOUNT_ID = i_User_account.USER_ACCOUNT_ID;
+Edit_Invoice(oInvoice);
+}
+}
+//-------------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Edit_User_account_WithRelatedData");}
+}
+#endregion
+#region Delete_User_account_With_Children(User_account i_User_account)
+public void Delete_User_account_With_Children(User_account i_User_account)
+{
+ #region Declaration And Initialization Section.
+Params_Delete_User_account oParams_Delete_User_account = new Params_Delete_User_account();
+Params_Delete_Invoice_By_USER_ACCOUNT_ID oParams_Delete_Invoice_By_USER_ACCOUNT_ID = new Params_Delete_Invoice_By_USER_ACCOUNT_ID();
+#endregion
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_account_With_Children");}
+ #region Body Section.
+using (TransactionScope oScope = new TransactionScope())
+{
+//-------------------------
+oParams_Delete_Invoice_By_USER_ACCOUNT_ID.USER_ACCOUNT_ID = i_User_account.USER_ACCOUNT_ID;
+Delete_Invoice_By_USER_ACCOUNT_ID(oParams_Delete_Invoice_By_USER_ACCOUNT_ID);
+//-------------------------
+
+//-------------------------
+oParams_Delete_User_account.USER_ACCOUNT_ID = i_User_account.USER_ACCOUNT_ID;
+Delete_User_account(oParams_Delete_User_account);
+//-------------------------
+oScope.Complete();
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_account_With_Children");}
 }
 #endregion
 }
