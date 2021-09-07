@@ -4622,9 +4622,14 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Invoice");}
 }
 public void Delete_Invoice_status(Params_Delete_Invoice_status i_Params_Delete_Invoice_status)
 {
+Params_Get_Invoice_status_By_INVOICE_STATUS_ID oParams_Get_Invoice_status_By_INVOICE_STATUS_ID = new Params_Get_Invoice_status_By_INVOICE_STATUS_ID();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Invoice_status");}
 #region Body Section.
 try
+{
+oParams_Get_Invoice_status_By_INVOICE_STATUS_ID.INVOICE_STATUS_ID = i_Params_Delete_Invoice_status.INVOICE_STATUS_ID;
+_Invoice_status = Get_Invoice_status_By_INVOICE_STATUS_ID_Adv(oParams_Get_Invoice_status_By_INVOICE_STATUS_ID);
+if (_Invoice_status != null)
 {
 using (TransactionScope oScope = new TransactionScope())
 {
@@ -4635,6 +4640,7 @@ return;
 }
 _AppContext.Delete_Invoice_status(i_Params_Delete_Invoice_status.INVOICE_STATUS_ID);
 oScope.Complete();
+}
 }
 }
 catch (BLCException blcex)
@@ -5778,6 +5784,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Invoice_By_OWNER_ID
 }
 public void Delete_Invoice_By_ORDER_DETAILS_ID(Params_Delete_Invoice_By_ORDER_DETAILS_ID i_Params_Delete_Invoice_By_ORDER_DETAILS_ID)
 {
+Params_Get_Invoice_By_ORDER_DETAILS_ID oParams_Get_Invoice_By_ORDER_DETAILS_ID = new Params_Get_Invoice_By_ORDER_DETAILS_ID();
+List<Invoice> _List_Invoice = new List<Invoice>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Invoice_By_ORDER_DETAILS_ID");}
 #region Body Section.
 try
@@ -5813,6 +5821,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Invoice_By_ORDER_DE
 }
 public void Delete_Invoice_By_INVOICE_STATUS_ID(Params_Delete_Invoice_By_INVOICE_STATUS_ID i_Params_Delete_Invoice_By_INVOICE_STATUS_ID)
 {
+Params_Get_Invoice_By_INVOICE_STATUS_ID oParams_Get_Invoice_By_INVOICE_STATUS_ID = new Params_Get_Invoice_By_INVOICE_STATUS_ID();
+List<Invoice> _List_Invoice = new List<Invoice>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Invoice_By_INVOICE_STATUS_ID");}
 #region Body Section.
 try
@@ -5848,6 +5858,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Invoice_By_INVOICE_
 }
 public void Delete_Invoice_By_USER_ACCOUNT_ID(Params_Delete_Invoice_By_USER_ACCOUNT_ID i_Params_Delete_Invoice_By_USER_ACCOUNT_ID)
 {
+Params_Get_Invoice_By_USER_ACCOUNT_ID oParams_Get_Invoice_By_USER_ACCOUNT_ID = new Params_Get_Invoice_By_USER_ACCOUNT_ID();
+List<Invoice> _List_Invoice = new List<Invoice>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Invoice_By_USER_ACCOUNT_ID");}
 #region Body Section.
 try
@@ -5883,6 +5895,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Invoice_By_USER_ACC
 }
 public void Delete_Invoice_status_By_OWNER_ID(Params_Delete_Invoice_status_By_OWNER_ID i_Params_Delete_Invoice_status_By_OWNER_ID)
 {
+Params_Get_Invoice_status_By_OWNER_ID oParams_Get_Invoice_status_By_OWNER_ID = new Params_Get_Invoice_status_By_OWNER_ID();
+List<Invoice_status> _List_Invoice_status = new List<Invoice_status>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Invoice_status_By_OWNER_ID");}
 #region Body Section.
 try

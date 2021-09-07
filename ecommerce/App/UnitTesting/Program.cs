@@ -53,7 +53,7 @@ namespace UnitTesting
             Params_Fetoura oParams_Fetoura = new Params_Fetoura();
             Fetoura_Products oFetoura_Products = new Fetoura_Products();
             oFetoura_Products.PRODUCT_ID = 8;
-            oFetoura_Products.QUANTITY = 30;
+            oFetoura_Products.QUANTITY = 5;
 
 
             List<Fetoura_Products> oList = new List<Fetoura_Products>();
