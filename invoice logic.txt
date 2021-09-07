@@ -27,3 +27,15 @@ what should malek do:
 
 
 3mol 0001 patch
+
+
+
+steps:
+-edit TBL invoice in DB:
+	-remove order_details_id
+	-remove ammount
+
+-edit TBL order_details:
+	-add invoice_id
+
+edit logic to add 1 invoice then insert it into every order_detail record.

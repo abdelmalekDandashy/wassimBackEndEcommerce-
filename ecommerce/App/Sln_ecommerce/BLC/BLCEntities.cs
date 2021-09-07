@@ -469,11 +469,6 @@ public partial class Params_Get_Invoice_By_OWNER_ID
 public Int32? OWNER_ID {get;set;}
 
 }
-public partial class Params_Get_Invoice_By_ORDER_DETAILS_ID
-{
-public Int32? ORDER_DETAILS_ID {get;set;}
-
-}
 public partial class Params_Get_Invoice_By_INVOICE_STATUS_ID
 {
 public Int32? INVOICE_STATUS_ID {get;set;}
@@ -555,6 +550,11 @@ public Int32? OWNER_ID {get;set;}
 public partial class Params_Get_Order_details_By_PRODUCT_ID
 {
 public Int32? PRODUCT_ID {get;set;}
+
+}
+public partial class Params_Get_Order_details_By_INVOICE_ID
+{
+public Int32? INVOICE_ID {get;set;}
 
 }
 public partial class Params_Get_Person_By_OWNER_ID
@@ -685,11 +685,6 @@ public partial class Params_Get_Customer_By_USER_ID_List
 public List<long?> USER_ID_LIST {get;set;}
 
 }
-public partial class Params_Get_Invoice_By_ORDER_DETAILS_ID_List
-{
-public List<Int32?> ORDER_DETAILS_ID_LIST {get;set;}
-
-}
 public partial class Params_Get_Invoice_By_INVOICE_STATUS_ID_List
 {
 public List<Int32?> INVOICE_STATUS_ID_LIST {get;set;}
@@ -718,6 +713,11 @@ public List<long?> LOC_L3_ID_LIST {get;set;}
 public partial class Params_Get_Order_details_By_PRODUCT_ID_List
 {
 public List<Int32?> PRODUCT_ID_LIST {get;set;}
+
+}
+public partial class Params_Get_Order_details_By_INVOICE_ID_List
+{
+public List<Int32?> INVOICE_ID_LIST {get;set;}
 
 }
 public partial class Params_Get_Product_By_CATEGORY_ID_List
@@ -1503,7 +1503,6 @@ public partial class Params_Get_Invoice_By_Criteria_InList
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public List<long?> USER_ACCOUNT_ID_LIST {get;set;}
-public List<Int32?> ORDER_DETAILS_ID_LIST {get;set;}
 public List<Int32?> INVOICE_STATUS_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
@@ -1514,7 +1513,6 @@ public partial class Params_Get_Invoice_By_Criteria_InList_SP
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public string USER_ACCOUNT_ID_LIST {get;set;}
-public string ORDER_DETAILS_ID_LIST {get;set;}
 public string INVOICE_STATUS_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
@@ -1526,7 +1524,6 @@ public partial class Params_Get_Invoice_By_Where_InList
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public List<long?> USER_ACCOUNT_ID_LIST {get;set;}
-public List<Int32?> ORDER_DETAILS_ID_LIST {get;set;}
 public List<Int32?> INVOICE_STATUS_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
@@ -1537,7 +1534,6 @@ public partial class Params_Get_Invoice_By_Where_InList_SP
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public string USER_ACCOUNT_ID_LIST {get;set;}
-public string ORDER_DETAILS_ID_LIST {get;set;}
 public string INVOICE_STATUS_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
@@ -1675,6 +1671,7 @@ public partial class Params_Get_Order_details_By_Criteria_InList
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public List<Int32?> PRODUCT_ID_LIST {get;set;}
+public List<Int32?> INVOICE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1684,6 +1681,7 @@ public partial class Params_Get_Order_details_By_Criteria_InList_SP
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public string PRODUCT_ID_LIST {get;set;}
+public string INVOICE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1694,6 +1692,7 @@ public partial class Params_Get_Order_details_By_Where_InList
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public List<Int32?> PRODUCT_ID_LIST {get;set;}
+public List<Int32?> INVOICE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1703,6 +1702,7 @@ public partial class Params_Get_Order_details_By_Where_InList_SP
 public Int32? OWNER_ID {get;set;}
 public string DESCRIPTION {get;set;}
 public string PRODUCT_ID_LIST {get;set;}
+public string INVOICE_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -2030,10 +2030,6 @@ public partial class Params_Delete_Invoice_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
 }
-public partial class Params_Delete_Invoice_By_ORDER_DETAILS_ID
-{
-public Int32? ORDER_DETAILS_ID {get;set;}
-}
 public partial class Params_Delete_Invoice_By_INVOICE_STATUS_ID
 {
 public Int32? INVOICE_STATUS_ID {get;set;}
@@ -2100,6 +2096,10 @@ public Int32? OWNER_ID {get;set;}
 public partial class Params_Delete_Order_details_By_PRODUCT_ID
 {
 public Int32? PRODUCT_ID {get;set;}
+}
+public partial class Params_Delete_Order_details_By_INVOICE_ID
+{
+public Int32? INVOICE_ID {get;set;}
 }
 public partial class Params_Delete_Person_By_OWNER_ID
 {
@@ -2246,8 +2246,6 @@ public partial class Invoice
 {
 public Int32? INVOICE_ID {get;set;}
 public long? USER_ACCOUNT_ID {get;set;}
-public Int32? ORDER_DETAILS_ID {get;set;}
-public Int32? AMMOUNT {get;set;}
 public Int32? INVOICE_STATUS_ID {get;set;}
 public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}
@@ -2311,6 +2309,7 @@ public Int32? ORDER_DETAILS_ID {get;set;}
 public Int32? PRODUCT_ID {get;set;}
 public decimal PRICE {get;set;}
 public Int32? QUANTITY {get;set;}
+public Int32? INVOICE_ID {get;set;}
 public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}
 public Int32? OWNER_ID {get;set;}

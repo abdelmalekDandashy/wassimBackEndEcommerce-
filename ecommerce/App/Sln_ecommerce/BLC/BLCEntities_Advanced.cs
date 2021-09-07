@@ -76,7 +76,6 @@ public partial class Invoice
 {
 #region Advanced Properties
 public User_account My_User_account {get;set;}
-public Order_details My_Order_details {get;set;}
 public Invoice_status My_Invoice_status {get;set;}
 #endregion
 }
@@ -124,6 +123,7 @@ public partial class Order_details
 {
 #region Advanced Properties
 public Product My_Product {get;set;}
+public Invoice My_Invoice {get;set;}
 #endregion
 }
 #endregion

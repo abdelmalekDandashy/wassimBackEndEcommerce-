@@ -9,7 +9,7 @@ namespace UnitTesting
     class Program
     {
         static void Main(string[] args)
-        {
+        {   
 
             #region Declaration And Initialization Section.
             string _ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
@@ -27,11 +27,10 @@ namespace UnitTesting
             Tools.Tools oTools = new Tools.Tools();
             #endregion
             
-
             Params_Fetoura oParams_Fetoura = new Params_Fetoura();
             Fetoura_Products oFetoura_Products = new Fetoura_Products();
             oFetoura_Products.PRODUCT_ID = 8;
-            oFetoura_Products.QUANTITY = 5;
+            oFetoura_Products.QUANTITY = 20;
 
 
             List<Fetoura_Products> oList = new List<Fetoura_Products>();

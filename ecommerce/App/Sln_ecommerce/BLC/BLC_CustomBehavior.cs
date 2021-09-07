@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Newtonsoft.Json;
+using System.Transactions;
 using Newtonsoft.Json;
 
 namespace BLC
@@ -240,34 +240,104 @@ namespace BLC
             Invoice oInvoice = new Invoice();
             List<dynamic> outOfStockProducts = new List<dynamic>();
             List<int?> oListProduct= new List<int?> ();
+            List<int?> oListOrder_details_IDs= new List<int?> ();
             //List<Product> oListProductsToBuy= new List<Product> ();
+
             
             decimal Total_Price = 0;
 
             if (i_Params_Fetoura != null && i_Params_Fetoura.PRODUCTS != null && i_Params_Fetoura.PRODUCTS.Count > 0)
-            {   
-               foreach (var product in i_Params_Fetoura.PRODUCTS)
+            {
+
+
+                using (TransactionScope oScope = new TransactionScope())
                 {
-                    oListProduct.Add(product.PRODUCT_ID);
+                    // makes invoice:
+                    Invoice eInvoice = new Invoice();
 
-                    Params_Get_Product_By_PRODUCT_ID oParams_Get_Product_By_PRODUCT_ID = new Params_Get_Product_By_PRODUCT_ID();
+                    eInvoice.INVOICE_ID = -1;
+                    eInvoice.INVOICE_STATUS_ID = 6;
+                    eInvoice.USER_ACCOUNT_ID = i_Params_Fetoura.USER_ACCOUNT_ID;
+                    eInvoice.ENTRY_USER_ID = 1;
+                    this.Edit_Invoice(eInvoice);
+                    Console.WriteLine("invoice was made");
 
 
-                    oParams_Get_Product_By_PRODUCT_ID.PRODUCT_ID = product.PRODUCT_ID;
+                    foreach (var product in i_Params_Fetoura.PRODUCTS)
+                    {
+                        oListProduct.Add(product.PRODUCT_ID);
 
-                    var oResult = this.Get_Product_By_PRODUCT_ID(oParams_Get_Product_By_PRODUCT_ID);
-                    if (oResult != null) { 
-                    if(oResult.STOCK < product.QUANTITY) {
-                            outOfStockProducts.Add(product.PRODUCT_ID);
+                        Params_Get_Product_By_PRODUCT_ID oParams_Get_Product_By_PRODUCT_ID = new Params_Get_Product_By_PRODUCT_ID();
+
+
+                        oParams_Get_Product_By_PRODUCT_ID.PRODUCT_ID = product.PRODUCT_ID;
+
+                        var oResult = this.Get_Product_By_PRODUCT_ID(oParams_Get_Product_By_PRODUCT_ID);
+                        if (oResult != null)
+                        {
+                            if (oResult.STOCK < product.QUANTITY)
+                            {
+                                outOfStockProducts.Add(product.PRODUCT_ID);
+
+                            };
+
+                            if (oResult.STOCK >= product.QUANTITY)
+                            {
+
+
+
+
+                                Total_Price = Total_Price + (
+                                  Convert.ToDecimal(oResult.DISCOUNT_PRICE) * Convert.ToDecimal(product.QUANTITY)
+                                    );
+
+
+                               
+
+
+                                // add invoice_id to each order_details entry:
+
+                                Order_details oOrder_details = new Order_details();
+                                oOrder_details.ORDER_DETAILS_ID = -1;
+                                oOrder_details.PRODUCT_ID = product.PRODUCT_ID;
+                                oOrder_details.QUANTITY = product.QUANTITY;
+                                oOrder_details.OWNER_ID = i_Params_Fetoura.OWNER_ID;
+                                oOrder_details.INVOICE_ID = eInvoice.INVOICE_ID;
+                                decimal discountPrice = oResult.DISCOUNT_PRICE ?? 0;
+                                oOrder_details.PRICE = discountPrice;
+
+                                Console.WriteLine(oOrder_details);
+                                Console.WriteLine(oOrder_details);
+                                
+
+                                this.Edit_Order_details(oOrder_details);
+
+
+
+
+                                Console.WriteLine(oOrder_details);
+                                Console.WriteLine("product was added to products details table");
+
+
+                                oResult.STOCK = oResult.STOCK - product.QUANTITY;
+
+                                List<Product> oListProductToEdit = new List<Product>();
+                                oListProductToEdit.Add(oResult);
+                                Params_Edit_Product_List oParams_Edit_Product_List = new Params_Edit_Product_List();
+                                oParams_Edit_Product_List.My_List_To_Edit = oListProductToEdit;
+
+                                this.Edit_Product_List(oParams_Edit_Product_List);
+
+
+                            }
+                               else if (oResult.STOCK < product.QUANTITY)
+                                {
+                                    oScope.Dispose();
+                                    throw new BLCException("transactions was canceled due lack in stock for some products");
+
+                                }
+
                             
-                        };
-
-                        if(oResult.STOCK >= product.QUANTITY) {
-                            Total_Price = Total_Price + (
-                              Convert.ToDecimal(oResult.DISCOUNT_PRICE) * Convert.ToDecimal(product.QUANTITY)
-                                );
-                            // add product to invoice here
-                            // here edit product for (i <= product.quantity)
 
 
 
@@ -276,100 +346,22 @@ namespace BLC
 
 
 
-                            Order_details oOrder_details = new Order_details();
-                            oOrder_details.ORDER_DETAILS_ID = -1;
-                            oOrder_details.PRODUCT_ID = product.PRODUCT_ID;
-                            oOrder_details.QUANTITY = product.QUANTITY;
-                            oOrder_details.OWNER_ID = i_Params_Fetoura.OWNER_ID;
-
-                            decimal discountPrice = oResult.DISCOUNT_PRICE ?? 0;
-                            oOrder_details.PRICE = discountPrice;
-
-                            Console.WriteLine(oOrder_details);
-
-
-                            this.Edit_Order_details(oOrder_details);
-                            Console.WriteLine("product was added to products details table");
-
-
-                            oResult.STOCK = oResult.STOCK - product.QUANTITY;
-
-                            List<Product> oListProductToEdit = new List<Product>();
-                            oListProductToEdit.Add(oResult);
-                            Params_Edit_Product_List oParams_Edit_Product_List = new Params_Edit_Product_List();
-                            oParams_Edit_Product_List.My_List_To_Edit = oListProductToEdit;
-
-                            this.Edit_Product_List(oParams_Edit_Product_List);
-                            ///////////////////
-                           // for (int i = 0; i < product.QUANTITY; i++)
-                            //{
-                                //Order_details oOrder_details = new Order_details();
-                                //oOrder_details.ORDER_DETAILS_ID = -1;
-                                //oOrder_details.PRODUCT_ID = product.PRODUCT_ID;
-                                //oOrder_details.QUANTITY = 1;
-                                //oOrder_details.OWNER_ID = i_Params_Fetoura.OWNER_ID;
-
-                                //decimal discountPrice = oResult.DISCOUNT_PRICE ?? 0;
-                                //oOrder_details.PRICE = discountPrice;
-
-                                //Console.WriteLine(oOrder_details);
-                                //Console.WriteLine(oOrder_details);
-                                //this.Edit_Order_details(oOrder_details);
-                                //Console.WriteLine("product was added to products details table");
 
 
 
 
-                                //oResult.STOCK = oResult.STOCK - 1;
-                                //List<Product> oListProductToEdit = new List<Product>();
-                                //oListProductToEdit.Add(oResult);
-                                //Params_Edit_Product_List oParams_Edit_Product_List = new Params_Edit_Product_List();
-                                //oParams_Edit_Product_List.My_List_To_Edit = oListProductToEdit;
-
-                                //this.Edit_Product_List(oParams_Edit_Product_List);
 
 
-
-                            // }
-
-
-                            ///////////////////////////////////
-                            //oListProductsToBuy.Add(oResult);
-                        };
-
-                        
+                        }
                     }
+                    oScope.Complete();
                 }
+                
+                // here close transactionscope
 
 
-
-                //if ( outOfStockProducts.Count < 1) {
-
-                //    #region Params_Get_Product_By_PRODUCT_ID_List 
-                //    Params_Get_Product_By_PRODUCT_ID_List oParams_Get_Product_By_PRODUCT_ID_List = new Params_Get_Product_By_PRODUCT_ID_List();
-
-                //    oParams_Get_Product_By_PRODUCT_ID_List.PRODUCT_ID_LIST = oListProduct;
-                //    #endregion
-
-
-                //    var result = this.Get_Product_By_PRODUCT_ID_List(oParams_Get_Product_By_PRODUCT_ID_List);
-                //if (result != null && result.Count > 0)
-                //{
-                //    foreach (var product in result)
-                //    {
-                       
-                //    }
-                //}
-
-                //var jsonString = JsonConvert.SerializeObject(result);
-                //Console.WriteLine(jsonString);
-                //Console.WriteLine(result);
-                //}
-                //else
-                //{
-
-                //    //throw new BLCException("the product(s) with IDs: "+JsonConvert.SerializeObject(outOfStockProducts)+ " are out of stock");
-                //}
+     
+           
                     oInvoice.outOfStockProducts = outOfStockProducts;
                 oInvoice.total = Total_Price;
                     return oInvoice;
