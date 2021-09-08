@@ -27,23 +27,29 @@ namespace UnitTesting
             Tools.Tools oTools = new Tools.Tools();
             #endregion
 
-            Params_Fetoura oParams_Fetoura = new Params_Fetoura();
-            Fetoura_Products oFetoura_Products = new Fetoura_Products();
-            oFetoura_Products.PRODUCT_ID = 8;
-            oFetoura_Products.QUANTITY = 5;
+            Params_Feetoura oParams_Feetoura = new Params_Feetoura();
+            Feetoura_Products oFeetoura_Products = new Feetoura_Products();
+            oFeetoura_Products.PRODUCT_ID = 8;
+            oFeetoura_Products.QUANTITY = 5;
 
 
-            List<Fetoura_Products> oList = new List<Fetoura_Products>();
+            List<Feetoura_Products> oList = new List<Feetoura_Products>();
 
 
-            oList.Add(oFetoura_Products);
-            oList.Add(oFetoura_Products);
-            oParams_Fetoura.OWNER_ID = 1;
-            oParams_Fetoura.USER_ACCOUNT_ID = 2;
-            oParams_Fetoura.USER_ID = 1;
-            oParams_Fetoura.PRODUCTS = oList;
+            oList.Add(oFeetoura_Products);
+            oList.Add(oFeetoura_Products);
+            oParams_Feetoura.OWNER_ID = 1;
+            oParams_Feetoura.USER_ACCOUNT_ID = 2;
+            oParams_Feetoura.USER_ID = 1;
+            oParams_Feetoura.PRODUCTS = oList;
 
-            var result = oBLC.Fetoura(oParams_Fetoura);
+
+
+
+            var json = JsonConvert.SerializeObject(oParams_Feetoura);
+            Console.WriteLine(json);
+            Console.WriteLine(json);
+            var result = oBLC.Feetoura(oParams_Feetoura);
             Console.WriteLine(result);
             Console.WriteLine(result);
 

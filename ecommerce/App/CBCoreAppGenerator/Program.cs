@@ -240,7 +240,8 @@ namespace CodeGenerator
             oCodeBooster.APIMethodsSelection.Add("Authenticate");
 
 
-            oCodeBooster.APIMethodsSelection.Add("Fetoura");
+            //oCodeBooster.APIMethodsSelection.Add("Feetoura");
+            oCodeBooster.APIMethodsSelection.Add("Get_Order_details_By_INVOICE_ID");
 
 
             //oCodeBooster.APIMethodsSelection.Add("Edit_Category");

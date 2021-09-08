@@ -234,20 +234,20 @@ namespace BLC
         #endregion
 
 
-        #region Fetoura
-        public Fatoura Fetoura(Params_Fetoura i_Params_Fetoura)
+        #region Feetoura
+        public Faatoura Feetoura(Params_Feetoura i_Params_Feetoura)
         {
             #region method code
-            Fatoura oInvoice = new Fatoura();
+            Faatoura oInvoice = new Faatoura();
             List<dynamic> outOfStockProducts = new List<dynamic>();
             List<int?> oListProduct= new List<int?> ();
             List<int?> oListOrder_details_IDs= new List<int?> ();
-            //List<Product> oListProductsToBuy= new List<Product> ();
+            List<Order_details> oListProductsToBuy= new List<Order_details> ();
 
             
             decimal Total_Price = 0;
 
-            if (i_Params_Fetoura != null && i_Params_Fetoura.PRODUCTS != null && i_Params_Fetoura.PRODUCTS.Count > 0)
+            if (i_Params_Feetoura != null && i_Params_Feetoura.PRODUCTS != null && i_Params_Feetoura.PRODUCTS.Count > 0)
             {
 
 
@@ -258,13 +258,13 @@ namespace BLC
 
                     eInvoice.INVOICE_ID = -1;
                     eInvoice.INVOICE_STATUS_ID = 6;
-                    eInvoice.USER_ACCOUNT_ID = i_Params_Fetoura.USER_ACCOUNT_ID;
+                    eInvoice.USER_ACCOUNT_ID = i_Params_Feetoura.USER_ACCOUNT_ID;
                     eInvoice.ENTRY_USER_ID = 1;
                     this.Edit_Invoice(eInvoice);
                     Console.WriteLine("invoice was made");
 
 
-                    foreach (var product in i_Params_Fetoura.PRODUCTS)
+                    foreach (var product in i_Params_Feetoura.PRODUCTS)
                     {
                         oListProduct.Add(product.PRODUCT_ID);
 
@@ -302,7 +302,7 @@ namespace BLC
                                 oOrder_details.ORDER_DETAILS_ID = -1;
                                 oOrder_details.PRODUCT_ID = product.PRODUCT_ID;
                                 oOrder_details.QUANTITY = product.QUANTITY;
-                                oOrder_details.OWNER_ID = i_Params_Fetoura.OWNER_ID;
+                                oOrder_details.OWNER_ID = i_Params_Feetoura.OWNER_ID;
                                 oOrder_details.INVOICE_ID = eInvoice.INVOICE_ID;
                                 decimal discountPrice = oResult.DISCOUNT_PRICE ?? 0;
                                 oOrder_details.PRICE = discountPrice;
@@ -312,7 +312,7 @@ namespace BLC
                                 
 
                                 this.Edit_Order_details(oOrder_details);
-
+                                oListProductsToBuy.Add(oOrder_details);
 
 
 
@@ -328,6 +328,8 @@ namespace BLC
                                 oParams_Edit_Product_List.My_List_To_Edit = oListProductToEdit;
 
                                 this.Edit_Product_List(oParams_Edit_Product_List);
+
+
 
 
                             }
@@ -364,7 +366,8 @@ namespace BLC
      
            
                     oInvoice.outOfStockProducts = outOfStockProducts;
-                oInvoice.total = Total_Price;
+                    oInvoice.total = Total_Price;
+                    oInvoice.productsToBuy = oListProductsToBuy;
                     return oInvoice;
               
             }
@@ -433,10 +436,11 @@ namespace BLC
         //public string My_Image_Url { get; set; }
     }
     #endregion
-    #region Fetoura
-    public partial class Fatoura
+    #region Feetoura
+    public partial class Faatoura
     {
         public List<dynamic> outOfStockProducts { get; set; }
+        public List<Order_details> productsToBuy { get; set; }
         public decimal total { get; set; }
     }
     #endregion
@@ -448,17 +452,17 @@ namespace BLC
         public string PASSWORD { get; set; }
     }
     #endregion
-    #region Params_Fetoura
-    public partial class Params_Fetoura
+    #region Params_Feetoura
+    public partial class Params_Feetoura
     {
         public int OWNER_ID { get; set; }
         public int USER_ID { get; set; }
-        public List<Fetoura_Products> PRODUCTS { get; set; }
+        public List<Feetoura_Products> PRODUCTS { get; set; }
         public int USER_ACCOUNT_ID { get; set; }
     }
     #endregion
-    #region Fetoura_Products
-    public partial class Fetoura_Products
+    #region Feetoura_Products
+    public partial class Feetoura_Products
     {
         public int PRODUCT_ID { get; set; }
         public int QUANTITY { get; set; }
