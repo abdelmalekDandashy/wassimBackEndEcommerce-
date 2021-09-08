@@ -6376,6 +6376,8 @@ if (OnPostEvent_General != null){OnPostEvent_General("Delete_Order_details_By_PR
 }
 public void Delete_Order_details_By_INVOICE_ID(Params_Delete_Order_details_By_INVOICE_ID i_Params_Delete_Order_details_By_INVOICE_ID)
 {
+Params_Get_Order_details_By_INVOICE_ID oParams_Get_Order_details_By_INVOICE_ID = new Params_Get_Order_details_By_INVOICE_ID();
+List<Order_details> _List_Order_details = new List<Order_details>();
 if (OnPreEvent_General != null){OnPreEvent_General("Delete_Order_details_By_INVOICE_ID");}
 #region Body Section.
 try

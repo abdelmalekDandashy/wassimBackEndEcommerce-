@@ -235,10 +235,9 @@ namespace BLC
 
 
         #region Fetoura
-        public Fatoura Fetoura(Params_Fetoura i_Params_Fetoura)
+        public Invoice Fetoura(Params_Fetoura i_Params_Fetoura)
         {
-            #region method code
-            Fatoura oInvoice = new Fatoura();
+            Invoice oInvoice = new Invoice();
             List<dynamic> outOfStockProducts = new List<dynamic>();
             List<int?> oListProduct= new List<int?> ();
             List<int?> oListOrder_details_IDs= new List<int?> ();
@@ -369,7 +368,6 @@ namespace BLC
               
             }
 
-        #endregion 
             return oInvoice;
         }
 
@@ -434,8 +432,9 @@ namespace BLC
     }
     #endregion
     #region Fetoura
-    public partial class Fatoura
+    public partial class Invoice
     {
+        //public List<Uploaded_file> My_Uploaded_files { get; set; }
         public List<dynamic> outOfStockProducts { get; set; }
         public decimal total { get; set; }
     }
