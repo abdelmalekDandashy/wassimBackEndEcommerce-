@@ -83,6 +83,7 @@ namespace CodeGenerator
             //oCodeBooster.Methods_With_Events.Add("Delete_Car");
             //oCodeBooster.Methods_With_Events.Add("Edit_Uploaded_file");
             oCodeBooster.Methods_With_Events.Add("Get_Product_By_Where_Adv");
+            oCodeBooster.Methods_With_Events.Add("Edit_User");
             #endregion
             #region Excluding Tables From 12M Hanlder
             oCodeBooster.Tables_Exluded_From_12M_Hanlder = new List<string>();

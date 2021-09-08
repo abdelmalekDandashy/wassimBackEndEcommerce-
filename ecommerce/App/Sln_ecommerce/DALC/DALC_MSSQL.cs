@@ -1748,6 +1748,20 @@ oList.Add(o);
 }
 return oList;
 }
+public List<User> Get_User_By_EMAIL ( string EMAIL)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.EMAIL = EMAIL;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_EMAIL", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
 public List<User_account> Get_User_account_By_OWNER_ID ( Int32? OWNER_ID)
 {
 List<User_account> oList = new List<User_account>();
@@ -2564,6 +2578,20 @@ List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
 p.USERNAME = USERNAME;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_USERNAME_ADV", p);
+if (R != null) {foreach (var X in R) {
+User o = new User();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<User> Get_User_By_EMAIL_Adv ( string EMAIL)
+{
+List<User> oList = new List<User>();
+dynamic p = new ExpandoObject();
+p.EMAIL = EMAIL;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_EMAIL_ADV", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
 oTools.CopyPropValues_FromDataRecord(X, o);
@@ -5743,6 +5771,11 @@ public void Delete_User_By_USERNAME ( string USERNAME)
 {
 var p = new { USERNAME = USERNAME };
 ExecuteDelete("UPG_DELETE_USER_BY_USERNAME", p);
+}
+public void Delete_User_By_EMAIL ( string EMAIL)
+{
+var p = new { EMAIL = EMAIL };
+ExecuteDelete("UPG_DELETE_USER_BY_EMAIL", p);
 }
 public void Delete_User_account_By_OWNER_ID ( Int32? OWNER_ID)
 {

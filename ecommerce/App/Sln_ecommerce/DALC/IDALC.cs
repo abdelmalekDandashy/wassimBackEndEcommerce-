@@ -378,6 +378,7 @@ List<Uploaded_file> Get_Uploaded_file_By_REL_ENTITY_REL_KEY ( string REL_ENTITY,
 List<Uploaded_file> Get_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD ( string REL_ENTITY, long? REL_KEY, string REL_FIELD);
 List<User> Get_User_By_OWNER_ID ( Int32? OWNER_ID);
 List<User> Get_User_By_USERNAME ( string USERNAME);
+List<User> Get_User_By_EMAIL ( string EMAIL);
 List<User_account> Get_User_account_By_OWNER_ID ( Int32? OWNER_ID);
 List<User_account> Get_User_account_By_USER_ID ( long? USER_ID);
 List<User_account> Get_User_account_By_ADRESS_ID ( Int32? ADRESS_ID);
@@ -425,6 +426,7 @@ List<Product> Get_Product_By_SIZE_ID_Adv ( Int32? SIZE_ID);
 List<Size> Get_Size_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<User> Get_User_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<User> Get_User_By_USERNAME_Adv ( string USERNAME);
+List<User> Get_User_By_EMAIL_Adv ( string EMAIL);
 List<User_account> Get_User_account_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<User_account> Get_User_account_By_USER_ID_Adv ( long? USER_ID);
 List<User_account> Get_User_account_By_ADRESS_ID_Adv ( Int32? ADRESS_ID);
@@ -666,6 +668,7 @@ void Delete_Uploaded_file_By_REL_ENTITY_REL_KEY ( string REL_ENTITY, long? REL_K
 void Delete_Uploaded_file_By_REL_ENTITY_REL_KEY_REL_FIELD ( string REL_ENTITY, long? REL_KEY, string REL_FIELD);
 void Delete_User_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_User_By_USERNAME ( string USERNAME);
+void Delete_User_By_EMAIL ( string EMAIL);
 void Delete_User_account_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_User_account_By_USER_ID ( long? USER_ID);
 void Delete_User_account_By_ADRESS_ID ( Int32? ADRESS_ID);

@@ -27,33 +27,53 @@ namespace UnitTesting
             Tools.Tools oTools = new Tools.Tools();
             #endregion
 
-            Params_Feetoura oParams_Feetoura = new Params_Feetoura();
-            Feetoura_Products oFeetoura_Products = new Feetoura_Products();
-            oFeetoura_Products.PRODUCT_ID = 8;
-            oFeetoura_Products.QUANTITY = 5;
+
+            //#region fatoura test
+
+            //Params_Feetoura oParams_Feetoura = new Params_Feetoura();
+            //Feetoura_Products oFeetoura_Products = new Feetoura_Products();
+            //oFeetoura_Products.PRODUCT_ID = 8;
+            //oFeetoura_Products.QUANTITY = 5;
 
 
-            List<Feetoura_Products> oList = new List<Feetoura_Products>();
+            //List<Feetoura_Products> oList = new List<Feetoura_Products>();
 
 
-            oList.Add(oFeetoura_Products);
-            oList.Add(oFeetoura_Products);
-            oParams_Feetoura.OWNER_ID = 1;
-            oParams_Feetoura.USER_ACCOUNT_ID = 2;
-            oParams_Feetoura.USER_ID = 1;
-            oParams_Feetoura.PRODUCTS = oList;
+            //oList.Add(oFeetoura_Products);
+            //oList.Add(oFeetoura_Products);
+            //oParams_Feetoura.OWNER_ID = 1;
+            //oParams_Feetoura.USER_ACCOUNT_ID = 2;
+            //oParams_Feetoura.USER_ID = 1;
+            //oParams_Feetoura.PRODUCTS = oList;
 
 
 
 
-            var json = JsonConvert.SerializeObject(oParams_Feetoura);
-            Console.WriteLine(json);
-            Console.WriteLine(json);
-            var result = oBLC.Feetoura(oParams_Feetoura);
-            Console.WriteLine(result);
-            Console.WriteLine(result);
+            //var json = JsonConvert.SerializeObject(oParams_Feetoura);
+            //Console.WriteLine(json);
+            //Console.WriteLine(json);
+            //var result = oBLC.Feetoura(oParams_Feetoura);
+            //Console.WriteLine(result);
+            //Console.WriteLine(result);
+
+            //#endregion
+
+            #region signup tests
+            User oUser = new User();
+            oUser.USER_ID = -1;
+            oUser.EMAIL = "5";
+            oUser.USERNAME = "as@";
+            oUser.PASSWORD = "samirpasswordA1@";
+            oUser.OWNER_ID = 1;
+            oUser.USER_TYPE_CODE = "2";
+            oUser.PHONE = "7070707";
+            oUser.IS_ACTIVE = true;
+
+            oBLC.Edit_User(oUser);
 
 
+
+            #endregion
 
 
         }

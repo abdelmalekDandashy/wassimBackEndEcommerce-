@@ -336,7 +336,8 @@ namespace BLC
                                else if (oResult.STOCK < product.QUANTITY)
                                 {
                                     oScope.Dispose();
-                                    throw new BLCException("transactions was canceled due lack in stock for some products");
+                                var o = JsonConvert.SerializeObject(outOfStockProducts);
+                                throw new BLCException("transactions was canceled due lack in stock for some products with ID/s: "+ o);
 
                                 }
 

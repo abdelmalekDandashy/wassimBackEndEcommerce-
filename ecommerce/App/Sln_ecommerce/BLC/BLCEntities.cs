@@ -630,6 +630,11 @@ public partial class Params_Get_User_By_USERNAME
 public string USERNAME {get;set;}
 
 }
+public partial class Params_Get_User_By_EMAIL
+{
+public string EMAIL {get;set;}
+
+}
 public partial class Params_Get_User_account_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
@@ -2159,6 +2164,10 @@ public Int32? OWNER_ID {get;set;}
 public partial class Params_Delete_User_By_USERNAME
 {
 public string USERNAME {get;set;}
+}
+public partial class Params_Delete_User_By_EMAIL
+{
+public string EMAIL {get;set;}
 }
 public partial class Params_Delete_User_account_By_OWNER_ID
 {

@@ -1743,6 +1743,26 @@ oList.Add(oUser);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USERNAME_Adv");}
 return oList;
 }
+public List<User> Get_User_By_EMAIL_Adv(Params_Get_User_By_EMAIL i_Params_Get_User_By_EMAIL)
+{
+List<User> oList = new List<User>();
+User oUser = new User();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_EMAIL_Adv");}
+#region Body Section.
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_EMAIL_Adv(i_Params_Get_User_By_EMAIL.EMAIL);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser = new User();
+oTools.CopyPropValues(oDBEntry, oUser);
+oList.Add(oUser);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_EMAIL_Adv");}
+return oList;
+}
 public List<User_account> Get_User_account_By_OWNER_ID_Adv(Params_Get_User_account_By_OWNER_ID i_Params_Get_User_account_By_OWNER_ID)
 {
 List<User_account> oList = new List<User_account>();

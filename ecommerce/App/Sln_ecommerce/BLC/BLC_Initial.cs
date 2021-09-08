@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Xml.Linq;
 
 namespace BLC
@@ -106,8 +107,80 @@ namespace BLC
             Register_Uploaded_Events_Handlers();
 
             this.OnPostEvent_Get_Product_By_Where_Adv += BLC_OnPostEvent_Get_Product_By_Where_Adv;
+            this.OnPreEvent_Edit_User += BLC_OnPreEvent_Edit_User;
 
             #endregion
+        }
+
+        private void BLC_OnPreEvent_Edit_User(User i_User, Enum_EditMode i_Enum_EditMode)
+        {
+            if (i_Enum_EditMode == Enum_EditMode.Add)
+            {
+
+                #region checks for username
+                //Checks if username is available
+                var result = _AppContext.Get_User_By_USERNAME(i_User.USERNAME);
+
+                //if username from DB == username coming from interface: do nothing
+                if (result.Count != 0)
+                {
+                    if (result[0].USERNAME == i_User.USERNAME)
+                    {
+                        Console.WriteLine("username already Exists");
+                        throw new BLCException("username already Exists");
+                    }
+
+                }
+
+                //minimum lenght of username
+                if (i_User.USERNAME.Length < 3)
+                {
+                    Console.WriteLine("username must be at least 3 characters ");
+                    throw new BLCException("username must be at least 3 characters ");
+                }
+
+
+                //USERNAME regex (letters and numbers only)
+                string usernamePattern = "^[a-zA-Z0-9]+$";
+                Regex usernameRg = new Regex(usernamePattern);
+
+                if (usernameRg.Matches(i_User.USERNAME).Count < 1)
+                {
+                    Console.WriteLine("invalid username, username should only contains letters, numbers");
+                    throw new BLCException("invalid username, username should only contains letters, numbers");
+                }
+                #endregion
+                #region checks for password
+                //password regex (letters and numbers only)
+                var hasNumber = new Regex(@"[0-9]+");
+                var hasUpperChar = new Regex(@"[A-Z]+");
+                var hasMinimum8Chars = new Regex(@".{8,}");
+
+                var isValidated = hasNumber.IsMatch(i_User.PASSWORD) && hasUpperChar.IsMatch(i_User.PASSWORD) && hasMinimum8Chars.IsMatch(i_User.PASSWORD);
+
+                if (!isValidated)
+                {
+                    Console.WriteLine("invalid password synatx, password should be at least 8 characters, contains at least one uppercase letter, number and special character");
+                    throw new BLCException("invalid password synatx, password should be at least 8 characters, contains at least one uppercase letter, number and special character");
+                }
+                #endregion
+                #region checks for Email
+                if (result.Count == 0)
+                {
+                    var EmailResult = _AppContext.Get_User_By_EMAIL(i_User.EMAIL);
+                    Console.WriteLine(EmailResult);
+
+                    if (EmailResult.Count != 0)
+                    {
+                        throw new BLCException("Email already exists");
+                    }
+                }
+                #endregion
+
+
+
+            }
+            //throw new NotImplementedException();
         }
 
         private void BLC_OnPostEvent_Get_Product_By_Where_Adv(List<Product> i_Result, Params_Get_Product_By_Where i_Params_Get_Product_By_Where)

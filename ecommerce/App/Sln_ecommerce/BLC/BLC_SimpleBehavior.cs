@@ -315,6 +315,7 @@ oUser = new User();
 oTools.CopyPropValues(oDBEntry, oUser);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USER_ID");}
+            Console.WriteLine(oUser);
 return oUser;
 }
 public User_account Get_User_account_By_USER_ACCOUNT_ID(Params_Get_User_account_By_USER_ACCOUNT_ID i_Params_Get_User_account_By_USER_ACCOUNT_ID)
@@ -1707,6 +1708,26 @@ oList.Add(oUser);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USERNAME");}
+return oList;
+}
+public List<User> Get_User_By_EMAIL(Params_Get_User_By_EMAIL i_Params_Get_User_By_EMAIL)
+{
+List<User> oList = new List<User>();
+User oUser = new User();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_EMAIL");}
+#region Body Section.
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_EMAIL(i_Params_Get_User_By_EMAIL.EMAIL);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oUser = new User();
+oTools.CopyPropValues(oDBEntry, oUser);
+oList.Add(oUser);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_EMAIL");}
 return oList;
 }
 public List<User_account> Get_User_account_By_OWNER_ID(Params_Get_User_account_By_OWNER_ID i_Params_Get_User_account_By_OWNER_ID)
@@ -6933,6 +6954,43 @@ throw new Exception(ex.Message);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_By_USERNAME");}
 }
+public void Delete_User_By_EMAIL(Params_Delete_User_By_EMAIL i_Params_Delete_User_By_EMAIL)
+{
+Params_Get_User_By_EMAIL oParams_Get_User_By_EMAIL = new Params_Get_User_By_EMAIL();
+List<User> _List_User = new List<User>();
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_User_By_EMAIL");}
+#region Body Section.
+try
+{
+using (TransactionScope oScope = new TransactionScope())
+{
+if (_Stop_Delete_User_Execution)
+{
+_Stop_Delete_User_Execution = false;
+return;
+}
+_AppContext.Delete_User_By_EMAIL(i_Params_Delete_User_By_EMAIL.EMAIL);
+oScope.Complete();
+}
+}
+catch (BLCException blcex)
+{
+throw new BLCException(blcex.Message);
+}
+catch (Exception ex)
+{
+if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+{
+throw new BLCException("Cannot be deleted because of related records in other tables");
+}
+else
+{
+throw new Exception(ex.Message);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_User_By_EMAIL");}
+}
 public void Delete_User_account_By_OWNER_ID(Params_Delete_User_account_By_OWNER_ID i_Params_Delete_User_account_By_OWNER_ID)
 {
 Params_Get_User_account_By_OWNER_ID oParams_Get_User_account_By_OWNER_ID = new Params_Get_User_account_By_OWNER_ID();
@@ -7725,6 +7783,12 @@ i_User.ENTRY_DATE    = oTools.GetDateString(DateTime.Today);
 i_User.OWNER_ID      = this.OwnerID;
 using (TransactionScope oScope = new TransactionScope())
 {
+#region PreEvent_Edit_User
+if (OnPreEvent_Edit_User != null)
+{
+OnPreEvent_Edit_User(i_User,oEditMode_Flag);
+}
+#endregion
 if (_Stop_Edit_User_Execution)
 {
 _Stop_Edit_User_Execution = false;
@@ -7742,6 +7806,12 @@ i_User.USER_ID
 ,i_User.IS_ACTIVE
 ,i_User.ENTRY_DATE
 );
+#region PostEvent_Edit_User
+if (OnPostEvent_Edit_User != null)
+{
+OnPostEvent_Edit_User(i_User,oEditMode_Flag);
+}
+#endregion
 oScope.Complete();
 }
 #endregion
