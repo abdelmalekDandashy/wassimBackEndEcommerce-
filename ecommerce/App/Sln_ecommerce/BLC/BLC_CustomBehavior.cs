@@ -206,6 +206,8 @@ namespace BLC
                 oUser.EMAIL = oList[0].EMAIL;
                 oUser.USERNAME = oList[0].USERNAME;
                 oUser.PHONE = oList[0].PHONE;
+                oUser.FIRST_NAME = oList[0].FIRST_NAME;
+                oUser.LAST_NAME = oList[0].LAST_NAME;
 
                 var MinutesEplapsedSinceMidnight = (long?)(DateTime.Now - DateTime.Today).TotalMinutes;
                 var TicketText = string.Format
@@ -217,7 +219,23 @@ namespace BLC
                     MinutesEplapsedSinceMidnight.ToString(),
                     60
                     );
+
+
+                List<Adress> oListAdress = new List<Adress>(0);
+                Params_Get_Adress_By_USER_ID oParams_Get_Adress_By_USER_ID = new Params_Get_Adress_By_USER_ID();
+                oParams_Get_Adress_By_USER_ID.USER_ID = oList[0].USER_ID;
+                var result = this.Get_Adress_By_USER_ID(oParams_Get_Adress_By_USER_ID);
+                if ((result != null) && (result.Count > 0))
+                {
+                    oListAdress = result;
+                }
+                
+
+
+
+
                 oUser.myTicket = TicketText;
+                oUser.myAdress = oListAdress;
 
             }
             else
@@ -427,6 +445,7 @@ namespace BLC
     public partial class User
     {
     public string myTicket { get; set; }
+    public List<Adress> myAdress { get; set; }
 
     }
     #endregion

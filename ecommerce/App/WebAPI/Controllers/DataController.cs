@@ -152,9 +152,76 @@ oResult_Delete_Address.ExceptionMsg = ex.Message;
 return oResult_Delete_Address;
 #endregion
 }
-#endregion
-#region Delete_Category
-[HttpPost]
+    #endregion
+    #region Feetoura
+    [HttpPost]
+    [Route("Feetoura")]
+    public Result_Feetoura Feetoura(Params_Feetoura i_Params_Feetoura)
+    {
+        #region Declaration And Initialization Section.
+        Faatoura oReturnValue = new Faatoura();
+        string i_Ticket = string.Empty;
+        Result_Feetoura oResult_Feetoura = new Result_Feetoura();
+        #endregion
+        #region Body Section.
+        try
+        {
+
+            // Ticket Checking
+            //-------------------
+            if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+            {
+                if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+                {
+                    if
+                    (
+                    (HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+                    (HttpContext.Request.Query["Ticket"].ToString() != "")
+                    )
+                    {
+                        i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+                    }
+                    else
+                    {
+                        throw new Exception("Invalid Ticket");
+                    }
+                }
+            }
+            //-------------------
+
+            BLC.BLC oBLC_Default = new BLC.BLC();
+            BLCInitializer oBLCInitializer = new BLCInitializer();
+            oBLCInitializer.UserID = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+            oBLCInitializer.OwnerID = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+            oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+            oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+            using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+            {
+                oReturnValue = oBLC.Feetoura(i_Params_Feetoura);
+                oResult_Feetoura.My_Result = oReturnValue;
+                oResult_Feetoura.My_Params_Feetoura = i_Params_Feetoura;
+            }
+        }
+        catch (Exception ex)
+        {
+            if (ex.GetType().FullName != "BLC.BLCException")
+            {
+                oResult_Feetoura.ExceptionMsg = string.Format("Feetoura : {0}", ex.Message);
+            }
+            else
+            {
+                oResult_Feetoura.ExceptionMsg = ex.Message;
+            }
+        }
+        #endregion
+        #region Return Section
+        return oResult_Feetoura;
+        #endregion
+    }
+    #endregion
+
+    #region Delete_Category
+    [HttpPost]
 [Route("Delete_Category")]
 public Result_Delete_Category Delete_Category(Params_Delete_Category i_Params_Delete_Category)
 {
@@ -461,6 +528,70 @@ return oResult_Edit_Address;
 #endregion
 }
 #endregion
+#region Edit_Adress
+[HttpPost]
+[Route("Edit_Adress")]
+public Result_Edit_Adress Edit_Adress(Adress i_Adress)
+{
+#region Declaration And Initialization Section.
+string i_Ticket = string.Empty;
+Result_Edit_Adress oResult_Edit_Adress = new Result_Edit_Adress();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = new BLCInitializer();
+oBLCInitializer.UserID           = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
+oBLCInitializer.OwnerID          = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
+oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
+oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oBLC.Edit_Adress(i_Adress);
+oResult_Edit_Adress.My_Adress = i_Adress;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Edit_Adress.ExceptionMsg = string.Format("Edit_Adress : {0}", ex.Message);
+}
+else
+{
+oResult_Edit_Adress.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Edit_Adress;
+#endregion
+}
+#endregion
 #region Edit_Category
 [HttpPost]
 [Route("Edit_Category")]
@@ -645,15 +776,75 @@ return oResult_Edit_Uploaded_file;
 #endregion
 }
 #endregion
-#region Feetoura
+#region Edit_User
 [HttpPost]
-[Route("Feetoura")]
-public Result_Feetoura Feetoura(Params_Feetoura i_Params_Feetoura)
+[Route("Edit_User")]
+public Result_Edit_User Edit_User(User i_User)
 {
 #region Declaration And Initialization Section.
-Faatoura oReturnValue = new Faatoura();
 string i_Ticket = string.Empty;
-Result_Feetoura oResult_Feetoura = new Result_Feetoura();
+Result_Edit_User oResult_Edit_User = new Result_Edit_User();
+#endregion
+#region Body Section.
+try
+{
+
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
+
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Edit_User);
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oBLC.Edit_User(i_User);
+oResult_Edit_User.My_User = i_User;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Edit_User.ExceptionMsg = string.Format("Edit_User : {0}", ex.Message);
+}
+else
+{
+oResult_Edit_User.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Edit_User;
+#endregion
+}
+#endregion
+#region Get_Adress_By_USER_ID
+[HttpPost]
+[Route("Get_Adress_By_USER_ID")]
+public Result_Get_Adress_By_USER_ID Get_Adress_By_USER_ID(Params_Get_Adress_By_USER_ID i_Params_Get_Adress_By_USER_ID)
+{
+#region Declaration And Initialization Section.
+List<Adress>  oReturnValue = new List<Adress> ();
+string i_Ticket = string.Empty;
+Result_Get_Adress_By_USER_ID oResult_Get_Adress_By_USER_ID = new Result_Get_Adress_By_USER_ID();
 #endregion
 #region Body Section.
 try
@@ -689,25 +880,25 @@ oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
 oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
 using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
 {
-oReturnValue = oBLC.Feetoura(i_Params_Feetoura);
-oResult_Feetoura.My_Result = oReturnValue;
-oResult_Feetoura.My_Params_Feetoura = i_Params_Feetoura;
+oReturnValue = oBLC.Get_Adress_By_USER_ID(i_Params_Get_Adress_By_USER_ID);
+oResult_Get_Adress_By_USER_ID.My_Result = oReturnValue;
+oResult_Get_Adress_By_USER_ID.My_Params_Get_Adress_By_USER_ID = i_Params_Get_Adress_By_USER_ID;
 }
 }
 catch(Exception ex)
 {
 if (ex.GetType().FullName != "BLC.BLCException")
 {
-oResult_Feetoura.ExceptionMsg = string.Format("Feetoura : {0}", ex.Message);
+oResult_Get_Adress_By_USER_ID.ExceptionMsg = string.Format("Get_Adress_By_USER_ID : {0}", ex.Message);
 }
 else
 {
-oResult_Feetoura.ExceptionMsg = ex.Message;
+oResult_Get_Adress_By_USER_ID.ExceptionMsg = ex.Message;
 }
 }
 #endregion
 #region Return Section
-return oResult_Feetoura;
+return oResult_Get_Adress_By_USER_ID;
 #endregion
 }
 #endregion
@@ -834,77 +1025,71 @@ oResult_Get_Category_By_Where.ExceptionMsg = ex.Message;
 return oResult_Get_Category_By_Where;
 #endregion
 }
-    #endregion
+#endregion
+#region Get_Order_details_By_INVOICE_ID
+[HttpPost]
+[Route("Get_Order_details_By_INVOICE_ID")]
+public Result_Get_Order_details_By_INVOICE_ID Get_Order_details_By_INVOICE_ID(Params_Get_Order_details_By_INVOICE_ID i_Params_Get_Order_details_By_INVOICE_ID)
+{
+#region Declaration And Initialization Section.
+List<Order_details>  oReturnValue = new List<Order_details> ();
+string i_Ticket = string.Empty;
+Result_Get_Order_details_By_INVOICE_ID oResult_Get_Order_details_By_INVOICE_ID = new Result_Get_Order_details_By_INVOICE_ID();
+#endregion
+#region Body Section.
+try
+{
 
-    #region Get_Order_details_By_INVOICE_ID
-    [HttpPost]
-    [Route("Get_Order_details_By_INVOICE_ID")]
-    public Result_Get_Order_details_By_INVOICE_ID Get_Order_details_By_INVOICE_ID(Params_Get_Order_details_By_INVOICE_ID i_Params_Get_Order_details_By_INVOICE_ID)
-    {
-        #region Declaration And Initialization Section.
-        List<Order_details> oReturnValue = new List<Order_details>();
-        string i_Ticket = string.Empty;
-        Result_Get_Order_details_By_INVOICE_ID oResult_Get_Order_details_By_INVOICE_ID = new Result_Get_Order_details_By_INVOICE_ID();
-        #endregion
-        #region Body Section.
-        try
-        {
+// Ticket Checking
+//-------------------
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
+{
+if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
+{
+if
+(
+(HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
+(HttpContext.Request.Query["Ticket"].ToString() != "")
+)
+{
+i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
+}
+else
+{
+throw new Exception("Invalid Ticket");
+}
+}
+}
+//-------------------
 
-            // Ticket Checking
-            //-------------------
-            if (ConfigurationManager.AppSettings["ENABLE_TICKET"] != null)
-            {
-                if (ConfigurationManager.AppSettings["ENABLE_TICKET"] == "1")
-                {
-                    if
-                    (
-                    (HttpContext.Request.Query["Ticket"].FirstOrDefault() != null) &&
-                    (HttpContext.Request.Query["Ticket"].ToString() != "")
-                    )
-                    {
-                        i_Ticket = HttpContext.Request.Query["Ticket"].ToString();
-                    }
-                    else
-                    {
-                        throw new Exception("Invalid Ticket");
-                    }
-                }
-            }
-            //-------------------
-
-            BLC.BLC oBLC_Default = new BLC.BLC();
-            BLCInitializer oBLCInitializer = new BLCInitializer();
-            oBLCInitializer.UserID = Convert.ToInt64(oBLC_Default.ResolveTicket(i_Ticket)["USER_ID"]);
-            oBLCInitializer.OwnerID = Convert.ToInt32(oBLC_Default.ResolveTicket(i_Ticket)["OWNER_ID"]);
-            oBLCInitializer.ConnectionString = ConfigurationManager.AppSettings["CONN_STR"];
-            oBLCInitializer.Messages_FilePath = ConfigurationManager.AppSettings["BLC_MESSAGES"];
-            using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
-            {
-                oReturnValue = oBLC.Get_Order_details_By_INVOICE_ID(i_Params_Get_Order_details_By_INVOICE_ID);
-                oResult_Get_Order_details_By_INVOICE_ID.My_Result = oReturnValue;
-                oResult_Get_Order_details_By_INVOICE_ID.My_Params_Get_Order_details_By_INVOICE_ID = i_Params_Get_Order_details_By_INVOICE_ID;
-            }
-        }
-        catch (Exception ex)
-        {
-            if (ex.GetType().FullName != "BLC.BLCException")
-            {
-                oResult_Get_Order_details_By_INVOICE_ID.ExceptionMsg = string.Format("Get_Order_details_By_INVOICE_ID : {0}", ex.Message);
-            }
-            else
-            {
-                oResult_Get_Order_details_By_INVOICE_ID.ExceptionMsg = ex.Message;
-            }
-        }
-        #endregion
-        #region Return Section
-        return oResult_Get_Order_details_By_INVOICE_ID;
-        #endregion
-    }
-    #endregion
-
-    #region Get_Product_By_OWNER_ID
-    [HttpPost]
+BLC.BLC oBLC_Default = new BLC.BLC();
+BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer(i_Ticket,BLC.BLC.Enum_API_Method.Get_Order_details_By_INVOICE_ID);
+using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
+{
+oReturnValue = oBLC.Get_Order_details_By_INVOICE_ID(i_Params_Get_Order_details_By_INVOICE_ID);
+oResult_Get_Order_details_By_INVOICE_ID.My_Result = oReturnValue;
+oResult_Get_Order_details_By_INVOICE_ID.My_Params_Get_Order_details_By_INVOICE_ID = i_Params_Get_Order_details_By_INVOICE_ID;
+}
+}
+catch(Exception ex)
+{
+if (ex.GetType().FullName != "BLC.BLCException")
+{
+oResult_Get_Order_details_By_INVOICE_ID.ExceptionMsg = string.Format("Get_Order_details_By_INVOICE_ID : {0}", ex.Message);
+}
+else
+{
+oResult_Get_Order_details_By_INVOICE_ID.ExceptionMsg = ex.Message;
+}
+}
+#endregion
+#region Return Section
+return oResult_Get_Order_details_By_INVOICE_ID;
+#endregion
+}
+#endregion
+#region Get_Product_By_OWNER_ID
+[HttpPost]
 [Route("Get_Product_By_OWNER_ID")]
 public Result_Get_Product_By_OWNER_ID Get_Product_By_OWNER_ID(Params_Get_Product_By_OWNER_ID i_Params_Get_Product_By_OWNER_ID)
 {
@@ -1171,6 +1356,16 @@ this.ExceptionMsg = string.Empty;
 #endregion
 }
 #endregion
+#region Result_Feetoura
+public partial class Result_Feetoura : Action_Result
+{
+    #region Properties.
+    public Faatoura My_Result { get; set; }
+    public Params_Feetoura My_Params_Feetoura { get; set; }
+    #endregion
+}
+#endregion
+
 #region Result_Authenticate
 public partial class Result_Authenticate : Action_Result
 {
@@ -1228,6 +1423,14 @@ public Address My_Address { get; set; }
 #endregion
 }
 #endregion
+#region Result_Edit_Adress
+public partial class Result_Edit_Adress : Action_Result
+{
+#region Properties.
+public Adress My_Adress { get; set; }
+#endregion
+}
+#endregion
 #region Result_Edit_Category
 public partial class Result_Edit_Category : Action_Result
 {
@@ -1252,12 +1455,20 @@ public Uploaded_file My_Uploaded_file { get; set; }
 #endregion
 }
 #endregion
-#region Result_Feetoura
-public partial class Result_Feetoura : Action_Result
+#region Result_Edit_User
+public partial class Result_Edit_User : Action_Result
 {
 #region Properties.
-public Faatoura My_Result { get; set; }
-public Params_Feetoura My_Params_Feetoura { get; set; }
+public User My_User { get; set; }
+#endregion
+}
+#endregion
+#region Result_Get_Adress_By_USER_ID
+public partial class Result_Get_Adress_By_USER_ID : Action_Result
+{
+#region Properties.
+public List<Adress>  My_Result { get; set; }
+public Params_Get_Adress_By_USER_ID My_Params_Get_Adress_By_USER_ID { get; set; }
 #endregion
 }
 #endregion
@@ -1282,13 +1493,12 @@ public Params_Get_Category_By_Where My_Params_Get_Category_By_Where { get; set; 
 #region Result_Get_Order_details_By_INVOICE_ID
 public partial class Result_Get_Order_details_By_INVOICE_ID : Action_Result
 {
-    #region Properties.
-    public List<Order_details> My_Result { get; set; }
-    public Params_Get_Order_details_By_INVOICE_ID My_Params_Get_Order_details_By_INVOICE_ID { get; set; }
-    #endregion
+#region Properties.
+public List<Order_details>  My_Result { get; set; }
+public Params_Get_Order_details_By_INVOICE_ID My_Params_Get_Order_details_By_INVOICE_ID { get; set; }
+#endregion
 }
 #endregion
-
 #region Result_Get_Product_By_OWNER_ID
 public partial class Result_Get_Product_By_OWNER_ID : Action_Result
 {

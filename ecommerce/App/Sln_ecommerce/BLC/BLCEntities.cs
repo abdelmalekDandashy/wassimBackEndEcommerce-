@@ -422,6 +422,11 @@ public partial class Params_Get_Adress_By_OWNER_ID
 public Int32? OWNER_ID {get;set;}
 
 }
+public partial class Params_Get_Adress_By_USER_ID
+{
+public long? USER_ID {get;set;}
+
+}
 public partial class Params_Get_Category_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
@@ -675,6 +680,11 @@ public partial class Params_Get_Address_By_LOC_L4_ID_List
 public List<long?> LOC_L4_ID_LIST {get;set;}
 
 }
+public partial class Params_Get_Adress_By_USER_ID_List
+{
+public List<long?> USER_ID_LIST {get;set;}
+
+}
 public partial class Params_Get_Contact_By_PERSON_ID_List
 {
 public List<long?> PERSON_ID_LIST {get;set;}
@@ -810,6 +820,7 @@ public partial class Params_Get_Adress_By_Criteria
 {
 
 public Int32? OWNER_ID {get;set;}
+public string HOST_NAME {get;set;}
 public string STREET_NAME_ONE {get;set;}
 public string STREET_NAME_TWO {get;set;}
 public string STATE {get;set;}
@@ -822,6 +833,7 @@ public partial class Params_Get_Adress_By_Where
 {
 
 public Int32? OWNER_ID {get;set;}
+public string HOST_NAME {get;set;}
 public string STREET_NAME_ONE {get;set;}
 public string STREET_NAME_TWO {get;set;}
 public string STATE {get;set;}
@@ -1221,6 +1233,8 @@ public Int32? OWNER_ID {get;set;}
 public string EMAIL {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
 public string PHONE {get;set;}
 public string USER_TYPE_CODE {get;set;}
 public long? START_ROW {get;set;}
@@ -1234,6 +1248,8 @@ public Int32? OWNER_ID {get;set;}
 public string EMAIL {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
 public string PHONE {get;set;}
 public string USER_TYPE_CODE {get;set;}
 public long? START_ROW {get;set;}
@@ -1402,6 +1418,60 @@ public string LOC_L1_ID_LIST {get;set;}
 public string LOC_L2_ID_LIST {get;set;}
 public string LOC_L3_ID_LIST {get;set;}
 public string LOC_L4_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_Adress_By_Criteria_InList
+{
+
+public Int32? OWNER_ID {get;set;}
+public string HOST_NAME {get;set;}
+public string STREET_NAME_ONE {get;set;}
+public string STREET_NAME_TWO {get;set;}
+public string STATE {get;set;}
+public string POST_CODE {get;set;}
+public List<long?> USER_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_Adress_By_Criteria_InList_SP
+{
+public Int32? OWNER_ID {get;set;}
+public string HOST_NAME {get;set;}
+public string STREET_NAME_ONE {get;set;}
+public string STREET_NAME_TWO {get;set;}
+public string STATE {get;set;}
+public string POST_CODE {get;set;}
+public string USER_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_Adress_By_Where_InList
+{
+
+public Int32? OWNER_ID {get;set;}
+public string HOST_NAME {get;set;}
+public string STREET_NAME_ONE {get;set;}
+public string STREET_NAME_TWO {get;set;}
+public string STATE {get;set;}
+public string POST_CODE {get;set;}
+public List<long?> USER_ID_LIST {get;set;}
+public long? START_ROW {get;set;}
+public long? END_ROW {get;set;}
+public long? TOTAL_COUNT {get;set;}
+}
+public partial class Params_Get_Adress_By_Where_InList_SP
+{
+public Int32? OWNER_ID {get;set;}
+public string HOST_NAME {get;set;}
+public string STREET_NAME_ONE {get;set;}
+public string STREET_NAME_TWO {get;set;}
+public string STATE {get;set;}
+public string POST_CODE {get;set;}
+public string USER_ID_LIST {get;set;}
 public long? START_ROW {get;set;}
 public long? END_ROW {get;set;}
 public long? TOTAL_COUNT {get;set;}
@@ -1997,6 +2067,10 @@ public partial class Params_Delete_Adress_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
 }
+public partial class Params_Delete_Adress_By_USER_ID
+{
+public long? USER_ID {get;set;}
+}
 public partial class Params_Delete_Category_By_OWNER_ID
 {
 public Int32? OWNER_ID {get;set;}
@@ -2204,6 +2278,8 @@ public Int32? OWNER_ID {get;set;}
 public partial class Adress
 {
 public Int32? ADRESS_ID {get;set;}
+public long? USER_ID {get;set;}
+public string HOST_NAME {get;set;}
 public string STREET_NAME_ONE {get;set;}
 public string STREET_NAME_TWO {get;set;}
 public string STATE {get;set;}
@@ -2394,6 +2470,8 @@ public Int32? OWNER_ID {get;set;}
 public string EMAIL {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
 public string PHONE {get;set;}
 public string USER_TYPE_CODE {get;set;}
 public bool? IS_ACTIVE {get;set;}

@@ -315,7 +315,6 @@ oUser = new User();
 oTools.CopyPropValues(oDBEntry, oUser);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_User_By_USER_ID");}
-            Console.WriteLine(oUser);
 return oUser;
 }
 public User_account Get_User_account_By_USER_ACCOUNT_ID(Params_Get_User_account_By_USER_ACCOUNT_ID i_Params_Get_User_account_By_USER_ACCOUNT_ID)
@@ -908,6 +907,26 @@ oList.Add(oAdress);
 }
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Adress_By_OWNER_ID");}
+return oList;
+}
+public List<Adress> Get_Adress_By_USER_ID(Params_Get_Adress_By_USER_ID i_Params_Get_Adress_By_USER_ID)
+{
+List<Adress> oList = new List<Adress>();
+Adress oAdress = new Adress();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Adress_By_USER_ID");}
+#region Body Section.
+List<DALC.Adress> oList_DBEntries = _AppContext.Get_Adress_By_USER_ID(i_Params_Get_Adress_By_USER_ID.USER_ID);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oAdress = new Adress();
+oTools.CopyPropValues(oDBEntry, oAdress);
+oList.Add(oAdress);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Adress_By_USER_ID");}
 return oList;
 }
 public List<Category> Get_Category_By_OWNER_ID(Params_Get_Category_By_OWNER_ID i_Params_Get_Category_By_OWNER_ID)
@@ -1890,6 +1909,26 @@ oList.Add(oAddress);
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Address_By_LOC_L4_ID_List");}
 return oList;
 }
+public List<Adress> Get_Adress_By_USER_ID_List(Params_Get_Adress_By_USER_ID_List i_Params_Get_Adress_By_USER_ID_List)
+{
+List<Adress> oList = new List<Adress>();
+Adress oAdress = new Adress();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Adress_By_USER_ID_List");}
+#region Body Section.
+List<DALC.Adress> oList_DBEntries = _AppContext.Get_Adress_By_USER_ID_List(i_Params_Get_Adress_By_USER_ID_List.USER_ID_LIST);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oAdress = new Adress();
+oTools.CopyPropValues(oDBEntry, oAdress);
+oList.Add(oAdress);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Adress_By_USER_ID_List");}
+return oList;
+}
 public List<Contact> Get_Contact_By_PERSON_ID_List(Params_Get_Contact_By_PERSON_ID_List i_Params_Get_Contact_By_PERSON_ID_List)
 {
 List<Contact> oList = new List<Contact>();
@@ -2300,7 +2339,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_Adress_By_Criteria");}
 if ((i_Params_Get_Adress_By_Criteria.OWNER_ID == null) || (i_Params_Get_Adress_By_Criteria.OWNER_ID == 0)) { i_Params_Get_Adress_By_Criteria.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_Adress_By_Criteria.START_ROW == null) { i_Params_Get_Adress_By_Criteria.START_ROW = 0; }
 if ((i_Params_Get_Adress_By_Criteria.END_ROW == null) || (i_Params_Get_Adress_By_Criteria.END_ROW == 0)) { i_Params_Get_Adress_By_Criteria.END_ROW = 1000000; }
-List<DALC.Adress> oList_DBEntries = _AppContext.Get_Adress_By_Criteria(i_Params_Get_Adress_By_Criteria.STREET_NAME_ONE,i_Params_Get_Adress_By_Criteria.STREET_NAME_TWO,i_Params_Get_Adress_By_Criteria.STATE,i_Params_Get_Adress_By_Criteria.POST_CODE,i_Params_Get_Adress_By_Criteria.OWNER_ID,i_Params_Get_Adress_By_Criteria.START_ROW,i_Params_Get_Adress_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Adress> oList_DBEntries = _AppContext.Get_Adress_By_Criteria(i_Params_Get_Adress_By_Criteria.HOST_NAME,i_Params_Get_Adress_By_Criteria.STREET_NAME_ONE,i_Params_Get_Adress_By_Criteria.STREET_NAME_TWO,i_Params_Get_Adress_By_Criteria.STATE,i_Params_Get_Adress_By_Criteria.POST_CODE,i_Params_Get_Adress_By_Criteria.OWNER_ID,i_Params_Get_Adress_By_Criteria.START_ROW,i_Params_Get_Adress_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -2325,7 +2364,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_Adress_By_Where");}
 if ((i_Params_Get_Adress_By_Where.OWNER_ID == null) || (i_Params_Get_Adress_By_Where.OWNER_ID == 0)) { i_Params_Get_Adress_By_Where.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_Adress_By_Where.START_ROW == null) { i_Params_Get_Adress_By_Where.START_ROW = 0; }
 if ((i_Params_Get_Adress_By_Where.END_ROW == null) || (i_Params_Get_Adress_By_Where.END_ROW == 0)) { i_Params_Get_Adress_By_Where.END_ROW = 1000000; }
-List<DALC.Adress> oList_DBEntries = _AppContext.Get_Adress_By_Where(i_Params_Get_Adress_By_Where.STREET_NAME_ONE,i_Params_Get_Adress_By_Where.STREET_NAME_TWO,i_Params_Get_Adress_By_Where.STATE,i_Params_Get_Adress_By_Where.POST_CODE,i_Params_Get_Adress_By_Where.OWNER_ID,i_Params_Get_Adress_By_Where.START_ROW,i_Params_Get_Adress_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.Adress> oList_DBEntries = _AppContext.Get_Adress_By_Where(i_Params_Get_Adress_By_Where.HOST_NAME,i_Params_Get_Adress_By_Where.STREET_NAME_ONE,i_Params_Get_Adress_By_Where.STREET_NAME_TWO,i_Params_Get_Adress_By_Where.STATE,i_Params_Get_Adress_By_Where.POST_CODE,i_Params_Get_Adress_By_Where.OWNER_ID,i_Params_Get_Adress_By_Where.START_ROW,i_Params_Get_Adress_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -3274,7 +3313,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_Criteria");}
 if ((i_Params_Get_User_By_Criteria.OWNER_ID == null) || (i_Params_Get_User_By_Criteria.OWNER_ID == 0)) { i_Params_Get_User_By_Criteria.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_User_By_Criteria.START_ROW == null) { i_Params_Get_User_By_Criteria.START_ROW = 0; }
 if ((i_Params_Get_User_By_Criteria.END_ROW == null) || (i_Params_Get_User_By_Criteria.END_ROW == 0)) { i_Params_Get_User_By_Criteria.END_ROW = 1000000; }
-List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Criteria(i_Params_Get_User_By_Criteria.EMAIL,i_Params_Get_User_By_Criteria.USERNAME,i_Params_Get_User_By_Criteria.PASSWORD,i_Params_Get_User_By_Criteria.PHONE,i_Params_Get_User_By_Criteria.USER_TYPE_CODE,i_Params_Get_User_By_Criteria.OWNER_ID,i_Params_Get_User_By_Criteria.START_ROW,i_Params_Get_User_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Criteria(i_Params_Get_User_By_Criteria.EMAIL,i_Params_Get_User_By_Criteria.USERNAME,i_Params_Get_User_By_Criteria.PASSWORD,i_Params_Get_User_By_Criteria.FIRST_NAME,i_Params_Get_User_By_Criteria.LAST_NAME,i_Params_Get_User_By_Criteria.PHONE,i_Params_Get_User_By_Criteria.USER_TYPE_CODE,i_Params_Get_User_By_Criteria.OWNER_ID,i_Params_Get_User_By_Criteria.START_ROW,i_Params_Get_User_By_Criteria.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -3299,7 +3338,7 @@ if (OnPreEvent_General != null){OnPreEvent_General("Get_User_By_Where");}
 if ((i_Params_Get_User_By_Where.OWNER_ID == null) || (i_Params_Get_User_By_Where.OWNER_ID == 0)) { i_Params_Get_User_By_Where.OWNER_ID = this.OwnerID; }
 if (i_Params_Get_User_By_Where.START_ROW == null) { i_Params_Get_User_By_Where.START_ROW = 0; }
 if ((i_Params_Get_User_By_Where.END_ROW == null) || (i_Params_Get_User_By_Where.END_ROW == 0)) { i_Params_Get_User_By_Where.END_ROW = 1000000; }
-List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Where(i_Params_Get_User_By_Where.EMAIL,i_Params_Get_User_By_Where.USERNAME,i_Params_Get_User_By_Where.PASSWORD,i_Params_Get_User_By_Where.PHONE,i_Params_Get_User_By_Where.USER_TYPE_CODE,i_Params_Get_User_By_Where.OWNER_ID,i_Params_Get_User_By_Where.START_ROW,i_Params_Get_User_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
+List<DALC.User> oList_DBEntries = _AppContext.Get_User_By_Where(i_Params_Get_User_By_Where.EMAIL,i_Params_Get_User_By_Where.USERNAME,i_Params_Get_User_By_Where.PASSWORD,i_Params_Get_User_By_Where.FIRST_NAME,i_Params_Get_User_By_Where.LAST_NAME,i_Params_Get_User_By_Where.PHONE,i_Params_Get_User_By_Where.USER_TYPE_CODE,i_Params_Get_User_By_Where.OWNER_ID,i_Params_Get_User_By_Where.START_ROW,i_Params_Get_User_By_Where.END_ROW,ref tmp_TOTAL_COUNT);
 if (oList_DBEntries != null)
 {
 foreach (var oDBEntry in oList_DBEntries)
@@ -3610,6 +3649,88 @@ i_Params_Get_Address_By_Where_InList_V2.TOTAL_COUNT = oParams_Get_Address_By_Whe
 i_Params_Get_Address_By_Where_InList_V2.TOTAL_COUNT = tmp_TOTAL_COUNT;
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Get_Address_By_Where_InList_V2");}
+return oList;
+}
+public List<Adress> Get_Adress_By_Criteria_InList(Params_Get_Adress_By_Criteria_InList i_Params_Get_Adress_By_Criteria_InList)
+{
+List<Adress> oList = new List<Adress>();
+Adress oAdress = new Adress();
+long? tmp_TOTAL_COUNT = 0;
+Params_Get_Adress_By_Criteria_InList_SP oParams_Get_Adress_By_Criteria_InList_SP = new Params_Get_Adress_By_Criteria_InList_SP();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Adress_By_Criteria_InList");}
+#region Body Section.
+if ((i_Params_Get_Adress_By_Criteria_InList.OWNER_ID == null) || (i_Params_Get_Adress_By_Criteria_InList.OWNER_ID == 0)) { i_Params_Get_Adress_By_Criteria_InList.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Adress_By_Criteria_InList.START_ROW == null) { i_Params_Get_Adress_By_Criteria_InList.START_ROW = 0; }
+if ((i_Params_Get_Adress_By_Criteria_InList.END_ROW == null) || (i_Params_Get_Adress_By_Criteria_InList.END_ROW == 0)) { i_Params_Get_Adress_By_Criteria_InList.END_ROW = 1000000; }
+oParams_Get_Adress_By_Criteria_InList_SP.OWNER_ID = i_Params_Get_Adress_By_Criteria_InList.OWNER_ID;
+oParams_Get_Adress_By_Criteria_InList_SP.HOST_NAME = i_Params_Get_Adress_By_Criteria_InList.HOST_NAME;
+oParams_Get_Adress_By_Criteria_InList_SP.STREET_NAME_ONE = i_Params_Get_Adress_By_Criteria_InList.STREET_NAME_ONE;
+oParams_Get_Adress_By_Criteria_InList_SP.STREET_NAME_TWO = i_Params_Get_Adress_By_Criteria_InList.STREET_NAME_TWO;
+oParams_Get_Adress_By_Criteria_InList_SP.STATE = i_Params_Get_Adress_By_Criteria_InList.STATE;
+oParams_Get_Adress_By_Criteria_InList_SP.POST_CODE = i_Params_Get_Adress_By_Criteria_InList.POST_CODE;
+if ( i_Params_Get_Adress_By_Criteria_InList.USER_ID_LIST == null)
+{
+i_Params_Get_Adress_By_Criteria_InList.USER_ID_LIST = new List<long?>();
+}
+oParams_Get_Adress_By_Criteria_InList_SP.USER_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_Adress_By_Criteria_InList.USER_ID_LIST);
+oParams_Get_Adress_By_Criteria_InList_SP.START_ROW = i_Params_Get_Adress_By_Criteria_InList.START_ROW;
+oParams_Get_Adress_By_Criteria_InList_SP.END_ROW = i_Params_Get_Adress_By_Criteria_InList.END_ROW;
+oParams_Get_Adress_By_Criteria_InList_SP.TOTAL_COUNT = i_Params_Get_Adress_By_Criteria_InList.TOTAL_COUNT;
+List<DALC.Adress> oList_DBEntries = _AppContext.Get_Adress_By_Criteria_InList(i_Params_Get_Adress_By_Criteria_InList.HOST_NAME,i_Params_Get_Adress_By_Criteria_InList.STREET_NAME_ONE,i_Params_Get_Adress_By_Criteria_InList.STREET_NAME_TWO,i_Params_Get_Adress_By_Criteria_InList.STATE,i_Params_Get_Adress_By_Criteria_InList.POST_CODE,i_Params_Get_Adress_By_Criteria_InList.USER_ID_LIST,i_Params_Get_Adress_By_Criteria_InList.OWNER_ID,i_Params_Get_Adress_By_Criteria_InList.START_ROW,i_Params_Get_Adress_By_Criteria_InList.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oAdress = new Adress();
+oTools.CopyPropValues(oDBEntry, oAdress);
+oList.Add(oAdress);
+}
+}
+i_Params_Get_Adress_By_Criteria_InList.TOTAL_COUNT = oParams_Get_Adress_By_Criteria_InList_SP.TOTAL_COUNT;
+i_Params_Get_Adress_By_Criteria_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Adress_By_Criteria_InList");}
+return oList;
+}
+public List<Adress> Get_Adress_By_Where_InList(Params_Get_Adress_By_Where_InList i_Params_Get_Adress_By_Where_InList)
+{
+List<Adress> oList = new List<Adress>();
+Adress oAdress = new Adress();
+long? tmp_TOTAL_COUNT = 0;
+Params_Get_Adress_By_Where_InList_SP oParams_Get_Adress_By_Where_InList_SP = new Params_Get_Adress_By_Where_InList_SP();
+if (OnPreEvent_General != null){OnPreEvent_General("Get_Adress_By_Where_InList");}
+#region Body Section.
+if ((i_Params_Get_Adress_By_Where_InList.OWNER_ID == null) || (i_Params_Get_Adress_By_Where_InList.OWNER_ID == 0)) { i_Params_Get_Adress_By_Where_InList.OWNER_ID = this.OwnerID; }
+if (i_Params_Get_Adress_By_Where_InList.START_ROW == null) { i_Params_Get_Adress_By_Where_InList.START_ROW = 0; }
+if ((i_Params_Get_Adress_By_Where_InList.END_ROW == null) || (i_Params_Get_Adress_By_Where_InList.END_ROW == 0)) { i_Params_Get_Adress_By_Where_InList.END_ROW = 1000000; }
+oParams_Get_Adress_By_Where_InList_SP.OWNER_ID = i_Params_Get_Adress_By_Where_InList.OWNER_ID;
+oParams_Get_Adress_By_Where_InList_SP.HOST_NAME = i_Params_Get_Adress_By_Where_InList.HOST_NAME;
+oParams_Get_Adress_By_Where_InList_SP.STREET_NAME_ONE = i_Params_Get_Adress_By_Where_InList.STREET_NAME_ONE;
+oParams_Get_Adress_By_Where_InList_SP.STREET_NAME_TWO = i_Params_Get_Adress_By_Where_InList.STREET_NAME_TWO;
+oParams_Get_Adress_By_Where_InList_SP.STATE = i_Params_Get_Adress_By_Where_InList.STATE;
+oParams_Get_Adress_By_Where_InList_SP.POST_CODE = i_Params_Get_Adress_By_Where_InList.POST_CODE;
+if ( i_Params_Get_Adress_By_Where_InList.USER_ID_LIST == null)
+{
+i_Params_Get_Adress_By_Where_InList.USER_ID_LIST = new List<long?>();
+}
+oParams_Get_Adress_By_Where_InList_SP.USER_ID_LIST = oTools.Convert_List_To_Comma_Separated<long?>(i_Params_Get_Adress_By_Where_InList.USER_ID_LIST);
+oParams_Get_Adress_By_Where_InList_SP.START_ROW = i_Params_Get_Adress_By_Where_InList.START_ROW;
+oParams_Get_Adress_By_Where_InList_SP.END_ROW = i_Params_Get_Adress_By_Where_InList.END_ROW;
+oParams_Get_Adress_By_Where_InList_SP.TOTAL_COUNT = i_Params_Get_Adress_By_Where_InList.TOTAL_COUNT;
+List<DALC.Adress> oList_DBEntries = _AppContext.Get_Adress_By_Where_InList(i_Params_Get_Adress_By_Where_InList.HOST_NAME,i_Params_Get_Adress_By_Where_InList.STREET_NAME_ONE,i_Params_Get_Adress_By_Where_InList.STREET_NAME_TWO,i_Params_Get_Adress_By_Where_InList.STATE,i_Params_Get_Adress_By_Where_InList.POST_CODE,i_Params_Get_Adress_By_Where_InList.USER_ID_LIST,i_Params_Get_Adress_By_Where_InList.OWNER_ID,i_Params_Get_Adress_By_Where_InList.START_ROW,i_Params_Get_Adress_By_Where_InList.END_ROW,ref tmp_TOTAL_COUNT);
+if (oList_DBEntries != null)
+{
+foreach (var oDBEntry in oList_DBEntries)
+{
+oAdress = new Adress();
+oTools.CopyPropValues(oDBEntry, oAdress);
+oList.Add(oAdress);
+}
+}
+i_Params_Get_Adress_By_Where_InList.TOTAL_COUNT = oParams_Get_Adress_By_Where_InList_SP.TOTAL_COUNT;
+i_Params_Get_Adress_By_Where_InList.TOTAL_COUNT = tmp_TOTAL_COUNT;
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Get_Adress_By_Where_InList");}
 return oList;
 }
 public List<Contact> Get_Contact_By_Criteria_InList(Params_Get_Contact_By_Criteria_InList i_Params_Get_Contact_By_Criteria_InList)
@@ -5470,6 +5591,43 @@ throw new Exception(ex.Message);
 #endregion
 if (OnPostEvent_General != null){OnPostEvent_General("Delete_Adress_By_OWNER_ID");}
 }
+public void Delete_Adress_By_USER_ID(Params_Delete_Adress_By_USER_ID i_Params_Delete_Adress_By_USER_ID)
+{
+Params_Get_Adress_By_USER_ID oParams_Get_Adress_By_USER_ID = new Params_Get_Adress_By_USER_ID();
+List<Adress> _List_Adress = new List<Adress>();
+if (OnPreEvent_General != null){OnPreEvent_General("Delete_Adress_By_USER_ID");}
+#region Body Section.
+try
+{
+using (TransactionScope oScope = new TransactionScope())
+{
+if (_Stop_Delete_Adress_Execution)
+{
+_Stop_Delete_Adress_Execution = false;
+return;
+}
+_AppContext.Delete_Adress_By_USER_ID(i_Params_Delete_Adress_By_USER_ID.USER_ID);
+oScope.Complete();
+}
+}
+catch (BLCException blcex)
+{
+throw new BLCException(blcex.Message);
+}
+catch (Exception ex)
+{
+if (ex.Message.Contains("The DELETE statement conflicted with the REFERENCE constraint"))
+{
+throw new BLCException("Cannot be deleted because of related records in other tables");
+}
+else
+{
+throw new Exception(ex.Message);
+}
+}
+#endregion
+if (OnPostEvent_General != null){OnPostEvent_General("Delete_Adress_By_USER_ID");}
+}
 public void Delete_Category_By_OWNER_ID(Params_Delete_Category_By_OWNER_ID i_Params_Delete_Category_By_OWNER_ID)
 {
 Params_Get_Category_By_OWNER_ID oParams_Get_Category_By_OWNER_ID = new Params_Get_Category_By_OWNER_ID();
@@ -7170,6 +7328,8 @@ return;
 i_Adress.ADRESS_ID = _AppContext.Edit_Adress
 (
 i_Adress.ADRESS_ID
+,i_Adress.USER_ID
+,i_Adress.HOST_NAME
 ,i_Adress.STREET_NAME_ONE
 ,i_Adress.STREET_NAME_TWO
 ,i_Adress.STATE
@@ -7801,6 +7961,8 @@ i_User.USER_ID
 ,i_User.EMAIL
 ,i_User.USERNAME
 ,i_User.PASSWORD
+,i_User.FIRST_NAME
+,i_User.LAST_NAME
 ,i_User.PHONE
 ,i_User.USER_TYPE_CODE
 ,i_User.IS_ACTIVE

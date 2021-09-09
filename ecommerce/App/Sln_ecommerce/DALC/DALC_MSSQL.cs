@@ -279,6 +279,8 @@ IEnumerable<IDataRecord> Q = ExecuteSelectQuery("UPG_GET_ADRESS_BY_ADRESS_ID_ADV
 var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(R["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(R["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(R["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(R["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(R["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
 }
 return o;
 }
@@ -330,9 +332,9 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(R["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(R["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(R["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(R["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(R["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(R["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(R["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(R["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(R["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(R["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(R["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(R["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(R["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(R["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(R["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(R["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(R["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(R["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(R["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(R["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(R["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(R["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(R["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(R["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(R["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(R["T_ADRESS_OWNER_ID"]);
 }
 return o;
 }
@@ -498,9 +500,9 @@ var R = Q.FirstOrDefault();
 if (R != null){
 oTools.CopyPropValues_FromDataRecord(R, o);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(R["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(R["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(R["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(R["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(R["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(R["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(R["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(R["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(R["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(R["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(R["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(R["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(R["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(R["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(R["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(R["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(R["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(R["T_ADRESS_OWNER_ID"]);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(R["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(R["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(R["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(R["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(R["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(R["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(R["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(R["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(R["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(R["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(R["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(R["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(R["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(R["T_USER_ENTRY_DATE"]);
 }
 return o;
 }
@@ -817,6 +819,8 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_ADRESS_ID_LIS
 if (R != null) {foreach (var X in R) {
 Adress o = new Adress();
 oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -876,9 +880,9 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -1068,9 +1072,9 @@ if (R != null) {foreach (var X in R) {
 User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -1180,6 +1184,20 @@ List<Adress> oList = new List<Adress>();
 dynamic p = new ExpandoObject();
 p.OWNER_ID = OWNER_ID;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_OWNER_ID", p);
+if (R != null) {foreach (var X in R) {
+Adress o = new Adress();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<Adress> Get_Adress_By_USER_ID ( long? USER_ID)
+{
+List<Adress> oList = new List<Adress>();
+dynamic p = new ExpandoObject();
+p.USER_ID = USER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_USER_ID", p);
 if (R != null) {foreach (var X in R) {
 Adress o = new Adress();
 oTools.CopyPropValues_FromDataRecord(X, o);
@@ -1981,6 +1999,24 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_OWNER_ID_ADV"
 if (R != null) {foreach (var X in R) {
 Adress o = new Adress();
 oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<Adress> Get_Adress_By_USER_ID_Adv ( long? USER_ID)
+{
+List<Adress> oList = new List<Adress>();
+dynamic p = new ExpandoObject();
+p.USER_ID = USER_ID;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_USER_ID_ADV", p);
+if (R != null) {foreach (var X in R) {
+Adress o = new Adress();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -2072,9 +2108,9 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -2090,9 +2126,9 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -2108,9 +2144,9 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -2610,9 +2646,9 @@ if (R != null) {foreach (var X in R) {
 User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -2628,9 +2664,9 @@ if (R != null) {foreach (var X in R) {
 User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -2646,9 +2682,9 @@ if (R != null) {foreach (var X in R) {
 User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -2718,6 +2754,20 @@ p.LOC_L4_ID_LIST = string.Join(",", LOC_L4_ID_LIST.ToArray());
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADDRESS_BY_LOC_L4_ID_LIST", p);
 if (R != null) {foreach (var X in R) {
 Address o = new Address();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<Adress> Get_Adress_By_USER_ID_List ( List<long?> USER_ID_LIST)
+{
+List<Adress> oList = new List<Adress>();
+dynamic p = new ExpandoObject();
+p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_USER_ID_LIST", p);
+if (R != null) {foreach (var X in R) {
+Adress o = new Adress();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -3054,6 +3104,22 @@ oList.Add(o);
 }
 return oList;
 }
+public List<Adress> Get_Adress_By_USER_ID_List_Adv ( List<long?> USER_ID_LIST)
+{
+List<Adress> oList = new List<Adress>();
+dynamic p = new ExpandoObject();
+p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray());
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_USER_ID_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+Adress o = new Adress();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+return oList;
+}
 public List<Contact> Get_Contact_By_PERSON_ID_List_Adv ( List<long?> PERSON_ID_LIST)
 {
 List<Contact> oList = new List<Contact>();
@@ -3080,9 +3146,9 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -3098,9 +3164,9 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -3296,9 +3362,9 @@ if (R != null) {foreach (var X in R) {
 User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -3314,9 +3380,9 @@ if (R != null) {foreach (var X in R) {
 User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -3382,11 +3448,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Adress> Get_Adress_By_Criteria ( string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Adress> Get_Adress_By_Criteria ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Adress> oList = new List<Adress>();
 dynamic p = new ExpandoObject();
-p.STREET_NAME_ONE = STREET_NAME_ONE; p.STREET_NAME_TWO = STREET_NAME_TWO; p.STATE = STATE; p.POST_CODE = POST_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.HOST_NAME = HOST_NAME; p.STREET_NAME_ONE = STREET_NAME_ONE; p.STREET_NAME_TWO = STREET_NAME_TWO; p.STATE = STATE; p.POST_CODE = POST_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_CRITERIA", p);
 if (R != null) {foreach (var X in R) {
 Adress o = new Adress();
@@ -3397,11 +3463,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Adress> Get_Adress_By_Where ( string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Adress> Get_Adress_By_Where ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Adress> oList = new List<Adress>();
 dynamic p = new ExpandoObject();
-p.STREET_NAME_ONE = STREET_NAME_ONE; p.STREET_NAME_TWO = STREET_NAME_TWO; p.STATE = STATE; p.POST_CODE = POST_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.HOST_NAME = HOST_NAME; p.STREET_NAME_ONE = STREET_NAME_ONE; p.STREET_NAME_TWO = STREET_NAME_TWO; p.STATE = STATE; p.POST_CODE = POST_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_WHERE", p);
 if (R != null) {foreach (var X in R) {
 Adress o = new Adress();
@@ -3952,11 +4018,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Criteria ( string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User> Get_User_By_Criteria ( string EMAIL, string USERNAME, string PASSWORD, string FIRST_NAME, string LAST_NAME, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
-p.EMAIL = EMAIL; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.PHONE = PHONE; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.EMAIL = EMAIL; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.PHONE = PHONE; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
@@ -3967,11 +4033,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Where ( string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User> Get_User_By_Where ( string EMAIL, string USERNAME, string PASSWORD, string FIRST_NAME, string LAST_NAME, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
-p.EMAIL = EMAIL; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.PHONE = PHONE; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.EMAIL = EMAIL; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.PHONE = PHONE; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
@@ -4092,30 +4158,34 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Adress> Get_Adress_By_Criteria_Adv ( string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Adress> Get_Adress_By_Criteria_Adv ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Adress> oList = new List<Adress>();
 dynamic p = new ExpandoObject();
-p.STREET_NAME_ONE = STREET_NAME_ONE; p.STREET_NAME_TWO = STREET_NAME_TWO; p.STATE = STATE; p.POST_CODE = POST_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.HOST_NAME = HOST_NAME; p.STREET_NAME_ONE = STREET_NAME_ONE; p.STREET_NAME_TWO = STREET_NAME_TWO; p.STATE = STATE; p.POST_CODE = POST_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_CRITERIA_ADV", p);
 if (R != null) {foreach (var X in R) {
 Adress o = new Adress();
 oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<Adress> Get_Adress_By_Where_Adv ( string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<Adress> Get_Adress_By_Where_Adv ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Adress> oList = new List<Adress>();
 dynamic p = new ExpandoObject();
-p.STREET_NAME_ONE = STREET_NAME_ONE; p.STREET_NAME_TWO = STREET_NAME_TWO; p.STATE = STATE; p.POST_CODE = POST_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.HOST_NAME = HOST_NAME; p.STREET_NAME_ONE = STREET_NAME_ONE; p.STREET_NAME_TWO = STREET_NAME_TWO; p.STATE = STATE; p.POST_CODE = POST_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_WHERE_ADV", p);
 if (R != null) {foreach (var X in R) {
 Adress o = new Adress();
 oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -4226,9 +4296,9 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -4245,9 +4315,9 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -4624,11 +4694,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Criteria_Adv ( string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User> Get_User_By_Criteria_Adv ( string EMAIL, string USERNAME, string PASSWORD, string FIRST_NAME, string LAST_NAME, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
-p.EMAIL = EMAIL; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.PHONE = PHONE; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.EMAIL = EMAIL; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.PHONE = PHONE; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_CRITERIA_ADV", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
@@ -4639,11 +4709,11 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
-public List<User> Get_User_By_Where_Adv ( string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+public List<User> Get_User_By_Where_Adv ( string EMAIL, string USERNAME, string PASSWORD, string FIRST_NAME, string LAST_NAME, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<User> oList = new List<User>();
 dynamic p = new ExpandoObject();
-p.EMAIL = EMAIL; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.PHONE = PHONE; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+p.EMAIL = EMAIL; p.USERNAME = USERNAME; p.PASSWORD = PASSWORD; p.FIRST_NAME = FIRST_NAME; p.LAST_NAME = LAST_NAME; p.PHONE = PHONE; p.USER_TYPE_CODE = USER_TYPE_CODE; p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_USER_BY_WHERE_ADV", p);
 if (R != null) {foreach (var X in R) {
 User o = new User();
@@ -4664,9 +4734,9 @@ if (R != null) {foreach (var X in R) {
 User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -4683,9 +4753,9 @@ if (R != null) {foreach (var X in R) {
 User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -4745,6 +4815,36 @@ p.ADDRESS_TYPE_CODE = ADDRESS_TYPE_CODE; p.STREET = STREET; p.BUILDING = BUILDIN
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADDRESS_BY_WHERE_IN_LIST_V2", p);
 if (R != null) {foreach (var X in R) {
 Address o = new Address();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<Adress> Get_Adress_By_Criteria_InList ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<Adress> oList = new List<Adress>();
+dynamic p = new ExpandoObject();
+p.HOST_NAME = HOST_NAME; p.STREET_NAME_ONE = STREET_NAME_ONE; p.STREET_NAME_TWO = STREET_NAME_TWO; p.STATE = STATE; p.POST_CODE = POST_CODE; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_CRITERIA_IN_LIST", p);
+if (R != null) {foreach (var X in R) {
+Adress o = new Adress();
+oTools.CopyPropValues_FromDataRecord(X, o);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<Adress> Get_Adress_By_Where_InList ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<Adress> oList = new List<Adress>();
+dynamic p = new ExpandoObject();
+p.HOST_NAME = HOST_NAME; p.STREET_NAME_ONE = STREET_NAME_ONE; p.STREET_NAME_TWO = STREET_NAME_TWO; p.STATE = STATE; p.POST_CODE = POST_CODE; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_WHERE_IN_LIST", p);
+if (R != null) {foreach (var X in R) {
+Adress o = new Adress();
 oTools.CopyPropValues_FromDataRecord(X, o);
 oList.Add(o);
 }
@@ -5102,6 +5202,40 @@ oList.Add(o);
 TOTAL_COUNT = p.TOTAL_COUNT;
 return oList;
 }
+public List<Adress> Get_Adress_By_Criteria_InList_Adv ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<Adress> oList = new List<Adress>();
+dynamic p = new ExpandoObject();
+p.HOST_NAME = HOST_NAME; p.STREET_NAME_ONE = STREET_NAME_ONE; p.STREET_NAME_TWO = STREET_NAME_TWO; p.STATE = STATE; p.POST_CODE = POST_CODE; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_CRITERIA_IN_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+Adress o = new Adress();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
+public List<Adress> Get_Adress_By_Where_InList_Adv ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
+{
+List<Adress> oList = new List<Adress>();
+dynamic p = new ExpandoObject();
+p.HOST_NAME = HOST_NAME; p.STREET_NAME_ONE = STREET_NAME_ONE; p.STREET_NAME_TWO = STREET_NAME_TWO; p.STATE = STATE; p.POST_CODE = POST_CODE; p.USER_ID_LIST = string.Join(",", USER_ID_LIST.ToArray()); p.OWNER_ID = OWNER_ID; p.START_ROW = START_ROW; p.END_ROW = END_ROW; p.TOTAL_COUNT = TOTAL_COUNT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UPG_GET_ADRESS_BY_WHERE_IN_LIST_ADV", p);
+if (R != null) {foreach (var X in R) {
+Adress o = new Adress();
+oTools.CopyPropValues_FromDataRecord(X, o);
+o.My_User = new User();
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+oList.Add(o);
+}
+}
+TOTAL_COUNT = p.TOTAL_COUNT;
+return oList;
+}
 public List<Contact> Get_Contact_By_Criteria_InList_Adv ( string CONTACT_TYPE_CODE, string CONTACT, string DESCRIPTION, List<long?> PERSON_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT)
 {
 List<Contact> oList = new List<Contact>();
@@ -5146,9 +5280,9 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -5165,9 +5299,9 @@ if (R != null) {foreach (var X in R) {
 Customer o = new Customer();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -5404,9 +5538,9 @@ if (R != null) {foreach (var X in R) {
 User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -5423,9 +5557,9 @@ if (R != null) {foreach (var X in R) {
 User_account o = new User_account();
 oTools.CopyPropValues_FromDataRecord(X, o);
 o.My_Adress = new Adress();
-o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
+o.My_Adress.ADRESS_ID = GV<Int32>(X["T_ADRESS_ADRESS_ID"]);o.My_Adress.USER_ID = GV<Int64>(X["T_ADRESS_USER_ID"]);o.My_Adress.HOST_NAME = GV<String>(X["T_ADRESS_HOST_NAME"]);o.My_Adress.STREET_NAME_ONE = GV<String>(X["T_ADRESS_STREET_NAME_ONE"]);o.My_Adress.STREET_NAME_TWO = GV<String>(X["T_ADRESS_STREET_NAME_TWO"]);o.My_Adress.STATE = GV<String>(X["T_ADRESS_STATE"]);o.My_Adress.POST_CODE = GV<String>(X["T_ADRESS_POST_CODE"]);o.My_Adress.ENTRY_USER_ID = GV<Int64>(X["T_ADRESS_ENTRY_USER_ID"]);o.My_Adress.ENTRY_DATE = GV<String>(X["T_ADRESS_ENTRY_DATE"]);o.My_Adress.OWNER_ID = GV<Int32>(X["T_ADRESS_OWNER_ID"]);
 o.My_User = new User();
-o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
+o.My_User.USER_ID = GV<Int64>(X["T_USER_USER_ID"]);o.My_User.OWNER_ID = GV<Int32>(X["T_USER_OWNER_ID"]);o.My_User.EMAIL = GV<String>(X["T_USER_EMAIL"]);o.My_User.USERNAME = GV<String>(X["T_USER_USERNAME"]);o.My_User.PASSWORD = GV<String>(X["T_USER_PASSWORD"]);o.My_User.FIRST_NAME = GV<String>(X["T_USER_FIRST_NAME"]);o.My_User.LAST_NAME = GV<String>(X["T_USER_LAST_NAME"]);o.My_User.PHONE = GV<String>(X["T_USER_PHONE"]);o.My_User.USER_TYPE_CODE = GV<String>(X["T_USER_USER_TYPE_CODE"]);o.My_User.IS_ACTIVE = GV<Boolean>(X["T_USER_IS_ACTIVE"]);o.My_User.ENTRY_DATE = GV<String>(X["T_USER_ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -5571,6 +5705,11 @@ public void Delete_Adress_By_OWNER_ID ( Int32? OWNER_ID)
 {
 var p = new { OWNER_ID = OWNER_ID };
 ExecuteDelete("UPG_DELETE_ADRESS_BY_OWNER_ID", p);
+}
+public void Delete_Adress_By_USER_ID ( long? USER_ID)
+{
+var p = new { USER_ID = USER_ID };
+ExecuteDelete("UPG_DELETE_ADRESS_BY_USER_ID", p);
 }
 public void Delete_Category_By_OWNER_ID ( Int32? OWNER_ID)
 {
@@ -5799,10 +5938,10 @@ oAddress.ADDRESS_ID = ADDRESS_ID;oAddress.PERSON_ID = PERSON_ID;oAddress.ADDRESS
 ExecuteEdit("UPG_EDIT_ADDRESS", oAddress, "ADDRESS_ID");
 return oAddress.ADDRESS_ID;
 }
-public Int32? Edit_Adress ( Int32? ADRESS_ID, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
+public Int32? Edit_Adress ( Int32? ADRESS_ID, long? USER_ID, string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID)
 {
 Adress oAdress = new Adress();
-oAdress.ADRESS_ID = ADRESS_ID;oAdress.STREET_NAME_ONE = STREET_NAME_ONE;oAdress.STREET_NAME_TWO = STREET_NAME_TWO;oAdress.STATE = STATE;oAdress.POST_CODE = POST_CODE;oAdress.ENTRY_USER_ID = ENTRY_USER_ID;oAdress.ENTRY_DATE = ENTRY_DATE;oAdress.OWNER_ID = OWNER_ID;
+oAdress.ADRESS_ID = ADRESS_ID;oAdress.USER_ID = USER_ID;oAdress.HOST_NAME = HOST_NAME;oAdress.STREET_NAME_ONE = STREET_NAME_ONE;oAdress.STREET_NAME_TWO = STREET_NAME_TWO;oAdress.STATE = STATE;oAdress.POST_CODE = POST_CODE;oAdress.ENTRY_USER_ID = ENTRY_USER_ID;oAdress.ENTRY_DATE = ENTRY_DATE;oAdress.OWNER_ID = OWNER_ID;
 ExecuteEdit("UPG_EDIT_ADRESS", oAdress, "ADRESS_ID");
 return oAdress.ADRESS_ID;
 }
@@ -5918,10 +6057,10 @@ oUploaded_file.UPLOADED_FILE_ID = UPLOADED_FILE_ID;oUploaded_file.REL_ENTITY = R
 ExecuteEdit("UPG_EDIT_UPLOADED_FILE", oUploaded_file, "UPLOADED_FILE_ID");
 return oUploaded_file.UPLOADED_FILE_ID;
 }
-public long? Edit_User ( long? USER_ID, Int32? OWNER_ID, string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, bool? IS_ACTIVE, string ENTRY_DATE)
+public long? Edit_User ( long? USER_ID, Int32? OWNER_ID, string EMAIL, string USERNAME, string PASSWORD, string FIRST_NAME, string LAST_NAME, string PHONE, string USER_TYPE_CODE, bool? IS_ACTIVE, string ENTRY_DATE)
 {
 User oUser = new User();
-oUser.USER_ID = USER_ID;oUser.OWNER_ID = OWNER_ID;oUser.EMAIL = EMAIL;oUser.USERNAME = USERNAME;oUser.PASSWORD = PASSWORD;oUser.PHONE = PHONE;oUser.USER_TYPE_CODE = USER_TYPE_CODE;oUser.IS_ACTIVE = IS_ACTIVE;oUser.ENTRY_DATE = ENTRY_DATE;
+oUser.USER_ID = USER_ID;oUser.OWNER_ID = OWNER_ID;oUser.EMAIL = EMAIL;oUser.USERNAME = USERNAME;oUser.PASSWORD = PASSWORD;oUser.FIRST_NAME = FIRST_NAME;oUser.LAST_NAME = LAST_NAME;oUser.PHONE = PHONE;oUser.USER_TYPE_CODE = USER_TYPE_CODE;oUser.IS_ACTIVE = IS_ACTIVE;oUser.ENTRY_DATE = ENTRY_DATE;
 ExecuteEdit("UPG_EDIT_USER", oUser, "USER_ID");
 return oUser.USER_ID;
 }
@@ -5995,7 +6134,7 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_ADRESS", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.ADRESS_ID = GV<Int32>(X["ADRESS_ID"]);o.STREET_NAME_ONE = GV<String>(X["STREET_NAME_ONE"]);o.STREET_NAME_TWO = GV<String>(X["STREET_NAME_TWO"]);o.STATE = GV<String>(X["STATE"]);o.POST_CODE = GV<String>(X["POST_CODE"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
+o.ADRESS_ID = GV<Int32>(X["ADRESS_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.STREET_NAME_ONE = GV<String>(X["STREET_NAME_ONE"]);o.STREET_NAME_TWO = GV<String>(X["STREET_NAME_TWO"]);o.STATE = GV<String>(X["STATE"]);o.POST_CODE = GV<String>(X["POST_CODE"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);
 oList.Add(o);
 }
 }
@@ -6274,7 +6413,7 @@ p.JSON_CONTENT = JSON_CONTENT;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.EMAIL = GV<String>(X["EMAIL"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.PHONE = GV<String>(X["PHONE"]);o.USER_TYPE_CODE = GV<String>(X["USER_TYPE_CODE"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.EMAIL = GV<String>(X["EMAIL"]);o.USERNAME = GV<String>(X["USERNAME"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.PHONE = GV<String>(X["PHONE"]);o.USER_TYPE_CODE = GV<String>(X["USER_TYPE_CODE"]);o.IS_ACTIVE = GV<Boolean>(X["IS_ACTIVE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
 oList.Add(o);
 }
 }
@@ -6289,6 +6428,20 @@ IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER_ACCOUNT", p
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
 o.USER_ACCOUNT_ID = GV<Int64>(X["USER_ACCOUNT_ID"]);o.ADRESS_ID = GV<Int32>(X["ADRESS_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.DESCRIPTION = GV<String>(X["DESCRIPTION"]);
+oList.Add(o);
+}
+}
+return oList;
+}
+public List<dynamic> UP_BULK_UPSERT_USER_ADRESS ( string JSON_CONTENT)
+{
+List<dynamic> oList = new List<dynamic>();
+dynamic p = new ExpandoObject();
+p.JSON_CONTENT = JSON_CONTENT;
+IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_BULK_UPSERT_USER_ADRESS", p);
+if (R != null) {foreach (var X in R) {
+dynamic o = new ExpandoObject();
+o.USER_ADRESS_ID = GV<Int32>(X["USER_ADRESS_ID"]);o.USER_ID = GV<Int64>(X["USER_ID"]);o.ADRESS_ID = GV<Int32>(X["ADRESS_ID"]);o.ENTRY_USER_ID = GV<Int64>(X["ENTRY_USER_ID"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.DESCRIPTION = GV<String>(X["DESCRIPTION"]);
 oList.Add(o);
 }
 }
@@ -6412,7 +6565,7 @@ p.OWNER_ID = OWNER_ID; p.EMAIL = EMAIL; p.PASSWORD = PASSWORD;
 IEnumerable<IDataRecord> R = ExecuteSelectQuery("UP_GET_USER_BY_CREDENTIALS", p);
 if (R != null) {foreach (var X in R) {
 dynamic o = new ExpandoObject();
-o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.EMAIL = GV<String>(X["EMAIL"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.PHONE = GV<String>(X["PHONE"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
+o.USER_ID = GV<Int64>(X["USER_ID"]);o.OWNER_ID = GV<Int32>(X["OWNER_ID"]);o.USERNAME = GV<String>(X["USERNAME"]);o.EMAIL = GV<String>(X["EMAIL"]);o.PASSWORD = GV<String>(X["PASSWORD"]);o.PHONE = GV<String>(X["PHONE"]);o.FIRST_NAME = GV<String>(X["FIRST_NAME"]);o.LAST_NAME = GV<String>(X["LAST_NAME"]);o.ENTRY_DATE = GV<String>(X["ENTRY_DATE"]);
 oList.Add(o);
 }
 }

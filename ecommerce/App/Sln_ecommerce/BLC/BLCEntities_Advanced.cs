@@ -37,6 +37,7 @@ public Loc_l4 My_Loc_l4 {get;set;}
 public partial class Adress
 {
 #region Advanced Properties
+public User My_User {get;set;}
 #endregion
 }
 #endregion

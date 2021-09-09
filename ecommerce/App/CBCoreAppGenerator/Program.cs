@@ -243,6 +243,9 @@ namespace CodeGenerator
 
             //oCodeBooster.APIMethodsSelection.Add("Feetoura");
             oCodeBooster.APIMethodsSelection.Add("Get_Order_details_By_INVOICE_ID");
+            oCodeBooster.APIMethodsSelection.Add("Edit_User");
+            oCodeBooster.APIMethodsSelection.Add("Get_Adress_By_USER_ID");
+            oCodeBooster.APIMethodsSelection.Add("Edit_Adress");
 
 
             //oCodeBooster.APIMethodsSelection.Add("Edit_Category");

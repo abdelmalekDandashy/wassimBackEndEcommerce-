@@ -31,6 +31,8 @@ public Loc_l4 My_Loc_l4 {get;set;}
 public partial class Adress
 {
 public Int32? ADRESS_ID {get;set;}
+public long? USER_ID {get;set;}
+public string HOST_NAME {get;set;}
 public string STREET_NAME_ONE {get;set;}
 public string STREET_NAME_TWO {get;set;}
 public string STATE {get;set;}
@@ -38,6 +40,7 @@ public string POST_CODE {get;set;}
 public long? ENTRY_USER_ID {get;set;}
 public string ENTRY_DATE {get;set;}
 public Int32? OWNER_ID {get;set;}
+public User My_User {get;set;}
 }
 public partial class Category
 {
@@ -234,6 +237,8 @@ public Int32? OWNER_ID {get;set;}
 public string EMAIL {get;set;}
 public string USERNAME {get;set;}
 public string PASSWORD {get;set;}
+public string FIRST_NAME {get;set;}
+public string LAST_NAME {get;set;}
 public string PHONE {get;set;}
 public string USER_TYPE_CODE {get;set;}
 public bool? IS_ACTIVE {get;set;}
@@ -338,6 +343,7 @@ List<Address> Get_Address_By_OWNER_ID ( Int32? OWNER_ID);
 List<Address> Get_Address_By_PERSON_ID_ADDRESS_TYPE_CODE ( long? PERSON_ID, string ADDRESS_TYPE_CODE);
 List<Address> Get_Address_By_LOC_L4_ID ( long? LOC_L4_ID);
 List<Adress> Get_Adress_By_OWNER_ID ( Int32? OWNER_ID);
+List<Adress> Get_Adress_By_USER_ID ( long? USER_ID);
 List<Category> Get_Category_By_OWNER_ID ( Int32? OWNER_ID);
 List<Color> Get_Color_By_OWNER_ID ( Int32? OWNER_ID);
 List<Contact> Get_Contact_By_PERSON_ID ( long? PERSON_ID);
@@ -390,6 +396,7 @@ List<Address> Get_Address_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<Address> Get_Address_By_PERSON_ID_ADDRESS_TYPE_CODE_Adv ( long? PERSON_ID, string ADDRESS_TYPE_CODE);
 List<Address> Get_Address_By_LOC_L4_ID_Adv ( long? LOC_L4_ID);
 List<Adress> Get_Adress_By_OWNER_ID_Adv ( Int32? OWNER_ID);
+List<Adress> Get_Adress_By_USER_ID_Adv ( long? USER_ID);
 List<Category> Get_Category_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<Color> Get_Color_By_OWNER_ID_Adv ( Int32? OWNER_ID);
 List<Contact> Get_Contact_By_PERSON_ID_Adv ( long? PERSON_ID);
@@ -435,6 +442,7 @@ List<Address> Get_Address_By_LOC_L1_ID_List ( List<long?> LOC_L1_ID_LIST);
 List<Address> Get_Address_By_LOC_L2_ID_List ( List<long?> LOC_L2_ID_LIST);
 List<Address> Get_Address_By_LOC_L3_ID_List ( List<long?> LOC_L3_ID_LIST);
 List<Address> Get_Address_By_LOC_L4_ID_List ( List<long?> LOC_L4_ID_LIST);
+List<Adress> Get_Adress_By_USER_ID_List ( List<long?> USER_ID_LIST);
 List<Contact> Get_Contact_By_PERSON_ID_List ( List<long?> PERSON_ID_LIST);
 List<Customer> Get_Customer_By_ADRESS_ID_List ( List<Int32?> ADRESS_ID_LIST);
 List<Customer> Get_Customer_By_USER_ID_List ( List<long?> USER_ID_LIST);
@@ -455,6 +463,7 @@ List<Address> Get_Address_By_LOC_L1_ID_List_Adv ( List<long?> LOC_L1_ID_LIST);
 List<Address> Get_Address_By_LOC_L2_ID_List_Adv ( List<long?> LOC_L2_ID_LIST);
 List<Address> Get_Address_By_LOC_L3_ID_List_Adv ( List<long?> LOC_L3_ID_LIST);
 List<Address> Get_Address_By_LOC_L4_ID_List_Adv ( List<long?> LOC_L4_ID_LIST);
+List<Adress> Get_Adress_By_USER_ID_List_Adv ( List<long?> USER_ID_LIST);
 List<Contact> Get_Contact_By_PERSON_ID_List_Adv ( List<long?> PERSON_ID_LIST);
 List<Customer> Get_Customer_By_ADRESS_ID_List_Adv ( List<Int32?> ADRESS_ID_LIST);
 List<Customer> Get_Customer_By_USER_ID_List_Adv ( List<long?> USER_ID_LIST);
@@ -474,8 +483,8 @@ List<Address> Get_Address_By_Criteria ( string ADDRESS_TYPE_CODE, string STREET,
 List<Address> Get_Address_By_Where ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_V2 ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Where_V2 ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Adress> Get_Adress_By_Criteria ( string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Adress> Get_Adress_By_Where ( string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Adress> Get_Adress_By_Criteria ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Adress> Get_Adress_By_Where ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Category> Get_Category_By_Criteria ( string NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Category> Get_Category_By_Where ( string NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Color> Get_Color_By_Criteria ( string NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
@@ -512,16 +521,16 @@ List<Size> Get_Size_By_Criteria ( string DESCRIPTION, Int32? OWNER_ID, Int64? ST
 List<Size> Get_Size_By_Where ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Uploaded_file> Get_Uploaded_file_By_Criteria ( string REL_ENTITY, string REL_FIELD, string EXTENSION, string STAMP, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Uploaded_file> Get_Uploaded_file_By_Where ( string REL_ENTITY, string REL_FIELD, string EXTENSION, string STAMP, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<User> Get_User_By_Criteria ( string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<User> Get_User_By_Where ( string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User> Get_User_By_Criteria ( string EMAIL, string USERNAME, string PASSWORD, string FIRST_NAME, string LAST_NAME, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User> Get_User_By_Where ( string EMAIL, string USERNAME, string PASSWORD, string FIRST_NAME, string LAST_NAME, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User_account> Get_User_account_By_Criteria ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User_account> Get_User_account_By_Where ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_Adv ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Where_Adv ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_Adv_V2 ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Where_Adv_V2 ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Adress> Get_Adress_By_Criteria_Adv ( string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<Adress> Get_Adress_By_Where_Adv ( string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Adress> Get_Adress_By_Criteria_Adv ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Adress> Get_Adress_By_Where_Adv ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Category> Get_Category_By_Criteria_Adv ( string NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Category> Get_Category_By_Where_Adv ( string NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Color> Get_Color_By_Criteria_Adv ( string NAME, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
@@ -552,14 +561,16 @@ List<Product> Get_Product_By_Criteria_Adv ( string NAME, string DESCRIPTION, Int
 List<Product> Get_Product_By_Where_Adv ( string NAME, string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Size> Get_Size_By_Criteria_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Size> Get_Size_By_Where_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<User> Get_User_By_Criteria_Adv ( string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
-List<User> Get_User_By_Where_Adv ( string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User> Get_User_By_Criteria_Adv ( string EMAIL, string USERNAME, string PASSWORD, string FIRST_NAME, string LAST_NAME, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<User> Get_User_By_Where_Adv ( string EMAIL, string USERNAME, string PASSWORD, string FIRST_NAME, string LAST_NAME, string PHONE, string USER_TYPE_CODE, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User_account> Get_User_account_By_Criteria_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<User_account> Get_User_account_By_Where_Adv ( string DESCRIPTION, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_InList ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Where_InList ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_InList_V2 ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Where_InList_V2 ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Adress> Get_Adress_By_Criteria_InList ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Adress> Get_Adress_By_Where_InList ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Contact> Get_Contact_By_Criteria_InList ( string CONTACT_TYPE_CODE, string CONTACT, string DESCRIPTION, List<long?> PERSON_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Contact> Get_Contact_By_Where_InList ( string CONTACT_TYPE_CODE, string CONTACT, string DESCRIPTION, List<long?> PERSON_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Customer> Get_Customer_By_Criteria_InList ( string FIRST_NAME, string LAST_NAME, string PHONE, List<long?> USER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
@@ -582,6 +593,8 @@ List<Address> Get_Address_By_Criteria_InList_Adv ( string ADDRESS_TYPE_CODE, str
 List<Address> Get_Address_By_Where_InList_Adv ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Criteria_InList_Adv_V2 ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Address> Get_Address_By_Where_InList_Adv_V2 ( string ADDRESS_TYPE_CODE, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, List<long?> PERSON_ID_LIST, List<long?> LOC_L1_ID_LIST, List<long?> LOC_L2_ID_LIST, List<long?> LOC_L3_ID_LIST, List<long?> LOC_L4_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Adress> Get_Adress_By_Criteria_InList_Adv ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
+List<Adress> Get_Adress_By_Where_InList_Adv ( string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, List<long?> USER_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Contact> Get_Contact_By_Criteria_InList_Adv ( string CONTACT_TYPE_CODE, string CONTACT, string DESCRIPTION, List<long?> PERSON_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Contact> Get_Contact_By_Where_InList_Adv ( string CONTACT_TYPE_CODE, string CONTACT, string DESCRIPTION, List<long?> PERSON_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
 List<Customer> Get_Customer_By_Criteria_InList_Adv ( string FIRST_NAME, string LAST_NAME, string PHONE, List<long?> USER_ID_LIST, List<Int32?> ADRESS_ID_LIST, Int32? OWNER_ID, Int64? START_ROW, Int64? END_ROW,ref  Int64? TOTAL_COUNT);
@@ -628,6 +641,7 @@ void Delete_Address_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_Address_By_PERSON_ID_ADDRESS_TYPE_CODE ( long? PERSON_ID, string ADDRESS_TYPE_CODE);
 void Delete_Address_By_LOC_L4_ID ( long? LOC_L4_ID);
 void Delete_Adress_By_OWNER_ID ( Int32? OWNER_ID);
+void Delete_Adress_By_USER_ID ( long? USER_ID);
 void Delete_Category_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_Color_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_Contact_By_PERSON_ID ( long? PERSON_ID);
@@ -673,7 +687,7 @@ void Delete_User_account_By_OWNER_ID ( Int32? OWNER_ID);
 void Delete_User_account_By_USER_ID ( long? USER_ID);
 void Delete_User_account_By_ADRESS_ID ( Int32? ADRESS_ID);
 long? Edit_Address ( long? ADDRESS_ID, long? PERSON_ID, string ADDRESS_TYPE_CODE, long? LOC_L1_ID, long? LOC_L2_ID, long? LOC_L3_ID, long? LOC_L4_ID, string STREET, string BUILDING, string FLOOR, string POBOX, string VALID_DATE_START, string VALID_DATE_END, string NOTES, string ENTRY_DATE, long? ENTRY_USER_ID, Int32? OWNER_ID);
-Int32? Edit_Adress ( Int32? ADRESS_ID, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
+Int32? Edit_Adress ( Int32? ADRESS_ID, long? USER_ID, string HOST_NAME, string STREET_NAME_ONE, string STREET_NAME_TWO, string STATE, string POST_CODE, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 Int32? Edit_Category ( Int32? CATEGORY_ID, string NAME, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 Int32? Edit_Color ( Int32? COLOR_ID, string NAME, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 Int32? Edit_Contact ( Int32? CONTACT_ID, long? PERSON_ID, string CONTACT_TYPE_CODE, string CONTACT, string DESCRIPTION, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
@@ -690,7 +704,7 @@ long? Edit_Person ( long? PERSON_ID, string FIRST_NAME, string LAST_NAME, string
 Int32? Edit_Product ( Int32? PRODUCT_ID, string NAME, string DESCRIPTION, Int32? CATEGORY_ID, Int32? STOCK, decimal FULL_PRICE, Int32? COLOR_ID, Int32? SIZE_ID, decimal? DISCOUNT_PRICE, bool? IS_BEST_SELLING, bool? IS_RECOMMENDED, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 Int32? Edit_Size ( Int32? SIZE_ID, string DESCRIPTION, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
 long? Edit_Uploaded_file ( long? UPLOADED_FILE_ID, string REL_ENTITY, long? REL_KEY, string REL_FIELD, Int32? SIZE, string EXTENSION, string STAMP, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID);
-long? Edit_User ( long? USER_ID, Int32? OWNER_ID, string EMAIL, string USERNAME, string PASSWORD, string PHONE, string USER_TYPE_CODE, bool? IS_ACTIVE, string ENTRY_DATE);
+long? Edit_User ( long? USER_ID, Int32? OWNER_ID, string EMAIL, string USERNAME, string PASSWORD, string FIRST_NAME, string LAST_NAME, string PHONE, string USER_TYPE_CODE, bool? IS_ACTIVE, string ENTRY_DATE);
 long? Edit_User_account ( long? USER_ACCOUNT_ID, Int32? ADRESS_ID, long? USER_ID, long? ENTRY_USER_ID, string ENTRY_DATE, Int32? OWNER_ID, string DESCRIPTION);
 List<dynamic> GET_DISTINCT_SETUP_TBL ( Int32? OWNER_ID);
 List<dynamic> GET_NEXT_VALUE ( string STARTER_CODE);
@@ -718,6 +732,7 @@ List<dynamic> UP_BULK_UPSERT_SIZE ( string JSON_CONTENT);
 List<dynamic> UP_BULK_UPSERT_UPLOADED_FILE ( string JSON_CONTENT);
 List<dynamic> UP_BULK_UPSERT_USER ( string JSON_CONTENT);
 List<dynamic> UP_BULK_UPSERT_USER_ACCOUNT ( string JSON_CONTENT);
+List<dynamic> UP_BULK_UPSERT_USER_ADRESS ( string JSON_CONTENT);
 List<dynamic> UP_CHECK_USER_EXISTENCE ( Int32? OWNER_ID, string USERNAME,ref  bool? EXISTS);
 List<dynamic> UP_EDIT_SETUP ( Int32? OWNER_ID, string TBL_NAME, string CODE_NAME, bool? ISSYSTEM, bool? ISDELETEABLE, bool? ISUPDATEABLE, bool? ISVISIBLE, bool? ISDELETED, Int32? DISPLAY_ORDER, string CODE_VALUE_EN, string CODE_VALUE_FR, string CODE_VALUE_AR, string ENTRY_DATE, long? ENTRY_USER_ID, string NOTES);
 List<dynamic> UP_EXTRACT_ROUTINE_PARAMETERS ( string ROUTINE_NAME);

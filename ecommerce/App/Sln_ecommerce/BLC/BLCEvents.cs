@@ -27,7 +27,10 @@ Get_User_account_By_USER_ID_Adv,
 Edit_Address,
 Delete_Address,
 Authenticate,
-Get_Order_details_By_INVOICE_ID
+Get_Order_details_By_INVOICE_ID,
+Edit_User,
+Get_Adress_By_USER_ID,
+Edit_Adress
 }
 #endregion
 
