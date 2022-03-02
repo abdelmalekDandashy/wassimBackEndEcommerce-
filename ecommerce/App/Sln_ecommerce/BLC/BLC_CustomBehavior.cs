@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Transactions;
 using Newtonsoft.Json;
+using Stripe;
 
 namespace BLC
 {
@@ -322,6 +323,7 @@ namespace BLC
                                 oOrder_details.QUANTITY = product.QUANTITY;
                                 oOrder_details.OWNER_ID = i_Params_Feetoura.OWNER_ID;
                                 oOrder_details.INVOICE_ID = eInvoice.INVOICE_ID;
+                                oInvoice.INVOICE_ID = eInvoice.INVOICE_ID;
                                 decimal discountPrice = oResult.DISCOUNT_PRICE ?? 0;
                                 oOrder_details.PRICE = discountPrice;
 
@@ -359,8 +361,6 @@ namespace BLC
 
                                 }
 
-                            
-
 
 
 
@@ -376,6 +376,75 @@ namespace BLC
 
                         }
                     }
+                    #region stripe 
+                    #region ApiKey
+                    // stripe payment intent
+
+                    StripeConfiguration.ApiKey = "sk_test_51KPz5MK8AnNnWsUxYJd0ho7SCpSkJ1xj93p7YBxaU2GUPJFwjnhFXVY52qyovGqNULeBIk0eVnLNC3y00uuuW6kp004g7cScQY";
+                    #endregion
+                    var total = Convert.ToInt64(Total_Price * 100);
+                    Console.WriteLine("total is " + total);
+                    //#region payment-intent without customer(guest)
+                    //try
+                    //{
+                    //    var paymentIntents = new PaymentIntentService();
+                    //    var paymentIntent = paymentIntents.Create(new PaymentIntentCreateOptions
+                    //    {
+                    //        Amount = total,
+                    //        Currency = "usd",
+                    //    });
+
+                    //    //return Json(new { clientSecret = paymentIntent.ClientSecret });
+                    //    oInvoice.clientSecret = paymentIntent.ClientSecret;
+                    //}
+                    //catch (Exception error)
+                    //{
+                    //    //oInvoice.errorMessage = error.InnerException.ToString();
+                    //    //return Json(new { errorMessage = error });
+                    //    oInvoice.errorMessage = "something wrong happend";
+                    //    Console.WriteLine("error wassssssss" + error);
+
+                    //}
+                    //#endregion payment-intent without customer(guest)
+
+                    // Alternatively, set up a webhook to listen for the payment_intent.succeeded event
+                    // and attach the PaymentMethod to a new Customer
+
+                    #region get_customer from db
+                    var oParams_Get_User_By_USER_ID = new Params_Get_User_By_USER_ID()
+                    {
+                        USER_ID = i_Params_Feetoura.USER_ID
+                    };
+
+                    var userFromDB = this.Get_User_By_USER_ID(oParams_Get_User_By_USER_ID);
+                    if(userFromDB != null)
+                    {
+
+                    #endregion
+
+                    var customers = new CustomerService();
+                        var customer = customers.Create(new CustomerCreateOptions()
+                        {
+                            Email = userFromDB.EMAIL,
+                            Name = $"{userFromDB.FIRST_NAME} {userFromDB.LAST_NAME}",
+                        }) ;
+                    var paymentIntents = new PaymentIntentService();
+                    var paymentIntent = paymentIntents.Create(new PaymentIntentCreateOptions
+                    {
+                        Customer = customer.Id,
+                        SetupFutureUsage = "off_session",
+                        Amount = total,
+                        Currency = "usd",
+                    });
+
+                        // remember to save paymentIntent in DB + invoice ID
+                    oInvoice.clientSecret = paymentIntent.ClientSecret;
+                    }
+
+                    //return Json(new { clientSecret = paymentIntent.ClientSecret });
+
+                    #endregion stripe
+
                     oScope.Complete();
                 }
                 
@@ -385,6 +454,7 @@ namespace BLC
      
            
                     oInvoice.outOfStockProducts = outOfStockProducts;
+                    
                     oInvoice.total = Total_Price;
                     oInvoice.productsToBuy = oListProductsToBuy;
                     return oInvoice;
@@ -461,7 +531,12 @@ namespace BLC
     {
         public List<dynamic> outOfStockProducts { get; set; }
         public List<Order_details> productsToBuy { get; set; }
+
+        public int? INVOICE_ID { get; set; }
         public decimal total { get; set; }
+
+        public string? clientSecret { get; set; }
+        public string? errorMessage { get; set; }
     }
     #endregion
     #region Params_Authenticate
@@ -493,5 +568,6 @@ namespace BLC
 
     #endregion
 }
+
 
 

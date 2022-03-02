@@ -20,7 +20,7 @@ public partial class DataController
         string str_REL_FIELD = string.Empty;
         string str_REL_KEY = string.Empty;
 
-        string str_File_Name = string.Empty;
+        string str_File_Name = string.Empty;        
         string str_Extension = string.Empty;
         string str_Main_Folder = ConfigurationManager.AppSettings["UPLOAD_DOCUMENT_LOCATION"];
         string str_File_Full_Path = string.Empty;
@@ -70,13 +70,13 @@ public partial class DataController
         foreach (var formFile in Request.Form.Files)
         {
             if (formFile.Length <= 0) { continue; }
-
+            
 
             #region Extract Extension
             str_Extension = formFile.FileName.Substring
                                     (
                                        formFile.FileName.LastIndexOf(".") + 1,
-                                       formFile.FileName.Length - formFile.FileName.LastIndexOf(".") - 1
+                                       formFile.FileName.Length - formFile.FileName.LastIndexOf(".") - 1 
                                     );
             #endregion
 
@@ -91,7 +91,7 @@ public partial class DataController
             oUploaded_file.STAMP = oTools.Get_Unique_String();
 
             BLC.BLC oBLC_Default = new BLC.BLC();
-            BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer("", BLC.BLC.Enum_API_Method.Get_Category_By_Where);
+            BLCInitializer oBLCInitializer = oBLC_Default.Prepare_BLCInitializer("", BLC.BLC.Enum_API_Method.Authenticate);
             using (BLC.BLC oBLC = new BLC.BLC(oBLCInitializer))
             {
                 oBLC.Edit_Uploaded_file(oUploaded_file);
@@ -99,7 +99,7 @@ public partial class DataController
             #endregion
 
             #region File Info
-            str_File_Name = string.Format("{0}.{1}", oUploaded_file.UPLOADED_FILE_ID.ToString(), str_Extension);
+            str_File_Name = string.Format("{0}.{1}", oUploaded_file.UPLOADED_FILE_ID.ToString(), str_Extension);            
             str_File_Full_Path = string.Format(@"{0}{1}", str_Main_Folder, str_File_Name);
             #endregion
 
